@@ -17,12 +17,14 @@
             include("needAdmin.html");
             header("Refresh: 5; URL='close.php'");
             exit;
-        }
+        } else {
+            printHeader("A");
+        }   
 
         if(!empty($_POST)){
             print_r($_POST);
 
-            
+
         }
     ?>
     <form action="#" method="POST">

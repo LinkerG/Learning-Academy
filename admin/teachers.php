@@ -11,10 +11,14 @@
 </head>
 <body>
     <?php
+        include("../functions.php");
+
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "A") {
             include("needAdmin.html");
             header("Refresh: 5; URL='close.php'");
             exit;
+        } else {
+            printHeader("A");
         }
     ?>
     <h1>Teacher list</h1>
@@ -34,8 +38,6 @@
                 <th>Disabled</th>
             </tr>
             <?php
-                include("../functions.php");
-
                 if(connectBD("learningacademy", $connection)) {
                     $sql = "SELECT * FROM course";
 
