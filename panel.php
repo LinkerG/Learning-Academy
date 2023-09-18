@@ -40,7 +40,18 @@
         }
 
         printHeader($_SESSION['role']);
-        echo "<h1>$role</h1>";
+        
+        switch($_SESSION['role']) {
+            case "A":
+                include("panels/adminPanel.php");
+                break;
+            case "S":
+                include("panels/studentPanel.php");
+                break;
+            case "T":
+                include("panels/teacherPanel.php");
+                break;
+        }
     ?>
     <h1>PANEL</h1>
 </body>
