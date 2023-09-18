@@ -1,0 +1,25 @@
+*{
+    margin: 0px;
+}
+header{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #248EFF;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu1{
+    grid-column: 2/6;
+    color: white;
+}
+
+a:is(:link, :hover, :active, :visited){
+    color: white;
+    text-decoration: none;
+}
+
+header a{
+    text-align: center;
+}
