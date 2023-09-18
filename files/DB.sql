@@ -5,6 +5,8 @@ USE learningAcademy;
 -- Creacion de la tabla teacher
 CREATE TABLE teacher(
     dniTeacher varchar(9) PRIMARY KEY,
+    email varchar(40) UNIQUE,
+    password varchar(200),
     name varchar(15),
     surname varchar(25),
     titulation varchar(50),
@@ -15,6 +17,8 @@ CREATE TABLE teacher(
 -- Creacion de la tabla student
 CREATE TABLE student(
     dniStudent varchar(9) PRIMARY KEY,
+    email varchar(40) UNIQUE,
+    password varchar(200),
     name varchar(15),
     surname varchar(25),
     age int,
@@ -45,11 +49,10 @@ CREATE TABLE matriculates(
 
 -- Creacion de tabla para gestionar los usuarios
 
-CREATE TABLE users(
+CREATE TABLE admin(
     email varchar(40) PRIMARY KEY,
-    password varchar(200),
-    role CHAR(1) CHECK (role IN ('T','S','A'))
+    password varchar(200)
 );
 
-INSERT INTO users (email, password, role)
-VALUES ('super@admin.com', MD5('administrador'), 'A');
+INSERT INTO admin (email, password)
+VALUES ('super@admin.com', MD5('administrador'));

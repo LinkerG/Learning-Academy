@@ -113,6 +113,7 @@
                                     }
                                 }
                             }
+                        }
                     }
                     if ($found == false) {
                         $sql = "SELECT * FROM student";
@@ -137,6 +138,7 @@
                                     }
                                 }
                             }
+                        }
                     }
                     if ($found==false) echo '<script>alert("Username does not exist");</script>';
                     else if ($valid==false) echo '<script>alert("Wrong password");</script>';
