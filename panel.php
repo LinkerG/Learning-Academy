@@ -53,6 +53,5 @@
                 break;
         }
     ?>
-    <h1>PANEL</h1>
 </body>
 </html>

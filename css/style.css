@@ -13,13 +13,26 @@ header{
 .menu1{
     grid-column: 2/6;
     color: white;
-}
+}   
 
-a:is(:link, :hover, :active, :visited){
+header a:is(:link, :hover, :active, :visited){
     color: white;
     text-decoration: none;
 }
 
 header a{
     text-align: center;
+}
+
+.container a:is(:link, :hover, :active, :visited){
+    color: black;
+    text-decoration: none;
+}
+
+th, td{
+    border: 1px solid black;
+}
+
+table{
+    border-collapse: collapse;
 }

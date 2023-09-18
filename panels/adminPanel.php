@@ -1,4 +1,5 @@
+<h1>ADMIN PANEL</h1>
 <div class="container">
-    <a href="">Manage courses</a>
-    <a href="">Manage teachers</a>
+    <a href="admin/courses.php">Manage courses</a>
+    <a href="admin/teachers.php">Manage teachers</a>
 </div>
