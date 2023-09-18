@@ -37,5 +37,7 @@
             <input type="submit" value="Sign In">
         </form>
     </div>
+    <br>
+    <h1>Inicio de sesión</h1>
 </body>
 </html>

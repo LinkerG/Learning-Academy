@@ -1,7 +1,8 @@
 <?php
-    function printHeader($rol) {
+    function printHeader($role) {
         echo "<header class='header'>";
-        switch($rol) {
+        if($role == "") $role = "N";
+        switch($role) {
             case "N":
                 echo "<a href='index.php' class='headerLogo'><img src='img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
                 echo "<p class='menu1'>Learning Academy</p>";
@@ -10,17 +11,17 @@
                 break;
             case "A":
                 echo "<a href='index.php' class='headerLogo'><img src='img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-                echo "<a href='student.php' class='menu1'>Admin panel</a>";
+                echo "<a href='panel.php' class='menu1'>Admin panel</a>";
                 echo "<a href='close.php' class='logout'>Log out</a>";
                 break;
             case "S":
                 echo "<a href='index.php' class='headerLogo'><img src='img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-                echo "<a href='student.php' class='menu1'>Student panel</a>";
+                echo "<a href='panel.php' class='menu1'>Student panel</a>";
                 echo "<a href='close.php' class='logout'>Log out</a>";
                 break;
             case "T":
                 echo "<a href='index.php' class='headerLogo'><img src='img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-                echo "<a href='student.php' class='menu1'>Teacher panel</a>";
+                echo "<a href='panel.php' class='menu1'>Teacher panel</a>";
                 echo "<a href='close.php' class='logout'>Log out</a>";
                 break;
         }
@@ -101,10 +102,10 @@
         echo "<p>Error (" . $e -> getCode() . "): " . $e -> getMessage() . "</p>";
     }
     
-    function no_validado() {
+    function notValidated() {
         echo "<div class='container'>";
         echo "<h1 class='no_val'>Necesitas estar validado para ver esta pagina</h1>";
         echo "</div>";
-        header("Refresh: 5; URL='cerrar.php'");
+        header("Refresh: 5; URL='close.php'");
     }
 ?>

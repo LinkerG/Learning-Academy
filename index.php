@@ -22,5 +22,6 @@
         printHeader($role);
         
     ?>
+    <h1>Página principal</h1>
 </body>
 </html>
