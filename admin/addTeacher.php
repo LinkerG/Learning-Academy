@@ -22,6 +22,7 @@
         }
 
         if(!empty($_POST)){
+            if($_POST['photoPath']=="") $_POST['photoPath']="/img/profilePhotos/default.png";
             print_r($_POST);
             if(connectBD("learningacademy",$connection)){
                 insertSQL($connection,"teacher");
@@ -42,8 +43,9 @@
         <input type="password" name="password" id="password">
         <label for="titulation">Titulation:</label>
         <input type="text" name="titulation" id="titulation">
-        <label for="file">Photo:</label>
-        <input type="file" name="file" id="file">
+        <label for="photoPath">Photo:</label>
+        <input type="file" name="photoPath" id="photoPath">
+        <input type="hidden" name="active" id="active" value="1">
         <input type="submit" value="Add">
     </form>
     <a href="teachers.php">Cancel</a>

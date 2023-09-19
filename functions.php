@@ -63,16 +63,18 @@ function selectSQL($connection, $sql, &$result) {
     return $resultOk;
 }
 // Buscar campos de una tabla
-function fieldsSQL($connection, $table){
+function colNameSQL($connection, $table){
     if($connection){
         $query = "DESCRIBE $table";
-        $result = $connection->query($query);
+        $result = $connection -> query($query);
+
         if($result === false){
-            die("Error to obtain information from the table: " . $connection->error);
+            die("Error to obtain information from the table: " . $connection -> error);
         }
+
         $fields = [];
-        while($row = $result->fetch_assoc()){
-            $fields[ ]= $row['Field'];
+        while($row = $result -> fetch_assoc()){
+            $fields[] = $row['Field'];
         }
 
         return $fields;
@@ -81,15 +83,17 @@ function fieldsSQL($connection, $table){
 
 function insertSQL($connection,$table){
     if($connection){
-        $fields = fieldsSQL($connection,$table);
-        $values_str = "";
-        foreach($fields as $field){
-            
-            $values_str = $values_str . $_POST[$field] . ", ";
+        $names = colNameSQL($connection,$table);
+        $values = "";
+        foreach($names as $fieldName){
+            if($fieldName == "password") $values = $values . "'" . md5($_POST[$fieldName]) . "'" . ", ";
+            else $values = $values . "'" . $_POST[$fieldName] . "'" . ",";
         }
-        $fields_str = implode(', ',$fields);
-        $query = "INSERT INTO $table ($fields_str) VALUES ()";
-        echo $values_str;
+        $colNames = implode(', ',$names);
+        $values = trim($values, ",");
+        $query = "INSERT INTO $table ($colNames) VALUES ($values)";
+        // Ya te encargarás de que la ejecute pero la consulta sale limpia (no falla) -Iker
+        echo $query;
     }
 }
 
