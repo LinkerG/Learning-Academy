@@ -23,7 +23,9 @@
 
         if(!empty($_POST)){
             print_r($_POST);
-
+            if(connectBD("learningacademy",$connection)){
+                insertSQL($connection,"teacher");
+            }
             
         }
     ?>

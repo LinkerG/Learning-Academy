@@ -82,14 +82,14 @@ function fieldsSQL($connection, $table){
 function insertSQL($connection,$table){
     if($connection){
         $fields = fieldsSQL($connection,$table);
-        $string;
+        $values_str = "";
         foreach($fields as $field){
             
-            $string+$_POST[$field];
+            $values_str = $values_str . $_POST[$field] . ", ";
         }
         $fields_str = implode(', ',$fields);
         $query = "INSERT INTO $table ($fields_str) VALUES ()";
-        
+        echo $values_str;
     }
 }
 
