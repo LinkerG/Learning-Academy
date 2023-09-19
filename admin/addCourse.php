@@ -31,12 +31,13 @@
         <input type="text" name="name" id="name">
         <label for="hours">Hours:</label>
         <input type="number" name="hours" id="hours">
-        <label for="start">Start date:</label>
-        <input type="date" name="start" id="start">
-        <label for="end">End date:</label>
-        <input type="date" name="end" id="end">
-        <label for="teacher">Teacher DNI:</label>
-        <input type="text" name="teacher" id="teacher">
+        <label for="startDate">Start date:</label>
+        <input type="date" name="startDate" id="startDate">
+        <label for="endDate">End date:</label>
+        <input type="date" name="endDate" id="endDate">
+        <label for="dniTeacher">Teacher DNI:</label>
+        <input type="text" name="dniTeacher" id="dniTeacher">
+        <input type="hidden" name="active" id="active" value="1">
         <input type="submit" value="Add">
     </form>
     <a href="courses.php">Cancel</a>

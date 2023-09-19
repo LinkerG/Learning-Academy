@@ -22,7 +22,8 @@
         }
 
         if(!empty($_POST)){
-            if($_POST['photoPath']=="") $_POST['photoPath']="/img/profilePhotos/default.png";
+            print_R($_POST);
+            if(!isset($_POST['photoPath'])) $_POST['photoPath']="/img/profilePhotos/default.png";
             if(connectBD("learningacademy",$connection)){
                 insertSQL($connection,"teacher");
             }

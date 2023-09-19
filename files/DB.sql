@@ -27,7 +27,7 @@ CREATE TABLE student(
 
 -- Creacion de la tabla course
 CREATE TABLE course(
-    codigocourse int PRIMARY KEY AUTO_INCREMENT,
+    courseId int PRIMARY KEY AUTO_INCREMENT,
     name varchar(25),
     hours int,
     startDate date,
@@ -41,10 +41,10 @@ CREATE TABLE course(
 
 CREATE TABLE matriculates(
     dniStudent varchar(9),
-    codigocourse int,
-    PRIMARY KEY (dniStudent, codigocourse),
+    courseId int,
+    PRIMARY KEY (dniStudent, courseId),
     FOREIGN KEY (dniStudent) REFERENCES student(dniStudent),
-    FOREIGN KEY (codigocourse) REFERENCES course(codigocourse)
+    FOREIGN KEY (courseId) REFERENCES course(courseId)
 );
 
 -- Creacion de tabla para gestionar los usuarios

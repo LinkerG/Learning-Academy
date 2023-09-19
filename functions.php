@@ -62,7 +62,7 @@ function selectSQL($connection, $sql, &$result) {
 
     return $resultOk;
 }
-// Buscar campos de una tabla
+
 function colNameSQL($connection, $table){
     if($connection){
         $query = "DESCRIBE $table";
@@ -74,21 +74,25 @@ function colNameSQL($connection, $table){
 
         $fields = [];
         while($row = $result -> fetch_assoc()){
-            $fields[] = $row['Field'];
+            if($row['Field']=="courseId") continue;
+            else $fields[] = $row['Field'];
         }
 
         return $fields;
     }
 }
-//Se inserta bien los profes, pero los cursos necesitan que el codigo no lo inserte porque es una clave primaria y habia pensado en hacer un desplegable 
-//en la parte del dni teacher con los nombres que eso es facil y que en el dni se inserte el dni del profe que haya elegido. Si no entiendes mandame un mensaje GGOGOGO
+
 function insertSQL($connection,$table){
+    /*Se inserta bien los profes, pero los cursos necesitan que el codigo no lo inserte porque es una clave primaria
+    y habia pensado en hacer un desplegable en la parte del dni teacher con los nombres que eso es facil y que en el 
+    dni se inserte el dni del profe que haya elegido.Si no entiendes mandame un mensaje GGOGOGO */
+    
     if($connection){
         $names = colNameSQL($connection,$table);
         $values = "";
         foreach($names as $fieldName){
             if($fieldName == "password") $values = $values . "'" . md5($_POST[$fieldName]) . "'" . ", ";
-            else if($fieldName == "codigocourse") $values = $values . "'"."'". ", ";
+            else if($fieldName == "courseId") continue;
             else $values = $values . "'" . $_POST[$fieldName] . "'" . ",";
         }
         $colNames = implode(', ',$names);
