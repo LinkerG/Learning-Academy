@@ -28,8 +28,8 @@
         }
     ?>
     <form action="#" method="POST">
-        <label for="dni">DNI:</label>
-        <input type="text" name="dni" id="dni">
+        <label for="dniTeacher">DNI:</label>
+        <input type="text" name="dniTeacher" id="dniTeacher">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">
         <label for="surname">Surname:</label>
