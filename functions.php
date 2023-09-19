@@ -208,19 +208,24 @@ function notValidated() {
     header("Refresh: 5; URL='close.php'");
 }
 //Funcion para subir foto copiada de otra practica GOGOGO ya nos encargaremos de implementarla en nuestro codigo mañana -Alex 
-/*function subirFoto(){
+function uploadPhoto($aux) {
     if (is_uploaded_file($_FILES['photoPath']['tmp_name'])) {
-        $nombreDirectorio = "img/";
-        $idUnico = time();
-        $nombreFichero = $idUnico . "-" . $_FILES['foto']['name'];
-        $rutaArchivo = $nombreDirectorio . $nombreFichero;
-        if (move_uploaded_file($_FILES['foto']['tmp_name'], $rutaArchivo)) {
-            return $rutaArchivo;
+        if($aux == true){
+            //Para los profes
+            $directoryName = '../img/profilePhotos/';
+            $fileName = $_POST['dniTeacher'] . '.png'; // Aquí estableces el nombre de la foto como el dni y la extensión ".png"
+        }else{
+            //Para los alumnos
+            $directoryName = '../img/profilePhotos/';
+        } 
+        $fileRoute = $directoryName . $fileName;
+        if (move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute)) {         
+            return $fileRoute;
         } else {
             return "No se ha podido subir el fichero";
         }
     } else {
         return "No se ha subido ningún archivo";
     }
-}*/
+}
 ?>
