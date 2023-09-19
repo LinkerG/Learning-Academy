@@ -21,13 +21,13 @@ CREATE TABLE student(
     password varchar(200),
     name varchar(15),
     surname varchar(25),
-    age int,
+    birthDate date,
     photoPath varchar(100)
 );
 
 -- Creacion de la tabla course
 CREATE TABLE course(
-    codigocourse int PRIMARY KEY,
+    codigocourse int PRIMARY KEY AUTO_INCREMENT,
     name varchar(25),
     hours int,
     startDate date,

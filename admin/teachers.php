@@ -39,12 +39,12 @@
             </tr>
             <?php
                 if(connectBD("learningacademy", $connection)) {
-                    $sql = "SELECT * FROM course";
+                    $sql = "SELECT * FROM teacher";
 
                     if(selectSQL($connection, $sql, $result)){
                         if(empty($result)) {
                             echo "<tr>";
-                            echo "<td colspan='6'>There are no courses right now</td>";
+                            echo "<td colspan='7'>There are no teachers right now</td>";
                             echo "</tr>";
                         } else {
                             foreach($result as $row) {
