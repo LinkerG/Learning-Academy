@@ -11,18 +11,18 @@ function printHeader($role) {
             break;
         case "A":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-            echo "<a href='panel.php' class='menu1'>Admin panel</a>";
-            echo "<a href='close.php' class='logout'>Log out</a>";
+            echo "<a href='/Learning-Academy/panel.php' class='menu1'>Admin panel</a>";
+            echo "<a href='/Learning-Academy/close.php' class='logout'>Log out</a>";
             break;
         case "S":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-            echo "<a href='panel.php' class='menu1'>Student panel</a>";
-            echo "<a href='close.php' class='logout'>Log out</a>";
+            echo "<a href='/Learning-Academy/panel.php' class='menu1'>Student panel</a>";
+            echo "<a href='/Learning-Academy/close.php' class='logout'>Log out</a>";
             break;
         case "T":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-            echo "<a href='panel.php' class='menu1'>Teacher panel</a>";
-            echo "<a href='close.php' class='logout'>Log out</a>";
+            echo "<a href='/Learning-Academy/panel.php' class='menu1'>Teacher panel</a>";
+            echo "<a href='/Learning-Academy/close.php' class='logout'>Log out</a>";
             break;
     }
     echo "</header>";
