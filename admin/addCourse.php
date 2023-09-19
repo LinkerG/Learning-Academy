@@ -20,11 +20,10 @@
         } else {
             printHeader("A");
         }   
-
         if(!empty($_POST)){
-            print_r($_POST);
-
-
+            if(connectBD("learningacademy",$connection)){
+                insertSQL($connection,"course");
+            }
         }
     ?>
     <form action="#" method="POST">

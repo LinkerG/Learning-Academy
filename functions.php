@@ -87,13 +87,24 @@ function insertSQL($connection,$table){
         $values = "";
         foreach($names as $fieldName){
             if($fieldName == "password") $values = $values . "'" . md5($_POST[$fieldName]) . "'" . ", ";
+            else if($fieldName == "codigocourse") $values = $values . "'"."'". ", ";
             else $values = $values . "'" . $_POST[$fieldName] . "'" . ",";
         }
         $colNames = implode(', ',$names);
         $values = trim($values, ",");
         $query = "INSERT INTO $table ($colNames) VALUES ($values)";
-        // Ya te encargarás de que la ejecute pero la consulta sale limpia (no falla) -Iker
-        echo $query;
+        //Prepara la query para controlar mejor los errores
+        $executeQuery = $connection->prepare($query);
+        if ($executeQuery === false) {
+            die("Error en la preparación de la consulta: " . $connection->error);
+        }
+        // Ejecuta la consulta y en caso de error te lo dice
+        if ($executeQuery->execute() === false) {
+            echo "Error al insertar el registro: " . $executeQuery->error;
+        }
+        // Cerrar la conexión a la base de datos y la query
+        $executeQuery->close();
+        $connection->close();
     }
 }
 
@@ -191,4 +202,20 @@ function notValidated() {
     echo "</div>";
     header("Refresh: 5; URL='close.php'");
 }
+//Funcion para subir foto copiada de otra practica GOGOGO ya nos encargaremos de implementarla en nuestro codigo mañana -Alex 
+/*function subirFoto(){
+    if (is_uploaded_file($_FILES['photoPath']['tmp_name'])) {
+        $nombreDirectorio = "img/";
+        $idUnico = time();
+        $nombreFichero = $idUnico . "-" . $_FILES['foto']['name'];
+        $rutaArchivo = $nombreDirectorio . $nombreFichero;
+        if (move_uploaded_file($_FILES['foto']['tmp_name'], $rutaArchivo)) {
+            return $rutaArchivo;
+        } else {
+            return "No se ha podido subir el fichero";
+        }
+    } else {
+        return "No se ha subido ningún archivo";
+    }
+}*/
 ?>

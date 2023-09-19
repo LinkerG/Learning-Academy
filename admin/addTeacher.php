@@ -23,14 +23,13 @@
 
         if(!empty($_POST)){
             if($_POST['photoPath']=="") $_POST['photoPath']="/img/profilePhotos/default.png";
-            print_r($_POST);
             if(connectBD("learningacademy",$connection)){
                 insertSQL($connection,"teacher");
             }
             
         }
     ?>
-    <form action="#" method="POST">
+    <form enctype ="multipart/form-data" action="#" method="POST">
         <label for="dniTeacher">DNI:</label>
         <input type="text" name="dniTeacher" id="dniTeacher">
         <label for="name">Name:</label>
