@@ -80,7 +80,8 @@ function colNameSQL($connection, $table){
         return $fields;
     }
 }
-
+//Se inserta bien los profes, pero los cursos necesitan que el codigo no lo inserte porque es una clave primaria y habia pensado en hacer un desplegable 
+//en la parte del dni teacher con los nombres que eso es facil y que en el dni se inserte el dni del profe que haya elegido. Si no entiendes mandame un mensaje GGOGOGO
 function insertSQL($connection,$table){
     if($connection){
         $names = colNameSQL($connection,$table);
