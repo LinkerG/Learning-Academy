@@ -221,30 +221,38 @@ function notValidated() {
     echo "</div>";
     header("Refresh: 5; URL='close.php'");
 }
-//Funcion para subir foto copiada de otra practica GOGOGO ya nos encargaremos de implementarla en nuestro codigo mañana -Alex 
+
 function uploadPhoto($aux) {
     if (is_uploaded_file($_FILES['photoPath']['tmp_name'])) {
         if($aux == 1){
             //Para los profes
-            $directoryName = '../img/profilePhotos/';
+            $directoryName = '/Learning-Academy/img/profilePhotos/';
             $fileName = $_POST['dniTeacher'] . '.png'; // Aquí estableces el nombre de la foto como el dni y la extensión ".png"
-        }elseif($aux == 2){
+        }else if($aux == 2){
             //Para los alumnos
             $fileName = $_POST['dniStudent'] . '.png';
-            $directoryName = '../img/profilePhotos/';
-        }else{
+            $directoryName = '/Learning-Academy/img/profilePhotos/';
+        }else if($aux == 3){
             //Para cursos
-            $fileName = $_POST['name'] . '.png';
-            $directoryName = '../img/coursePhotos/';
+            $fileName = $_POST['courseId'] . '.png';
+            $directoryName = '/Learning-Academy/img/coursePhotos/';
         }
         $fileRoute = $directoryName . $fileName;
-        if (move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute)) {         
-            return $fileRoute;
+        if(file_exists($fileRoute)){
+            unlink($fileRoute);
+            if (move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute)) {         
+                return $fileRoute;
+            }
         } else {
-            return "No se ha podido subir el fichero";
+            if (move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute)) {         
+                return $fileRoute;
+            } else {
+                return "No se ha podido subir el fichero";
+            }
         }
+        
     } else {
-        return "No se ha subido ningún archivo";
+        return "/Learning-Academy/img/profilePhotos/default.png ";
     }
 }
 ?>

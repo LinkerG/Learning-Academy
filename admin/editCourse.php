@@ -24,10 +24,10 @@
         } else if(isset($_REQUEST['courseId'])){
             if(connectBD("learningacademy", $connection)){
                 $sql = "SELECT * FROM course WHERE courseId='{$_REQUEST['courseId']}'";
-                if(selectSQL($connection, $sql, $result));
+                if(selectSQL($connection, $sql, $result)) $result = $result[0];
             }
         }
-        $result = $result[0];
+        
 
         if(!empty($_POST)){
             if(!isset($_POST['photoPath'])){
@@ -35,11 +35,11 @@
                     $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='editCourse.php'");
+                    header("Refresh: 0; URL='courses.php'");
                     exit;
                 }
             }else{
-                $_POST['photoPath'] = uploadPhoto(2);
+                $_POST['photoPath'] = uploadPhoto(3);
                 if(connectBD("learningacademy",$connection)){
                     $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='{$_POST['photoPath']}' WHERE courseId='{$_POST['courseId']}';";
                     
@@ -69,8 +69,11 @@
         <label for="dniTeacher">DNI teacher</label>
         <input type="text" name="dniTeacher" id="dniTeacher" value="<?php echo "{$result['dniTeacher']}";?>">
 
+        <label for="email">Photo</label>
+        <input type="file" name="photoPath" id="photoPath">
+
         <input type="hidden" name="active" id="active" value="<?php echo "{$result['active']}";?>">
-        <input type="hidden" name="photoPath" id="photoPath" value="<?php echo "{$result['photoPath']}";?>">
+        
         <input type="submit" value="Update">
     </form>
     <a href="courses.php">Back</a>

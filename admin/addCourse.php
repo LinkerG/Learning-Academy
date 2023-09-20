@@ -23,7 +23,7 @@
         if(!empty($_POST)){
             if(connectBD("learningacademy",$connection)){
                 if($_FILES['photoPath']['error'] == 4){
-                    $_POST['photoPath']="../img/coursePhotos/default.png";
+                    $_POST['photoPath']="/Learning-Academy/img/coursePhotos/default.png";
                 }else{
                     $_POST['photoPath'] = uploadPhoto(3);
                 } 
