@@ -113,6 +113,20 @@ function insertSQL($connection,$table){
     }
 }
 
+function updateSQL($connection, $sql) {
+    $executeQuery = $connection->prepare($sql);
+    if ($executeQuery === false) {
+        die("Error en la preparación de la consulta: " . $connection->error);
+    }
+    // Ejecuta la consulta y en caso de error te lo dice
+    if ($executeQuery->execute() === false) {
+        echo "Error al insertar el registro: " . $executeQuery->error;
+    }
+    // Cerrar la conexión a la base de datos y la query
+    $executeQuery->close();
+    $connection->close();
+}
+
 function validateUser() {
     if(!empty($_POST)){
         // Cambiar el nombre de la bd segun convenga

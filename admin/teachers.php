@@ -27,36 +27,46 @@
             <a class="linkButton" href="addTeacher.php">Add new teacher</a>
         </div>
 
-        <table>
-            <tr>
-                <th>DNI</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Email</th>
-                <th>Password (MD5)</th>
-                <th>Edit</th>
-                <th>Disabled</th>
-            </tr>
-            <?php
-                if(connectBD("learningacademy", $connection)) {
-                    $sql = "SELECT * FROM teacher";
+        <form action="#" method="post" id="teacherForm">
+            <table>
+                <tr>
+                    <th>DNI</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Password (MD5)</th>
+                    <th>Edit</th>
+                    <th>Active</th>
+                </tr>
+                <?php
+                    if(connectBD("learningacademy", $connection)) {
+                        $sql = "SELECT * FROM teacher";
 
-                    if(selectSQL($connection, $sql, $result)){
-                        if(empty($result)) {
-                            echo "<tr>";
-                            echo "<td colspan='7'>There are no teachers right now</td>";
-                            echo "</tr>";
-                        } else {
-                            foreach($result as $row) {
+                        if(selectSQL($connection, $sql, $result)){
+                            if(empty($result)) {
                                 echo "<tr>";
-                                
+                                echo "<td colspan='8'>There are no teachers right now</td>";
                                 echo "</tr>";
+                            } else {
+                                foreach($result as $row) {
+                                    echo "<tr>";
+                                    echo "<td>{$row['dniTeacher']}</td>";
+                                    echo "<td>Photo</td>";
+                                    echo "<td>{$row['name']}</td>";
+                                    echo "<td>{$row['surname']}</td>";
+                                    echo "<td>{$row['email']}</td>";
+                                    echo "<td>{$row['password']}</td>";
+                                    echo "<td><a href='editTeacher.php?dniTeacher={$row['dniTeacher']}'>Edit</a></td>";
+                                    echo "<td><a href='editTeacher.php?active={$row['active']}&dniTeacher={$row['dniTeacher']}'>{$row['active']}</a></td>";
+                                    echo "</tr>";
+                                }
                             }
                         }
                     }
-                }
-            ?>
-        </table>
+                ?>
+            </table>
+        </form>
     </div>
 </body>
 </html>
