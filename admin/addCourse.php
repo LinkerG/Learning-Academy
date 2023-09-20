@@ -22,11 +22,16 @@
         }   
         if(!empty($_POST)){
             if(connectBD("learningacademy",$connection)){
+                if($_FILES['photoPath']['error'] == 4){
+                    $_POST['photoPath']="../img/coursePhotos/default.png";
+                }else{
+                    $_POST['photoPath'] = uploadPhoto(3);
+                } 
                 insertSQL($connection,"course");
             }
         }
     ?>
-    <form action="#" method="POST">
+    <form enctype ="multipart/form-data" action="#" method="POST">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">
         <label for="hours">Hours:</label>
@@ -37,6 +42,8 @@
         <input type="date" name="endDate" id="endDate">
         <label for="dniTeacher">Teacher DNI:</label>
         <input type="text" name="dniTeacher" id="dniTeacher">
+        <label for="photoPath">Photo:</label>
+        <input type="file" name="photoPath" id="photoPath">
         <input type="hidden" name="active" id="active" value="1">
         <input type="submit" value="Add">
     </form>

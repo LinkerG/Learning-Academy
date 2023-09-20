@@ -224,14 +224,16 @@ function notValidated() {
 //Funcion para subir foto copiada de otra practica GOGOGO ya nos encargaremos de implementarla en nuestro codigo mañana -Alex 
 function uploadPhoto($aux) {
     if (is_uploaded_file($_FILES['photoPath']['tmp_name'])) {
-        if($aux == true){
+        if($aux == 1){
             //Para los profes
             $directoryName = '../img/profilePhotos/';
             $fileName = $_POST['dniTeacher'] . '.png'; // Aquí estableces el nombre de la foto como el dni y la extensión ".png"
-        }else{
+        }elseif($aux == 2){
             //Para los alumnos
             $directoryName = '../img/profilePhotos/';
-        } 
+        }else{
+            $directoryName = '../img/coursePhotos/';
+        }
         $fileRoute = $directoryName . $fileName;
         if (move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute)) {         
             return $fileRoute;

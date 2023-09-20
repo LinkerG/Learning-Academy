@@ -34,6 +34,7 @@ CREATE TABLE course(
     endDate date,
     dniTeacher varchar(9),
     active boolean,
+    photoPath varchar(100),
     FOREIGN KEY (dniTeacher) REFERENCES teacher(dniTeacher)
 );
 

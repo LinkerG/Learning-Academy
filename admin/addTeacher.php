@@ -27,7 +27,7 @@
             if($_FILES['photoPath']['error'] == 4){
                 $_POST['photoPath']="../img/profilePhotos/default.png";
             }else{
-                $_POST['photoPath'] = uploadPhoto(true);
+                $_POST['photoPath'] = uploadPhoto(1);
             } 
             if(connectBD("learningacademy",$connection)){
                 insertSQL($connection,"teacher");
