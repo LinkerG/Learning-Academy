@@ -34,6 +34,7 @@
                     <th>Photo</th>
                     <th>Name</th>
                     <th>Surname</th>
+                    <th>Titulation</th>
                     <th>Email</th>
                     <th>Password (MD5)</th>
                     <th>Edit</th>
@@ -55,6 +56,7 @@
                                     echo "<td>Photo</td>";
                                     echo "<td>{$row['name']}</td>";
                                     echo "<td>{$row['surname']}</td>";
+                                    echo "<td>{$row['titulation']}</td>";
                                     echo "<td>{$row['email']}</td>";
                                     echo "<td>{$row['password']}</td>";
                                     echo "<td><a href='editTeacher.php?dniTeacher={$row['dniTeacher']}'>Edit</a></td>";
