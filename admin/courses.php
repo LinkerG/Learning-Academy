@@ -50,8 +50,7 @@
                                 echo "<tr>";
                                 echo "<td>{$row['name']}</td>";
                                 echo "<td>{$row['hours']}</td>";
-                                echo "<td>{$row['startDate']}</td>";
-                                echo "<td>{$row['endDate']}</td>";
+                                echo "<td>{$row['startDate']} / {$row['endDate']}</td>";
                                 echo "<td>{$row['dniTeacher']}</td>";
                                 echo "<td><a href='editCourse.php?courseId={$row['courseId']}'>Edit</a></td>";
                                 echo "<td><a href='editCourse.php?active={$row['active']}&courseId={$row['courseId']}'>{$row['active']}</a></td>";

@@ -50,18 +50,24 @@
 
     ?>
     <form enctype="multipart/form-data" action="#" method="post">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" value=<?php echo "'{$result['name']}'";?>>
-    <label for="hours">Hours</label>
-    <input type="hours" name="hours" id="hours" value=<?php echo "'{$result['hours']}'";?>>
-    <label for="startDate">Start date</label>
-    <input type="date" name="startDate" id="startDate" value=<?php echo "'{$result['startDate']}'";?>>
-    <label for="endDate">end date</label>
-    <input type="date" name="endDate" id="endDate" value=<?php echo "'{$result['endDate']}'";?>>
-    <label for="dniTeacher">DNI teacher</label>
-    <input type="number" name="dniTeacher" id="dniTeacher" value=<?php echo "'{$result['dniTeacher']}'";?>>
-    <input type="hidden" value=<?php echo "'{$result['courseId']}'";?>>
-    <input type="submit" value="Update">
+        <input type="hidden" name="courseId" id="courseId" value="<?php echo "'{$result['courseId']}'";?>">
+
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<?php echo "'{$result['name']}'";?>">
+
+        <label for="hours">Hours</label>
+        <input type="hours" name="hours" id="hours" value="<?php echo "'{$result['hours']}'";?>">
+
+        <label for="startDate">Start date</label>
+        <input type="date" name="startDate" id="startDate" value="<?php echo "'{$result['startDate']}'";?>">
+
+        <label for="endDate">End date</label>
+        <input type="date" name="endDate" id="endDate" value="<?php echo "'{$result['endDate']}'";?>">
+
+        <label for="dniTeacher">DNI teacher</label>
+        <input type="number" name="dniTeacher" id="dniTeacher" value="<?php echo "'{$result['dniTeacher']}'";?>">
+
+        <input type="submit" value="Update">
     </form>
     <a href="courses.php">Back</a>
 </body>
