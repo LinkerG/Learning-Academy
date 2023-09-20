@@ -17,8 +17,19 @@
                 updateSQL($connection, $sql);
                 header("Refresh: 0; URL='teachers.php'");
             }
+        } else if(isset($_REQUEST['dniTeacher'])){
+            if(connectBD("learningacademy", $connection)){
+                $sql = "SELECT * FROM teacher WHERE dniTeacher='{$_REQUEST['dniTeacher']}'";
+                if(selectSQL($connection, $sql, $result));
+            }
         }
+        $result = $result[0];
+        print_r($result);
     ?>
-    
+    <!--Acabar el formulario y aplicar los cambios-->
+    <form action="#" method="post">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" value=<?php echo "'{$result['name']}'";?>>
+    </form>
 </body>
 </html>
