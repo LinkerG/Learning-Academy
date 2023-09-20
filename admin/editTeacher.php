@@ -31,5 +31,6 @@
         <label for="name">Nombre</label>
         <input type="text" name="name" id="name" value=<?php echo "'{$result['name']}'";?>>
     </form>
+    <a href="teachers.php">Back</a>
 </body>
 </html>
