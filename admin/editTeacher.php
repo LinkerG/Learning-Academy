@@ -16,6 +16,7 @@
             if(connectBD("learningacademy", $connection)) {
                 updateSQL($connection, $sql);
                 header("Refresh: 0; URL='teachers.php'");
+                exit;
             }
         } else if(isset($_REQUEST['dniTeacher'])){
             if(connectBD("learningacademy", $connection)){
@@ -34,6 +35,7 @@
                     
                     updateSQL($connection, $sql);
                     header("Refresh: 0; URL='editTeacher.php'");
+                    exit;
                 }
             }else{
                 $_POST['photoPath'] = uploadPhoto(true);
@@ -42,6 +44,7 @@
                     
                     updateSQL($connection, $sql);
                     header("Refresh: 0; URL='teachers.php'");
+                    exit;
                 }
             } 
         }
