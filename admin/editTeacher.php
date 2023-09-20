@@ -38,7 +38,7 @@
                     exit;
                 }
             }else{
-                $_POST['photoPath'] = uploadPhoto(true);
+                $_POST['photoPath'] = uploadPhoto(1);
                 if(connectBD("learningacademy",$connection)){
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}', photoPath='{$_POST['photoPath']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     

@@ -53,7 +53,7 @@
                                 foreach($result as $row) {
                                     echo "<tr>";
                                     echo "<td>{$row['dniTeacher']}</td>";
-                                    echo "<td>Photo</td>";
+                                    echo "<td><img src='{$row['photoPath']}'></td>";
                                     echo "<td>{$row['name']}</td>";
                                     echo "<td>{$row['surname']}</td>";
                                     echo "<td>{$row['titulation']}</td>";

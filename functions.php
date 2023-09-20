@@ -230,8 +230,11 @@ function uploadPhoto($aux) {
             $fileName = $_POST['dniTeacher'] . '.png'; // Aquí estableces el nombre de la foto como el dni y la extensión ".png"
         }elseif($aux == 2){
             //Para los alumnos
+            $fileName = $_POST['dniStudent'] . '.png';
             $directoryName = '../img/profilePhotos/';
         }else{
+            //Para cursos
+            $fileName = $_POST['name'] . '.png';
             $directoryName = '../img/coursePhotos/';
         }
         $fileRoute = $directoryName . $fileName;

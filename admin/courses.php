@@ -29,6 +29,7 @@
 
         <table>
             <tr>
+                <th>Photo</th>
                 <th>Name</th>
                 <th>Hours</th>
                 <th>Start/End date</th>
@@ -48,6 +49,7 @@
                         } else {
                             foreach($result as $row) {
                                 echo "<tr>";
+                                echo "<td><img src='{$row['photoPath']}'></td>";
                                 echo "<td>{$row['name']}</td>";
                                 echo "<td>{$row['hours']}</td>";
                                 echo "<td>{$row['startDate']} / {$row['endDate']}</td>";
