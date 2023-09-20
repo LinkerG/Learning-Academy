@@ -69,7 +69,7 @@
         <label for="dniTeacher">DNI teacher</label>
         <input type="text" name="dniTeacher" id="dniTeacher" value="<?php echo "{$result['dniTeacher']}";?>">
 
-        <label for="email">Photo</label>
+        <label for="photoPath">Photo</label>
         <input type="file" name="photoPath" id="photoPath">
 
         <input type="hidden" name="active" id="active" value="<?php echo "{$result['active']}";?>">

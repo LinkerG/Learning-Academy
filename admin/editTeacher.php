@@ -21,21 +21,22 @@
         } else if(isset($_REQUEST['dniTeacher'])){
             if(connectBD("learningacademy", $connection)){
                 $sql = "SELECT * FROM teacher WHERE dniTeacher='{$_REQUEST['dniTeacher']}'";
-                if(selectSQL($connection, $sql, $result));
+                if(selectSQL($connection, $sql, $result))$result = $result[0];
             }
         }
-        $result = $result[0];
+        print_r($_REQUEST);
+        print_r($_POST);
         print_r($result);
-
         if(!empty($_POST)){
+            echo "A";
             $password = md5($_POST['password']);
             if(!isset($_POST['photoPath'])){
                 if(connectBD("learningacademy",$connection)){
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='editTeacher.php'");
-                    exit;
+                    header("Refresh: 0; URL='teachers.php'");
+                    die;
                 }
             }else{
                 $_POST['photoPath'] = uploadPhoto(1);
@@ -44,13 +45,13 @@
                     
                     updateSQL($connection, $sql);
                     header("Refresh: 0; URL='teachers.php'");
-                    exit;
+                    die;
                 }
             } 
         }
     ?>
     <!--Acabar el formulario y aplicar los cambios-->
-    <form action="#" method="post">
+    <form action="#" method="post" enctype="multipart/form-data">
         <input type="hidden" name="dniTeacher" id="dniTeacher" value=<?php echo "'{$result['dniTeacher']}'";?>>
         
         <label for="email">Email</label>
