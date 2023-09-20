@@ -25,11 +25,50 @@
         }
         $result = $result[0];
         print_r($result);
+
+        if(!empty($_POST)){
+            $password = md5($_POST['password']);
+            if(!isset($_POST['photoPath'])){
+                if(connectBD("learningacademy",$connection)){
+                    $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
+                    
+                    updateSQL($connection, $sql);
+                    header("Refresh: 0; URL='editTeacher.php'");
+                }
+            }else{
+                $_POST['photoPath'] = uploadPhoto(true);
+                if(connectBD("learningacademy",$connection)){
+                    $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}', photoPath='{$_POST['photoPath']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
+                    
+                    updateSQL($connection, $sql);
+                    header("Refresh: 0; URL='teachers.php'");
+                }
+            } 
+        }
     ?>
     <!--Acabar el formulario y aplicar los cambios-->
     <form action="#" method="post">
-        <label for="name">Nombre</label>
+        <input type="hidden" name="dniTeacher" id="dniTeacher" value=<?php echo "'{$result['dniTeacher']}'";?>>
+        
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" value=<?php echo "'{$result['email']}'";?>>
+
+        <label for="password">Pasword</label>
+        <input type="text" name="password" id="password" value=<?php echo "'{$result['password']}'";?>>
+
+        <label for="name">Name</label>
         <input type="text" name="name" id="name" value=<?php echo "'{$result['name']}'";?>>
+
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" id="surname" value=<?php echo "'{$result['surname']}'";?>>
+
+        <label for="titulation">Titulation</label>
+        <input type="text" name="titulation" id="titulation" value=<?php echo "'{$result['titulation']}'";?>>
+
+        <label for="email">Photo</label>
+        <input type="file" name="photoPath" id="photoPath">
+
+        <input type="submit" value="Update">
     </form>
     <a href="teachers.php">Back</a>
 </body>
