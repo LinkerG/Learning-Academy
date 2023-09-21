@@ -32,10 +32,10 @@ CREATE TABLE course(
     hours int,
     startDate date,
     endDate date,
+    description varchar(200),
     dniTeacher varchar(9),
     active boolean,
     photoPath varchar(100),
-    desc varchar(200),
     FOREIGN KEY (dniTeacher) REFERENCES teacher(dniTeacher)
 );
 

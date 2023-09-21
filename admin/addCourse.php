@@ -40,6 +40,8 @@
         <input type="date" name="startDate" id="startDate">
         <label for="endDate">End date:</label>
         <input type="date" name="endDate" id="endDate">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description">
         <label for="dniTeacher">Teacher DNI:</label>
         <input type="text" name="dniTeacher" id="dniTeacher">
         <label for="photoPath">Photo:</label>

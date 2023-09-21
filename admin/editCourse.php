@@ -32,7 +32,7 @@
         if(!empty($_POST)){
             if(!isset($_POST['photoPath'])){
                 if(connectBD("learningacademy",$connection)){
-                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['desc']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
+                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
                     header("Refresh: 0; URL='courses.php'");
@@ -41,7 +41,7 @@
             }else{
                 $_POST['photoPath'] = uploadPhoto(3);
                 if(connectBD("learningacademy",$connection)){
-                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['desc']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='{$_POST['photoPath']}' WHERE courseId='{$_POST['courseId']}';";
+                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='{$_POST['photoPath']}' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
                     header("Refresh: 0; URL='courses.php'");
