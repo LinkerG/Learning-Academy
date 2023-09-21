@@ -149,7 +149,7 @@ function validateUser() {
                             $_SESSION['email'] = $row['email'];
                             $_SESSION['password'] = $row['password'];
                             $_SESSION['role'] = "A";
-                            header('Location: index.php');
+                            header('Location: panel.php');
                         } else $found = false;
                     }
                 }
@@ -171,7 +171,7 @@ function validateUser() {
                                 $_SESSION['email'] = $row['email'];
                                 $_SESSION['password'] = $row['password'];
                                 $_SESSION['role'] = "T";
-                                header('Location: index.php');
+                                header('Location: panel.php');
                             } else $found=false;
                         }
                     }
@@ -199,7 +199,7 @@ function validateUser() {
                                 $_SESSION['birthDate'] = $row['birthDate'];
                                 $_SESSION['photoPath'] = $row['photoPath'];
                                 $_SESSION['dniStudent'] = $row['dniStudent'];
-                                header('Location: index.php');
+                                header('Location: panel.php');
                             }
                         }
                     }

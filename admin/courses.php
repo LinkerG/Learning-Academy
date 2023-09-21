@@ -33,6 +33,7 @@
                 <th>Name</th>
                 <th>Hours</th>
                 <th>Start/End date</th>
+                <th>Description</th>
                 <th>Teacher</th>
                 <th>Edit</th>
                 <th>Disabled</th>
@@ -44,7 +45,7 @@
                     if(selectSQL($connection, $sql, $result)){
                         if(empty($result)) {
                             echo "<tr>";
-                            echo "<td colspan='6'>There are no courses right now</td>";
+                            echo "<td colspan='8'>There are no courses right now</td>";
                             echo "</tr>";
                         } else {
                             foreach($result as $row) {
@@ -53,6 +54,7 @@
                                 echo "<td>{$row['name']}</td>";
                                 echo "<td>{$row['hours']}</td>";
                                 echo "<td>{$row['startDate']} / {$row['endDate']}</td>";
+                                echo "<td>{$row['desc']}</td>";
                                 echo "<td>{$row['dniTeacher']}</td>";
                                 echo "<td><a href='editCourse.php?courseId={$row['courseId']}'>Edit</a></td>";
                                 echo "<td><a href='editCourse.php?active={$row['active']}&courseId={$row['courseId']}'>{$row['active']}</a></td>";

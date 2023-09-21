@@ -35,6 +35,7 @@ CREATE TABLE course(
     dniTeacher varchar(9),
     active boolean,
     photoPath varchar(100),
+    desc varchar(200),
     FOREIGN KEY (dniTeacher) REFERENCES teacher(dniTeacher)
 );
 
@@ -43,6 +44,11 @@ CREATE TABLE course(
 CREATE TABLE matriculates(
     dniStudent varchar(9),
     courseId int,
+    task1 varchar(200),
+    task2 varchar(200),
+    task3 varchar(200),
+    task4 varchar(200),
+    score int,
     PRIMARY KEY (dniStudent, courseId),
     FOREIGN KEY (dniStudent) REFERENCES student(dniStudent),
     FOREIGN KEY (courseId) REFERENCES course(courseId)
