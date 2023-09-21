@@ -134,11 +134,10 @@ function validateUser() {
             // Cambiar el nombre de la tabla segun convenga
             $sql = "SELECT * FROM admin";
 
+            $found = false;
+            $valid = false;
             if(selectSQL($connection, $sql, $result)) {
-                // Estas variables sirven para cambiar el mensaje de error si no se encuentra
-                $found = false;
-                $valid = false;
-
+                // Estas variables sirven para cambiar el mensaje de error si no se encuentra    
                 foreach ($result as $row){
                     // Cambiar email por la clave primaria que se necesite
                     if ($row['email'] == $_POST['email']){
@@ -154,59 +153,59 @@ function validateUser() {
                         }
                     }
                 }
-                if ($found == false) {
-                    $sql = "SELECT * FROM teacher";
-
-                    if(selectSQL($connection, $sql, $result)) {
-                        // Estas variables sirven para cambiar el mensaje de error si no se encuentra
-                        $found = false;
-                        $valid = false;
-        
-                        foreach ($result as $row){
-                            // Cambiar email por la clave primaria que se necesite
-                            if ($row['email'] == $_POST['email']){
-                                $found = true;
-        
-                                if($row['password'] == md5($_POST['password'])){
-                                    $valid = true;
-                                    // Se crean las variables de sesión añadir las que hagan falta
-                                    $_SESSION['email'] = $row['email'];
-                                    $_SESSION['password'] = $row['password'];
-                                    $_SESSION['role'] = "T";
-                                    header('Location: index.php');
-                                }
-                            }
-                        }
-                    }
-                }
-                if ($found == false) {
-                    $sql = "SELECT * FROM student";
-
-                    if(selectSQL($connection, $sql, $result)) {
-                        // Estas variables sirven para cambiar el mensaje de error si no se encuentra
-                        $found = false;
-                        $valid = false;
-        
-                        foreach ($result as $row){
-                            // Cambiar email por la clave primaria que se necesite
-                            if ($row['email'] == $_POST['email']){
-                                $found = true;
-        
-                                if($row['password'] == md5($_POST['password'])){
-                                    $valid = true;
-                                    // Se crean las variables de sesión añadir las que hagan falta
-                                    $_SESSION['email'] = $row['email'];
-                                    $_SESSION['password'] = $row['password'];
-                                    $_SESSION['role'] = "S";
-                                    header('Location: index.php');
-                                }
-                            }
-                        }
-                    }
-                }
-                if ($found==false) echo '<script>alert("Username does not exist");</script>';
-                else if ($valid==false) echo '<script>alert("Wrong password");</script>';
             }
+            if ($found == false) {
+                $sql = "SELECT * FROM teacher";
+
+                if(selectSQL($connection, $sql, $result)) {
+                    // Estas variables sirven para cambiar el mensaje de error si no se encuentra
+                    $found = false;
+                    $valid = false;
+    
+                    foreach ($result as $row){
+                        // Cambiar email por la clave primaria que se necesite
+                        if ($row['email'] == $_POST['email']){
+                            $found = true;
+    
+                            if($row['password'] == md5($_POST['password'])){
+                                $valid = true;
+                                // Se crean las variables de sesión añadir las que hagan falta
+                                $_SESSION['email'] = $row['email'];
+                                $_SESSION['password'] = $row['password'];
+                                $_SESSION['role'] = "T";
+                                header('Location: index.php');
+                            }
+                        }
+                    }
+                }
+            }
+            if ($found == false) {
+                $sql = "SELECT * FROM student";
+
+                if(selectSQL($connection, $sql, $result)) {
+                    // Estas variables sirven para cambiar el mensaje de error si no se encuentra
+                    $found = false;
+                    $valid = false;
+    
+                    foreach ($result as $row){
+                        // Cambiar email por la clave primaria que se necesite
+                        if ($row['email'] == $_POST['email']){
+                            $found = true;
+    
+                            if($row['password'] == md5($_POST['password'])){
+                                $valid = true;
+                                // Se crean las variables de sesión añadir las que hagan falta
+                                $_SESSION['email'] = $row['email'];
+                                $_SESSION['password'] = $row['password'];
+                                $_SESSION['role'] = "S";
+                                header('Location: index.php');
+                            }
+                        }
+                    }
+                }
+            }
+            if ($found==false) echo '<script>alert("Username does not exist");</script>';
+            else if ($valid==false) echo '<script>alert("Wrong password");</script>';
         }
     }
 }

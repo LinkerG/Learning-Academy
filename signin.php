@@ -24,7 +24,7 @@
         printHeader($role);
 
         if($role != 'N') {
-            echo "<p> Ya has iniciado sesión</p>";
+            echo "<p>Ya has iniciado sesión</p>";
             exit;
         }
     ?>
