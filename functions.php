@@ -194,6 +194,11 @@ function validateUser() {
                                 $_SESSION['email'] = $row['email'];
                                 $_SESSION['password'] = $row['password'];
                                 $_SESSION['role'] = "S";
+                                $_SESSION['name'] = $row['name'];
+                                $_SESSION['surname'] = $row['surname'];
+                                $_SESSION['birthDate'] = $row['birthDate'];
+                                $_SESSION['photoPath'] = $row['photoPath'];
+                                $_SESSION['dniStudent'] = $row['dniStudent'];
                                 header('Location: index.php');
                             }
                         }
