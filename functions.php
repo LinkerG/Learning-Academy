@@ -150,7 +150,7 @@ function validateUser() {
                             $_SESSION['password'] = $row['password'];
                             $_SESSION['role'] = "A";
                             header('Location: index.php');
-                        }
+                        } else $found = false;
                     }
                 }
             }
@@ -172,7 +172,7 @@ function validateUser() {
                                 $_SESSION['password'] = $row['password'];
                                 $_SESSION['role'] = "T";
                                 header('Location: index.php');
-                            }
+                            } else $found=false;
                         }
                     }
                 }
