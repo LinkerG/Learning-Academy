@@ -159,8 +159,6 @@ function validateUser() {
 
                 if(selectSQL($connection, $sql, $result)) {
                     // Estas variables sirven para cambiar el mensaje de error si no se encuentra
-                    $found = false;
-                    $valid = false;
     
                     foreach ($result as $row){
                         // Cambiar email por la clave primaria que se necesite
@@ -184,8 +182,6 @@ function validateUser() {
 
                 if(selectSQL($connection, $sql, $result)) {
                     // Estas variables sirven para cambiar el mensaje de error si no se encuentra
-                    $found = false;
-                    $valid = false;
     
                     foreach ($result as $row){
                         // Cambiar email por la clave primaria que se necesite
