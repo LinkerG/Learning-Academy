@@ -227,25 +227,30 @@ function uploadPhoto($aux) {
         if($aux == 1){
             //Para los profes
             $directoryName = '/Learning-Academy/img/profilePhotos/';
-            $fileName = $_POST['dniTeacher'];
+            $fileName = $_POST['dniTeacher'] . '.png'; // Aquí estableces el nombre de la foto como el dni y la extensión ".png"
         }else if($aux == 2){
             //Para los alumnos
-            $fileName = $_POST['dniStudent'];
+            $fileName = $_POST['dniStudent'] . '.png';
             $directoryName = '/Learning-Academy/img/profilePhotos/';
         }else if($aux == 3){
             //Para cursos
-            $fileName = $_POST['courseId'];
+            $fileName = $_POST['courseId'] . '.png';
             $directoryName = '/Learning-Academy/img/coursePhotos/';
         }
-            $fileRoute = $directoryName . $fileName;
-            if(file_exists($fileRoute)){
-                unlink($fileRoute);
-                move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute);
-                return $fileRoute;
-            } else {
-                move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute);
+        $fileRoute = $directoryName . $fileName;
+        if(file_exists($fileRoute)){
+            unlink($fileRoute);
+            if (move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute)) {         
                 return $fileRoute;
             }
+        } else {
+            if (move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute)) {         
+                return $fileRoute;
+            } else {
+                return "No se ha podido subir el fichero";
+            }
+        }
+        
     } else {
         return "/Learning-Academy/img/profilePhotos/default.png ";
     }
