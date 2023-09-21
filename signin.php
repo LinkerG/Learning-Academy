@@ -17,13 +17,9 @@
             validateUser();
         }
 
-        if(!isset($_SESSION['role'])) {
-            $role = 'N';
-        }
-        
-        printHeader($role);
+        printHeader();
 
-        if($role != 'N') {
+        if(isset($_SESSION['role'])) {
             echo "<p>Ya has iniciado sesión</p>";
             exit;
         }

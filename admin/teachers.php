@@ -18,7 +18,7 @@
             header("Refresh: 5; URL='close.php'");
             exit;
         } else {
-            printHeader("A");
+            printHeader();
         }
     ?>
     <h1>Teacher list</h1>
@@ -47,7 +47,7 @@
                         if(selectSQL($connection, $sql, $result)){
                             if(empty($result)) {
                                 echo "<tr>";
-                                echo "<td colspan='8'>There are no teachers right now</td>";
+                                echo "<td colspan='9'>There are no teachers right now</td>";
                                 echo "</tr>";
                             } else {
                                 foreach($result as $row) {

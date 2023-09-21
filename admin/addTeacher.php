@@ -18,7 +18,7 @@
             header("Refresh: 5; URL='close.php'");
             exit;
         } else {
-            printHeader("A");
+            printHeader();
         }
 
         if(!empty($_POST)){

@@ -12,14 +12,8 @@
 <body>
     <?php
         include('functions.php');
-
-        if(!isset($_SESSION['role'])) {
-            $role = 'N';
-        } else {
-            $role = $_SESSION['role'];
-        }
-
-        printHeader($role);
+        
+        printHeader();
         
     ?>
     <h1>Página principal</h1>

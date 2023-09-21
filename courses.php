@@ -1,34 +1,41 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses</title>
-    <?php 
-        session_start();
-        include ("functions.php");
-    ?>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php
-        if(!isset($_SESSION['role'])) {
-            $role = 'N';
-        } else {
-            $role = $_SESSION['role'];
-        }
-        printHeader($role);
+        include ("functions.php");
+        printHeader();
     ?>
+    
     <div class="container">
         <?php
-            $sql = "SELECT COUNT(*) as total FROM courses;";
-            if(selectSQL($connection, $sql, $result)){
-                if(empty($result)) {
-                    echo "<div>";
-                    echo "<h1>You aren't in any course</h1>";
-                    echo "</div>";
-                    echo "<a>";
-                } else {
-                    print_r($result);
+            if(connectBD("learningacademy", $connection)) {
+                $sql = "SELECT * FROM course;";
+                if(selectSQL($connection, $sql, $result)){
+                    if(empty($result)) {
+                        echo "<div>";
+                        echo "<h1>There are no courses avaliable right now</h1>";
+                        echo "</div>";
+                        echo "<a>";
+                    } else {
+                        $canJoin = isset($_SESSION['role']) && $_SESSION['role']=="S" ? 1 : 0;
+                        
+                        foreach ($result as $course) {
+                            echo "<div class='course'>";
+                            echo "<img src='{$course['photoPath']}'>";
+                            echo "<p>{$course['name']}<p>";
+                            echo "<button onclick='enrollFunction($canJoin)'>Enroll!</button>";
+                            echo "</div>";
+                        }
+                    }
                 }
             }
         ?>

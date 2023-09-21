@@ -1,27 +1,36 @@
 <?php
-function printHeader($role) {
+function printHeader() {
     echo "<header class='header'>";
+    if(!isset($_SESSION['role'])) {
+        $role = 'N';
+    } else {
+        $role = $_SESSION['role'];
+    }
     if($role == "") $role = "N";
     switch($role) {
         case "N":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
             echo "<p class='menu1'>Learning Academy</p>";
+            echo "<a href='/Learning-Academy/courses.php' class='Course'>Our courses</a>";
             echo "<a href='signin.php' class='Signin'>Sign in</a>";
             echo "<a href='signup.php' class='Signup'>Sing up</a>";
             break;
         case "A":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
             echo "<a href='/Learning-Academy/panel.php' class='menu1'>Admin panel</a>";
+            echo "<a href='/Learning-Academy/courses.php' class='Course'>Our courses</a>";
             echo "<a href='/Learning-Academy/close.php' class='logout'>Log out</a>";
             break;
         case "S":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
             echo "<a href='/Learning-Academy/panel.php' class='menu1'>Student panel</a>";
+            echo "<a href='/Learning-Academy/courses.php' class='Course'>Our courses</a>";
             echo "<a href='/Learning-Academy/close.php' class='logout'>Log out</a>";
             break;
         case "T":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
             echo "<a href='/Learning-Academy/panel.php' class='menu1'>Teacher panel</a>";
+            echo "<a href='/Learning-Academy/courses.php' class='Course'>Our courses</a>";
             echo "<a href='/Learning-Academy/close.php' class='logout'>Log out</a>";
             break;
     }

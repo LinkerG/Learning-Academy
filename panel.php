@@ -34,12 +34,12 @@
         include("functions.php");
 
         if(!isset($_SESSION['role'])) {
-            printHeader("N");
+            printHeader();
             notValidated();
             exit;
         }
 
-        printHeader($_SESSION['role']);
+        printHeader();
         
         switch($_SESSION['role']) {
             case "A":

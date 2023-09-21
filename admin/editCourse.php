@@ -13,6 +13,8 @@
     <?php
         include("../functions.php");
 
+        printHeader();
+
         if(isset($_REQUEST['active'])){
             $active = $_REQUEST['active'] == 0 ? 1 : 0;
             $sql = "UPDATE course SET active={$active} WHERE courseId ='{$_REQUEST['courseId']}'";
