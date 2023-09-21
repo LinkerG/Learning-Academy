@@ -24,13 +24,14 @@
         </tr>
         <?php
             if(connectBD("learningacademy", $connection)) {
-                $sql = "SELECT * FROM course c INNER JOIN matriculates m ON c.courseId = m.courseId INNER JOIN student s ON s.dniStudent = m.dniStudent WHERE s.name = '" . $_SESSION['name'] . "' ;";
+                $sql = "SELECT * FROM course c INNER JOIN matriculates m ON c.courseId = m.courseId INNER JOIN student s ON s.dniStudent = m.dniStudent WHERE s.dniStudent = '" . $_SESSION['dniStudent'] . "' ;";
             }
                 if(selectSQL($connection, $sql, $result)){
                     if(empty($result)) {
-                        echo "<tr>";
-                        echo "<td colspan='6'>You aren't in any course</td>";
-                        echo "</tr>";
+                        echo "<div>";
+                        echo "<h1>You aren't in any course</h1>";
+                        echo "<a src='../courses.php'><h2>enter on any of our courses!</h2></a>";
+                        echo "</div>";
                         echo "<a>";
                     } else {
                         print_r($result);
