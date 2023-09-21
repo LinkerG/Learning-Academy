@@ -25,7 +25,7 @@
         }
     ?>
     <div class="loginDiv">
-        <form action="signin.php" method="POST">
+        <form action="login.php" method="POST">
             <label for="email">Username</label>
             <input type="text" name="email" id="email" required>
             <label for="password">Password</label>
