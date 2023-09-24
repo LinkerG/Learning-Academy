@@ -22,7 +22,15 @@
                 }else{
                     $_POST['photoPath'] = uploadPhoto(2);
                 } 
-                insertSQL($connection,"student");
+                
+                $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath) 
+                VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','{$_POST['photoPath']}')";
+                
+                try {
+                    insertSQL($connection, $sql);
+                    echo "<script>alert('You signed in correctly, now log in')</script>";
+                    header('Location: login.php');
+                }
             }
         }
     ?>

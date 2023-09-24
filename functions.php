@@ -91,18 +91,20 @@ function colNameSQL($connection, $table){
     }
 }
 
-function insertSQL($connection,$table){
-    /*Se inserta bien los profes, pero los cursos necesitan que el codigo no lo inserte porque es una clave primaria
-    y habia pensado en hacer un desplegable en la parte del dni teacher con los nombres que eso es facil y que en el 
-    dni se inserte el dni del profe que haya elegido.Si no entiendes mandame un mensaje GGOGOGO */
+function insertSQL($connection, $sql) {
+    $executeQuery = $connection->prepare($sql);
+    $executeQuery->execute();
+}
+
+/*function insertSQL($connection,$table){
     
     if($connection){
         $names = colNameSQL($connection,$table);
         $values = "";
         foreach($names as $fieldName){
-            if($fieldName == "password") $values = $values . "'" . md5($_POST[$fieldName]) . "'" . ", ";
-            else if($fieldName == "courseId") continue;
-            else $values = $values . "'" . $_POST[$fieldName] . "'" . ",";
+            if($fieldName == "password") $values = $values . "'" . md5($_REQUEST[$fieldName]) . "'" . ", ";
+            else if($fieldName == "courseId" && $table=="course") continue;
+            else $values = $values . "'" . $_REQUEST[$fieldName] . "'" . ",";
         }
         $colNames = implode(', ',$names);
         $values = trim($values, ",");
@@ -120,7 +122,7 @@ function insertSQL($connection,$table){
         $executeQuery->close();
         $connection->close();
     }
-}
+}*/
 
 function updateSQL($connection, $sql) {
     $executeQuery = $connection->prepare($sql);
@@ -262,6 +264,23 @@ function uploadPhoto($aux) {
         
     } else {
         return "/Learning-Academy/img/profilePhotos/default.png ";
+    }
+}
+
+function unavailableCourses() {
+    $sql = "SELECT c.courseId
+    FROM course c 
+    WHERE c.endDate < CURRENT_DATE();";
+
+    if(connectBD("learningAcademy", $connection)){
+        if(selectSQL($connection, $sql, $result)) {
+            $idArray = array();
+            foreach ($result as $courseId) {
+                $idArray[] = $courseId['courseId'];
+            }
+            return $idArray;
+        }
+        
     }
 }
 ?>

@@ -8,12 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="files/scripts.js"></script>
 </head>
 <body>
     <?php
         include ("functions.php");
         printHeader();
+
+        if(isset($_REQUEST['insert'])) {
+            $sql = "INSERT INTO matriculates (dniStudent, courseId) VALUES ('{$_REQUEST['dniStudent']}', '{$_REQUEST['courseId']}')";
+            echo $sql;
+            try {
+                if(connectBD("learningacademy", $connection)){
+                    insertSQL($connection, "matriculates");
+                    echo "<script>alert('You enrolled correctly in this course!')</script>";
+                }
+                
+            } catch (\Throwable $th) {
+                echo "<script>alert('There was an error')</script>";
+            }
+        }
     ?>
     
     <div class="container">
@@ -29,11 +42,16 @@
                     } else {
                         $canJoin = isset($_SESSION['role']) && $_SESSION['role']=="S" ? 1 : 0;
                         
+                        
+                        $unaviableCourses = unavailableCourses();                      
                         foreach ($result as $course) {
+                            $buttonDisabled = in_array($course['courseId'], $unaviableCourses) ? true : false;
+
                             echo "<div class='course'>";
                             echo "<img src='{$course['photoPath']}'>";
                             echo "<p>{$course['name']}<p>";
-                            echo "<button onclick='enrollFunction($canJoin)'>Enroll!</button>";
+                            if($buttonDisabled) echo "<button disabled class='courseButton disabled' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll!</button>";
+                            else echo "<button class='courseButton' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll!</button>";
                             echo "</div>";
                         }
                     }
@@ -41,5 +59,16 @@
             }
         ?>
     </div>
+    <script>
+        function enrollFunction(action, courseId) {
+            if (action == 0) {
+                let wantLogin = confirm("You must be a student to enroll on this course, want to log in as a student?");
+                if(wantLogin) location.href = "/Learning-Academy/close.php";
+            } else if (action == 1) {
+                let confirmEnroll = confirm("You want to enroll on this course?");
+                if(confirmEnroll) location.href = "/Learning-Academy/courses.php?insert=1&dniStudent=<?php echo $_SESSION['dniStudent'];?>&courseId="+courseId;
+            }
+        }
+    </script>
 </body>
 </html>
