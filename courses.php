@@ -55,8 +55,8 @@
                             echo "<figcaption>Hola</figcaption>";
                             echo "</figure>";
                             echo "<p>{$course['name']}<p>";
-                            if($buttonDisabled) echo "<button disabled class='courseButton disabled' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll!</button>";
-                            else echo "<button class='courseButton' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll!</button>";
+                            if($buttonDisabled) echo "<button disabled class='courseButton disabled' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll !</button>";
+                            else echo "<button class='courseButton' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll !</button>";
                             echo "</div>";
                         }
                     }
