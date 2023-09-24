@@ -92,8 +92,20 @@ function colNameSQL($connection, $table){
 }
 
 function insertSQL($connection, $sql) {
-    $executeQuery = $connection->prepare($sql);
-    $executeQuery->execute();
+    try {
+        $executeQuery = $connection->prepare($sql);
+        $executeQuery->execute();
+        return 0;
+    } catch(mysqli_sql_exception $e){
+        // 1062 es el código de error para una clave primaria duplicada
+        if ($e->getCode() == 1062) {
+            return 1062;
+        } else {
+            $error = $e->getMessage();
+            echo "<script>alert('{$error}')</script>";
+        }
+        return $e->getCode();
+    }
 }
 
 /*function insertSQL($connection,$table){
@@ -281,6 +293,30 @@ function unavailableCourses() {
             return $idArray;
         }
         
+    }
+}
+
+function dniVerification($dni) {
+    $dni = strtoupper(trim($dni));
+
+    if (strlen($dni) == 9 && preg_match('/^[0-9]{8}[A-Z]$/', $dni)) {
+        $dniNumbers = substr($dni, 0, 8);
+        $dniLetter = $dni[8];
+        $letters = 'TRWAGMYFPDXBNJZSQVHLCKE';
+
+        $dniNumbers = intval($dniNumbers);
+
+        $index = $dniNumbers % 23;
+
+        $letter = $letters[$index];
+
+        if ($dniLetter == $letter) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
     }
 }
 ?>

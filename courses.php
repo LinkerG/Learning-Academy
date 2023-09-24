@@ -15,17 +15,19 @@
         printHeader();
 
         if(isset($_REQUEST['insert'])) {
-            $sql = "INSERT INTO matriculates (dniStudent, courseId) VALUES ('{$_REQUEST['dniStudent']}', '{$_REQUEST['courseId']}')";
+            $sql = "INSERT INTO matriculates (dniStudent, courseId) VALUES ('{$_REQUEST['dniStudent']}', {$_REQUEST['courseId']})";
             echo $sql;
-            try {
-                if(connectBD("learningacademy", $connection)){
-                    insertSQL($connection, "matriculates");
+            if(connectBD("learningacademy", $connection)){
+                $action = insertSQL($connection, $sql);
+                if($action == 0) {
                     echo "<script>alert('You enrolled correctly in this course!')</script>";
+                } else if($action == 1062) {
+                    echo "<script>alert('You are already enrolled in this course')</script>";
+                } else {
+                    echo "<script>alert('$action')</script>";
                 }
-                
-            } catch (\Throwable $th) {
-                echo "<script>alert('There was an error')</script>";
             }
+                
         }
     ?>
     
