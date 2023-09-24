@@ -30,8 +30,8 @@
                 
         }
     ?>
-    
-    <div class="container">
+    <h1 class="title">Our courses</h1>
+    <div class="courseContainer">
         <?php
             if(connectBD("learningacademy", $connection)) {
                 $sql = "SELECT * FROM course;";
@@ -50,7 +50,10 @@
                             $buttonDisabled = in_array($course['courseId'], $unaviableCourses) ? true : false;
 
                             echo "<div class='course'>";
+                            echo "<figure class='hidden'>";
                             echo "<img src='{$course['photoPath']}'>";
+                            echo "<figcaption>Hola</figcaption>";
+                            echo "</figure>";
                             echo "<p>{$course['name']}<p>";
                             if($buttonDisabled) echo "<button disabled class='courseButton disabled' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll!</button>";
                             else echo "<button class='courseButton' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll!</button>";

@@ -36,3 +36,63 @@ th, td{
 table{
     border-collapse: collapse;
 }
+
+/* Our Courses page */
+.title{
+    margin: 2rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.courseContainer{
+    margin: 2rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    border: 1px solid black;
+    display:  grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 250px;
+    justify-items: center;
+    align-items: center;
+}
+
+.course{
+    border: 1px solid black;
+    margin: 1rem;
+    z-index: 1;
+}
+
+.hidden {
+    display: grid;
+    grid-template-rows: 1fr 0;
+    transition: grid-template-rows 1000ms;
+    overflow: hidden;
+    justify-items: center;
+}
+
+.hidden img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hidden figcaption{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
+
+.hidden figcaption span{
+    margin-left: 1rem;
+    font-size: 20px;
+}
+
+.hidden:hover{
+    grid-template-rows: 1fr 20rem;
+}
+
+.course:hover {
+    z-index: 2;
+}
