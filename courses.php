@@ -68,7 +68,8 @@
                 if(wantLogin) location.href = "/Learning-Academy/close.php";
             } else if (action == 1) {
                 let confirmEnroll = confirm("You want to enroll on this course?");
-                if(confirmEnroll) location.href = "/Learning-Academy/courses.php?insert=1&dniStudent=<?php echo $_SESSION['dniStudent'];?>&courseId="+courseId;
+                <?php $dni = isset($_SESSION['dniStudent']) ? $_SESSION['dniStudent'] : "dni";?>
+                if(confirmEnroll) location.href = "/Learning-Academy/courses.php?insert=1&dniStudent=<?php echo $dni;?>&courseId="+courseId;
             }
         }
     </script>
