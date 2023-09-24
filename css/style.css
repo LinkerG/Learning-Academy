@@ -51,7 +51,7 @@ table{
     border: 1px solid black;
     display:  grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 250px;
+    grid-template-rows: repeat(2, 250px);
     justify-items: center;
     align-items: center;
 }
@@ -60,6 +60,12 @@ table{
     border: 1px solid black;
     margin: 1rem;
     z-index: 1;
+    transition: z-index 1000ms;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transition: padding-left 1000ms;
+    transition: padding-right 1000ms;
+    background-color: rgb(200, 200, 200);
 }
 
 .hidden {
@@ -73,6 +79,7 @@ table{
 .hidden img {
     width: 80%;
     height: 100%;
+    transition: width 1000ms;
     object-fit: cover;
 }
 
@@ -90,9 +97,16 @@ table{
 }
 
 .hidden:hover{
-    grid-template-rows: 1fr 20rem;
+    grid-template-rows: 1fr 8rem;
 }
 
 .course:hover {
     z-index: 2;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.hidden:hover img{
+    width: 100%;
+    
 }
