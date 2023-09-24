@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="studentProfile">
+        <?php
+            
+        ?>
+    </div>
 </body>
 </html>

@@ -22,35 +22,37 @@
         echo "<h1>Welcome " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</h1>";
         echo "<h2>This are your courses right now</h2>";
     ?>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Hours</th>
-            <th>Start date</th>
-            <th>End date</th>
-            <th>Photo path</th>
-        </tr>
-        <?php
-            if(connectBD("learningacademy", $connection)) {
-                $sql = "SELECT m.task1,m.task2,m.task3,m.task4,m.score,c.endDate,c.name,c.photoPath FROM matriculates m INNER JOIN course c ON c.courseId = m.courseId INNER JOIN student s ON s.dniStudent = m.dniStudent WHERE s.dniStudent = '" . $_SESSION['dniStudent'] . "' ;";
-            }
-                if(selectSQL($connection, $sql, $result)){
-                    if(empty($result)) {
-                        echo "<div>";
-                        echo "<h1>You aren't in any course</h1>";
-                        echo "<a src=".'../courses.php'.">enter on any of our courses!</a>";
-                        echo "</div>";
-                    } else {
-                        foreach ($result as $course){
-                            echo"<div class="."course".">";
-                            echo "";
+    <div class="courseContainer">
+    <?php
+        if(connectBD("learningacademy", $connection)) {
+            $sql = "SELECT m.task1,m.task2,m.task3,m.task4,m.score,c.endDate,c.name,c.photoPath FROM matriculates m INNER JOIN course c ON c.courseId = m.courseId INNER JOIN student s ON s.dniStudent = m.dniStudent WHERE s.dniStudent = '" . $_SESSION['dniStudent'] . "' ;";
+        }
+            if(selectSQL($connection, $sql, $result)){
+                if(empty($result)) {
+                    echo "<div>";
+                    echo "<h1>You aren't in any course</h1>";
+                    echo "<a src=".'../courses.php'.">enter on any of our courses!</a>";
+                    echo "</div>";
+                } else {
+                    foreach ($result as $course){
+                            echo "<div class='course' onclick='openPopup(this)'>";
+                                echo "<figure class='hidden'>";
+                                echo "<img src='{$course['photoPath']}'>";
+                                echo "<figcaption>Hola</figcaption>";
+                                echo "</figure>";
+                                echo "<p>{$course['name']}</p>";
+                                echo "<div class='hiddenContent'>";
+                                    echo "<p>{$course['name']}</p>";
+                                echo "</div>";
                             echo "</div>";
-                        }
+                            echo "<div class='popup'>";
+                                echo "<div class='popup-content'></div>";   
+                            echo "</div>";
                     }
                 }
-            
-        ?>
-    </table>
-    
+            }
+    ?> 
+    </div>
+    <script src="../files/scripts.js"></script>
 </body>
 </html>
