@@ -46,26 +46,26 @@ table{
 
 .courseContainer{
     margin: 2rem;
-    margin-left: 15rem;
-    margin-right: 15rem;
+    margin-left: 18rem;
+    margin-right: 18rem;
     border: 1px solid black;
     display:  grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 250px);
     justify-items: center;
     align-items: center;
+    grid-row-gap: 5rem;
 }
 
 .course{
     border: 1px solid black;
-    margin: 1rem;
     z-index: 1;
     transition: z-index 1000ms;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    transition: padding-left 1000ms;
-    transition: padding-right 1000ms;
-    background-color: rgb(200, 200, 200);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #ececec;
+    display: grid;
+    justify-items: center;
 }
 
 .hidden {
@@ -73,7 +73,8 @@ table{
     grid-template-rows: 1fr 0;
     transition: grid-template-rows 1000ms;
     overflow: hidden;
-    justify-items: center;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .hidden img {
@@ -81,6 +82,9 @@ table{
     height: 100%;
     transition: width 1000ms;
     object-fit: cover;
+    justify-self: center;
+    border-radius: 7%;
+    
 }
 
 .hidden figcaption{
@@ -89,6 +93,7 @@ table{
     background-color: black;
     color: white;
     padding: 5px;
+    margin-top: 1px;
 }
 
 .hidden figcaption span{
@@ -97,13 +102,11 @@ table{
 }
 
 .hidden:hover{
-    grid-template-rows: 1fr 8rem;
+    grid-template-rows: 1fr 6rem;
 }
 
 .course:hover {
     z-index: 2;
-    padding-left: 3rem;
-    padding-right: 3rem;
 }
 
 .hidden:hover img{
@@ -111,30 +114,6 @@ table{
     
 }
 
-.hiddenContent{
-    display: none;
-}
-
-
-.popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    overflow: auto;
-}
-
-.popup-content {
-    background-color: #fff;
-    margin: auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+.courseButton{
+    margin-bottom: 1rem;
 }
