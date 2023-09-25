@@ -40,8 +40,8 @@
             </tr>
             <?php
                 if(connectBD("learningacademy", $connection)) {
-                    $sql = "SELECT * FROM course";
-
+                    $sql = "SELECT c.*,t.name,t.surname,c.name as courseName FROM course c INNER JOIN teacher t ON c.dniTeacher = t.dniTeacher";
+                    // SELECT * FROM course;
                     if(selectSQL($connection, $sql, $result)){
                         if(empty($result)) {
                             echo "<tr>";
@@ -51,11 +51,11 @@
                             foreach($result as $row) {
                                 echo "<tr>";
                                 echo "<td><img src='{$row['photoPath']}'></td>";
-                                echo "<td>{$row['name']}</td>";
+                                echo "<td>{$row['courseName']}</td>";
                                 echo "<td>{$row['hours']}</td>";
                                 echo "<td>{$row['startDate']} / {$row['endDate']}</td>";
                                 echo "<td>{$row['description']}</td>";
-                                echo "<td>{$row['dniTeacher']}</td>";
+                                echo "<td>{$row['name']} {$row['surname']}</td>";
                                 echo "<td><a href='editCourse.php?courseId={$row['courseId']}'>Edit</a></td>";
                                 echo "<td><a href='editCourse.php?active={$row['active']}&courseId={$row['courseId']}'>{$row['active']}</a></td>";
                                 echo "</tr>";
