@@ -61,22 +61,27 @@
                             else echo "<button class='courseButton' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll !</button>";
 
                             echo "<div class='hiddenContent'>";
-                            echo "<p>{$course['name']}</p>";
+                            echo "<p class='pCourseName'>{$course['name']}</p>";
+                            echo "<p class='pDateLabel'>Start - End</p>";
+                            echo "<p class='pDate'>{$course['startDate']} / {$course['endDate']}</p>";
+
+                            if($buttonDisabled) echo "<p class='pButton'>The end date of this course alreafy finished</p>";
+                            else echo "<button class='courseButton pButton' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll !</button>";
+
+                            echo "<p class='pDesc'>{$course['description']}</p>";
                             echo "</div>";
                             
                             echo "</div>";
                             echo "<div class='popup'>";
                             echo "<div class='popup-content'></div>";   
                             echo "</div>";
-
-                            
                         }
                     }
                 }
             }
         ?>
     </div>
-    <script>
+    <script src="files/scripts.js">
         function enrollFunction(action, courseId) {
             if (action == 0) {
                 let wantLogin = confirm("You must be a student to enroll on this course, want to log in as a student?");
@@ -88,6 +93,5 @@
             }
         }
     </script>
-    <scrpit src="files/script.js"></script>
 </body>
 </html>

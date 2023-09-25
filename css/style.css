@@ -147,4 +147,31 @@ table{
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    min-width: 50vw;
+    min-height: 50vh;
+    /* GRID */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.pCourseName{
+    grid-column: 1/4;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.pDateLabel{
+    grid-row: 2/3;
+}
+
+.pDate{
+    grid-row: 3/4;
+}
+
+.pDesc{
+    grid-column: 2/4;
+    grid-row: 2/5;
 }
