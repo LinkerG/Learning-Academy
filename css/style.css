@@ -11,7 +11,7 @@ header{
 }
 
 .menu1{
-    grid-column: 2/6;
+    grid-column: 2/3;
     color: white;
 }   
 
@@ -22,6 +22,22 @@ header a:is(:link, :hover, :active, :visited){
 
 header a{
     text-align: center;
+}
+
+a.course{
+    grid-column: 3/4;
+}
+
+.login{
+    grid-column: 6/7;
+}
+
+.signup{
+    grid-column: 7/8;
+}
+
+.logout{
+    grid-column: 7/8;
 }
 
 .container a:is(:link, :hover, :active, :visited){
@@ -177,6 +193,8 @@ table{
     margin: 1rem;
     font-size: 24px;
 }
+
+
 .content-window{
     width: 300px;
 }

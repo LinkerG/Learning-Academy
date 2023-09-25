@@ -50,11 +50,11 @@
                         ?>
                                 <div class="window-container">
                                     <div class="windows">
-                                        <button class="window" onclick="showWindow(4)">Results</button>
-                                        <button class="window" onclick="showWindow(0)">Task 1</button>
-                                        <button class="window" onclick="showWindow(1)">Task 2</button>
-                                        <button class="window" onclick="showWindow(2)">Task 3</button>
-                                        <button class="window" onclick="showWindow(3)">Task 4</button>
+                                        <button class="window" onclick="showWindow(0)">Results</button>
+                                        <button class="window" onclick="showWindow(1)">Task 1</button>
+                                        <button class="window" onclick="showWindow(2)">Task 2</button>
+                                        <button class="window" onclick="showWindow(3)">Task 3</button>
+                                        <button class="window" onclick="showWindow(4)">Task 4</button>
                                     </div>
                                 </div>
                                 <div class="content">

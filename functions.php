@@ -12,8 +12,8 @@ function printHeader() {
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
             echo "<p class='menu1'>Learning Academy</p>";
             echo "<a href='/Learning-Academy/courses.php' class='Course'>Our courses</a>";
-            echo "<a href='login.php' class='Signin'>Sign in</a>";
-            echo "<a href='signup.php' class='Signup'>Sing up</a>";
+            echo "<a href='login.php' class='login'>Log in</a>";
+            echo "<a href='signup.php' class='signup'>Sing up</a>";
             break;
         case "A":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
@@ -319,7 +319,8 @@ function dniVerification($dni) {
         return false;
     }
 }
-function uploadPdf($course) {
+
+function uploadPdf($result) {
     for($i = 1; $i <= 4; $i++){
         if (is_uploaded_file($_FILES['task'.$i]['tmp_name'])) {
             $file_type = $_FILES['task'.$i]['type'];
