@@ -94,15 +94,17 @@ table{
     color: white;
     padding: 5px;
     margin-top: 1px;
+    justify-content: center;
 }
 
 .hidden figcaption span{
     margin-left: 1rem;
     font-size: 20px;
+    text-align: center;
 }
 
 .hidden:hover{
-    grid-template-rows: 1fr 6rem;
+    grid-template-rows: 1fr 2rem;
 }
 
 .course:hover {
@@ -116,4 +118,33 @@ table{
 
 .courseButton{
     margin-bottom: 1rem;
+}
+
+/* POPUP CSS*/
+.hiddenContent{
+    display: none;
+}
+
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow: auto;
+}
+
+.popup-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }

@@ -3,7 +3,7 @@ function openPopup(course) {
     var popupContent = document.querySelector('.popup-content');
     var hiddenContent = course.querySelector('.hiddenContent').innerHTML;
 
-    popupContent.innerHTML = hiddenContent;5
+    popupContent.innerHTML = hiddenContent;
     popup.style.display = 'block';
 }
 

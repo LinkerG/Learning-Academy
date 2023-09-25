@@ -36,17 +36,21 @@
                 } else {
                     foreach ($result as $course){
                             echo "<div class='course' onclick='openPopup(this)'>";
-                                echo "<figure class='hidden'>";
-                                echo "<img src='{$course['photoPath']}'>";
-                                echo "<figcaption>Hola</figcaption>";
-                                echo "</figure>";
-                                echo "<p>{$course['name']}</p>";
-                                echo "<div class='hiddenContent'>";
-                                    echo "<p>{$course['name']}</p>";
-                                echo "</div>";
+
+                            echo "<figure class='hidden'>";
+                            echo "<img src='{$course['photoPath']}'>";
+                            echo "<figcaption>Hola</figcaption>";
+                            echo "</figure>";
+
+                            echo "<p>{$course['name']}</p>";
+
+                            echo "<div class='hiddenContent'>";
+                            echo "<p>{$course['name']}</p>";
+                            echo "</div>";
+                            
                             echo "</div>";
                             echo "<div class='popup'>";
-                                echo "<div class='popup-content'></div>";   
+                            echo "<div class='popup-content'></div>";   
                             echo "</div>";
                     }
                 }

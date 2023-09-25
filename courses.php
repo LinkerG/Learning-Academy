@@ -49,15 +49,27 @@
                         foreach ($result as $course) {
                             $buttonDisabled = in_array($course['courseId'], $unaviableCourses) ? true : false;
 
-                            echo "<div class='course'>";
+                            echo "<div class='course' onclick='openPopup(this)'>";
+
                             echo "<figure class='hidden'>";
                             echo "<img src='{$course['photoPath']}'>";
-                            echo "<figcaption>Hola</figcaption>";
+                            echo "<figcaption>Click here to see more info!</figcaption>";
                             echo "</figure>";
-                            echo "<p>{$course['name']}<p>";
+
+                            echo "<p>{$course['name']}</p>";
                             if($buttonDisabled) echo "<button disabled class='courseButton disabled' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll !</button>";
                             else echo "<button class='courseButton' onclick='enrollFunction($canJoin, {$course['courseId']})'>Enroll !</button>";
+
+                            echo "<div class='hiddenContent'>";
+                            echo "<p>{$course['name']}</p>";
                             echo "</div>";
+                            
+                            echo "</div>";
+                            echo "<div class='popup'>";
+                            echo "<div class='popup-content'></div>";   
+                            echo "</div>";
+
+                            
                         }
                     }
                 }
@@ -76,5 +88,6 @@
             }
         }
     </script>
+    <scrpit src="files/script.js"></script>
 </body>
 </html>
