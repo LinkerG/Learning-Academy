@@ -319,4 +319,26 @@ function dniVerification($dni) {
         return false;
     }
 }
+function uploadPdf($course) {
+    for($i = 1; $i <= 4; $i++){
+        if (is_uploaded_file($_FILES['task'.$i]['tmp_name'])) {
+            $file_type = $_FILES['task'.$i]['type'];
+            $directoryName = '/Learning-Academy/tasks/';
+            $fileName = $_SESSION['dniStudent']."_".$result['courseId'] . '.pdf'; 
+            
+            $fileRoute = $directoryName . $fileName;
+            if(file_exists($fileRoute) && $file_type === 'application/pdf'){
+                unlink($fileRoute);
+                if (move_uploaded_file($_FILES['task'.$i]['tmp_name'], $fileRoute)) {         
+                    return $fileRoute;
+                }
+            } else {
+                if (move_uploaded_file($_FILES['task'.$i]['tmp_name'], $fileRoute)) {         
+                    return $fileRoute;
+                }
+            }
+            
+        } 
+    }
+}
 ?>

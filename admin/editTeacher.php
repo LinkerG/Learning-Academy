@@ -71,7 +71,7 @@
         <label for="titulation">Titulation</label>
         <input type="text" name="titulation" id="titulation" value=<?php echo "'{$result['titulation']}'";?>>
 
-        <label for="email">Photo</label>
+        <label for="photo">Photo</label>
         <input type="file" name="photoPath" id="photoPath">
 
         <input type="submit" value="Update">

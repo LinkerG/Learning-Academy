@@ -177,3 +177,24 @@ table{
     margin: 1rem;
     font-size: 24px;
 }
+.content-window{
+    width: 300px;
+}
+.windows{
+    display:flex;
+}
+.window{
+    flex:1;
+    padding:10px;
+    background-color: #ddd;
+    border:1px solid #aaa;
+    cursor:pointer;
+}
+.window:hover{
+    background-color: #ccc;
+}
+.content .window-content{
+    display:none;
+    padding:10px;
+    border:1px solid #aaa;
+}
