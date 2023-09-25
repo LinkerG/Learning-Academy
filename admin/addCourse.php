@@ -69,7 +69,18 @@
         <input type="text" name="description" id="description">
 
         <label for="dniTeacher">Teacher DNI:</label>
-        <input type="text" name="dniTeacher" id="dniTeacher" required>
+        <select name="dniTeacher" required>
+            <?php
+                $sql= "SELECT dniTeacher,name,surname FROM teacher";
+                if(connectBD("learningacademy", $connection)) {
+                    if(selectSQL($connection, $sql,$result)){
+                        foreach($result as $teachersInfo){
+                            echo "<option value={$teachersInfo['dniTeacher']}>".$teachersInfo['name']." {$teachersInfo['surname']}</option>";
+                        }
+                    }
+                }
+            ?>
+        </select>
 
         <label for="photoPath">Photo:</label>
         <input type="file" name="photoPath" id="photoPath">
