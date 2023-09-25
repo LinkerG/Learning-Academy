@@ -45,7 +45,7 @@
                         $canJoin = isset($_SESSION['role']) && $_SESSION['role']=="S" ? 1 : 0;
                         
                         $unaviableCourses = unavailableCourses();
-                        $dni = isset($_SESSION['dniStudent']) ? $_SESSION['dniStudent'] : 0;
+                        $dni = isset($_SESSION['dniStudent']) ? $_SESSION['dniStudent'] : "'0'";
                         foreach ($result as $course) {
                             $buttonDisabled = in_array($course['courseId'], $unaviableCourses) ? true : false;
 
@@ -57,8 +57,8 @@
                             echo "</figure>";
 
                             echo "<p>{$course['name']}</p>";
-                            if($buttonDisabled) echo "<button disabled class='courseButton disabled' onclick='enrollFunction($canJoin, {$course['courseId']}, $dni)'>Enroll !</button>";
-                            else echo "<button class='courseButton' onclick='enrollFunction($canJoin, {$course['courseId']}, $dni)'>Enroll !</button>";
+                            if($buttonDisabled) echo "<button disabled class='courseButton disabled' onclick='enrollFunction($canJoin, {$course['courseId']}, `$dni`)'>Enroll !</button>";
+                            else echo "<button class='courseButton' onclick='enrollFunction($canJoin, {$course['courseId']}, `$dni`)'>Enroll !</button>";
 
                             echo "<div class='hiddenContent'>";
                             echo "<p class='pCourseName'>{$course['name']}</p>";
@@ -66,7 +66,7 @@
                             echo "<p class='pDate'>{$course['startDate']} / {$course['endDate']}</p>";
 
                             if($buttonDisabled) echo "<p class='pButton'>The end date of this course alreafy finished</p>";
-                            else echo "<button class='courseButton pButton' onclick='enrollFunction($canJoin, {$course['courseId']}, $dni)'>Enroll !</button>";
+                            else echo "<button class='courseButton pButton' onclick='enrollFunction($canJoin, {$course['courseId']}, `$dni`)'>Enroll !</button>";
 
                             echo "<p class='pDesc'>{$course['description']}</p>";
                             echo "</div>";
