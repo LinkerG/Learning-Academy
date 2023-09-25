@@ -45,7 +45,7 @@
                         $canJoin = isset($_SESSION['role']) && $_SESSION['role']=="S" ? 1 : 0;
                         
                         $unaviableCourses = unavailableCourses();
-                        $dni = isset($_SESSION['dniStudent']) ? $_SESSION['dniStudent'] : "'0'";
+                        $dni = isset($_SESSION['dniStudent']) ? $_SESSION['dniStudent'] : "0";
                         foreach ($result as $course) {
                             $buttonDisabled = in_array($course['courseId'], $unaviableCourses) ? true : false;
 
