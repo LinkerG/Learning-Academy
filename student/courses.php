@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../files/scripts.js"></script>
     <title>Student courses</title>
 </head>
 <body>
@@ -45,27 +46,29 @@
                             echo "<p>{$course['name']}</p>";
 
                             echo "<div class='hiddenContent'>";
-                            echo "<h1>{$course['name']}</h1>";
-                            echo "<div class='courseForm'>";
+                            echo "<p class='pCourseName'>{$course['name']}</p>";
+                            
                         ?>
-                                <div class="window-container">
-                                    <div class="windows">
-                                        <button class="window" onclick="showWindow(0)">Results</button>
-                                        <button class="window" onclick="showWindow(1)">Task 1</button>
-                                        <button class="window" onclick="showWindow(2)">Task 2</button>
-                                        <button class="window" onclick="showWindow(3)">Task 3</button>
-                                        <button class="window" onclick="showWindow(4)">Task 4</button>
+                                <div class="tabs-container tabsPopup">
+                                    <div class="tabsLine">
+                                        <div class="tab selected" id="t1" onclick="openTab(1)">Pestaña 1</div>
+                                        <div class="tab" id="t2" onclick="openTab(2)">Pestaña 2</div>
+                                        <div class="tab" id="t3" onclick="openTab(3)">Pestaña 3</div>
+                                        <div class="tab" id="t4" onclick="openTab(4)">Pestaña 4</div>
+                                        <div class="tab" id="t5" onclick="openTab(5)">Pestaña 5</div>
                                     </div>
+                                    <div class="tabWindow">
+                                        <div class="tab-content" id="tab1" style="z-index: 1;">Contenido de la Pestaña 1</div>
+                                        <div class="tab-content" id="tab2" style="z-index: 0;">Contenido de la Pestaña 2</div>
+                                        <div class="tab-content" id="tab3" style="z-index: 0;">Contenido de la Pestaña 3</div>
+                                        <div class="tab-content" id="tab4" style="z-index: 0;">Contenido de la Pestaña 4</div>
+                                        <div class="tab-content" id="tab5" style="z-index: 0;">Contenido de la Pestaña 5</div>
+                                    </div>
+                                    
                                 </div>
-                                <div class="content">
-                                    <div class="window-content">Resultado</div>
-                                    <div class="window-content">Contenido 1</div>
-                                    <div class="window-content">Contenido 2</div>
-                                    <div class="window-content">Contenido 3</div>
-                                    <div class="window-content">Contenido 4</div>
-                                </div>
+
                         <?php
-                            echo "</div>";
+                            
                             echo "</div>";
                             
                             echo "</div>";
@@ -77,6 +80,9 @@
             }
     ?> 
     </div>
-    <script src="../files/scripts.js"></script>
+    <script>
+        //window.onload=addEvents;
+    </script>
+  
 </body>
 </html>

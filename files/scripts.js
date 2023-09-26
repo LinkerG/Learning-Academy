@@ -40,3 +40,40 @@ function enrollFunction(action, courseId, dniStudent) {
         if(confirmEnroll) location.href = "/Learning-Academy/courses.php?insert=1&dniStudent="+dniStudent+"&courseId="+courseId;
     }
 }
+
+/* Ventanas */
+/*function addEvents(){
+   
+    let tabs = document.getElementsByClassName("tab");
+   
+   
+    for (let i = 0; i < tabs.length; i++) {
+  
+        tabs[i].addEventListener("click", function(){
+
+            openTab(i+1);}
+        );
+    }
+}*/
+
+function openTab(tabNumber) {
+    let tabContents = document.getElementsByClassName("tab-content");
+    let selectedTab = document.getElementById("tab" + tabNumber);
+    for (let i = 0; i < tabContents.length; i++) {
+        if(tabContents[i].id == selectedTab.id){
+            tabContents[i].style.zIndex = "1";
+        } else {
+            tabContents[i].style.zIndex = "0";
+        }
+    }
+
+    let tabs = document.getElementsByClassName("tab");
+    let actualTab = document.getElementById("t" + tabNumber);
+    for (let i = 0; i < tabs.length; i++) {
+      if(tabs[i].id == actualTab.id){
+            tabs[i].style.backgroundColor = "#e0e0e0";
+        } else {
+            tabs[i].style.backgroundColor = "#f0f0f0";
+        }
+    }
+  }

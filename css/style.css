@@ -119,17 +119,16 @@ table{
     text-align: center;
 }
 
-.hidden:hover{
-    grid-template-rows: 1fr 2rem;
-}
-
 .course:hover {
     z-index: 2;
 }
 
-.hidden:hover img{
+.course:hover .hidden{
+    grid-template-rows: 1fr 2rem;
+}
+
+.course:hover .hidden img{
     width: 100%;
-    
 }
 
 .courseButton{
@@ -187,32 +186,54 @@ table{
     grid-row: 3/4;
 }
 
-.pDesc{
+.pMain{
     grid-column: 2/4;
     grid-row: 2/5;
     margin: 1rem;
     font-size: 24px;
 }
 
+/* CSS PESTAÑAS */
 
-.content-window{
-    width: 300px;
+.tabs-container {
+    width: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
 }
-.windows{
-    display:flex;
+  
+.tab {
+    display: inline-block;
+    width: 20%;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-right: 1px solid #ccc;
 }
-.window{
-    flex:1;
-    padding:10px;
-    background-color: #ddd;
-    border:1px solid #aaa;
-    cursor:pointer;
+
+.tab:hover {
+    background-color: #e0e0e0;
 }
-.window:hover{
-    background-color: #ccc;
+
+.tab.selected {
+    background-color: #e0e0e0;
 }
-.content .window-content{
-    display:none;
-    padding:10px;
-    border:1px solid #aaa;
+
+.tab-content {
+    padding: 20px;
+    background-color: #FFFFFF;
+}
+
+.tab-content{
+    position: absolute;
+}
+  
+.tabsPopup{
+    grid-column: 2/4;
+    grid-row: 2/5;
+}
+
+.tabsLine{
+    display: flex;
+    flex-direction: row;
 }
