@@ -108,34 +108,6 @@ function insertSQL($connection, $sql) {
     }
 }
 
-/*function insertSQL($connection,$table){
-    
-    if($connection){
-        $names = colNameSQL($connection,$table);
-        $values = "";
-        foreach($names as $fieldName){
-            if($fieldName == "password") $values = $values . "'" . md5($_REQUEST[$fieldName]) . "'" . ", ";
-            else if($fieldName == "courseId" && $table=="course") continue;
-            else $values = $values . "'" . $_REQUEST[$fieldName] . "'" . ",";
-        }
-        $colNames = implode(', ',$names);
-        $values = trim($values, ",");
-        $query = "INSERT INTO $table ($colNames) VALUES ($values)";
-        //Prepara la query para controlar mejor los errores
-        $executeQuery = $connection->prepare($query);
-        if ($executeQuery === false) {
-            die("Error en la preparación de la consulta: " . $connection->error);
-        }
-        // Ejecuta la consulta y en caso de error te lo dice
-        if ($executeQuery->execute() === false) {
-            echo "Error al insertar el registro: " . $executeQuery->error;
-        }
-        // Cerrar la conexión a la base de datos y la query
-        $executeQuery->close();
-        $connection->close();
-    }
-}*/
-
 function updateSQL($connection, $sql) {
     $executeQuery = $connection->prepare($sql);
     if ($executeQuery === false) {
@@ -319,7 +291,7 @@ function dniVerification($dni) {
         return false;
     }
 }
-function uploadPdf($course) {
+function uploadPdf($result) {
     for($i = 1; $i <= 4; $i++){
         if (is_uploaded_file($_FILES['task'.$i]['tmp_name'])) {
             $file_type = $_FILES['task'.$i]['type'];
