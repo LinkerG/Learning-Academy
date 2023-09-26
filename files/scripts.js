@@ -40,56 +40,40 @@ function enrollFunction(action, courseId, dniStudent) {
         if(confirmEnroll) location.href = "/Learning-Academy/courses.php?insert=1&dniStudent="+dniStudent+"&courseId="+courseId;
     }
 }
-function editProfile(){
-    const name = document.getElementById("profileName");
-    const surname = document.getElementById("profileSurname");
-    const email = document.getElementById("profileEmail");
-    const photo = document.getElementById("profilePhoto");
-    const birthDate = document.getElementById("profileBirthDate");
-    const studentDni = document.getElementById("profileStudentDni");
-    const editBtn = document.getElementsByClassName("edit-btn");
 
-    const nameInput = document.getElementById("name-input");
-    const surnameInput = document.getElementById("surname-input");
-    const emailInput = document.getElementById("email-input");
-    const photoPathInput = document.getElementById("photoPath-input");
-    const birthDateInput = document.getElementById("birthDate-input");
-    const dniInput = document.getElementById("dni-input");
-    const passwordInput = document.getElementById("password-input");
-    const saveBtn = document.getElementById("save-btn");
-    const profileForm = document.getElementById("profile-form");
+/* Ventanas */
+/*function addEvents(){
+   
+    let tabs = document.getElementsByClassName("tab");
+   
+   
+    for (let i = 0; i < tabs.length; i++) {
+  
+        tabs[i].addEventListener("click", function(){
 
-    editarBtn.addEventListener("click", function(){
-        
-        name.style.display = "none";
-        surname.style.display = "none";
-        email.style.display = "none";
-        photo.style.display = "none";
-        birthDate.style.display = "none";
-        studentDni.style.display = "none";
+            openTab(i+1);}
+        );
+    }
+}*/
 
-        nameInput.style.display = "block";
-        surnameInput.style.display = "block";
-        emailInput.style.display = "block";
-        photoPathInput.style.display = "block";
-        birthDateInput.style.display = "block";
-        dniInput.style.display = "block";
-        passwordInput.style.display = "block";
+function openTab(tabNumber) {
+    let tabContents = document.getElementsByClassName("tab-content");
+    let selectedTab = document.getElementById("tab" + tabNumber);
+    for (let i = 0; i < tabContents.length; i++) {
+        if(tabContents[i].id == selectedTab.id){
+            tabContents[i].style.zIndex = "1";
+        } else {
+            tabContents[i].style.zIndex = "0";
+        }
+    }
 
-        editBtn.style.display = "none";
-        saveBtn.style.display = "block";
-
-        guardarBtn.addEventListener("click", function(){
-            const formData = new FormData(profileForm);
-            fetch("profile.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                
-            })
-        });
-    });
-
-}
+    let tabs = document.getElementsByClassName("tab");
+    let actualTab = document.getElementById("t" + tabNumber);
+    for (let i = 0; i < tabs.length; i++) {
+      if(tabs[i].id == actualTab.id){
+            tabs[i].style.backgroundColor = "#e0e0e0";
+        } else {
+            tabs[i].style.backgroundColor = "#f0f0f0";
+        }
+    }
+  }
