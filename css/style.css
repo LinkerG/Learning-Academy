@@ -222,18 +222,23 @@ table{
 .tab-content {
     padding: 20px;
     background-color: #FFFFFF;
-}
-
-.tab-content{
     position: absolute;
+    width: max-content;
+    height: max-content;
 }
   
 .tabsPopup{
     grid-column: 2/4;
     grid-row: 2/5;
+    display: flex;
+    flex-direction: column;
 }
 
 .tabsLine{
     display: flex;
     flex-direction: row;
+}
+
+.tabWindow{
+    position: relative;
 }

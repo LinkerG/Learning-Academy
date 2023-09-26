@@ -42,7 +42,6 @@
                             echo "<img src='{$course['photoPath']}'>";
                             echo "<figcaption>Hola</figcaption>";
                             echo "</figure>";
-
                             echo "<p>{$course['name']}</p>";
 
                             echo "<div class='hiddenContent'>";
@@ -51,14 +50,27 @@
                         ?>
                                 <div class="tabs-container tabsPopup">
                                     <div class="tabsLine">
-                                        <div class="tab selected" id="t1" onclick="openTab(1)">Pestaña 1</div>
-                                        <div class="tab" id="t2" onclick="openTab(2)">Pestaña 2</div>
-                                        <div class="tab" id="t3" onclick="openTab(3)">Pestaña 3</div>
-                                        <div class="tab" id="t4" onclick="openTab(4)">Pestaña 4</div>
-                                        <div class="tab" id="t5" onclick="openTab(5)">Pestaña 5</div>
+                                        <div class="tab selected" id="t1" onclick="openTab(1)">Summary</div>
+                                        <div class="tab" id="t2" onclick="openTab(2)">Task 1</div>
+                                        <div class="tab" id="t3" onclick="openTab(3)">Task 2</div>
+                                        <div class="tab" id="t4" onclick="openTab(4)">Task 3</div>
+                                        <div class="tab" id="t5" onclick="openTab(5)">Task 4</div>
                                     </div>
                                     <div class="tabWindow">
-                                        <div class="tab-content" id="tab1" style="z-index: 1;">Contenido de la Pestaña 1</div>
+                                        <div class="tab-content" id="tab1" style="z-index: 1;">
+                                            <ul>
+                                                <?php
+                                                    $task1 = $course['task1'] == null ? "X" : "Y";
+                                                    echo "<li>Task 1: $task1</li>";
+                                                    $task2 = $course['task2'] == null ? "X" : "Y";
+                                                    echo "<li>Task 2: $task2</li>";
+                                                    $task3 = $course['task3'] == null ? "X" : "Y";
+                                                    echo "<li>Task 3: $task3</li>";
+                                                    $task4 = $course['task4'] == null ? "X" : "Y";
+                                                    echo "<li>Task 4: $task4</li>";
+                                                ?>
+                                            </ul>
+                                        </div>
                                         <div class="tab-content" id="tab2" style="z-index: 0;">Contenido de la Pestaña 2</div>
                                         <div class="tab-content" id="tab3" style="z-index: 0;">Contenido de la Pestaña 3</div>
                                         <div class="tab-content" id="tab4" style="z-index: 0;">Contenido de la Pestaña 4</div>
