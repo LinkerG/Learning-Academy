@@ -228,13 +228,12 @@ function openTab(tabNumber) {
 function checkboxShow(idToHide) {
     let popupContent = document.querySelector('.popup-content');
     let elementToHide = popupContent.querySelector("#" + idToHide);
-    console.log(elementToHide);
     if (elementToHide.style.display == "block") {
         elementToHide.style.display = "none";
-        console.log(elementToHide.style.display);
+
     } else {
         elementToHide.style.display = "block";
-        console.log(elementToHide.style.display);
+
     }
 }
 
@@ -242,6 +241,11 @@ function hideForms() {
     let forms = document.getElementsByTagName("form");
     for (let i = 0; i < forms.length; i++) {
         forms[i].style.display = "none";
-        console.log(forms[i].style.display);
+
+    }
+    let noHideforms = document.getElementsByClassName("noHide");
+    for (let i = 0; i < noHideforms.length; i++) {
+        noHideforms[i].style.display = "block";
+
     }
 }

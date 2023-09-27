@@ -60,13 +60,13 @@
                                         <div class="tab-content selected" id="tab1">
                                             <ul>
                                                 <?php
-                                                    $task1 = $course['task1'] == null ? "X" : "Y";
+                                                    $task1 = $course['task1'] == null ? "X" : "O";
                                                     echo "<li>Task 1: $task1</li>";
-                                                    $task2 = $course['task2'] == null ? "X" : "Y";
+                                                    $task2 = $course['task2'] == null ? "X" : "O";
                                                     echo "<li>Task 2: $task2</li>";
-                                                    $task3 = $course['task3'] == null ? "X" : "Y";
+                                                    $task3 = $course['task3'] == null ? "X" : "O";
                                                     echo "<li>Task 3: $task3</li>";
-                                                    $task4 = $course['task4'] == null ? "X" : "Y";
+                                                    $task4 = $course['task4'] == null ? "X" : "O";
                                                     echo "<li>Task 4: $task4</li>";
                                                 ?>
                                             </ul>
@@ -79,7 +79,7 @@
                                                 $formId = "form" .$i;
                                                 echo "<div class='tab-content' id='$tabid'>";
                                                 echo "<div>";
-                                                echo "<p id='$i'>Task $i</p>";
+                                                echo "<p>Task $i</p>";
                                                 if($taskStatus) {
                                                     echo "<p>Entregado ^^</p>";
                                                     echo "</div>";
@@ -87,11 +87,17 @@
                                                     echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
                                                     echo "<form enctype ='multipart/form-data' action='#' method='POST' id='$formId'>";
                                                     echo "<input type='file' name='$task' id='$task'>";
+                                                    echo "<input type='submit' value='Save changes'>";
                                                     echo "</form>";
                                                 } else {
                                                     echo "<p>No entregado</p>";
                                                     echo "</div>";
                                                     echo "<div>";
+                                                    echo "<p>Upload your task:</p>";
+                                                    echo "<form enctype ='multipart/form-data' action='#' method='POST' id='$formId' class='noHide'>";
+                                                    echo "<input type='file' name='$task' id='$task'>";
+                                                    echo "<input type='submit' value='Save changes'>";
+                                                    echo "</form>";
                                                 }
                                                 echo "</div>";
                                                 echo "</div>";
