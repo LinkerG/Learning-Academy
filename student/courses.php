@@ -57,7 +57,7 @@
                                         <div class="tab" id="t5" onclick="openTab(5)">Task 4</div>
                                     </div>
                                     <div class="tabWindow">
-                                        <div class="tab-content" id="tab1" style="z-index: 1;">
+                                        <div class="tab-content selected" id="tab1">
                                             <ul>
                                                 <?php
                                                     $task1 = $course['task1'] == null ? "X" : "Y";
@@ -71,7 +71,7 @@
                                                 ?>
                                             </ul>
                                         </div>
-                                        <div class="tab-content" id="tab2" style="z-index: 0;">Contenido de la Pestaña 2</div>
+                                        <div class="tab-content" id="tab2" style="z-index: 0;">Contenido de la Pestaña 2Contenido de la Pestaña 2Contenido de la Pestaña 2Contenido de la Pestaña 2</div>
                                         <div class="tab-content" id="tab3" style="z-index: 0;">Contenido de la Pestaña 3</div>
                                         <div class="tab-content" id="tab4" style="z-index: 0;">Contenido de la Pestaña 4</div>
                                         <div class="tab-content" id="tab5" style="z-index: 0;">Contenido de la Pestaña 5</div>

@@ -1,7 +1,10 @@
-*{
-    margin: 0px;
+/* Reset de márgenes para todos los elementos */
+* {
+    margin: 0;
 }
-header{
+
+/* Estilos para el encabezado */
+header {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: repeat(7, 1fr);
@@ -10,62 +13,61 @@ header{
     align-items: center;
 }
 
-.menu1{
+.menu1 {
     grid-column: 2/3;
     color: white;
-}   
+}
 
-header a:is(:link, :hover, :active, :visited){
+header a:is(:link, :hover, :active, :visited) {
     color: white;
     text-decoration: none;
 }
 
-header a{
+header a {
     text-align: center;
 }
 
-a.course{
+a.course {
     grid-column: 3/4;
 }
 
-.login{
+.login {
     grid-column: 6/7;
 }
 
-.signup{
+.logout, .signup{
     grid-column: 7/8;
 }
 
-.logout{
-    grid-column: 7/8;
-}
-
-.container a:is(:link, :hover, :active, :visited){
+/* Estilos para enlaces en el contenedor */
+.container a:is(:link, :hover, :active, :visited) {
     color: black;
     text-decoration: none;
 }
 
-th, td{
+/* Estilos para tablas */
+th,
+td {
     border: 1px solid black;
 }
 
-table{
+table {
     border-collapse: collapse;
 }
 
-/* Our Courses page */
-.title{
+/* Estilos para la página "Our Courses" */
+.title {
     margin: 2rem;
     text-align: center;
     margin-bottom: 5rem;
 }
 
-.courseContainer{
+.courseContainer {
     margin: 2rem;
     margin-left: 18rem;
     margin-right: 18rem;
     border: 1px solid black;
-    display:  grid;
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 250px);
     justify-items: center;
@@ -73,7 +75,7 @@ table{
     grid-row-gap: 5rem;
 }
 
-.course{
+.course {
     border: 1px solid black;
     z-index: 1;
     transition: z-index 1000ms;
@@ -100,10 +102,9 @@ table{
     object-fit: cover;
     justify-self: center;
     border-radius: 7%;
-    
 }
 
-.hidden figcaption{
+.hidden figcaption {
     display: flex;
     align-items: center;
     background-color: black;
@@ -113,7 +114,7 @@ table{
     justify-content: center;
 }
 
-.hidden figcaption span{
+.hidden figcaption span {
     margin-left: 1rem;
     font-size: 20px;
     text-align: center;
@@ -123,23 +124,22 @@ table{
     z-index: 2;
 }
 
-.course:hover .hidden{
+.course:hover .hidden {
     grid-template-rows: 1fr 2rem;
 }
 
-.course:hover .hidden img{
+.course:hover .hidden img {
     width: 100%;
 }
 
-.courseButton{
+.courseButton {
     margin-bottom: 1rem;
 }
 
-/* POPUP CSS*/
-.hiddenContent{
+/* Estilos para el popup */
+.hiddenContent {
     display: none;
 }
-
 
 .popup {
     display: none;
@@ -164,13 +164,12 @@ table{
     transform: translateY(-50%);
     min-width: 50vw;
     min-height: 50vh;
-    /* GRID */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(5, 1fr);
 }
 
-.pCourseName{
+.pCourseName {
     grid-column: 1/4;
     text-align: center;
     margin-top: 1rem;
@@ -178,30 +177,29 @@ table{
     font-weight: bold;
 }
 
-.pDateLabel{
+.pDateLabel {
     grid-row: 2/3;
 }
 
-.pDate{
+.pDate {
     grid-row: 3/4;
 }
 
-.pMain{
+.pMain {
     grid-column: 2/4;
     grid-row: 2/5;
     margin: 1rem;
     font-size: 24px;
 }
 
-/* CSS PESTAÑAS */
-
+/* Estilos para pestañas */
 .tabs-container {
     width: auto;
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
 }
-  
+
 .tab {
     display: inline-block;
     width: 20%;
@@ -223,22 +221,32 @@ table{
     padding: 20px;
     background-color: #FFFFFF;
     position: absolute;
-    width: max-content;
-    height: max-content;
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
-  
-.tabsPopup{
+
+.tab-content.selected {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.tabsPopup {
     grid-column: 2/4;
     grid-row: 2/5;
     display: flex;
     flex-direction: column;
 }
 
-.tabsLine{
+.tabsLine {
     display: flex;
     flex-direction: row;
 }
 
-.tabWindow{
-    position: relative;
+.tabWindow {
+    display: flex;
 }

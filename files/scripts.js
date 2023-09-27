@@ -62,8 +62,12 @@ function openTab(tabNumber) {
     for (let i = 0; i < tabContents.length; i++) {
         if(tabContents[i].id == selectedTab.id){
             tabContents[i].style.zIndex = "1";
+            tabContents[i].style.position = "relative";
+            tabContents[i].style.display = "block";
         } else {
             tabContents[i].style.zIndex = "0";
+            tabContents[i].style.position = "absolute";
+            tabContents[i].style.display = "none";
         }
     }
 
