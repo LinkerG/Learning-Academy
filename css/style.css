@@ -250,7 +250,3 @@ table {
 .tabWindow {
     display: flex;
 }
-
-.popupContent .tabs-container .tabWindow div div #form1{
-    background-color: red;
-}
