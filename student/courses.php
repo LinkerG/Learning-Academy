@@ -71,10 +71,32 @@
                                                 ?>
                                             </ul>
                                         </div>
-                                        <div class="tab-content" id="tab2" style="z-index: 0;">Contenido de la Pestaña 2Contenido de la Pestaña 2Contenido de la Pestaña 2Contenido de la Pestaña 2</div>
-                                        <div class="tab-content" id="tab3" style="z-index: 0;">Contenido de la Pestaña 3</div>
-                                        <div class="tab-content" id="tab4" style="z-index: 0;">Contenido de la Pestaña 4</div>
-                                        <div class="tab-content" id="tab5" style="z-index: 0;">Contenido de la Pestaña 5</div>
+                                        <?php
+                                            for ($i = 1; $i < 5; $i++) { 
+                                                $task = "task" . $i;
+                                                $tabid = "tab".($i+1);
+                                                $taskStatus = $course[$task]==null ? false : true;
+                                                $formId = "form" .$i;
+                                                echo "<div class='tab-content' id='$tabid'>";
+                                                echo "<div>";
+                                                echo "<p id='$i'>Task $i</p>";
+                                                if($taskStatus) {
+                                                    echo "<p>Entregado ^^</p>";
+                                                    echo "</div>";
+                                                    echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
+                                                    echo "<div>";
+                                                    echo "<form enctype ='multipart/form-data' action='#' method='POST' id='$formId'>";
+                                                    echo "<input type='file' name='$task' id='$task'>";
+                                                    echo "</form>";
+                                                } else {
+                                                    echo "<p>No entregado</p>";
+                                                    echo "</div>";
+                                                    echo "<div>";
+                                                }
+                                                echo "</div>";
+                                                echo "</div>";
+                                            }
+                                        ?>
                                     </div>
                                     
                                 </div>
@@ -93,8 +115,7 @@
     ?> 
     </div>
     <script>
-        //window.onload=addEvents;
+        window.onload = hideForms;
     </script>
-  
 </body>
 </html>
