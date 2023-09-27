@@ -225,29 +225,23 @@ function openTab(tabNumber) {
     }
 }
 
-
-
-
-
-function checkboxShow(formId){
-    let p1 = document.getElementById('1');
-  
-    document.get="red";
-    let formul = document.getElementById(formId);
-    if(formul.style.visibility == "visible"){
-        
-        formul.style.visibility = "hidden";
-        console.log(formul.style.visibility);
+function checkboxShow(idToHide) {
+    let popupContent = document.querySelector('.popup-content');
+    let elementToHide = popupContent.querySelector("#" + idToHide);
+    console.log(elementToHide);
+    if (elementToHide.style.display == "block") {
+        elementToHide.style.display = "none";
+        console.log(elementToHide.style.display);
     } else {
-        
-        formul.style.visibility = "visible";
-        console.log(formul.style.visibility);
+        elementToHide.style.display = "block";
+        console.log(elementToHide.style.display);
     }
 }
 
-function hideForms(){
+function hideForms() {
     let forms = document.getElementsByTagName("form");
     for (let i = 0; i < forms.length; i++) {
-        //forms[i].style.visibility = "hidden";
+        forms[i].style.display = "none";
+        console.log(forms[i].style.display);
     }
 }

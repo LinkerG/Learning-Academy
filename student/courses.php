@@ -83,8 +83,8 @@
                                                 if($taskStatus) {
                                                     echo "<p>Entregado ^^</p>";
                                                     echo "</div>";
-                                                    echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
                                                     echo "<div>";
+                                                    echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
                                                     echo "<form enctype ='multipart/form-data' action='#' method='POST' id='$formId'>";
                                                     echo "<input type='file' name='$task' id='$task'>";
                                                     echo "</form>";
