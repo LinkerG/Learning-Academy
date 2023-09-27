@@ -20,8 +20,10 @@
         } else {
             printHeader();
         }   
+        echo "<div class='top'>";
         echo "<h1>Welcome " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</h1>";
         echo "<h2>This are your courses right now</h2>";
+        echo "</div>";
     ?>
     <div class="courseContainer">
     <?php
