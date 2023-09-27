@@ -81,3 +81,164 @@ function openTab(tabNumber) {
         }
     }
   }
+  /*function editProfile(){
+    const name = document.getElementById("profileName");
+    const surname = document.getElementById("profileSurname");
+    const email = document.getElementById("profileEmail");
+    const photoPath = document.getElementById("profilePhoto");
+    const birthDate = document.getElementById("profileBirthDate");
+    const studentDni = document.getElementById("profileStudentDni");
+    const editBtn = document.getElementById("edit-btn");
+
+    const nameInput = document.getElementById("name-input");
+    const surnameInput = document.getElementById("surname-input");
+    const emailInput = document.getElementById("email-input");
+    const photoPathInput = document.getElementById("photoPath-input");
+    const birthDateInput = document.getElementById("birthDate-input");
+    const dniInput = document.getElementById("dni-input");
+    const passwordInput = document.getElementById("password-input");
+    const saveBtn = document.getElementById("save-btn");
+    const profileForm = document.getElementById("profile-form");
+
+    editBtn.addEventListener("click", function(){
+        
+        name.style.display = "none";
+        surname.style.display = "none";
+        email.style.display = "none";
+        photoPath.style.display = "none";
+        birthDate.style.display = "none";
+        studentDni.style.display = "none";
+        
+        profileForm.style.display = "block";
+        nameInput.style.display = "block";
+        surnameInput.style.display = "block";
+        emailInput.style.display = "block";
+        photoPathInput.style.display = "block";
+        birthDateInput.style.display = "block";
+        dniInput.style.display = "block";
+
+        editBtn.style.display = "none";
+        saveBtn.style.display = "block";
+
+        saveBtn.addEventListener("click", function(){
+            const formData = new FormData(profileForm);
+            fetch("profile.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                name.textContent = data.name;
+                surname.textContent = data.surname;
+                email.textContent = data.email;
+                birthDate.textContent = data.birthDate;
+                studentDni.textContent = data.studentDni;
+                if (data.photo){
+                    photoPath.src = data.foto;
+                }else{
+                    alert("error file doesnt exist");
+                }
+
+                profileForm.style.display = "none";
+                nameInput.style.display = "none";
+                surnameInput.style.display = "none";
+                emailInput.style.display = "none";
+                photoPathInput.style.display = "none";
+                birthDateInput.style.display = "none";
+                dniInput.style.display = "none";
+
+                name.style.display = "block";
+                surname.style.display = "block";
+                email.style.display = "block";
+                photoPath.style.display = "block";
+                birthDate.style.display = "block";
+                studentDni.style.display = "block";
+
+                editBtn.style.display = "block";
+                saveBtn.style.display = "none";
+            })
+        });
+    });
+  }*/
+
+  function editProfile() {
+    const profileElements = document.querySelectorAll(".profile-element");
+    const formElements = document.querySelectorAll(".form-element");
+    const editBtn = document.getElementById("edit-btn");
+    const saveBtn = document.getElementById("save-btn");
+    const profileForm = document.getElementById("profile-form");
+
+
+    editBtn.addEventListener("click", function () {
+        toggleElements(profileElements, "none");
+        toggleElements(formElements, "block");
+        toggleButtons(editBtn, saveBtn);
+    });
+
+
+    saveBtn.addEventListener("click", function () {
+        const formData = new FormData(profileForm);
+        fetch("profile.php", {
+            method: "POST",
+            body: formData,
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Error en la solicitud.");
+            }
+        })
+        .then(data => {
+            if (data.success) {
+                // Actualiza los elementos HTML con los nuevos datos
+                updateProfile(data);
+                // Actualiza las variables de sesión en JavaScript
+                updateSessionVariables(data);
+                toggleElements(profileElements, "block");
+                toggleElements(formElements, "none");
+                toggleButtons(saveBtn, editBtn);
+            } else {
+                alert("Error: " + data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error al enviar los datos: " + error);
+        });
+    });
+
+
+    function toggleElements(elements, displayValue) {
+        elements.forEach(element => {
+            element.style.display = displayValue;
+        });
+    }
+
+
+    function toggleButtons(button1, button2) {
+        button1.style.display = "none";
+        button2.style.display = "block";
+    }
+
+
+    function updateProfile(data) {
+        // Actualiza los elementos del perfil con los nuevos datos
+        document.getElementById("profileName").textContent = "Name: " + data.name;
+        document.getElementById("profileSurname").textContent = "Surname: " + data.surname;
+        document.getElementById("profileEmail").textContent = "Email: " + data.email;
+        document.getElementById("profileBirthDate").textContent = "Birth date: " + data.birthDate;
+        document.getElementById("profileStudentDni").textContent = "DNI: " + data.studentDni;
+
+
+        // Actualiza la imagen de perfil si es necesario
+        const photoPath = document.getElementById("profilePhoto");
+        if (data.photo) {
+            photoPath.src = data.photo;
+        } else {
+            alert("Error: la imagen no existe");
+        }
+    }
+}
+
+
+

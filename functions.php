@@ -247,7 +247,9 @@ function uploadPhoto($aux) {
         }
         
     } else {
-        return "/Learning-Academy/img/profilePhotos/default.png ";
+        if($aux == 1 || $aux == 2){
+            return "/Learning-Academy/img/profilePhotos/default.png";
+        }
     }
 }
 

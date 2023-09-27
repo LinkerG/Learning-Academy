@@ -26,7 +26,7 @@
             // Insert
             if(connectBD("learningacademy",$connection) && $continue){
                 if($_FILES['photoPath']['error'] == 4){
-                    $_POST['photoPath']="/Learning-Academy/img/coursePhotos/default.png";
+                    $_POST['photoPath']="/Learning-Academy/img/profilePhotos/default.png";
                 }else{
                     $_POST['photoPath'] = uploadPhoto(2);
                 } 
