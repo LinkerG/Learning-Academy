@@ -41,21 +41,6 @@ function enrollFunction(action, courseId, dniStudent) {
     }
 }
 
-/* Ventanas */
-/*function addEvents(){
-   
-    let tabs = document.getElementsByClassName("tab");
-   
-   
-    for (let i = 0; i < tabs.length; i++) {
-  
-        tabs[i].addEventListener("click", function(){
-
-            openTab(i+1);}
-        );
-    }
-}*/
-
 function openTab(tabNumber) {
     let tabContents = document.getElementsByClassName("tab-content");
     let selectedTab = document.getElementById("tab" + tabNumber);
@@ -242,3 +227,27 @@ function openTab(tabNumber) {
 
 
 
+
+
+function checkboxShow(formId){
+    let p1 = document.getElementById('1');
+  
+    document.get="red";
+    let formul = document.getElementById(formId);
+    if(formul.style.visibility == "visible"){
+        
+        formul.style.visibility = "hidden";
+        console.log(formul.style.visibility);
+    } else {
+        
+        formul.style.visibility = "visible";
+        console.log(formul.style.visibility);
+    }
+}
+
+function hideForms(){
+    let forms = document.getElementsByTagName("form");
+    for (let i = 0; i < forms.length; i++) {
+        //forms[i].style.visibility = "hidden";
+    }
+}
