@@ -1,0 +1,16 @@
+@mixin tabStyle {
+    display: inline-block;
+    width: 20%;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-right: 1px solid #ccc;
+
+    &:hover {
+        background-color: #e0e0e0;
+    }
+
+    &.selected {
+        background-color: #e0e0e0;
+    }
+}

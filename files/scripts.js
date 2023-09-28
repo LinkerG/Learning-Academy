@@ -251,21 +251,72 @@ function hideForms() {
 }
 
 function eventosAdmin() {
-    let buttons = document.getElementsByClassName("divButton");
+    // Busco los botones y el div padre
+    let buttons = document.getElementsByClassName("divWindow");
     let buttonsParent = document.getElementsByClassName("tabbedWindow");
     for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function() {
-            buttons[i].style.padding = "17rem";
-            buttons[i].style.paddingLeft = "25rem";
-            buttons[i].style.paddingRight = "25rem";
-            buttonsParent[0].style.marginTop = "1rem";
-            buttonsParent[0].style.display = "flex";
+        console.log(buttons[i]);
+        // Le añado una funcion a cada boton
+        buttons[i].addEventListener("click", function open() {
+            
+            // Elimina todos los botones que no son el que se pulsa
+            let boton = buttons[i];
             for (let j = 0; j < buttons.length; j++) {
-                if (buttons[i]!=buttons[j]) {
+                if (boton!=buttons[j]) {
                     buttons[j].style.display = "none";
                     
                 }
             }
+            
+            // Hace crecer ese boton transformandose en la ventana
+            boton.style.transition = "width 500ms";
+            boton.style.transition = "height 500ms";
+            boton.style.width = "65vw";
+            boton.style.height = "60vh";
+            boton.style.padding = "0px";
+            
+            // Hace que ya no crezca al hacer hover
+            boton.classList.remove("hoverable");
+
+            // Estructura para el div/boton
+            
+            boton.display = "grid";
+
+            // loader es una cortina para que sea /suave/
+            let loader = document.createElement("div");
+            loader.classList.add("loader");
+            loader.style.zIndex = "2";
+            let text = boton.textContent;
+            boton.innerHTML = "";
+            boton.appendChild(loader);
+
+            // Contenido del div
+            let tabContainer = document.createElement("div");
+            tabContainer.classList.add("tab-container");
+            let tabLine = document.createElement("div");
+            tabLine.classList.add("tabsLine");
+            for (let tabButton = 0; tabButton < buttons.length; tabButton++) {
+                let tab = document.createElement("div");
+                tab.classList.add("tab");
+                if(buttons[tabButton].textContent == "") tab.textContent = text;
+                else tab.textContent = buttons[tabButton].textContent;
+                tabLine.appendChild(tab);
+            }
+            
+            tabContainer.appendChild(tabLine);
+            boton.appendChild(tabContainer);
+            
+            
+            setTimeout(function() {
+                boton.style.backgroundColor = "white";
+                loader.style.height = "0px";
+            }, 500);
+            
+            // Estiliza el div padre para que no se vea mal
+            buttonsParent[0].style.marginTop = "3rem";
+            buttonsParent[0].style.display = "flex";
+
+            boton.removeEventListener("click", open);
         });
         
     }

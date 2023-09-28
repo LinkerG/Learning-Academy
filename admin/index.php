@@ -25,8 +25,8 @@
     <div class="container">
     <h1>ADMIN PANEL</h1>
     <div class="tabbedWindow">
-        <div class="divButton">Manage courses</div>
-        <div class="divButton">Manage teachers</div>
+        <div class="divWindow hoverable">Manage courses</div>
+        <div class="divWindow hoverable">Manage teachers</div>
     </div>
 </div>
 <script>
