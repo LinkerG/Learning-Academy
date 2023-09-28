@@ -291,11 +291,14 @@ function eventosAdmin() {
             boton.appendChild(loader);
 
             // Contenido del div
+
+            // Crea las pestañas
             let tabContainer = document.createElement("div");
             tabContainer.classList.add("tab-container");
             let tabLine = document.createElement("div");
             tabLine.classList.add("tabsLine");
             for (let tabButton = 0; tabButton < buttons.length; tabButton++) {
+                // Botones de las pestañas
                 let tab = document.createElement("div");
                 tab.classList.add("tab");
                 if(buttons[tabButton].textContent == "") tab.textContent = text;

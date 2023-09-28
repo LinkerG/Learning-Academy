@@ -194,7 +194,7 @@ function validateUser() {
                                 $_SESSION['birthDate'] = $row['birthDate'];
                                 $_SESSION['photoPath'] = $row['photoPath'];
                                 $_SESSION['dniStudent'] = $row['dniStudent'];
-                                header('Location: student(index.php');
+                                header('Location: student/index.php');
                             }
                         }
                     }
