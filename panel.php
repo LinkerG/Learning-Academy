@@ -40,7 +40,7 @@
         }
 
         printHeader();
-        
+
         switch($_SESSION['role']) {
             case "A":
                 include("panels/adminPanel.php");

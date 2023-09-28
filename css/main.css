@@ -1,11 +1,8 @@
-@charset "UTF-8";
-/* Reset de márgenes para todos los elementos */
 * {
   margin: 0;
   font-family: "Inter", sans-serif;
 }
 
-/* Estilos para el encabezado */
 header {
   display: grid;
   grid-template-rows: 1fr;
@@ -35,13 +32,11 @@ header .logout, header .signup {
   grid-column: 7/8;
 }
 
-/* Estilos para enlaces en el contenedor */
-.container a:is(:link, :hover, :active, :visited) {
+a:is(:link, :hover, :active, :visited) {
   color: black;
   text-decoration: none;
 }
 
-/* Estilos para tablas */
 th,
 td {
   border: 1px solid black;
@@ -51,7 +46,6 @@ table {
   border-collapse: collapse;
 }
 
-/* Estilos para la página "Our Courses" */
 .top {
   margin: 3rem;
   margin-left: 10rem;
@@ -141,7 +135,6 @@ table {
   margin-bottom: 1rem;
 }
 
-/* Estilos para el popup */
 .hiddenContent {
   display: none;
 }
@@ -192,7 +185,6 @@ table {
   font-size: 24px;
 }
 
-/* Estilos para pestañas */
 .tabs-container {
   width: auto;
   border: 1px solid #ccc;
@@ -241,4 +233,28 @@ table {
 }
 .tabs-container .tabWindow {
   display: flex;
+}
+
+.container {
+  margin: 3rem;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+.container h1 {
+  text-align: center;
+  grid-column: 1/4;
+}
+.container .tabbedWindow {
+  grid-column: 1/4;
+  margin-top: 10rem;
+}
+.container .tabbedWindow a {
+  margin: 1rem;
+  padding: 2rem;
+  border: 1px solid black;
+  transition: padding 1000ms;
+}
+.container .tabbedWindow a:hover {
+  padding: 3rem;
 }/*# sourceMappingURL=main.css.map */
