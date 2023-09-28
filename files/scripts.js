@@ -249,3 +249,24 @@ function hideForms() {
 
     }
 }
+
+function eventosAdmin() {
+    let buttons = document.getElementsByClassName("divButton");
+    let buttonsParent = document.getElementsByClassName("tabbedWindow");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function() {
+            buttons[i].style.padding = "17rem";
+            buttons[i].style.paddingLeft = "25rem";
+            buttons[i].style.paddingRight = "25rem";
+            buttonsParent[0].style.marginTop = "1rem";
+            buttonsParent[0].style.display = "flex";
+            for (let j = 0; j < buttons.length; j++) {
+                if (buttons[i]!=buttons[j]) {
+                    buttons[j].style.display = "none";
+                    
+                }
+            }
+        });
+        
+    }
+}

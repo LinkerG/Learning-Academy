@@ -246,15 +246,19 @@ table {
   grid-column: 1/4;
 }
 .container .tabbedWindow {
-  grid-column: 1/4;
   margin-top: 10rem;
+  transition: margin-top 500ms;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+  place-items: center;
 }
-.container .tabbedWindow a {
-  margin: 1rem;
+.container .tabbedWindow .divButton {
   padding: 2rem;
   border: 1px solid black;
-  transition: padding 1000ms;
+  transition: padding 500ms;
 }
-.container .tabbedWindow a:hover {
+.container .tabbedWindow .divButton:hover {
   padding: 3rem;
 }/*# sourceMappingURL=main.css.map */
