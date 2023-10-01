@@ -83,8 +83,7 @@ table {
   grid-column-gap: 2rem;
 }
 .courseContainer .course {
-  z-index: 1;
-  transition: z-index 1000ms;
+  z-index: 0;
   padding-left: 2rem;
   padding-right: 2rem;
   background-color: #ececec;
@@ -123,7 +122,7 @@ table {
   text-align: center;
 }
 .courseContainer .course:hover {
-  z-index: 2;
+  z-index: 1;
 }
 .courseContainer .course:hover .hidden {
   grid-template-rows: 1fr 2rem;
@@ -164,6 +163,7 @@ table {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  z-index: 3;
 }
 .popup .popup-content .pCourseName {
   grid-column: 1/4;

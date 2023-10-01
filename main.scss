@@ -98,8 +98,7 @@ table {
     grid-column-gap: 2rem;
 
     .course {
-        z-index: 1;
-        transition: z-index 1000ms;
+        z-index: 0;
         padding-left: 2rem;
         padding-right: 2rem;
         background-color: #ececec;
@@ -141,7 +140,7 @@ table {
         }
 
         &:hover {
-            z-index: 2;
+            z-index: 1;
 
             .hidden {
                 grid-template-rows: 1fr 2rem;
@@ -188,6 +187,7 @@ table {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(5, 1fr);
+        z-index: 3;
 
         .pCourseName {
             grid-column: 1/4;
