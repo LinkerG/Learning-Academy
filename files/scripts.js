@@ -350,3 +350,15 @@ function loadAdmin(skipLoader, elementId) {
         clickById(elementId);
     }
 }
+
+function renderRoulette() {
+    rouletteDiv = document.getElementById("roulette");
+
+    rouletteDiv.style.display = "flex";
+}
+
+function closeRoulette() {
+    rouletteDiv = document.getElementById("roulette");
+
+    rouletteDiv.style.display = "none";
+}
