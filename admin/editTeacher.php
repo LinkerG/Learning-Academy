@@ -18,7 +18,7 @@
 
             if(connectBD("learningacademy", $connection)) {
                 updateSQL($connection, $sql);
-                header("Refresh: 0; URL='teachers.php'");
+                header("Refresh: 0; URL='index.php?manage=teachers'");
                 exit;
             }
         } else if(isset($_REQUEST['dniTeacher'])){

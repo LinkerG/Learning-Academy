@@ -21,7 +21,7 @@
 
             if(connectBD("learningacademy", $connection)) {
                 updateSQL($connection, $sql);
-                header("Refresh: 0; URL='courses.php'");
+                header("Refresh: 0; URL='index.php?manage=courses'");
             }
         } else if(isset($_REQUEST['courseId'])){
             if(connectBD("learningacademy", $connection)){

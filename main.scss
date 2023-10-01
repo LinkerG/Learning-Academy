@@ -291,6 +291,9 @@ table {
             overflow: hidden;
             .tab-container{
                 z-index: 1;
+                width: 100%;
+                height: 100%;
+                overflow-y: auto;
                 .tabsLine{
                     display: flex;
                     .tab{
@@ -298,6 +301,44 @@ table {
                         color: black;
                         width: 49%;
                     }
+                }
+
+                .tabWindow{
+                    height: 100%;
+                    width: 100%;
+                    .tab-content{
+                        position: absolute;
+                        color: black;
+                        display: none;
+                        z-index: 0;
+                    }
+                    .selected{
+                        position: relative;
+                        display: block;
+                        z-index: 1;
+                        width: 100%;
+                        height: 100%;
+                        
+                        table{
+                            width: 100%;
+                            tbody{
+                                width: 100%;
+                                tr{
+                                    width: 100%;
+                                    td{
+                                        img{
+                                            width: 50%;
+                                            height: 50%;
+                                            aspect-ratio: 1/1;
+                                            object-fit: contain;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    
                 }
             }
 

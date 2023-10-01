@@ -49,10 +49,12 @@ function openTab(tabNumber) {
             tabContents[i].style.zIndex = "1";
             tabContents[i].style.position = "relative";
             tabContents[i].style.display = "block";
+            tabContents[i].classList.add("selected");
         } else {
             tabContents[i].style.zIndex = "0";
             tabContents[i].style.position = "absolute";
             tabContents[i].style.display = "none";
+            tabContents[i].classList.remove("selected");
         }
     }
 
@@ -255,7 +257,6 @@ function eventosAdmin() {
     let buttons = document.getElementsByClassName("divWindow");
     let buttonsParent = document.getElementsByClassName("tabbedWindow");
     for (let i = 0; i < buttons.length; i++) {
-        console.log(buttons[i]);
         // Le añado una funcion a cada boton
         buttons[i].addEventListener("click", function open() {
             
@@ -297,16 +298,55 @@ function eventosAdmin() {
             tabContainer.classList.add("tab-container");
             let tabLine = document.createElement("div");
             tabLine.classList.add("tabsLine");
+            let tabWindow = document.createElement("div");
+            tabWindow.classList.add("tabWindow");
             for (let tabButton = 0; tabButton < buttons.length; tabButton++) {
                 // Botones de las pestañas
                 let tab = document.createElement("div");
                 tab.classList.add("tab");
-                if(buttons[tabButton].textContent == "") tab.textContent = text;
-                else tab.textContent = buttons[tabButton].textContent;
+                
+                selected = buttons[tabButton].textContent == "" ? true : false;
+                if(selected) {
+                    tab.textContent = text;
+                    tab.classList.add("selected")
+                } else{
+                    tab.textContent = buttons[tabButton].textContent;
+                }
+
+                tab.id = "t" + tabButton;
+
+                // Evento de las pestañas
+                tab.addEventListener("click", function() {
+                    openTab(tabButton);
+                })
+
                 tabLine.appendChild(tab);
+
+                // Contenido de las pestañas
+                let ventana = document.createElement("div");
+                ventana.classList.add("tab-content");
+                ventana.id = "tab" + tabButton;
+
+                if(selected) ventana.classList.add("selected");
+
+                let show = tab.innerHTML == "Manage courses" ? "courses" : "teachers";
+
+                let toDraw = document.getElementById(show + "Table");
+                toDraw.style.display = "block";
+                let rows = toDraw.getElementsByTagName("tr");
+                let numCols = rows[0].childElementCount;
+
+                let cols = toDraw.getElementsByTagName("td", "th");
+                for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+                    cols[colIndex].style.width = 100 / numCols + "%";
+                }
+                ventana.appendChild(toDraw);
+
+                tabWindow.appendChild(ventana);
             }
-            
+
             tabContainer.appendChild(tabLine);
+            tabContainer.appendChild(tabWindow);
             boton.appendChild(tabContainer);
             
             
@@ -322,5 +362,17 @@ function eventosAdmin() {
             boton.removeEventListener("click", open);
         });
         
+    }
+}
+
+function clickById(elementId) {
+    toClick = document.getElementById(elementId);
+    toClick.click();
+}
+
+function loadAdmin(elementId) {
+    eventosAdmin();
+    if(elementId != null) {
+        clickById(elementId);
     }
 }
