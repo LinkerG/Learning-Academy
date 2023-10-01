@@ -67,9 +67,7 @@
                             echo "</div>";
                             
                             
-                            echo "<div class='popup'>";
-                            echo "<div class='popup-content'></div>";   
-                            echo "</div>";
+                            
                             echo "</figure>";
 
                             echo "<p>{$course['name']}</p>";
@@ -78,6 +76,9 @@
 
                             echo "</div>";
                         }
+                        echo "<div class='popup'>";
+                            echo "<div class='popup-content'></div>";   
+                            echo "</div>";
                     }
                 }
             }
