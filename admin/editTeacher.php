@@ -19,7 +19,7 @@
             if(connectBD("learningacademy", $connection)) {
                 updateSQL($connection, $sql);
                 header("Refresh: 0; URL='index.php?manage=teachers'");
-                exit;
+                die;
             }
         } else if(isset($_REQUEST['dniTeacher'])){
             if(connectBD("learningacademy", $connection)){
@@ -77,6 +77,6 @@
 
         <input type="submit" value="Update">
     </form>
-    <a href="teachers.php">Back</a>
+    <a href="index.php?manage=teachers">Back</a>
 </body>
 </html>

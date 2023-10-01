@@ -109,9 +109,9 @@
 </div>
 <?php
 if(isset($_REQUEST['manage'])) {
-    echo "<script>window.onload = loadAdmin('{$_REQUEST['manage']}')</script>";
+    echo "<script>window.onload = loadAdmin(1,'{$_REQUEST['manage']}')</script>";
 } else {
-    echo "<script>window.onload = loadAdmin;</script>";
+    echo "<script>window.onload = loadAdmin(0);</script>";
 }
 ?>
 </body>

@@ -81,6 +81,6 @@
         
         <input type="submit" value="Update">
     </form>
-    <a href="courses.php">Back</a>
+    <a href="index.php?manage=courses">Back</a>
 </body>
 </html>

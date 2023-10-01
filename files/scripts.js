@@ -252,7 +252,9 @@ function hideForms() {
     }
 }
 
-function eventosAdmin() {
+function eventosAdmin(condition) {
+    skipLoader = condition == 1 ? true : false;
+
     // Busco los botones y el div padre
     let buttons = document.getElementsByClassName("divWindow");
     let buttonsParent = document.getElementsByClassName("tabbedWindow");
@@ -285,11 +287,17 @@ function eventosAdmin() {
 
             // loader es una cortina para que sea /suave/
             let loader = document.createElement("div");
-            loader.classList.add("loader");
-            loader.style.zIndex = "2";
+            if (!skipLoader) {
+                loader.classList.add("loader");
+                loader.style.zIndex = "2";
+            }
+            
             let text = boton.textContent;
             boton.innerHTML = "";
-            boton.appendChild(loader);
+            if (!skipLoader) {
+                boton.appendChild(loader);    
+            }
+            
 
             // Contenido del div
 
@@ -348,13 +356,14 @@ function eventosAdmin() {
             tabContainer.appendChild(tabLine);
             tabContainer.appendChild(tabWindow);
             boton.appendChild(tabContainer);
-            
-            
-            setTimeout(function() {
-                boton.style.backgroundColor = "white";
-                loader.style.height = "0px";
-            }, 500);
-            
+            boton.style.backgroundColor = "white";
+            if (!skipLoader) {
+                setTimeout(function() {
+                    
+                    loader.style.height = "0px";
+                }, 500);
+            }
+
             // Estiliza el div padre para que no se vea mal
             buttonsParent[0].style.marginTop = "3rem";
             buttonsParent[0].style.display = "flex";
@@ -370,8 +379,8 @@ function clickById(elementId) {
     toClick.click();
 }
 
-function loadAdmin(elementId) {
-    eventosAdmin();
+function loadAdmin(skipLoader, elementId) {
+    eventosAdmin(skipLoader);
     if(elementId != null) {
         clickById(elementId);
     }
