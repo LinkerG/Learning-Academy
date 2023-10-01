@@ -352,13 +352,19 @@ function loadAdmin(skipLoader, elementId) {
 }
 
 function renderRoulette() {
-    rouletteDiv = document.getElementById("roulette");
-
-    rouletteDiv.style.display = "flex";
+    let audio = new Audio("/Learning-Academy/files/audio/roulette.wav");
+    setTimeout(function() {
+        audio.play();
+        let rouletteDiv = document.getElementById("roulette");
+        rouletteDiv.style.animation = "none";
+        void rouletteDiv.offsetWidth;
+        rouletteDiv.style.animation = "fade-in 2s ease";
+        rouletteDiv.style.display = "flex";
+    }, 1500);
 }
 
 function closeRoulette() {
-    rouletteDiv = document.getElementById("roulette");
+    let rouletteDiv = document.getElementById("roulette");
 
     rouletteDiv.style.display = "none";
 }

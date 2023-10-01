@@ -42,8 +42,8 @@
     </div>
         <p>WIN A PRIZE!!!</p>
         <p>Since it's your first time here, you can have one of this prizes!</p>
-        <img src="/Learning-Academy/igm/icons/roulette.png" alt="prize roulette">
-        <button>SPIN IT!!!</button>
+        <img src="/Learning-Academy/img/icons/roulette.png" alt="prize roulette">
+        <button onclick="spinRoulette()">SPIN IT!!!</button>
     </div>
     <script>
         <?php
