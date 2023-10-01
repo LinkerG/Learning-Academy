@@ -184,6 +184,10 @@ table {
   margin: 1rem;
   font-size: 24px;
 }
+.popup .popup-content .tabs-container {
+  grid-column: 2/4;
+  grid-row: 2/5;
+}
 
 .tabs-container {
   width: auto;
@@ -260,7 +264,7 @@ table {
   height: 1vw;
   padding: 2rem;
   border: 1px solid black;
-  transition: padding 2500ms;
+  transition: padding 500ms;
   background-color: #248EFF;
   color: white;
   overflow: hidden;
@@ -333,4 +337,23 @@ table {
 }
 .container .tabbedWindow .hoverable:hover {
   padding: 3rem;
+}
+
+.toolBar {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+.toolBar form {
+  display: flex;
+  grid-column: 1/2;
+}
+.toolBar a {
+  grid-column: 3/4;
+}
+.toolBar .tbImage {
+  aspect-ratio: 1/1;
+  width: 3%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }/*# sourceMappingURL=main.css.map */

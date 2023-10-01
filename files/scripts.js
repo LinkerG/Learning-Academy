@@ -339,6 +339,51 @@ function eventosAdmin(condition) {
 
                 let show = tab.innerHTML == "Manage courses" ? "courses" : "teachers";
 
+                let toolBar = document.createElement("div");
+                toolBar.classList.add("toolBar")
+
+                let searchBar = document.createElement("form");
+                let input = document.createElement("input");
+                input.type = "text";
+                input.id = "search";
+                input.name = "search";
+                searchBar.appendChild(input)
+                let searchButton = document.createElement("button");
+                searchButton.type = "submit";
+                let searchImg = document.createElement("img");
+                searchImg.src = "/Learning-Academy/img/icons/search.png";
+                searchImg.alt = "lupa";
+                searchImg.classList.add("tbImage");
+                searchButton.appendChild(searchImg);
+
+                searchBar.appendChild(searchButton);
+
+                toolBar.appendChild(searchBar);
+
+                let link = document.createElement("a");
+                if(show == "courses"){
+                    link.href = "addCourse.php"; 
+                    link.textContent = "ADD";
+                    let image = document.createElement("img");
+                    image.src = "/Learning-Academy/img/icons/add.png";
+                    image.alt = "add icon";
+                    image.classList.add("tbImage");
+                    link.appendChild(image);
+                } 
+                else {
+                    link.href == "addTeacher.php";
+                    link.textContent = "ADD";
+                    let image = document.createElement("img");
+                    image.src = "/Learning-Academy/img/icons/add.png";
+                    image.alt = "add icon";
+                    image.classList.add("tbImage");
+                    link.appendChild(image);
+                }
+                             
+                toolBar.appendChild(link);
+
+                ventana.appendChild(toolBar)
+
                 let toDraw = document.getElementById(show + "Table");
                 toDraw.style.display = "block";
                 let rows = toDraw.getElementsByTagName("tr");
