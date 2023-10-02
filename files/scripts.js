@@ -259,7 +259,7 @@ function eventosAdmin(condition) {
 
                 let link = document.createElement("a");
                 if(show == "courses"){
-                    link.href = "addCourse.php"; 
+                    link.href = "addCourse.php";
                     link.textContent = "ADD";
                     let image = document.createElement("img");
                     image.src = "/Learning-Academy/img/icons/add.png";
@@ -328,20 +328,40 @@ function loadAdmin(skipLoader, elementId) {
     }
 }
 
-function renderRoulette() {
+function audioRoulette() {
     let audio = new Audio("/Learning-Academy/files/audio/roulette.wav");
-    setTimeout(function() {
-        audio.play();
-        let rouletteDiv = document.getElementById("roulette");
-        rouletteDiv.style.animation = "none";
-        void rouletteDiv.offsetWidth;
-        rouletteDiv.style.animation = "fade-in 2s ease";
-        rouletteDiv.style.display = "flex";
-    }, 1500);
+    audio.play();
 }
 
 function closeRoulette() {
     let rouletteDiv = document.getElementById("roulette");
 
     rouletteDiv.style.display = "none";
+}
+
+function spinRoulette() {
+    let ruleta = document.getElementById("rouletteImg");
+    gira= 1200 + Math.random()*1200
+    ruleta.style.transition='all 10s ease-out';
+    ruleta.style.transform=`rotate(${gira}deg)`;
+
+    let giraDos = 0;
+    let prize = "";
+    ruleta.addEventListener("transitionend", function(){
+        ruleta.style.transition='none';
+        giraDos= gira % 360;
+        ruleta.style.transform= `rotate(${giraDos}deg)`; 
+
+        degrees = 360 - giraDos;
+
+        if(degrees > 0 && degrees < 120) prize = "discount";
+        else if (degrees > 120 && degrees < 240) prize = "nothing";
+        else if (degrees > 240 && degrees < 360) prize = "free";
+        console.log(prize);
+
+        window.opener.document.location="index.php?a=a";
+
+      });
+      
+      console.log("Funciom pruincjfj " + prize); 
 }
