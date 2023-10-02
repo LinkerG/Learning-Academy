@@ -13,7 +13,6 @@
             include ("../functions.php");
             printHeader();
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                header("Content-Type: application/json");
                 if (connectBD("learningacademy", $connection)) {
                     if ($_FILES['photoPath']['error'] == 4) {
                         $_POST['photoPath'] = "/Learning-Academy/img/profilePhotos/default.png";
@@ -29,7 +28,8 @@
                     $sql = "UPDATE student SET dniStudent = {$_POST['dniStudent']}, name = {$_POST['name']}, surname = {$_POST['surname']}, email = {$_POST['email']}, photoPath = {$_POST['photoPath']}, birthDate = {$_POST['birthDate']} WHERE dniStudent = {$_SESSION['dniStudent']};";
                     updateSQL($connection, $sql);
                     $reply = ["MSJ" => "Updated correctly!"];
-                    echo json_encode($reply);
+                    header("Content-Type: application/json"); // Agrega esta línea
+                    echo json_encode($reply); // Respuesta JSON válida
                     exit;
                 }
             }
