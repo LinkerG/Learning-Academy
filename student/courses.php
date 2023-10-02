@@ -19,14 +19,12 @@
         
     }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (connectBD("learningacademy", $connection)) {
-            for($i = 1; $i < 5;$i++){
-                if(isset($_POST['form'.$i])) {
-                    $msg = uploadPdf($result,$connection,$i);
-                    echo "<script> alert($msg)</script>";
-                }
+        for($i = 1; $i < 5;$i++){
+            if(isset($_FILES['task'.$i])){
+                $msg = uploadPdf($result[0]['courseId'],$connection,$i); 
             }
         }
+        echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=courses.php'>";
     }else{
     ?>
     <?php
@@ -44,94 +42,94 @@
     ?>
     <div class="courseContainer">
     <?php
-                if(empty($result)) {
-                    echo "<div>";
-                    echo "<h1>You aren't in any course</h1>";
-                    echo "<a src=".'../courses.php'.">enter on any of our courses!</a>";
-                    echo "</div>";
-                } else {
-                    foreach ($result as $course){
-                            echo "<div class='course' onclick='openPopup(this)'>";
+        if(empty($result)) {
+            echo "<div>";
+            echo "<h1>You aren't in any course</h1>";
+            echo "<a src=".'../courses.php'.">enter on any of our courses!</a>";
+            echo "</div>";
+        } else {
+            foreach ($result as $course){
+                    echo "<div class='course' onclick='openPopup(this)'>";
 
-                            echo "<figure class='hidden'>";
-                            echo "<img src='{$course['photoPath']}'>";
-                            echo "<figcaption>Hola</figcaption>";
-                            echo "</figure>";
-                            echo "<p>{$course['name']}</p>";
+                    echo "<figure class='hidden'>";
+                    echo "<img src='{$course['photoPath']}'>";
+                    echo "<figcaption>Hola</figcaption>";
+                    echo "</figure>";
+                    echo "<p>{$course['name']}</p>";
 
-                            echo "<div class='hiddenContent'>";
-                            echo "<p class='pCourseName'>{$course['name']}</p>";
-                            
-                        ?>
-                                <div class="tabs-container tabsPopup">
-                                    <div class="tabsLine">
-                                        <div class="tab selected" id="t1" onclick="openTab(1)">Summary</div>
-                                        <div class="tab" id="t2" onclick="openTab(2)">Task 1</div>
-                                        <div class="tab" id="t3" onclick="openTab(3)">Task 2</div>
-                                        <div class="tab" id="t4" onclick="openTab(4)">Task 3</div>
-                                        <div class="tab" id="t5" onclick="openTab(5)">Task 4</div>
-                                    </div>
-                                    <div class="tabWindow">
-                                        <div class="tab-content selected" id="tab1">
-                                            <ul>
-                                                <?php
-                                                    $task1 = $course['task1'] == null ? "X" : "O";
-                                                    echo "<li>Task 1: $task1</li>";
-                                                    $task2 = $course['task2'] == null ? "X" : "O";
-                                                    echo "<li>Task 2: $task2</li>";
-                                                    $task3 = $course['task3'] == null ? "X" : "O";
-                                                    echo "<li>Task 3: $task3</li>";
-                                                    $task4 = $course['task4'] == null ? "X" : "O";
-                                                    echo "<li>Task 4: $task4</li>";
-                                                ?>
-                                            </ul>
-                                        </div>
+                    echo "<div class='hiddenContent'>";
+                    echo "<p class='pCourseName'>{$course['name']}</p>";
+                    
+                ?>
+                        <div class="tabs-container tabsPopup">
+                            <div class="tabsLine">
+                                <div class="tab selected" id="t1" onclick="openTab(1)">Summary</div>
+                                <div class="tab" id="t2" onclick="openTab(2)">Task 1</div>
+                                <div class="tab" id="t3" onclick="openTab(3)">Task 2</div>
+                                <div class="tab" id="t4" onclick="openTab(4)">Task 3</div>
+                                <div class="tab" id="t5" onclick="openTab(5)">Task 4</div>
+                            </div>
+                            <div class="tabWindow">
+                                <div class="tab-content selected" id="tab1">
+                                    <ul>
                                         <?php
-                                            for ($i = 1; $i < 5; $i++) { 
-                                                $task = "task" . $i;
-                                                $tabid = "tab".($i+1);
-                                                $taskStatus = $course[$task]==null ? false : true;
-                                                $formId = "form" .$i;
-                                                echo "<div class='tab-content' id='$tabid'>";
-                                                echo "<div>";
-                                                echo "<p>Task $i</p>";
-                                                if($taskStatus) {
-                                                    echo "<p>Entregado ^^</p>";
-                                                    echo "</div>";
-                                                    echo "<div>";
-                                                    echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
-                                                    echo "<form enctype ='multipart/form-data' action='courses.php' method='POST' id='$formId' name='form$i'>";
-                                                    echo "<input type='file' name='$task' id='$task' accept='.pdf'>";
-                                                    echo "<input type='submit' value='Save changes'>";
-                                                    echo "</form>";
-                                                } else {
-                                                    echo "<p>No entregado</p>";
-                                                    echo "</div>";
-                                                    echo "<div>";
-                                                    echo "<p>Upload your task:</p>";
-                                                    echo "<form enctype ='multipart/form-data' action='courses.php' method='POST' id='$formId' name='form$i' class='noHide'>";
-                                                    echo "<input type='file' name='$task' id='$task'>";
-                                                    echo "<input type='submit' value='Save changes'>";
-                                                    echo "</form>";
-                                                }
-                                                echo "</div>";
-                                                echo "</div>";
-                                            }
+                                            $task1 = $course['task1'] == null ? "X" : "O";
+                                            echo "<li>Task 1: $task1</li>";
+                                            $task2 = $course['task2'] == null ? "X" : "O";
+                                            echo "<li>Task 2: $task2</li>";
+                                            $task3 = $course['task3'] == null ? "X" : "O";
+                                            echo "<li>Task 3: $task3</li>";
+                                            $task4 = $course['task4'] == null ? "X" : "O";
+                                            echo "<li>Task 4: $task4</li>";
                                         ?>
-                                    </div>
-                                    
+                                    </ul>
                                 </div>
+                                <?php
+                                    for ($i = 1; $i < 5; $i++) { 
+                                        $task = "task" . $i;
+                                        $tabid = "tab".($i+1);
+                                        $taskStatus = $course[$task]==null ? false : true;
+                                        $formId = "form" .$i;
+                                        echo "<div class='tab-content' id='$tabid'>";
+                                        echo "<div>";
+                                        echo "<p>Task $i</p>";
+                                        if($taskStatus) {
+                                            echo "<p>Entregado ^^</p>";
+                                            echo "</div>";
+                                            echo "<div>";
+                                            echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
+                                            echo "<form enctype ='multipart/form-data' action='courses.php' method='POST' id='$formId' name='form$i'>";
+                                            echo "<input type='file' name='$task' id='$task'>";
+                                            echo "<input type='submit' value='Save changes'>";
+                                            echo "</form>";
+                                        } else {
+                                            echo "<p>No entregado</p>";
+                                            echo "</div>";
+                                            echo "<div>";
+                                            echo "<p>Upload your task:</p>";
+                                            echo "<form enctype ='multipart/form-data' action='courses.php' method='POST' id='$formId' name='form$i' class='noHide'>";
+                                            echo "<input type='file' name='$task' id='$task'>";
+                                            echo "<input type='submit' value='Save changes'>";
+                                            echo "</form>";
+                                        }
+                                        echo "</div>";
+                                        echo "</div>";
+                                    }
+                                ?>
+                            </div>
+                            
+                        </div>
 
-                        <?php
-                            
-                            echo "</div>";
-                            
-                            echo "</div>";
-                            echo "<div class='popup'>";
-                            echo "<div class='popup-content'></div>";   
-                            echo "</div>";
-                    }
-                }
+                <?php
+                    
+                    echo "</div>";
+                    
+                    echo "</div>";
+                    echo "<div class='popup'>";
+                    echo "<div class='popup-content'></div>";   
+                    echo "</div>";
+            }
+        }
     ?>
 
     </div>
