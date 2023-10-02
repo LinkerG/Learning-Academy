@@ -38,7 +38,7 @@
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='teachers.php'");
+                    header("Refresh: 0; URL='index.php?manage=teachers'");
                     die;
                 }
             }else{
@@ -47,7 +47,7 @@
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}', photoPath='{$_POST['photoPath']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='teachers.php'");
+                    header("Refresh: 0; URL='index.php?manage=teachers'");
                     die;
                 }
             } 

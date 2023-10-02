@@ -34,21 +34,21 @@
 
             // Insert
             if(connectBD("learningacademy",$connection) && $continue){
-                if($_FILES['photoPath']['error'] == 4){
-                    $_POST['photoPath']="/Learning-Academy/img/coursePhotos/default.png";
-                }else{
-                    $_POST['photoPath'] = uploadPhoto(2);
-                } 
-                
-                $sql = "INSERT INTO course (name, hours, startDate, endDate, description, dniTeacher, active, photoPath) 
-                VALUES ('{$_POST['name']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','{$_POST['photoPath']}')";
-
-                $action = insertSQL($connection, $sql);
-                if($action == 0) {
-                    echo "<script>alert('Course added correctly')</script>";
-                    header('Location: courses.php');
+                $uploadStatus = uploadPhoto(2, $route);
+                if($uploadStatus == 0){
+                    $sql = "INSERT INTO course (name, hours, startDate, endDate, description, dniTeacher, active, photoPath) 
+                    VALUES ('{$_POST['name']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','$route')";
+    
+                    $action = insertSQL($connection, $sql);
+                    if($action == 0) {
+                        echo "<script>alert('Course added correctly')</script>";
+                        header('Location: index.php?manage=courses');
+                    }
+                } elseif ($uploadStatus == 1) {
+                    echo "<script>alert('Error uploading photo')</script>";
+                } elseif ($uploadStatus == 2) {
+                    echo "<script>alert('Please upload a photo')</script>";
                 }
-                
             }
         }
     ?>

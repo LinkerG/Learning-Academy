@@ -31,25 +31,26 @@
 
             // Insert
             if(connectBD("learningacademy",$connection) && $continue){
-                if($_FILES['photoPath']['error'] == 4){
-                    $_POST['photoPath']="/Learning-Academy/img/coursePhotos/default.png";
-                }else{
-                    $_POST['photoPath'] = uploadPhoto(2);
-                } 
-                
-                $sql = "INSERT INTO teacher (dniTeacher, email, password, name, surname, titulation, photoPath, active) 
-                VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','{$_POST['photoPath']}', '1')";
+                $uploadStatus = uploadPhoto(1, $route);
+                if($uploadStatus == 0){
+                    $sql = "INSERT INTO teacher (dniTeacher, email, password, name, surname, titulation, photoPath, active) 
+                    VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','$route', '1')";
 
                 $action = insertSQL($connection, $sql);
                 if($action == 0) {
-                    echo "<script>alert('You signed in correctly, now log in')</script>";
-                    header('Location: teachers.php');
+                    echo "<script>alert('$route')</script>";
+                    echo "<script>alert('Course added correctly')</script>";
+                    //header('Location: index.php?manage=teachers');
                 } else if($action == 1062) {
                     echo "<script>alert('DNI or email already in use')</script>";
                 } else {
                     echo "<script>alert('$action')</script>";
                 }
-                
+                } elseif ($uploadStatus == 1) {
+                    echo "<script>alert('Error uploading photo')</script>";
+                } elseif ($uploadStatus == 2) {
+                    echo "<script>alert('Please upload a photo')</script>";
+                }
             }
         }
     ?>

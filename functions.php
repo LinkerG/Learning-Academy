@@ -217,39 +217,35 @@ function notValidated() {
     header("Refresh: 5; URL='close.php'");
 }
 
-function uploadPhoto($aux) {
-    if (is_uploaded_file($_FILES['photoPath']['tmp_name'])) {
-        if($aux == 1){
-            //Para los profes
-            $directoryName = '/Learning-Academy/img/profilePhotos/';
-            $fileName = $_POST['dniTeacher'] . '.png'; // Aquí estableces el nombre de la foto como el dni y la extensión ".png"
-        }else if($aux == 2){
-            //Para los alumnos
-            $fileName = $_POST['dniStudent'] . '.png';
-            $directoryName = '/Learning-Academy/img/profilePhotos/';
-        }else if($aux == 3){
-            //Para cursos
-            $fileName = $_POST['courseId'] . '.png';
-            $directoryName = '/Learning-Academy/img/coursePhotos/';
-        }
-        $fileRoute = $directoryName . $fileName;
-        if(file_exists($fileRoute)){
-            unlink($fileRoute);
-            if (move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute)) {         
-                return $fileRoute;
+function uploadPhoto($aux, &$route) {
+    $route = "../img/";
+
+    if (isset($_FILES['photoPath']) && $_FILES['photoPath']['error'] === UPLOAD_ERR_OK) {
+        $isImage = getimagesize($_FILES["photoPath"]["tmp_name"]);
+
+        if ($isImage !== false) {
+            switch ($aux) {
+                case 0:
+                    $route = $route . "profilePhotos/" . $_POST['dniStudent'];
+                    break;
+                case 1:
+                    $route = $route . "profilePhotos/" . $_POST['dniTeacher'];
+                    break;
+                case 2:
+                    $route = $route . "coursePhotos/" . basename($_FILES["photoPath"]["name"]);
+                    break;
+            }
+            if (move_uploaded_file($_FILES["photoPath"]["tmp_name"], $route)) {
+                return 0;
+            } else {
+                return 1; // Error al mover el archivo
             }
         } else {
-            if (move_uploaded_file($_FILES['photoPath']['tmp_name'], $fileRoute)) {         
-                return $fileRoute;
-            } else {
-                return "No se ha podido subir el fichero";
-            }
+            return 2; // No es una imagen válida
         }
-        
     } else {
-        if($aux == 1 || $aux == 2){
-            return "/Learning-Academy/img/profilePhotos/default.png";
-        }
+        // No se cargó un archivo, no es necesario modificar la ruta
+        return 0;
     }
 }
 
