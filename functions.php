@@ -289,22 +289,21 @@ function dniVerification($dni) {
         return false;
     }
 }
-
-function uploadPdf($result,$connection,$numTask) {
-    $tasks = "task" . $numTask;
-    $extension = pathinfo($_FILES['name'],PATHINFO_EXTENSION);
-    if(strtolower($extension) !== 'pdf'){
+function uploadPdf($courseId,$connection,$numTask) {
+    $task = "task".$numTask;
+    $extension = pathinfo($_FILES[$task]['name'],PATHINFO_EXTENSION);
+    if(strtolower($extension) !== 'pdf'){   
         return "Sube un archivo PDF.";
-    }else{
-        $directoryName = '/Learning-Academy/files/tasks/';
-        $fileName = $_SESSION['dniStudent']."_".$result['courseId']."_".$tasks.'.pdf';
-        if(move_uploaded_file($_FILES['tmp_name'],$directoryName . $fileName)){
+    }else{  
+        $directoryName = '../files/tasks/';
+        $fileName = $_SESSION['dniStudent']."_".$courseId."_".$task.'.pdf';
+        if(move_uploaded_file($_FILES[$task]['tmp_name'],$directoryName . $fileName)){
             $fileRoute=$directoryName . $fileName;
-            $sql = "INSERT INTO matriculates ($tasks) VALUES($fileRoute) WHERE dniStudent = '{$_SESSION['dniStudent']}' AND courseId = '{$result['courseId']}';";
-            insertSQL($connection,$sql);
-            return "La ". $tasks ."se ha subido correctamente!";
+            $sql = "UPDATE matriculates SET $task = '$fileRoute' WHERE dniStudent = '{$_SESSION['dniStudent']}' AND courseId = $courseId;"; 
+            updateSQL($connection,$sql);
+            return "La $task se ha subido correctamente!";
         }else{
-            return "Error al subir la ". $tasks;
+            return "Error al subir la $task";
         }
         
     }
