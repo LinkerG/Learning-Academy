@@ -14,6 +14,8 @@
         include('functions.php');
         
         printHeader();
+
+        
     ?>
     <h1>Página principal</h1>
 </body>

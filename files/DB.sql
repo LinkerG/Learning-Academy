@@ -22,7 +22,8 @@ CREATE TABLE student(
     name varchar(15),
     surname varchar(25),
     birthDate date,
-    photoPath varchar(100)
+    photoPath varchar(100),
+    prize varchar(100)
 );
 
 -- Creacion de la tabla course
