@@ -386,10 +386,32 @@ table {
     }
 }
 
-.roulette{
-    border: 1px solid black;
-    cursor: default;
+.rouletteContainer {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    min-width: 500px;
+    min-height: 500px;
+    .roulette{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        img {
+            height: 50%;
+            object-fit: contain;
+            aspect-ratio: 1/1;
+        }
+
+        button {
+            width: 20vw;
+        }
+    }
 }
+
 
 @keyframes spin {
     from {

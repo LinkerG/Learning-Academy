@@ -16,6 +16,7 @@
     if (connectBD("learningacademy", $connection)) {
         $sql = "SELECT m.task1,m.task2,m.task3,m.task4,m.score,c.endDate,c.name,c.photoPath,m.courseId FROM matriculates m INNER JOIN course c ON c.courseId = m.courseId INNER JOIN student s ON s.dniStudent = m.dniStudent WHERE s.dniStudent = '" . $_SESSION['dniStudent'] . "' ;";
         selectSQL($connection,$sql,$result);
+        
     }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (connectBD("learningacademy", $connection)) {

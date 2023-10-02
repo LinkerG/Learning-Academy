@@ -293,6 +293,7 @@ function dniVerification($dni) {
         return false;
     }
 }
+
 function uploadPdf($result,$connection,$numTask) {
     $tasks = "task" . $numTask;
     $extension = pathinfo($_FILES['name'],PATHINFO_EXTENSION);
@@ -303,7 +304,7 @@ function uploadPdf($result,$connection,$numTask) {
         $fileName = $_SESSION['dniStudent']."_".$result['courseId']."_".$tasks.'.pdf';
         if(move_uploaded_file($_FILES['tmp_name'],$directoryName . $fileName)){
             $fileRoute=$directoryName . $fileName;
-            $sql = "INSERT INTO matriculates ($tasks) VALUES($fileRoute) WHERE dniStudent = '{$_SESSION['dniStudent']} AND courseId = '{$result['courseId']}';";
+            $sql = "INSERT INTO matriculates ($tasks) VALUES($fileRoute) WHERE dniStudent = '{$_SESSION['dniStudent']}' AND courseId = '{$result['courseId']}';";
             insertSQL($connection,$sql);
             return "La ". $tasks ."se ha subido correctamente!";
         }else{

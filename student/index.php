@@ -21,7 +21,12 @@
                 $sql = "SELECT prize FROM student WHERE dniStudent = '" . $_SESSION['dniStudent'] . "';";
 
                 if(selectSQL($connection, $sql, $result)){
-                    if ($result[0]['prize'] == "") $hasPrize = true;
+                    if ($result[0]['prize'] == "" && isset($_REQUEST['prize'])){
+                        $update = "UPDATE student SET prize = '" . $_REQUEST['prize'] . "' WHERE dniStudent = '" . $_SESSION['dniStudent'] . "'";
+                        updateSQL($connection, $update);
+                        $hasPrize = true;
+                    }
+                    else if ($result[0]['prize'] != "") $hasPrize = true;
                 }
             }
         } else{
@@ -37,8 +42,8 @@
     </div>
     <script>
         <?php
-            if($hasPrize){
-                echo "window.open('roulete.php', 'width=100, height=100', '_blank');";
+            if(!$hasPrize){
+                echo "window.open('roulette.php', '_blank', 'width=600,height=600,resizable=no');";
                 echo "audioRoulette();";
             }
         ?>

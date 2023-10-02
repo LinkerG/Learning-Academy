@@ -87,6 +87,6 @@
 
         <input type="submit" value="Add">
     </form>
-    <a href="courses.php">Cancel</a>
+    <a href="index.php?manage=courses">Cancel</a>
 </body>
 </html>

@@ -71,6 +71,6 @@
         <input type="hidden" name="active" id="active" value="1">
         <input type="submit" value="Add">
     </form>
-    <a href="teachers.php">Cancel</a>
+    <a href="index.php?manage=teachers">Cancel</a>
 </body>
 </html>

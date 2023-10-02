@@ -342,9 +342,11 @@ function closeRoulette() {
 function spinRoulette() {
     let ruleta = document.getElementById("rouletteImg");
     gira= 1200 + Math.random()*1200
-    ruleta.style.transition='all 10s ease-out';
+    ruleta.style.transition='all 4s ease-out';
     ruleta.style.transform=`rotate(${gira}deg)`;
 
+    let spinAudio = new Audio("/Learning-Academy/files/audio/spin.wav");
+    spinAudio.play();
     let giraDos = 0;
     let prize = "";
     ruleta.addEventListener("transitionend", function(){
@@ -354,12 +356,23 @@ function spinRoulette() {
 
         degrees = 360 - giraDos;
 
-        if(degrees > 0 && degrees < 120) prize = "discount";
-        else if (degrees > 120 && degrees < 240) prize = "nothing";
-        else if (degrees > 240 && degrees < 360) prize = "free";
-        console.log(prize);
+        if(degrees > 0 && degrees < 120) {
+            prize = "discount";
+            let audio = new Audio("/Learning-Academy/files/audio/discount.wav");
+            audio.play();
+        }
+        else if (degrees > 120 && degrees < 240) {
+            prize = "nothing";
+            let audio = new Audio("/Learning-Academy/files/audio/nothing.mp3");
+            audio.play();
+        }
+        else if (degrees > 240 && degrees < 360) {
+            prize = "free";
+            let audio = new Audio("/Learning-Academy/files/audio/free.wav");
+            audio.play();
+        }
 
-        window.opener.document.location="index.php?a=a";
+        window.opener.document.location="index.php?prize=" + prize;
 
       });
       
