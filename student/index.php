@@ -37,12 +37,13 @@
     </div>
 
     <div id="roulette" class="roulette" style="display:none;">
-    <div class=topBar>
-        <button onclick="closeRoulette()" id="closeButton">X</button>
-    </div>
+        <div class=topBar>
+            <button onclick="closeRoulette()" id="closeButton">X</button>
+        </div>
         <p>WIN A PRIZE!!!</p>
         <p>Since it's your first time here, you can have one of this prizes!</p>
-        <img src="/Learning-Academy/img/icons/roulette.png" alt="prize roulette">
+        <img src="/Learning-Academy/img/icons/roulette.png" alt="prize roulette" id="rouletteImg">
+        <div class="arrow"></div>
         <button onclick="spinRoulette()">SPIN IT!!!</button>
     </div>
     <script>

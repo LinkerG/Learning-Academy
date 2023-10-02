@@ -282,7 +282,7 @@ function eventosAdmin(condition) {
 
                 let link = document.createElement("a");
                 if(show == "courses"){
-                    link.href = "addCourse.php"; 
+                    link.href = "addCourse.php";
                     link.textContent = "ADD";
                     let image = document.createElement("img");
                     image.src = "/Learning-Academy/img/icons/add.png";
@@ -291,7 +291,7 @@ function eventosAdmin(condition) {
                     link.appendChild(image);
                 } 
                 else {
-                    link.href == "addTeacher.php";
+                    link.href = "addTeacher.php";
                     link.textContent = "ADD";
                     let image = document.createElement("img");
                     image.src = "/Learning-Academy/img/icons/add.png";
@@ -367,4 +367,14 @@ function closeRoulette() {
     let rouletteDiv = document.getElementById("roulette");
 
     rouletteDiv.style.display = "none";
+}
+
+function spinRoulette() {
+    let rouletteImg = document.getElementById("rouletteImg");
+
+    rouletteImg.style.animation = "spin 250ms linear infinite";
+
+    
+    
+    
 }
