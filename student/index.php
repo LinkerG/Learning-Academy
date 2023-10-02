@@ -35,21 +35,11 @@
         <a href="courses.php">view your courses</a>
         <a href="profile.php">Profile</a>
     </div>
-
-    <div id="roulette" class="roulette" style="display:none;">
-        <div class=topBar>
-            <button onclick="closeRoulette()" id="closeButton">X</button>
-        </div>
-        <p>WIN A PRIZE!!!</p>
-        <p>Since it's your first time here, you can have one of this prizes!</p>
-        <img src="/Learning-Academy/img/icons/roulette.png" alt="prize roulette" id="rouletteImg">
-        <div class="arrow"></div>
-        <button onclick="spinRoulette()">SPIN IT!!!</button>
-    </div>
     <script>
         <?php
             if($hasPrize){
-                echo "window.onload = renderRoulette;";
+                echo "window.open('roulete.php', 'width=100, height=100', '_blank');";
+                echo "audioRoulette();";
             }
         ?>
     </script>
