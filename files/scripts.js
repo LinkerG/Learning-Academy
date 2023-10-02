@@ -68,41 +68,18 @@ function openTab(tabNumber) {
         }
     }
   }
+
   function editProfile() {
     const editBtn = document.getElementById("edit-btn");
     const saveBtn = document.getElementById("save-btn");
     const profileForm = document.getElementById("profile-form");
   
     editBtn.addEventListener("click", () => toggleElements(true));
-    saveBtn.addEventListener("click", () => handleSaveClick());
-  
-    function handleSaveClick() {
-      const formData = new FormData(profileForm);
-  
-      fetch("../student/profile.php", {
-        method: "POST",
-        body: formData
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Error en la solicitud.");
-          }
-          return response.json();
-        })
-        .then(data => {
-          updateProfile(data);
-          toggleElements(false);
-        })
-        .catch(error => {
-          console.error("Error al enviar los datos: " + error);
-          // Puedes agregar manejo de errores aquí
-        });
-    }
   
     function toggleElements(isEditMode) {
         const profileElements = document.querySelectorAll(".profile-element");
         const formElements = document.querySelectorAll(".form-element");
-        const profileForm = document.getElementById("profile-form"); // Agregado para seleccionar el formulario
+        const profileForm = document.getElementById("profile-form"); // seleccionar el formulario
       
         console.log("toggleElements llamada. Modo edición: " + isEditMode);
       
@@ -291,7 +268,7 @@ function eventosAdmin(condition) {
                     link.appendChild(image);
                 } 
                 else {
-                    link.href == "addTeacher.php";
+                    link.href = "addTeacher.php";
                     link.textContent = "ADD";
                     let image = document.createElement("img");
                     image.src = "/Learning-Academy/img/icons/add.png";

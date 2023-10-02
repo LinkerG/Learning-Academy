@@ -13,6 +13,17 @@
 </head>
 <body>
     <?php
+    if (connectBD("learningacademy", $connection)) {
+        $sql = "SELECT m.task1,m.task2,m.task3,m.task4,m.score,c.endDate,c.name,c.photoPath,m.courseId FROM matriculates m INNER JOIN course c ON c.courseId = m.courseId INNER JOIN student s ON s.dniStudent = m.dniStudent WHERE s.dniStudent = '" . $_SESSION['dniStudent'] . "' ;";
+        selectSQL($connection,$sql,$result);
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (connectBD("learningacademy", $connection)) {
+            
+        }
+    }else{
+    ?>
+    <?php
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
             include("needStudent.html");
             header("Refresh: 5; URL='close.php'");
@@ -27,10 +38,6 @@
     ?>
     <div class="courseContainer">
     <?php
-        if(connectBD("learningacademy", $connection)) {
-            $sql = "SELECT m.task1,m.task2,m.task3,m.task4,m.score,c.endDate,c.name,c.photoPath,m.courseId FROM matriculates m INNER JOIN course c ON c.courseId = m.courseId INNER JOIN student s ON s.dniStudent = m.dniStudent WHERE s.dniStudent = '" . $_SESSION['dniStudent'] . "' ;";
-        }
-            if(selectSQL($connection, $sql, $result)){
                 if(empty($result)) {
                     echo "<div>";
                     echo "<h1>You aren't in any course</h1>";
@@ -88,7 +95,7 @@
                                                     echo "<div>";
                                                     echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
                                                     echo "<form enctype ='multipart/form-data' action='#' method='POST' id='$formId'>";
-                                                    echo "<input type='file' name='$task' id='$task'>";
+                                                    echo "<input type='file' name='$task' id='$task' accept='.pdf'>";
                                                     echo "<input type='submit' value='Save changes'>";
                                                     echo "</form>";
                                                 } else {
@@ -119,11 +126,14 @@
                             echo "</div>";
                     }
                 }
-            }
-    ?> 
+    ?>
+
     </div>
     <script>
         window.onload = hideForms;
     </script>
+    <?php
+    }
+    ?>
 </body>
 </html>

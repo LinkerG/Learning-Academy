@@ -293,26 +293,23 @@ function dniVerification($dni) {
         return false;
     }
 }
-function uploadPdf($result) {
-    for($i = 1; $i <= 4; $i++){
-        if (is_uploaded_file($_FILES['task'.$i]['tmp_name'])) {
-            $file_type = $_FILES['task'.$i]['type'];
-            $directoryName = '/Learning-Academy/tasks/';
-            $fileName = $_SESSION['dniStudent']."_".$result['courseId'] . '.pdf'; 
-            
-            $fileRoute = $directoryName . $fileName;
-            if(file_exists($fileRoute) && $file_type === 'application/pdf'){
-                unlink($fileRoute);
-                if (move_uploaded_file($_FILES['task'.$i]['tmp_name'], $fileRoute)) {         
-                    return $fileRoute;
-                }
-            } else {
-                if (move_uploaded_file($_FILES['task'.$i]['tmp_name'], $fileRoute)) {         
-                    return $fileRoute;
-                }
-            }
-            
-        } 
+function uploadPdf($result,$connection,$numTask) {
+    $tasks = "task" . $numTask;
+    $extension = pathinfo($_FILES['name'],PATHINFO_EXTENSION);
+    if(strtolower($extension) !== 'pdf'){
+        return "Sube un archivo PDF.";
+    }else{
+        $directoryName = '/Learning-Academy/files/tasks/';
+        $fileName = $_SESSION['dniStudent']."_".$result['courseId']."_".$tasks.'.pdf';
+        if(move_uploaded_file($_FILES['tmp_name'],$directoryName . $fileName)){
+            $fileRoute=$directoryName . $fileName;
+            $sql = "INSERT INTO matriculates ($tasks) VALUES($fileRoute) WHERE dniStudent = '{$_SESSION['dniStudent']} AND courseId = '{$result['courseId']}';";
+            insertSQL($connection,$sql);
+            return "La ". $tasks ."se ha subido correctamente!";
+        }else{
+            return "Error al subir la ". $tasks;
+        }
+        
     }
 }
 ?>
