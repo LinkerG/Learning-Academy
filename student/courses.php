@@ -19,7 +19,12 @@
     }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (connectBD("learningacademy", $connection)) {
-            
+            for($i = 1; $i < 5;$i++){
+                if(isset($_POST['form'.$i])) {
+                    $msg = uploadPdf($result,$connection,$i);
+                    echo "<script> alert($msg)</script>";
+                }
+            }
         }
     }else{
     ?>
@@ -94,7 +99,7 @@
                                                     echo "</div>";
                                                     echo "<div>";
                                                     echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
-                                                    echo "<form enctype ='multipart/form-data' action='#' method='POST' id='$formId'>";
+                                                    echo "<form enctype ='multipart/form-data' action='courses.php' method='POST' id='$formId' name='form$i'>";
                                                     echo "<input type='file' name='$task' id='$task' accept='.pdf'>";
                                                     echo "<input type='submit' value='Save changes'>";
                                                     echo "</form>";
@@ -103,7 +108,7 @@
                                                     echo "</div>";
                                                     echo "<div>";
                                                     echo "<p>Upload your task:</p>";
-                                                    echo "<form enctype ='multipart/form-data' action='#' method='POST' id='$formId' class='noHide'>";
+                                                    echo "<form enctype ='multipart/form-data' action='courses.php' method='POST' id='$formId' name='form$i' class='noHide'>";
                                                     echo "<input type='file' name='$task' id='$task'>";
                                                     echo "<input type='submit' value='Save changes'>";
                                                     echo "</form>";
