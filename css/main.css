@@ -10,10 +10,43 @@ body {
   background-size: cover;
 }
 
-.loginDiv .loginForm {
+.loginDiv {
   display: grid;
-  grid-template-columns: none;
+  place-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 80vh;
+}
+.loginDiv .loginForm {
+  padding: 40px;
+  background-color: #A0DCFF;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
+  place-items: center;
+}
+.loginDiv .loginForm h3 {
+  color: #ffffff;
+}
+.loginDiv .loginForm .form-button {
+  font-size: 16px;
+  color: #248EFF;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  padding: 1rem;
+  margin-top: 20px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.loginDiv .loginForm div {
+  display: flex;
+  flex-direction: column;
+}
+.loginDiv .loginForm div label {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 header {
@@ -404,14 +437,6 @@ table {
     transform: rotate(360deg);
   }
 }
-.loginDiv {
-  display: grid;
-  align-items: center;
-}
-.loginDiv .loginForm {
-  grid-template-columns: repeat(3, 1fr);
-}
-
 @keyframes stop {
   from {
     transform: rotate(0deg);

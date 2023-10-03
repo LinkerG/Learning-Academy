@@ -24,9 +24,9 @@
             exit;
         }
     ?>
-    <h1>Inicio de sesión</h1>
     <div class="loginDiv">
         <form class="loginForm" action="login.php" method="POST">
+            <h3>Inicio de sesión</h3>
             <div class="email">
                 <label for="email">Username</label>
                 <input type="text" name="email" id="email" required>
@@ -35,9 +35,8 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" required>
             </div>
-            <input type="submit" value="Sign In">
+            <input class="form-button" type="submit" value="Sign In">
         </form>
     </div>
-    <br>
 </body>
 </html>
