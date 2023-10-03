@@ -3,6 +3,19 @@
   font-family: "Inter", sans-serif;
 }
 
+body {
+  background-image: url("/Learning-Academy/img/stockBackground.jpg");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+
+.loginDiv .loginForm {
+  display: grid;
+  grid-template-columns: none;
+  grid-template-rows: repeat(3, 1fr);
+}
+
 header {
   display: grid;
   grid-template-rows: 1fr;
@@ -391,6 +404,14 @@ table {
     transform: rotate(360deg);
   }
 }
+.loginDiv {
+  display: grid;
+  align-items: center;
+}
+.loginDiv .loginForm {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 @keyframes stop {
   from {
     transform: rotate(0deg);

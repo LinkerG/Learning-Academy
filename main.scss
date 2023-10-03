@@ -5,7 +5,23 @@
     margin: 0;
     font-family: 'Inter', sans-serif;
 }
+//background
+body{
+    background-image: url('/Learning-Academy/img/stockBackground.jpg');
+    height: 100vh;
+    background-position: center;
+    background-size:cover ;
 
+}
+//Login
+.loginDiv{
+    .loginForm{
+        display:grid;
+        grid-template-columns:none;
+        grid-template-rows: repeat(3 , 1fr);
+    }
+
+}
 // Estilos para el encabezado
 header {
     display: grid;
@@ -422,8 +438,15 @@ table {
     }
 }
 //Perfil ususario
-//index usuaario
-
+.loginDiv{
+    display: grid;
+    align-items: center;
+    
+    .loginForm{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+//index usuario
 @keyframes stop {
     from {
         transform: rotate(0deg);

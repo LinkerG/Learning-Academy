@@ -25,6 +25,7 @@
             }
         }
         echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=courses.php'>";
+        echo "<script>alert($msg);</script>";
     }else{
     ?>
     <?php
