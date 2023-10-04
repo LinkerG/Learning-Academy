@@ -12,8 +12,8 @@ function printHeader() {
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
             echo "<p class='menu1'>Learning Academy</p>";
             echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
-            echo "<a href='login.php' id='login' class='blueBtn'>Log in</a>";
-            echo "<a href='signup.php' id='signup' class='witheBtn'>Sing up</a>";
+            echo "<a href='/Learning-Academy/login.php' id='login' class='blueBtn'>Log in</a>";
+            echo "<a href='/Learning-Academy/signup.php' id='signup' class='witheBtn'>Sing up</a>";
             break;
         case "A":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";

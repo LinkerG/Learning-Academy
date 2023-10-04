@@ -19,8 +19,8 @@
             printHeader();
         } else{
             printHeader();
-            notValidated();
-            header("Refresh: 5; URL='/Learning-Academy/close.php.php'");
+            include("needAdmin.html");
+            header("Refresh: 5; URL='/Learning-Academy/close.php'");
             exit;
         }
 

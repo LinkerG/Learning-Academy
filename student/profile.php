@@ -14,6 +14,16 @@ session_start();
 <body>
         <?php
             include ("../functions.php");
+
+            if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
+                printHeader();
+                include("needStudent.html");
+                header("Refresh: 5; URL='/Learning-Academy/close.php'");
+                exit;
+            } else {
+                printHeader();
+            } 
+
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (connectBD("id21353268_learningacademy", $connection)) {
                     if(isset($_POST['photoPath'])){
@@ -44,7 +54,6 @@ session_start();
                 }
             }
             else{
-                printHeader();
                 ?>
                 <div class="studentContainer">
                     <div class="studentProfile" style="color:white;">

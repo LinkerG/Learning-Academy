@@ -14,6 +14,14 @@
 </head>
 <body>
     <?php
+    if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
+        printHeader();
+        include("needStudent.html");
+        header("Refresh: 5; URL='/Learning-Academy/close.php'");
+        exit;
+    } else {
+        printHeader();
+    } 
     $hasPrize = false;
     if (connectBD("id21353268_learningacademy", $connection)) {
         $prizeSQL = "SELECT prize FROM student WHERE dniStudent = '" . $_SESSION['dniStudent'] . "';";
@@ -54,13 +62,7 @@
     }else{
     ?>
     <?php
-        if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
-            include("needStudent.html");
-            header("Refresh: 5; URL='close.php'");
-            exit;
-        } else {
-            printHeader();
-        }   
+          
         echo "<div class='top'>";
         echo "<div>";
         echo "<h1>Welcome " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</h1>";
