@@ -26,12 +26,29 @@
 
             // Insert
             if(connectBD("learningacademy",$connection) && $continue){
-                $uploadStatus = uploadPhoto(0,$route, true);
-
-                if($uploadStatus == 0) {
+                if(!isset($_POST['photoPath'])){
+                    $uploadStatus = uploadPhoto(0,$route, true);
+                    echo "<script>alert('sifoto')</script>";
+                    if($uploadStatus == 0) {
+                        $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath) 
+                        VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','$route')";
+    
+                        $action = insertSQL($connection, $sql);
+                        if($action == 0) {
+                            echo "<script>alert('You signed in correctly, now log in')</script>";
+                            header("Refresh: 1; URL='login.php'");
+                        } else if($action == 1062) {
+                            echo "<script>alert('DNI or email already in use')</script>";
+                        }
+                    } elseif ($uploadStatus == 1) {
+                        echo "<script>alert('Error uploading photo')</script>";
+                    } elseif ($uploadStatus == 2) {
+                        echo "<script>alert('Please upload a photo')</script>";
+                    }
+                } else {
                     $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath) 
-                    VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','$route')";
-
+                    VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','/Learning-Academy/img/profilePhotos/default.png')";
+                    echo "<script>alert('nofoto')</script>";
                     $action = insertSQL($connection, $sql);
                     if($action == 0) {
                         echo "<script>alert('You signed in correctly, now log in')</script>";
@@ -39,10 +56,6 @@
                     } else if($action == 1062) {
                         echo "<script>alert('DNI or email already in use')</script>";
                     }
-                } elseif ($uploadStatus == 1) {
-                    echo "<script>alert('Error uploading photo')</script>";
-                } elseif ($uploadStatus == 2) {
-                    echo "<script>alert('Please upload a photo')</script>";
                 }
 
             }
@@ -53,7 +66,7 @@
             <div class="formRow">
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email">
+                    <input type="email" name="email" id="email">
                 </div>
                 <div>
                     <label for="password">Password</label>    
@@ -83,7 +96,7 @@
                     </div>
                     <div>
                         <label for="photoPath">Photo</label>    
-                        <input type="file" name="photoPath" id="photoPath" value="Select photo">
+                        <input type="file" name="photoPath" id="photoPath">
                     </div>
                 </div>
             </div>

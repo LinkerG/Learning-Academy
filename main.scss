@@ -702,3 +702,9 @@ table {
         transform: rotate(45deg);
     }
 }
+
+.provisionalFoto{
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 10rem;
+}

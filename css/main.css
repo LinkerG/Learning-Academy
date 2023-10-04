@@ -667,4 +667,10 @@ table {
   to {
     transform: rotate(45deg);
   }
+}
+.provisionalFoto {
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 10rem;
 }/*# sourceMappingURL=main.css.map */

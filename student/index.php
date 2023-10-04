@@ -64,7 +64,7 @@
         echo "<div class='top'>";
         echo "<div>";
         echo "<h1>Welcome " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</h1>";
-        echo "<a href='profile.php'>Profile</a>";
+        echo "<a class='witheBtn' href='profile.php'>Profile</a>";
         echo "</div>";
         echo "<h2>This are your courses right now</h2>";
         echo "</div>";
@@ -73,8 +73,8 @@
     <?php
         if(empty($result)) {
             echo "<div>";
-            echo "<h1>You aren't in any course</h1>";
-            echo "<a src=".'../courses.php'.">enter on any of our courses!</a>";
+            echo "<h1 style='color:white;'>You aren't in any course</h1>";
+            echo "<a style='color:white;' href=".'../index.php'.">enter on any of our courses!</a>";
             echo "</div>";
         } else {
             foreach ($result as $course){
@@ -131,7 +131,7 @@
                                             echo "</div>";
                                             echo "<div>";
                                             echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
-                                            echo "<form enctype ='multipart/form-data' action='courses.php' method='POST' id='$formId' name='form$i'>";
+                                            echo "<form enctype ='multipart/form-data' action='index.php' method='POST' id='$formId' name='form$i'>";
                                             echo "<input type='file' name='$task' id='$task'>";
                                             echo "<input type='submit' value='Save changes'>";
                                             echo "</form>";
@@ -140,7 +140,7 @@
                                             echo "</div>";
                                             echo "<div>";
                                             echo "<p>Upload your task:</p>";
-                                            echo "<form enctype ='multipart/form-data' action='courses.php' method='POST' id='$formId' name='form$i' class='noHide'>";
+                                            echo "<form enctype ='multipart/form-data' action='index.php' method='POST' id='$formId' name='form$i' class='noHide'>";
                                             echo "<input type='file' name='$task' id='$task'>";
                                             echo "<input type='submit' value='Save changes'>";
                                             echo "</form>";
