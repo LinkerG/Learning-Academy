@@ -30,8 +30,11 @@
                 
         }
     ?>
-    <h1 class="title">Our courses</h1>
-    <p class="subtitle">Here is a collection of all our courses</p>
+    <div class="top">
+        <h1 class="title">Our courses</h1>
+        <p class="subtitle">Here is a collection of all our courses</p>
+    </div>
+    
     <div class="courseContainer">
         <?php
             if(connectBD("learningacademy", $connection)) {
