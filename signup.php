@@ -87,8 +87,8 @@
                 </div>
             </div>
             <div class=formActions>
-                <input type="submit" value="Sign Up">
-                <a href="index.php">Cancel</a>
+                <input class="witheBtn" type="submit" value="Sign Up">
+                <a class="witheBtn" href="index.php">Cancel</a>
             </div>  
         </form>
     </div>
