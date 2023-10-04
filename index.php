@@ -25,15 +25,11 @@
                 <a class="blueBtn" href="courses.php">Our courses</a>
                 <a class="witheBtn" href="signup.php">Create account</a>
             </div>
-            <div class="imgs">
-                <img class="img1" src="img/fotoIndex1.png">
-                <img class="img2" src="img/fotoIndex2.png">
-                <img class="img3" src="img/fotoIndex3.png">
-            </div>
         </div>
-
+        <!--<div class="imgs">
+            <img class="img1" src="img/fotoIndex1.png">
+            <img class="img2" src="img/fotoIndex2.png">
+        </div>-->
     </div>
-    
-
 </body>
 </html>

@@ -562,6 +562,7 @@ table {
   display: grid;
   grid-template-rows: 1fr;
   margin-top: 5vh;
+  grid-template-columns: repeat(2, 1fr);
 }
 .index .content h1 {
   margin-bottom: 5vh;
@@ -575,11 +576,6 @@ table {
 }
 .index .content div a {
   margin-right: 20px;
-}
-.index .imgs {
-  display: flex;
-  flex-direction: column;
-  grid-column: 2/3;
 }
 
 @keyframes spin {
