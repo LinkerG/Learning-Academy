@@ -14,3 +14,13 @@
         background-color: #e0e0e0;
     }
 }
+
+@mixin rouletteAnimated {
+    text-align: center;
+        border: 1px solid white;
+        padding: 2rem;
+        background-color: $lightBlue;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px 14px #a0dcffc5;
+        animation: scaleAndGlow 2s linear infinite;
+}

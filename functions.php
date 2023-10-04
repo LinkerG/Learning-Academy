@@ -217,8 +217,8 @@ function notValidated() {
     header("Refresh: 5; URL='close.php'");
 }
 
-function uploadPhoto($aux, &$route) {
-    $route = "../img/";
+function uploadPhoto($aux, &$route, $signin = false) {
+    $relativeRoute = $signin ? "img/" : "../img/";
 
     if (isset($_FILES['photoPath']) && $_FILES['photoPath']['error'] === UPLOAD_ERR_OK) {
         $isImage = getimagesize($_FILES["photoPath"]["tmp_name"]);
@@ -226,16 +226,27 @@ function uploadPhoto($aux, &$route) {
         if ($isImage !== false) {
             switch ($aux) {
                 case 0:
-                    $route = $route . "profilePhotos/" . $_POST['dniStudent'];
+                    $relativeRoute = $relativeRoute . "profilePhotos/" . $_POST['dniStudent'] . ".png";
                     break;
                 case 1:
-                    $route = $route . "profilePhotos/" . $_POST['dniTeacher'];
+                    $relativeRoute = $relativeRoute . "profilePhotos/" . $_POST['dniTeacher'] . ".png";
                     break;
                 case 2:
-                    $route = $route . "coursePhotos/" . basename($_FILES["photoPath"]["name"]);
+                    $relativeRoute = $relativeRoute . "coursePhotos/" . basename($_FILES["photoPath"]["name"]) . ".png";
                     break;
             }
-            if (move_uploaded_file($_FILES["photoPath"]["tmp_name"], $route)) {
+            if (move_uploaded_file($_FILES["photoPath"]["tmp_name"], $relativeRoute)) {
+                switch ($aux) {
+                    case 0:
+                        $route = "/Learning-Academy/img/" . "profilePhotos/" . $_POST['dniStudent'] . ".png";
+                        break;
+                    case 1:
+                        $route = "/Learning-Academy/img/" . "profilePhotos/" . $_POST['dniTeacher'] . ".png";
+                        break;
+                    case 2:
+                        $route = "/Learning-Academy/img/" . "coursePhotos/" . basename($_FILES["photoPath"]["name"]) . ".png";
+                        break;
+                    }
                 return 0;
             } else {
                 return 1; // Error al mover el archivo

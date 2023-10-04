@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -11,6 +12,12 @@ body {
           backdrop-filter: blur(6px) brightness(0.5);
   height: 100vh;
   overflow: hidden;
+}
+
+body.roulette {
+  background-image: url("../img/rouletteBackground.jpg");
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
 }
 
 input[type=file] {
@@ -442,6 +449,27 @@ table {
   overflow: hidden;
   min-width: 500px;
   min-height: 500px;
+  font-weight: bold;
+}
+.rouletteContainer .rouletteText {
+  max-width: 45vw;
+  text-align: center;
+  border: 1px solid white;
+  padding: 2rem;
+  background-color: #A0DCFF;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 14px rgba(160, 220, 255, 0.7725490196);
+  animation: scaleAndGlow 2s linear infinite;
+}
+@keyframes scaleAndGlow {
+  0%, 100% {
+    transform: scale(1); /* Escala normal */
+    box-shadow: 0px 0px 20px 14px rgba(160, 220, 255, 0.7725490196); /* Sombra normal */
+  }
+  50% {
+    transform: scale(1.1); /* Aumenta el tamaño */
+    box-shadow: 0px 0px 40px 20px rgba(160, 220, 255, 0.7725490196); /* Aumenta la dispersión */
+  }
 }
 .rouletteContainer .roulette {
   width: 100vw;
@@ -451,7 +479,20 @@ table {
   justify-content: center;
   align-items: center;
 }
+.rouletteContainer .roulette .arrow {
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: rotate(180deg);
+  position: absolute;
+  margin-bottom: 14rem;
+  border: 1px solid #353535;
+  z-index: 4;
+}
 .rouletteContainer .roulette img {
+  margin: 2rem;
   height: 50%;
   -o-object-fit: contain;
      object-fit: contain;
@@ -459,6 +500,18 @@ table {
 }
 .rouletteContainer .roulette button {
   width: 20vw;
+  text-align: center;
+  border: 1px solid white;
+  padding: 2rem;
+  background-color: #A0DCFF;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 14px rgba(160, 220, 255, 0.7725490196);
+  animation: scaleAndGlow 2s linear infinite;
+  padding: 1rem;
+  transition: scale 1s;
+}
+.rouletteContainer .roulette button:active {
+  animation: none;
 }
 
 .witheBtn {

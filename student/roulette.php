@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
 </head>
-<body>
+<body class="roulette">
     <div class="rouletteContainer">
         <div id="roulette" class="roulette">
-            <p>WIN A PRIZE!!!</p>
-            <p>Since it's your first time here, you can have one of this prizes!</p>
+            <div class="rouletteText">
+                <p>WIN A PRIZE!!!</p>
+                <p>Since it's your first time here,<br> you can have one of this prizes!</p>
+            </div>
             <div class="arrow"></div>
             <img src="/Learning-Academy/img/icons/roulette.png" alt="prize roulette" id="rouletteImg">
-            <button onclick="return spinRoulette()">SPIN IT!!!</button>
+            <button id="rouletteButton" onclick="return spinRoulette()">SPIN IT!!!</button>
         </div>
     </div>
     

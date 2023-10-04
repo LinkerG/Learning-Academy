@@ -115,10 +115,7 @@ function openTab(tabNumber) {
       }
   }
   
-  document.addEventListener("DOMContentLoaded", function() {
-    // Llama a la función editProfile cuando el DOM esté listo
-    editProfile();
-  });
+
   
   
   
@@ -344,7 +341,9 @@ function spinRoulette() {
     gira= 1200 + Math.random()*1200
     ruleta.style.transition='all 4s ease-out';
     ruleta.style.transform=`rotate(${gira}deg)`;
-
+    let boton = document.getElementById("rouletteButton");
+    boton.style.animation = "none";
+    boton.style.boxShadow = "none";
     let spinAudio = new Audio("/Learning-Academy/files/audio/spin.wav");
     spinAudio.play();
     let giraDos = 0;
@@ -372,9 +371,19 @@ function spinRoulette() {
             audio.play();
         }
 
+        
+
         window.opener.document.location="index.php?prize=" + prize;
 
       });
-      
-      console.log("Funciom pruincjfj " + prize); 
+
+}
+
+function windowPosition(url) {
+    // Calcula las coordenadas X e Y para centrar la ventana
+    var ventanaX = window.innerWidth / 2 - 600 / 2 + window.screenX;
+    var ventanaY = window.innerHeight / 2 - 600 / 2 + window.screenY;
+
+    // Abre la ventana centrada
+    window.open(url, "_blank", 'width=600' + ',height=600' + ',left=' + ventanaX + ',top=' + ventanaY);
 }

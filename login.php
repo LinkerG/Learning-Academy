@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="formActions">
-                <input class="form-button" type="submit" value="Sign In">
+                <input class="form-button" type="submit" value="Log In">
                 <a href="index.php">Cancel</a>
             </div>
         </form>

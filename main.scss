@@ -15,6 +15,12 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+
+body.roulette{
+    background-image: url("../img/rouletteBackground.jpg");
+    backdrop-filter: none;
+}
+
 input[type="file"] {
     color: transparent; /* Hace que el texto sea transparente */
     overflow: hidden; /* Oculta cualquier desbordamiento */
@@ -477,6 +483,27 @@ table {
     overflow: hidden;
     min-width: 500px;
     min-height: 500px;
+    font-weight: bold;
+
+    .rouletteText {
+        max-width: 45vw;
+        @include rouletteAnimated;
+    }
+    
+    @keyframes scaleAndGlow {
+        0%, 100% {
+            transform: scale(1); /* Escala normal */
+            box-shadow: 0px 0px 20px 14px #a0dcffc5; /* Sombra normal */
+        }
+        50% {
+            transform: scale(1.1); /* Aumenta el tamaño */
+            box-shadow: 0px 0px 40px 20px #a0dcffc5; /* Aumenta la dispersión */
+        }
+    }
+    
+    
+
+
     .roulette{
         width: 100vw;
         height: 100vh;
@@ -484,8 +511,21 @@ table {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        .arrow {
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            transform: rotate(180deg);
+            position: absolute;
+            margin-bottom: 14rem;
+            border: 1px solid #353535;
+            z-index: 4;
+        }
     
         img {
+            margin: 2rem;
             height: 50%;
             object-fit: contain;
             aspect-ratio: 1/1;
@@ -493,6 +533,12 @@ table {
 
         button {
             width: 20vw;
+            @include rouletteAnimated;
+            padding: 1rem;
+            transition: scale 1s;
+            &:active{
+                animation: none;
+            }
         }
     }
 }

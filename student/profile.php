@@ -8,6 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../files/scripts.js"></script>
 </head>
 <body>
         <?php
@@ -65,11 +66,16 @@ session_start();
                         <input type="submit" value="Update"></input>
                     </form>
                 </div>
-            <script src="../files/scripts.js"></script>
+            
             <?php
             }
             ?>
       
-           
+           <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Llama a la función editProfile cuando el DOM esté listo
+                    editProfile();
+                });
+           </script>
 </body>
 </html>

@@ -13,6 +13,7 @@
 </head>
 <body>
     <?php
+    $hasPrize = false;
     if (connectBD("learningacademy", $connection)) {
         $prizeSQL = "SELECT prize FROM student WHERE dniStudent = '" . $_SESSION['dniStudent'] . "';";
 
@@ -24,14 +25,12 @@
                     }
                     else if ($prizeQuery[0]['prize'] != "") $hasPrize = true;
                 }
-
-
+    }
+    if(connectBD("learningacademy", $connection)) {
         $sql = "SELECT m.task1,m.task2,m.task3,m.task4,m.score,c.endDate,c.name,c.photoPath,m.courseId FROM matriculates m INNER JOIN course c ON c.courseId = m.courseId INNER JOIN student s ON s.dniStudent = m.dniStudent WHERE s.dniStudent = '" . $_SESSION['dniStudent'] . "' ;";
         selectSQL($connection,$sql,$result);
-
-
-        
     }
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         for($i = 1; $i < 5;$i++){
             if(isset($_FILES['task'.$i])){
@@ -155,8 +154,7 @@
         window.onload = hideForms;
         <?php
             if(!$hasPrize){
-                echo "window.open('roulette.php', '_blank', 'width=600,height=600,resizable=no');";
-                echo "audioRoulette();";
+                echo "windowPosition('roulette.php');audioRoulette();";
             }
         ?>
     </script>
