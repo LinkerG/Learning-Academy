@@ -531,7 +531,7 @@ table {
 //Index
 .index{
     display:grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 70% 30%;
     grid-template-rows: repeat(3,1fr);
     background-color: $lightBlue;
     padding: 3rem;
@@ -539,9 +539,12 @@ table {
     margin-top:5rem;
     margin-right: 30vw;
     padding-bottom:20vh;
+    overflow: hidden;
     div{
-        place-content: bottom;
+        display: grid;
+        grid-template-rows: repeat(3,1fr);
     }
+
 }
 @keyframes spin {
     from {

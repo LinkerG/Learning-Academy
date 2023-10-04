@@ -15,16 +15,15 @@
         printHeader();  
     ?>
     <div class="index">
-        <h1>WELCOME TO LEARNING ACADEMY</h1>
-        <p>Looking to design your new startup website? 
-        or Looking to redesign your website landing page? 
-        Get started on Learning Academy!
-        </p>
         <div>
+            <h1>WELCOME TO LEARNING ACADEMY</h1>
+            <p>Looking to design your new startup website? 
+            or Looking to redesign your website landing page? 
+            Get started on Learning Academy!
+            </p>
             <button class="blueBtn" onclick="location.href='courses.php'">Our courses</button>
             <button class="witheBtn" onclick="location.href='signup.php'">Create account</button>
-        </div>  
-
+        </div>
     </div>
     
 
