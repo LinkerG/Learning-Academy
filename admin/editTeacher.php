@@ -6,8 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit teacher</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../files/scripts.js"></script>
 </head>
 <body>
     <?php
@@ -37,56 +38,67 @@
                 if(selectSQL($connection, $sql, $result))$result = $result[0];
             }
         }
-        print_r($_REQUEST);
-        print_r($_POST);
-        print_r($result);
+
         if(!empty($_POST)){
-            echo "A";
-            $password = md5($_POST['password']);
-            if(!isset($_POST['photoPath'])){
+            if(isset($_POST['password'])){
                 if(connectBD("learningacademy",$connection)){
+                    $password = md5($_POST['password']);
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     
                     updateSQL($connection, $sql);
                     header("Refresh: 0; URL='index.php?manage=teachers'");
-                    die;
                 }
-            }else{
-                $_POST['photoPath'] = uploadPhoto(1);
+            } else{
                 if(connectBD("learningacademy",$connection)){
-                    $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}', photoPath='{$_POST['photoPath']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
+                    $sql = "UPDATE teacher SET email='{$_POST['email']}', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     
                     updateSQL($connection, $sql);
                     header("Refresh: 0; URL='index.php?manage=teachers'");
-                    die;
                 }
-            } 
+            }
         }
     ?>
     <!--Acabar el formulario y aplicar los cambios-->
-    <form action="#" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="dniTeacher" id="dniTeacher" value=<?php echo "'{$result['dniTeacher']}'";?>>
-        
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" value=<?php echo "'{$result['email']}'";?>>
-
-        <label for="password">Pasword</label>
-        <input type="text" name="password" id="password" value=<?php echo "'{$result['password']}'";?>>
-
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" value=<?php echo "'{$result['name']}'";?>>
-
-        <label for="surname">Surname</label>
-        <input type="text" name="surname" id="surname" value=<?php echo "'{$result['surname']}'";?>>
-
-        <label for="titulation">Titulation</label>
-        <input type="text" name="titulation" id="titulation" value=<?php echo "'{$result['titulation']}'";?>>
-
-        <label for="photo">Photo</label>
-        <input type="file" name="photoPath" id="photoPath">
-
-        <input type="submit" value="Update">
-    </form>
-    <a href="index.php?manage=teachers">Back</a>
+    <div class="formDiv">
+        <form action="#" method="post" enctype="multipart/form-data" autocomplete="off">
+            <div class="formRow">
+                <div>
+                    <label for="dniTeacher">DNI</label>
+                    <input type="text" readonly name="dniTeacher" id="dniTeacher" value=<?php echo "'{$result['dniTeacher']}'";?>>
+                </div>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" value=<?php echo "'{$result['name']}'";?>>
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="surname">Surname</label>
+                    <input type="text" name="surname" id="surname" value=<?php echo "'{$result['surname']}'";?>>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" value=<?php echo "'{$result['email']}'";?>>
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="titulation">Titulation</label>
+                    <input type="text" name="titulation" id="titulation" value=<?php echo "'{$result['titulation']}'";?>>
+                </div>
+                <div>
+                    <div style="display:flex; flex-direction:row;">
+                        <label for="showPass">Change password</label>
+                        <input type="checkbox" name="showPass" id="showPass" onchange="checkboxShow('password')">
+                    </div>
+                    <input type="password" name="password" id="password" required style="display: none;">
+                </div>
+            </div>
+            <div class=formActions>
+                <input type="submit" value="Update">
+                <a href="index.php?manage=teachers">Back</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

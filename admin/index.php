@@ -95,7 +95,7 @@
                                 echo "<td><img src='{$row['photoPath']}'></td>";
                                 echo "<td>{$row['courseName']}</td>";
                                 echo "<td>{$row['hours']}</td>";
-                                echo "<td>{$row['startDate']} / {$row['endDate']}</td>";
+                                echo "<td>{$row['startDate']} <br>-<br> {$row['endDate']}</td>";
                                 echo "<td>{$row['description']}</td>";
                                 echo "<td>{$row['name']} {$row['surname']}</td>";
                                 echo "<td><a href='editCourse.php?courseId={$row['courseId']}'>Edit</a></td>";

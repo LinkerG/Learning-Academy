@@ -103,10 +103,10 @@
                 </div>
                 <div>
                     <input type="submit" value="Add">
+                    <a href="index.php?manage=courses">Cancel</a>
                 </div>
             </div>
         </form>
-        <a href="index.php?manage=courses">Cancel</a>
     </div>
 </body>
 </html>

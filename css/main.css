@@ -66,7 +66,7 @@ input[type=file] {
   flex-direction: column;
   margin: 1rem;
 }
-.formDiv form .formRow .loginRow {
+.formDiv form .formRow .singleRow {
   grid-column: 1/3;
 }
 .formDiv form .formRow .formDivided {

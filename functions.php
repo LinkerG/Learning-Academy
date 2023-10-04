@@ -217,7 +217,7 @@ function notValidated() {
     header("Refresh: 5; URL='close.php'");
 }
 
-function uploadPhoto($aux, &$route, $signin = false) {
+function uploadPhoto($aux, &$route, $signin = false, $courseId = null) {
     $relativeRoute = $signin ? "img/" : "../img/";
 
     if (isset($_FILES['photoPath']) && $_FILES['photoPath']['error'] === UPLOAD_ERR_OK) {
@@ -232,7 +232,18 @@ function uploadPhoto($aux, &$route, $signin = false) {
                     $relativeRoute = $relativeRoute . "profilePhotos/" . $_POST['dniTeacher'] . ".png";
                     break;
                 case 2:
-                    $relativeRoute = $relativeRoute . "coursePhotos/" . basename($_FILES["photoPath"]["name"]) . ".png";
+                    if($courseId == null) {
+                        if(connectBD("learningacademy", $connection)){
+                            $sql = "SELECT COUNT(*) AS total FROM course";
+                            if(selectSQL($connection, $sql, $result)) {
+                                $count = intval($result[0]['total']);
+                                $count+=1;
+                                $relativeRoute = $relativeRoute . "coursePhotos/" . $count . ".png";
+                            }
+                        }
+                    } else {
+                        $relativeRoute = $relativeRoute . "coursePhotos/" . $courseId . ".png";
+                    }
                     break;
             }
             if (move_uploaded_file($_FILES["photoPath"]["tmp_name"], $relativeRoute)) {
@@ -244,7 +255,18 @@ function uploadPhoto($aux, &$route, $signin = false) {
                         $route = "/Learning-Academy/img/" . "profilePhotos/" . $_POST['dniTeacher'] . ".png";
                         break;
                     case 2:
-                        $route = "/Learning-Academy/img/" . "coursePhotos/" . basename($_FILES["photoPath"]["name"]) . ".png";
+                        if($courseId == null) {
+                            if(connectBD("learningacademy", $connection)){
+                                $sql = $query = "SELECT COUNT(*) AS total FROM course";
+                                if(selectSQL($connection, $sql, $result)) {
+                                    $count = intval($result[0]['total']);
+                                    $count+=1;
+                                    $route = "/Learning-Academy/img/" . "coursePhotos/" . $count . ".png";
+                                }
+                            }
+                        } else {
+                            $route = "/Learning-Academy/img/" . "coursePhotos/" . $courseId . ".png";
+                        }
                         break;
                     }
                 return 0;
