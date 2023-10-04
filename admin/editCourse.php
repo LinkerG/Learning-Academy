@@ -101,8 +101,8 @@
                 </div>
             </div>
             <div class="formActions">
-                <input type="submit" value="Update">
-                <a href="index.php?manage=courses">Back</a>
+                <input class="witheBtn" type="submit" value="Update">
+                <a class="witheBtn" href="index.php?manage=courses">Back</a>
             </div>
     
     
