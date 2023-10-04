@@ -14,8 +14,9 @@
         include("../functions.php");
 
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "A") {
+            printHeader();
             include("needAdmin.html");
-            header("Refresh: 5; URL='close.php'");
+            header("Refresh: 5; URL='/Learning-Academy/close.php'");
             exit;
         } else {
             printHeader();

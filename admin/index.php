@@ -19,6 +19,7 @@
         } else{
             printHeader();
             notValidated();
+            header("Refresh: 5; URL='/Learning-Academy/close.php.php'");
             exit;
         }
 
