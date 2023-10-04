@@ -387,3 +387,7 @@ function windowPosition(url) {
     // Abre la ventana centrada
     window.open(url, "_blank", 'width=600' + ',height=600' + ',left=' + ventanaX + ',top=' + ventanaY);
 }
+
+function baja(dni, id){
+    location.href = "index.php?delete=true&dni="+dni+"&id="+id;
+}

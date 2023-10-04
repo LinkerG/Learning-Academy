@@ -76,6 +76,10 @@
 
                     echo "<div class='hiddenContent'>";
                     echo "<p class='pCourseName'>{$course['name']}</p>";
+                    echo "<p class='bajaButton'>Darse de baja</p>";
+                    $dniStudent = $_SESSION['dniStudent'];
+                    $currentCourseId = $course['courseId'];
+                    echo "<button onclick='baja(`$dniStudent`,`$currentCourseId`)'>Darse de baja</button>";
                     
                 ?>
                         <div class="tabs-container tabsPopup">
