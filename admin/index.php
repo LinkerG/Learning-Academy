@@ -9,6 +9,7 @@
     <title>Admin panel</title>
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
 </head>
 <body>
     <?php
