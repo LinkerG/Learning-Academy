@@ -32,13 +32,24 @@
         selectSQL($connection,$sql,$result);
     }
 
+    if(isset($_REQUEST['delete'])){
+        $dni = $_REQUEST["dni"];
+        $courseId = $_REQUEST['id'];
+    
+        if(connectBD("learningacademy", $connection)) {
+            $sql = "DELETE FROM matriculates WHERE dniStudent = '" . $dni . "' AND courseId = '" . $courseId . "';";
+            updateSQL($connection, $sql);
+            echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php'>";
+        }
+    }    
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         for($i = 1; $i < 5;$i++){
             if(isset($_FILES['task'.$i])){
                 $msg = uploadPdf($result[0]['courseId'],$connection,$i); 
             }
         }
-        echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=courses.php'>";
+        echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php'>";
         echo "<script>alert($msg);</script>";
     }else{
     ?>

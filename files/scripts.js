@@ -114,12 +114,6 @@ function openTab(tabNumber) {
         }
       }
   }
-  
-
-  
-  
-  
-  
 
 function checkboxShow(idToHide) {
     let popupContent = document.querySelector('.popup-content');
@@ -400,5 +394,7 @@ function windowPosition(url) {
 }
 
 function baja(dni, id){
-    location.href = "index.php?delete=true&dni="+dni+"&id="+id;
+    if(confirm("Are you sure you want to drop from this course??\nYou will lose your tasks!")) {
+        location.href = "index.php?delete=true&dni="+dni+"&id="+id;
+    }
 }
