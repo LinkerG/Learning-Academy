@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sing In</title>
+    <title>Log In</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -30,13 +30,13 @@
                 <h3>Inicio de sesión</h3>
             </div>
             <div class="formRow">
-                <div class="loginRow">
+                <div class="singleRow">
                     <label for="email">Username</label>
                     <input type="text" name="email" id="email" required>
                 </div>
             </div>
             <div class="formRow">
-                <div class="loginRow">
+                <div class="singleRow">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" required>
                 </div>

@@ -48,9 +48,9 @@
                     exit;
                 }
             }else{
-                $_POST['photoPath'] = uploadPhoto(3);
+                $uploadStatus = uploadPhoto(3, $route, false, $_POST['courseId']);
                 if(connectBD("learningacademy",$connection)){
-                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='{$_POST['photoPath']}' WHERE courseId='{$_POST['courseId']}';";
+                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='$route' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
                     header("Refresh: 0; URL='courses.php'");
@@ -58,36 +58,55 @@
                 }
             } 
         }
-
-    ?>
-    <form enctype="multipart/form-data" action="#" method="post">
-        <input type="hidden" name="courseId" id="courseId" value="<?php echo "{$result['courseId']}";?>">
         
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<?php echo "{$result['name']}";?>">
-
-        <label for="hours">Hours</label>
-        <input type="number" name="hours" id="hours" value="<?php echo "{$result['hours']}";?>">
-
-        <label for="startDate">Start date</label>
-        <input type="date" name="startDate" id="startDate" value="<?php echo "{$result['startDate']}";?>">
-
-        <label for="endDate">End date</label>
-        <input type="date" name="endDate" id="endDate" value="<?php echo "{$result['endDate']}";?>">
-
-        <label for="desc">Description</label>
-        <input type="text" name="desc" id="desc" value="<?php echo "{$result['desc']}";?>">
+        ?>
+    <div class="formDiv">
         
-        <label for="dniTeacher">DNI teacher</label>
-        <input type="text" name="dniTeacher" id="dniTeacher" value="<?php echo "{$result['dniTeacher']}";?>">
-
-        <label for="photoPath">Photo</label>
-        <input type="file" name="photoPath" id="photoPath">
-
-        <input type="hidden" name="active" id="active" value="<?php echo "{$result['active']}";?>">
-        
-        <input class="witheBtn" type="submit" value="Update">
-    </form>
-    <a class="witheBtn" href="index.php?manage=courses">Back</a>
+        <form enctype="multipart/form-data" action="#" method="post">
+            <div class="formRow">
+                <div>
+                    <label for="courseId">Course ID</label>
+                    <input type="text" readonly name="courseId" id="courseId" value="<?php echo "{$result['courseId']}";?>">
+                </div>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" value="<?php echo "{$result['name']}";?>">
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="hours">Hours</label>
+                    <input type="number" name="hours" id="hours" value="<?php echo "{$result['hours']}";?>">
+                </div>
+                <div>
+                    <label for="dniTeacher">DNI teacher</label>
+                    <input type="text" name="dniTeacher" id="dniTeacher" value="<?php echo "{$result['dniTeacher']}";?>">
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="startDate">Start date</label>
+                    <input type="date" name="startDate" id="startDate" value="<?php echo "{$result['startDate']}";?>">
+                </div>
+                <div>
+                    <label for="endDate">End date</label>
+                    <input type="date" name="endDate" id="endDate" value="<?php echo "{$result['endDate']}";?>">
+                </div>
+            </div>
+            <div class="formRow">
+                <div class="singleRow">
+                    <label for="desc">Description</label>
+                    <input type="text" name="desc" id="desc" value="<?php echo "{$result['description']}"; ?>">
+                </div>
+            </div>
+            <div class="formActions">
+                <input class="witheBtn" type="submit" value="Update">
+                <a class="witheBtn" href="index.php?manage=courses">Back</a>
+            </div>
+    
+    
+            
+        </form>
+    </div>
 </body>
 </html>

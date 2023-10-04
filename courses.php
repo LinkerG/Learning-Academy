@@ -16,7 +16,6 @@
 
         if(isset($_REQUEST['insert'])) {
             $sql = "INSERT INTO matriculates (dniStudent, courseId) VALUES ('{$_REQUEST['dniStudent']}', {$_REQUEST['courseId']})";
-            echo $sql;
             if(connectBD("learningacademy", $connection)){
                 $action = insertSQL($connection, $sql);
                 if($action == 0) {

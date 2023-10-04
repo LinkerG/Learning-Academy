@@ -39,9 +39,8 @@
 
                 $action = insertSQL($connection, $sql);
                 if($action == 0) {
-                    echo "<script>alert('$route')</script>";
-                    echo "<script>alert('Course added correctly')</script>";
-                    //header('Location: index.php?manage=teachers');
+                    echo "<script>alert('Teacher added correctly')</script>";
+                    header('Location: index.php?manage=teachers');
                 } else if($action == 1062) {
                     echo "<script>alert('DNI or email already in use')</script>";
                 } else {

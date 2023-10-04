@@ -123,13 +123,24 @@ function openTab(tabNumber) {
 
 function checkboxShow(idToHide) {
     let popupContent = document.querySelector('.popup-content');
-    let elementToHide = popupContent.querySelector("#" + idToHide);
-    if (elementToHide.style.display == "block") {
-        elementToHide.style.display = "none";
-
+    if(popupContent == null){
+        let elementToHide = document.querySelector("#" + idToHide);
+        if (elementToHide.style.display == "block") {
+            elementToHide.style.display = "none";
+    
+        } else {
+            elementToHide.style.display = "block";
+    
+        }
     } else {
-        elementToHide.style.display = "block";
-
+        let elementToHide = popupContent.querySelector("#" + idToHide);
+        if (elementToHide.style.display == "block") {
+            elementToHide.style.display = "none";
+    
+        } else {
+            elementToHide.style.display = "block";
+    
+        }
     }
 }
 
