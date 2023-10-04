@@ -35,7 +35,7 @@
             }
 
             // Insert
-            if(connectBD("learningacademy",$connection) && $continue){
+            if(connectBD("id21353268_learningacademy",$connection) && $continue){
                 $uploadStatus = uploadPhoto(2, $route);
                 if($uploadStatus == 0){
                     $sql = "INSERT INTO course (name, hours, startDate, endDate, description, dniTeacher, active, photoPath) 
@@ -86,7 +86,7 @@
                     <select name="dniTeacher" required>
                         <?php
                         $sql= "SELECT dniTeacher,name,surname FROM teacher";
-                        if(connectBD("learningacademy", $connection)) {
+                        if(connectBD("id21353268_learningacademy", $connection)) {
                             if(selectSQL($connection, $sql,$result)){
                                 foreach($result as $teachersInfo){
                                     echo "<option value={$teachersInfo['dniTeacher']}>".$teachersInfo['name']." {$teachersInfo['surname']}</option>";

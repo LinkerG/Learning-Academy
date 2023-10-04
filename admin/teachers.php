@@ -43,7 +43,7 @@
                     <th>Active</th>
                 </tr>
                 <?php
-                    if(connectBD("learningacademy", $connection)) {
+                    if(connectBD("id21353268_learningacademy", $connection)) {
                         $sql = "SELECT * FROM teacher";
 
                         if(selectSQL($connection, $sql, $result)){

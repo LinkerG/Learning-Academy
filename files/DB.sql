@@ -1,6 +1,6 @@
-CREATE DATABASE learningAcademy;
+CREATE DATABASE id21353268_learningacademy;
 
-USE learningAcademy;
+USE id21353268_learningacademy;
 
 -- Creacion de la tabla teacher
 CREATE TABLE teacher(

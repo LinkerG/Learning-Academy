@@ -15,7 +15,7 @@
 <body>
     <?php
     $hasPrize = false;
-    if (connectBD("learningacademy", $connection)) {
+    if (connectBD("id21353268_learningacademy", $connection)) {
         $prizeSQL = "SELECT prize FROM student WHERE dniStudent = '" . $_SESSION['dniStudent'] . "';";
 
                 if(selectSQL($connection, $prizeSQL, $prizeQuery)){
@@ -27,7 +27,7 @@
                     else if ($prizeQuery[0]['prize'] != "") $hasPrize = true;
                 }
     }
-    if(connectBD("learningacademy", $connection)) {
+    if(connectBD("id21353268_learningacademy", $connection)) {
         $sql = "SELECT m.task1,m.task2,m.task3,m.task4,m.score,c.endDate,c.name,c.photoPath,m.courseId FROM matriculates m INNER JOIN course c ON c.courseId = m.courseId INNER JOIN student s ON s.dniStudent = m.dniStudent WHERE s.dniStudent = '" . $_SESSION['dniStudent'] . "' ;";
         selectSQL($connection,$sql,$result);
     }
@@ -36,7 +36,7 @@
         $dni = $_REQUEST["dni"];
         $courseId = $_REQUEST['id'];
     
-        if(connectBD("learningacademy", $connection)) {
+        if(connectBD("id21353268_learningacademy", $connection)) {
             $sql = "DELETE FROM matriculates WHERE dniStudent = '" . $dni . "' AND courseId = '" . $courseId . "';";
             updateSQL($connection, $sql);
             echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php'>";

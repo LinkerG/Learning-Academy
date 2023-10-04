@@ -125,7 +125,7 @@ function updateSQL($connection, $sql) {
 function validateUser() {
     if(!empty($_POST)){
         // Cambiar el nombre de la bd segun convenga
-        if(connectBD("learningacademy", $connection)){
+        if(connectBD("id21353268_learningacademy", $connection)){
             // Cambiar el nombre de la tabla segun convenga
             $sql = "SELECT * FROM admin";
 
@@ -233,7 +233,7 @@ function uploadPhoto($aux, &$route, $signin = false, $courseId = null) {
                     break;
                 case 2:
                     if($courseId == null) {
-                        if(connectBD("learningacademy", $connection)){
+                        if(connectBD("id21353268_learningacademy", $connection)){
                             $sql = "SELECT COUNT(*) AS total FROM course";
                             if(selectSQL($connection, $sql, $result)) {
                                 $count = intval($result[0]['total']);
@@ -256,7 +256,7 @@ function uploadPhoto($aux, &$route, $signin = false, $courseId = null) {
                         break;
                     case 2:
                         if($courseId == null) {
-                            if(connectBD("learningacademy", $connection)){
+                            if(connectBD("id21353268_learningacademy", $connection)){
                                 $sql = $query = "SELECT COUNT(*) AS total FROM course";
                                 if(selectSQL($connection, $sql, $result)) {
                                     $count = intval($result[0]['total']);
@@ -287,7 +287,7 @@ function unavailableCourses() {
     FROM course c 
     WHERE c.endDate < CURRENT_DATE();";
 
-    if(connectBD("learningAcademy", $connection)){
+    if(connectBD("id21353268_learningacademy", $connection)){
         if(selectSQL($connection, $sql, $result)) {
             $idArray = array();
             foreach ($result as $courseId) {

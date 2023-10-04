@@ -27,13 +27,13 @@
             $active = $_REQUEST['active'] == 0 ? 1 : 0;
             $sql = "UPDATE teacher SET active={$active} WHERE dniTeacher='{$_REQUEST['dniTeacher']}'";
 
-            if(connectBD("learningacademy", $connection)) {
+            if(connectBD("id21353268_learningacademy", $connection)) {
                 updateSQL($connection, $sql);
                 header("Refresh: 0; URL='index.php?manage=teachers'");
                 die;
             }
         } else if(isset($_REQUEST['dniTeacher'])){
-            if(connectBD("learningacademy", $connection)){
+            if(connectBD("id21353268_learningacademy", $connection)){
                 $sql = "SELECT * FROM teacher WHERE dniTeacher='{$_REQUEST['dniTeacher']}'";
                 if(selectSQL($connection, $sql, $result))$result = $result[0];
             }
@@ -41,7 +41,7 @@
 
         if(!empty($_POST)){
             if(isset($_POST['password'])){
-                if(connectBD("learningacademy",$connection)){
+                if(connectBD("id21353268_learningacademy",$connection)){
                     $password = md5($_POST['password']);
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     
@@ -49,7 +49,7 @@
                     header("Refresh: 0; URL='index.php?manage=teachers'");
                 }
             } else{
-                if(connectBD("learningacademy",$connection)){
+                if(connectBD("id21353268_learningacademy",$connection)){
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     
                     updateSQL($connection, $sql);

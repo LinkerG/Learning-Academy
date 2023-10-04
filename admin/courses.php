@@ -41,7 +41,7 @@
                 <th>Disabled</th>
             </tr>
             <?php
-                if(connectBD("learningacademy", $connection)) {
+                if(connectBD("id21353268_learningacademy", $connection)) {
                     $sql = "SELECT c.*,t.name,t.surname,c.name as courseName FROM course c INNER JOIN teacher t ON c.dniTeacher = t.dniTeacher";
                     // SELECT * FROM course;
                     if(selectSQL($connection, $sql, $result)){

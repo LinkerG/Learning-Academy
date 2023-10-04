@@ -17,7 +17,7 @@
 
         if(isset($_REQUEST['insert'])) {
             $sql = "INSERT INTO matriculates (dniStudent, courseId) VALUES ('{$_REQUEST['dniStudent']}', {$_REQUEST['courseId']})";
-            if(connectBD("learningacademy", $connection)){
+            if(connectBD("id21353268_learningacademy", $connection)){
                 $action = insertSQL($connection, $sql);
                 if($action == 0) {
                     echo "<script>alert('You enrolled correctly in this course!')</script>";
@@ -37,7 +37,7 @@
     
     <div class="courseContainer">
         <?php
-            if(connectBD("learningacademy", $connection)) {
+            if(connectBD("id21353268_learningacademy", $connection)) {
                 $sql = "SELECT * FROM course;";
                 if(selectSQL($connection, $sql, $result)){
                     if(empty($result)) {

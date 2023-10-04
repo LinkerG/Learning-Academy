@@ -15,7 +15,7 @@ session_start();
         <?php
             include ("../functions.php");
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if (connectBD("learningacademy", $connection)) {
+                if (connectBD("id21353268_learningacademy", $connection)) {
                     if(isset($_POST['photoPath'])){
                         $_SESSION['name'] = $_POST['name'];
                         $_SESSION['surname'] = $_POST['surname'];

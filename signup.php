@@ -25,7 +25,7 @@
             }
 
             // Insert
-            if(connectBD("learningacademy",$connection) && $continue){
+            if(connectBD("id21353268_learningacademy",$connection) && $continue){
                 if(!isset($_POST['photoPath'])){
                     $uploadStatus = uploadPhoto(0,$route, true);
                     echo "<script>alert('sifoto')</script>";

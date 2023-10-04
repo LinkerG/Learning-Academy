@@ -27,12 +27,12 @@
             $active = $_REQUEST['active'] == 0 ? 1 : 0;
             $sql = "UPDATE course SET active={$active} WHERE courseId ='{$_REQUEST['courseId']}'";
 
-            if(connectBD("learningacademy", $connection)) {
+            if(connectBD("id21353268_learningacademy", $connection)) {
                 updateSQL($connection, $sql);
                 header("Refresh: 0; URL='index.php?manage=courses'");
             }
         } else if(isset($_REQUEST['courseId'])){
-            if(connectBD("learningacademy", $connection)){
+            if(connectBD("id21353268_learningacademy", $connection)){
                 $sql = "SELECT * FROM course WHERE courseId='{$_REQUEST['courseId']}'";
                 if(selectSQL($connection, $sql, $result)) $result = $result[0];
             }
@@ -41,7 +41,7 @@
 
         if(!empty($_POST)){
             if(!isset($_POST['photoPath'])){
-                if(connectBD("learningacademy",$connection)){
+                if(connectBD("id21353268_learningacademy",$connection)){
                     $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
@@ -50,7 +50,7 @@
                 }
             }else{
                 $uploadStatus = uploadPhoto(3, $route, false, $_POST['courseId']);
-                if(connectBD("learningacademy",$connection)){
+                if(connectBD("id21353268_learningacademy",$connection)){
                     $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='$route' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
