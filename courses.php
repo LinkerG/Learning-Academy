@@ -64,7 +64,7 @@
                             echo "<p class='pDate'>{$course['startDate']} / {$course['endDate']}</p>";
 
                             if($buttonDisabled) echo "<p class='pButton'>The end date of this course alreafy finished</p>";
-                            else echo "<button class='courseButton pButton' onclick='enrollFunction($canJoin, {$course['courseId']}, `$dni`)'>Enroll !</button>";
+                            else echo "<button class='courseButton pButton blueBtn' onclick='enrollFunction($canJoin, {$course['courseId']}, `$dni`)'>Enroll !</button>";
 
                             echo "<p class='pMain'>{$course['description']}</p>";
                             echo "</div>";
@@ -74,8 +74,8 @@
                             echo "</figure>";
 
                             echo "<p>{$course['name']}</p>";
-                            if($buttonDisabled) echo "<button disabled class='courseButton disabled' onclick='enrollFunction($canJoin, {$course['courseId']}, `$dni`)'>Enroll !</button>";
-                            else echo "<button class='courseButton' onclick='enrollFunction($canJoin, {$course['courseId']}, `$dni`)'>Enroll !</button>";
+                            if($buttonDisabled) echo "<button disabled class='courseButton disabled witheBtn' onclick='enrollFunction($canJoin, {$course['courseId']}, `$dni`)'>Enroll !</button>";
+                            else echo "<button class='courseButton witheBtn' onclick='enrollFunction($canJoin, {$course['courseId']}, `$dni`)'>Enroll !</button>";
 
                             echo "</div>";
                         }
