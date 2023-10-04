@@ -84,8 +84,8 @@
         <label for="photo">Photo</label>
         <input type="file" name="photoPath" id="photoPath">
 
-        <input type="submit" value="Update">
+        <input class="witheBtn" type="submit" value="Update">
     </form>
-    <a href="index.php?manage=teachers">Back</a>
+    <a class="witheBtn" href="index.php?manage=teachers">Back</a>
 </body>
 </html>

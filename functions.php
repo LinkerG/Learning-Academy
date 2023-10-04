@@ -11,27 +11,27 @@ function printHeader() {
         case "N":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
             echo "<p class='menu1'>Learning Academy</p>";
-            echo "<a href='/Learning-Academy/courses.php' class='Course'>Our courses</a>";
+            echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
             echo "<a href='login.php' id='login' class='blueBtn'>Log in</a>";
             echo "<a href='signup.php' id='signup' class='witheBtn'>Sing up</a>";
             break;
         case "A":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-            echo "<a href='/Learning-Academy/admin/index.php' class='menu1'>Admin panel</a>";
-            echo "<a href='/Learning-Academy/courses.php' class='Course'>Our courses</a>";
+            echo "<a href='/Learning-Academy/admin/index.php' class='menu1 blueBtn'>Admin panel</a>";
+            echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
             echo "<a href='/Learning-Academy/close.php' id='logout' class='blueBtn'>Log out</a>";
             break;
         case "S":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-            echo "<a href='/Learning-Academy/student/index.php' class='menu1'>Student panel</a>";
-            echo "<a href='/Learning-Academy/courses.php' class='Course'>Our courses</a>";
+            echo "<a href='/Learning-Academy/student/index.php' class='menu1 blueBtn'>Student panel</a>";
+            echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
             echo "<a href='/Learning-Academy/close.php' id='logout' class='blueBtn'>Log out</a>";
             break;
         case "T":
             echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-            echo "<a href='/Learning-Academy/teacher/index.php' class='menu1'>Teacher panel</a>";
-            echo "<a href='/Learning-Academy/courses.php' class='Course'>Our courses</a>";
-            echo "<a href='/Learning-Academy/close.php' class='logout'>Log out</a>";
+            echo "<a href='/Learning-Academy/teacher/index.php' class='menu1 blueBtn'>Teacher panel</a>";
+            echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
+            echo "<a href='/Learning-Academy/close.php' class='blueBtn' id='logout'>Log out</a>";
             break;
     }
     echo "</header>";

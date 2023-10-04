@@ -86,8 +86,8 @@
 
         <input type="hidden" name="active" id="active" value="<?php echo "{$result['active']}";?>">
         
-        <input type="submit" value="Update">
+        <input class="witheBtn" type="submit" value="Update">
     </form>
-    <a href="index.php?manage=courses">Back</a>
+    <a class="witheBtn" href="index.php?manage=courses">Back</a>
 </body>
 </html>
