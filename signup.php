@@ -45,31 +45,49 @@
             }
         }
     ?>
-    <div class="container">
+    <div class="formDiv">
         <form enctype ="multipart/form-data" action="#" method="POST">
-            <label for="dniStudent">DNI</label>    
-            <input type="text" name="dniStudent" id="dniStudent">
-            
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email">
-
-            <label for="password">Password</label>    
-            <input type="password" name="password" id="password">
-
-            <label for="name">Name</label>    
-            <input type="text" name="name" id="name">
-
-            <label for="surname">Surname</label>    
-            <input type="text" name="surname" id="surname">
-
-            <label for="birthDate">Birth date</label>    
-            <input type="date" name="birthDate" id="birthDate" max="<?php echo date("Y-m-d")?>">
-            
-            <label for="photoPath">Photo</label>    
-            <input type="file" name="photoPath" id="photoPath">
-
-            <a href="index.php">Cancel</a>
-            <input type="submit" value="Sign Up">
+            <div class="formRow">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email">
+                </div>
+                <div>
+                    <label for="password">Password</label>    
+                    <input type="password" name="password" id="password">
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="name">Name</label>    
+                    <input type="text" name="name" id="name">
+                    
+                </div>
+                <div>
+                    <label for="dniStudent">DNI</label>    
+                    <input type="text" name="dniStudent" id="dniStudent">    
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="surname">Surname</label>    
+                    <input type="text" name="surname" id="surname">
+                </div>
+                <div class="formDivided">
+                    <div>
+                        <label for="birthDate">Birth date</label>    
+                        <input type="date" name="birthDate" id="birthDate" max="<?php echo date("Y-m-d")?>">
+                    </div>
+                    <div>
+                        <label for="photoPath">Photo</label>    
+                        <input type="file" name="photoPath" id="photoPath" value="Select photo">
+                    </div>
+                </div>
+            </div>
+            <div class=formActions>
+                <input type="submit" value="Sign Up">
+                <a href="index.php">Cancel</a>
+            </div>  
         </form>
     </div>
 </body>

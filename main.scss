@@ -15,30 +15,35 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-
+input[type="file"] {
+    color: transparent; /* Hace que el texto sea transparente */
+    overflow: hidden; /* Oculta cualquier desbordamiento */
+    align-self: baseline;
+}
 
 //Login
-.loginDiv{
+.formDiv{
     display:grid;
     place-items: center;
     justify-content: center;
     width: 100vw;
     height: 80vh;
-    .loginForm{
+    form{
         padding: 40px;
         background-color:$lightBlue;    
         border-radius: 10px;
         display:grid;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3,1fr);
-        place-items: center;
+        grid-template-rows: auto;
+
+        max-width: 40vw;
         h3{
-            color:#ffffff;
+            color: white;
         }
         .form-button{
             font-size: 16px;
             color:$darkBlue;
-            background-color:#ffffff;
+            background-color: white;
             border-radius: 10px;
             border:none;
             padding: 1rem;
@@ -46,14 +51,40 @@ body {
             padding-left: 2rem;
             padding-right: 2rem;
         }
-        div{
-            display: flex;
-            flex-direction: column;
+            
+            .formRow{
+                display: grid;
+                align-items: center;
+                grid-template-columns: 1fr 1fr;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    margin: 1rem;
+                }
+
+                .loginRow{
+                    grid-column: 1/3;
+                }
+                .formDivided{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    width: 100%;
+                    div{
+                        display: grid;
+                        grid-template-rows: auto;
+
+                        input[type="file"]{
+                            grid-row: 2/3;
+                        }
+                    }
+                }
+            }
             label{
                 margin-bottom:1rem;
                 margin-top: 1rem;
             }
-        }
+        
     }
 }
 // Estilos para el encabezado
