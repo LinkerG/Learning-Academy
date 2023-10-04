@@ -123,9 +123,6 @@ header {
         grid-column: 7/8;
     }
 }
-
-
-
 // Estilos para tablas
 th,
 td {
@@ -570,28 +567,92 @@ table {
     transform: scale(0.9);  
 }
 //Index
-.contentIndex{
-    display:grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 0.6fr 1fr 0.5fr;
-    grid-column-gap:13px;
-    grid-row-gap: 20px;
-    .div1{
-        grid-area: 1 / 1 / 4 /3 ;
+.indexContainer {
+    background-color:$lightBlue;
+    margin-top:10vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    justify-content: stretch;
+    align-content: stretch;
+    justify-items: stretch;
+    align-items: center;
+    grid-template-areas:
+    "title imgs"
+    "description imgs"
+    "buttons imgs";
+    width: 1000px;
+    height: 400px;
+
+    .title { 
+        margin-left:2vw;
+        grid-area: title; 
     }
-    .div2{
-        grid-area: 1 / 1 / 2 /2 ;
+    .description { 
+        margin-left:2vw;
+        grid-area: description; 
     }
-    .div3{
-        grid-area: 2 / 1 / 3 /2 ;
+    .buttons {
+        margin-left:2vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.4fr;
+        grid-auto-columns: 1fr;
+        gap: 0px 30px;
+        grid-auto-flow: row;
+        grid-template-areas:
+        ". .";
+        grid-area: buttons;
     }
-    .div4{
-        grid-area: 3 / 1 / 4 /2 ;
+
+    .imgs {
+        margin-left: 3vw;
+        display: grid;
+        grid-template-columns: 0.1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        justify-content: stretch;
+        align-content: stretch;
+        grid-template-areas:
+        "img1 img1 img3"
+        "img2 img2 img3";
+        grid-area: imgs;
+
+    .img1 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        justify-content: stretch;
+        align-content: center;
+        justify-items: stretch;
+        align-items: start;
+        grid-template-areas:
+            ".";
+        grid-area: img1;
     }
-    .div5{
-        grid-area: 1 / 2 / 4 /3 ;
+
+    .img2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        align-content: center;
+        grid-template-areas:
+            ".";
+        grid-area: img2;
+    }
+
+    .img3 { grid-area: img3; }
     }
 }
+    
 /*.index{
     display:grid;
     grid-template-columns: 70% 30%;

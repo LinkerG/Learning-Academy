@@ -104,10 +104,10 @@
                 </div>
                 <div>
                     <input class="witheBtn" type="submit" value="Add">
+                    <a class="witheBtn" href="index.php?manage=courses">Cancel</a>
                 </div>
             </div>
         </form>
-        <a class="witheBtn" href="index.php?manage=courses">Cancel</a>
     </div>
 </body>
 </html>
