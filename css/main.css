@@ -461,6 +461,56 @@ table {
   width: 20vw;
 }
 
+.witheBtn {
+  font-size: 16px;
+  color: #248EFF;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  padding: 1rem;
+  margin-top: 20px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.blueBtn {
+  font-size: 16px;
+  color: #248EFF;
+  background-color: #248EFF;
+  color: #FFFFFF;
+  border-radius: 10px;
+  border: none;
+  padding: 1rem;
+  margin-top: 20px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.blueBtn:hover {
+  transform: scale(0.9);
+}
+
+.witheBtn:hover {
+  transform: scale(0.9);
+}
+
+.index {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  background-color: #A0DCFF;
+  padding: 3rem;
+  text-align: left;
+  margin-top: 5rem;
+  margin-right: 30vw;
+  padding-bottom: 20vh;
+}
+.index div {
+  place-content: bottom;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
