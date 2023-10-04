@@ -547,6 +547,7 @@ table {
 }
 
 .indexContainer {
+  border-radius: 0 10px 10px 0;
   background-color: #A0DCFF;
   margin-top: 10vh;
   overflow: hidden;
