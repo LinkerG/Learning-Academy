@@ -13,7 +13,14 @@
     <?php
         include("../functions.php");
 
-        printHeader();
+        if(!isset($_SESSION['role']) || $_SESSION['role'] != "A") {
+            printHeader();
+            include("needAdmin.html");
+            header("Refresh: 5; URL='/Learning-Academy/close.php.php'");
+            exit;
+        } else {
+            printHeader();
+        }
 
         if(isset($_REQUEST['active'])){
             $active = $_REQUEST['active'] == 0 ? 1 : 0;
