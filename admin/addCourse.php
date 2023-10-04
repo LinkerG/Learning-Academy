@@ -53,41 +53,60 @@
             }
         }
     ?>
-    <form enctype ="multipart/form-data" action="#" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
-
-        <label for="hours">Hours:</label>
-        <input type="number" name="hours" id="hours">
-
-        <label for="startDate">Start date:</label>
-        <input type="date" name="startDate" id="startDate" min="<?php echo date("Y-m-d") ?>">
-
-        <label for="endDate">End date:</label>
-        <input type="date" name="endDate" id="endDate" min="<?php echo date("Y-m-d") ?>">
-
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description">
-
-        <label for="dniTeacher">Teacher DNI:</label>
-        <select name="dniTeacher" required>
-            <?php
-                $sql= "SELECT dniTeacher,name,surname FROM teacher";
-                if(connectBD("learningacademy", $connection)) {
-                    if(selectSQL($connection, $sql,$result)){
-                        foreach($result as $teachersInfo){
-                            echo "<option value={$teachersInfo['dniTeacher']}>".$teachersInfo['name']." {$teachersInfo['surname']}</option>";
+    <div class="formDiv">
+        <form enctype ="multipart/form-data" action="#" method="POST">
+            <div class="formRow">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="hours">Hours:</label>
+                    <input type="number" name="hours" id="hours">
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="startDate">Start date:</label>
+                    <input type="date" name="startDate" id="startDate" min="<?php echo date("Y-m-d") ?>">
+                </div>
+                <div>
+                    <label for="endDate">End date:</label>
+                    <input type="date" name="endDate" id="endDate" min="<?php echo date("Y-m-d") ?>">
+                </div>
+            </div>
+            <div class="formRow">
+                <div>   
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description">
+                </div>
+                <div>
+                    <label for="dniTeacher">Teacher DNI:</label>
+                    <select name="dniTeacher" required>
+                        <?php
+                        $sql= "SELECT dniTeacher,name,surname FROM teacher";
+                        if(connectBD("learningacademy", $connection)) {
+                            if(selectSQL($connection, $sql,$result)){
+                                foreach($result as $teachersInfo){
+                                    echo "<option value={$teachersInfo['dniTeacher']}>".$teachersInfo['name']." {$teachersInfo['surname']}</option>";
+                                }
+                            }
                         }
-                    }
-                }
-            ?>
-        </select>
-
-        <label for="photoPath">Photo:</label>
-        <input type="file" name="photoPath" id="photoPath">
-
-        <input type="submit" value="Add">
-    </form>
-    <a href="index.php?manage=courses">Cancel</a>
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="photoPath">Photo:</label>
+                    <input type="file" name="photoPath" id="photoPath">
+                </div>
+                <div>
+                    <input type="submit" value="Add">
+                </div>
+            </div>
+        </form>
+        <a href="index.php?manage=courses">Cancel</a>
+    </div>
 </body>
 </html>

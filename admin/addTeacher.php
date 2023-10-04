@@ -55,24 +55,51 @@
             }
         }
     ?>
-    <form enctype ="multipart/form-data" action="#" method="POST">
-        <label for="dniTeacher">DNI:</label>
-        <input type="text" name="dniTeacher" id="dniTeacher">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
-        <label for="surname">Surname:</label>
-        <input type="text" name="surname" id="surname">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password">
-        <label for="titulation">Titulation:</label>
-        <input type="text" name="titulation" id="titulation">
-        <label for="photoPath">Photo:</label>
-        <input type="file" name="photoPath" id="photoPath">
-        <input type="hidden" name="active" id="active" value="1">
-        <input type="submit" value="Add">
-    </form>
-    <a href="index.php?manage=teachers">Cancel</a>
+    <div class="formDiv">
+        <form enctype ="multipart/form-data" action="#" method="POST">
+            <div class="formRow">
+                <div>
+                    <label for="dniTeacher">DNI:</label>
+                    <input type="text" name="dniTeacher" id="dniTeacher">
+                </div>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name">
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="surname">Surname:</label>
+                    <input type="text" name="surname" id="surname">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div>
+                    <label for="titulation">Titulation:</label>
+                    <input type="text" name="titulation" id="titulation">
+                </div>
+            </div>
+            <div class="formRow">
+                <div>
+                    <label for="photoPath">Photo:</label>
+                    <input type="file" name="photoPath" id="photoPath">
+                </div>
+                <div>
+                    <input type="hidden" name="active" id="active" value="1">
+                    <input type="submit" value="Add">
+                    <a href="index.php?manage=teachers">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+    </div>
 </body>
 </html>

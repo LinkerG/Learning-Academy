@@ -115,11 +115,6 @@ header .logout, header .signup {
   grid-column: 7/8;
 }
 
-a:is(:link, :hover, :active, :visited) {
-  color: white;
-  text-decoration: none;
-}
-
 th,
 td {
   border: 1px solid black;
@@ -515,6 +510,8 @@ table {
 }
 
 .witheBtn {
+  text-align: center;
+  text-decoration: none;
   font-size: 16px;
   color: #248EFF;
   background-color: #ffffff;
@@ -528,10 +525,11 @@ table {
 }
 
 .blueBtn {
+  text-decoration: none;
+  text-align: center;
+  color: white;
   font-size: 16px;
-  color: #248EFF;
   background-color: #248EFF;
-  color: #FFFFFF;
   border-radius: 10px;
   border: none;
   padding: 1rem;
@@ -552,18 +550,36 @@ table {
 .index {
   display: grid;
   grid-template-columns: 70% 30%;
-  grid-template-rows: repeat(3, 1fr);
   background-color: #A0DCFF;
-  padding: 3rem;
   text-align: left;
-  margin-top: 5rem;
+  padding: 1vh 0 5vh 3vw;
+  margin-top: 15vh;
   margin-right: 30vw;
-  padding-bottom: 20vh;
   overflow: hidden;
+  place-items: center;
 }
-.index div {
+.index .content {
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  margin-top: 5vh;
+}
+.index .content h1 {
+  margin-bottom: 5vh;
+}
+.index .content p {
+  margin-bottom: 2vh;
+}
+.index .content div {
+  display: flex;
+  justify-content: left;
+}
+.index .content div a {
+  margin-right: 20px;
+}
+.index .imgs {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2/3;
 }
 
 @keyframes spin {

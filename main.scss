@@ -129,11 +129,7 @@ header {
     }
 }
 
-// Estilos para enlaces
-a:is(:link, :hover, :active, :visited) {
-    color: white;
-    text-decoration: none;
-}
+
 
 // Estilos para tablas
 th,
@@ -544,6 +540,8 @@ table {
 }
 //boton blanco y azul
 .witheBtn{
+    text-align:center ;
+    text-decoration: none;
     font-size: 16px;
     color:$darkBlue;
     background-color:#ffffff;
@@ -556,10 +554,11 @@ table {
     cursor: pointer;
 }
 .blueBtn{
+    text-decoration: none;
+    text-align: center;
+    color:white;
     font-size: 16px;
-    color:$darkBlue;
     background-color:$darkBlue;
-    color:#FFFFFF;
     border-radius: 10px;
     border:none;
     padding: 1rem;
@@ -578,17 +577,35 @@ table {
 .index{
     display:grid;
     grid-template-columns: 70% 30%;
-    grid-template-rows: repeat(3,1fr);
     background-color: $lightBlue;
-    padding: 3rem;
     text-align: left;
-    margin-top:5rem;
+    padding:1vh 0 5vh 3vw;
+    margin-top:15vh;
     margin-right: 30vw;
-    padding-bottom:20vh;
     overflow: hidden;
-    div{
+    place-items: center;    
+    .content{
         display: grid;
-        grid-template-rows: repeat(3,1fr);
+        grid-template-rows: 1fr;
+        margin-top:5vh;
+        h1{
+            margin-bottom: 5vh;
+        }
+        p{
+            margin-bottom: 2vh;
+        }
+        div{
+            display:flex;
+            justify-content: left;
+            a{
+                margin-right: 20px;
+            }
+        }
+    }
+    .imgs{
+        display: flex;
+        flex-direction: column;
+        grid-column: 2/3;
     }
 
 }
