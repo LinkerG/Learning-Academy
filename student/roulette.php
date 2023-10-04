@@ -6,7 +6,7 @@
     <title>!!!! WINNER !!!!</title>
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
-    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body class="roulette">
     <div class="rouletteContainer">
