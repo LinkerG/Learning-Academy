@@ -155,10 +155,8 @@
                             
                         </div>
 
-                <?php
-                    
+                <?php   
                     echo "</div>";
-                    
                     echo "</div>";
                     echo "<div class='popup'>";
                     echo "<div class='popup-content'></div>";   
@@ -166,7 +164,6 @@
             }
         }
     ?>
-
     </div>
     <script>
         window.onload = hideForms;

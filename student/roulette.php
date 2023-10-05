@@ -16,13 +16,10 @@ session_start();
     include("../functions.php");
 
     if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
-        printHeader();
         include("needStudent.html");
         header("Refresh: 5; URL='/Learning-Academy/close.php'");
         exit;
-    } else {
-        printHeader();
-    } 
+    }
     ?>
     <div class="rouletteContainer">
         <div id="roulette" class="roulette">
