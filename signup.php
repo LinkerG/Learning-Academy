@@ -37,9 +37,8 @@
 
             // Insert
             if(connectBD("id21353268_learningacademy",$connection) && $continue){
-                if(!isset($_POST['photoPath'])){
+                if(isset($_POST['photoPath'])){
                     $uploadStatus = uploadPhoto(0,$route, true);
-                    echo "<script>alert('sifoto')</script>";
                     if($uploadStatus == 0) {
                         $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath) 
                         VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','$route')";
@@ -59,7 +58,6 @@
                 } else {
                     $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath) 
                     VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','/Learning-Academy/img/profilePhotos/default.png')";
-                    echo "<script>alert('nofoto')</script>";
                     $action = insertSQL($connection, $sql);
                     if($action == 0) {
                         echo "<script>alert('You signed in correctly, now log in')</script>";
