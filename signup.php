@@ -23,6 +23,17 @@
                 echo "<script>alert('Incorrect DNI format')</script>";
                 $continue = false;
             }
+            if(connectBD("id21353268_learningacademy",$connection)){
+                $sql = "SELECT dniTeacher, email FROM teacher";
+                if(selectSQL($connection, $sql, $result)){
+                    foreach($result as $teacher) {
+                        if($teacher['dniTeacher'] == $_POST['dniStudent'] || $teacher['email'] == $_POST['email']){
+                            echo "<script>alert('DNI or email already in use')</script>";
+                            $continue = false;
+                        }
+                    }
+                }
+            }
 
             // Insert
             if(connectBD("id21353268_learningacademy",$connection) && $continue){
