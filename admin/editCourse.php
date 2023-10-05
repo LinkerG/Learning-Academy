@@ -42,19 +42,19 @@
         if(!empty($_POST)){
             if(!isset($_POST['photoPath'])){
                 if(connectBD("id21353268_learningacademy",$connection)){
-                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
+                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='courses.php'");
+                    header("Refresh: 0; URL='index.php?manage=courses'");
                     exit;
                 }
             }else{
                 $uploadStatus = uploadPhoto(3, $route, false, $_POST['courseId']);
                 if(connectBD("id21353268_learningacademy",$connection)){
-                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', desc='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='$route' WHERE courseId='{$_POST['courseId']}';";
+                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='$route' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='courses.php'");
+                    header("Refresh: 0; URL='index.php?manage=courses'");
                     exit;
                 }
             } 
@@ -96,8 +96,8 @@
             </div>
             <div class="formRow">
                 <div class="singleRow">
-                    <label for="desc">Description</label>
-                    <input type="text" name="desc" id="desc" value="<?php echo "{$result['description']}"; ?>">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description" value="<?php echo "{$result['description']}"; ?>">
                 </div>
             </div>
             <div class="formActions">

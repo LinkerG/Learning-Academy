@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function enrollFunction(action, courseId, dniStudent) {
+function joinFunction(action, courseId, dniStudent) {
     if (action == 0) {
-        let wantLogin = confirm("You must be a student to enroll on this course, want to log in as a student?");
+        let wantLogin = confirm("You must be a student to join on this course, want to log in as a student?");
         if(wantLogin) location.href = "/Learning-Academy/close.php";
     } else if (action == 1) {
-        let confirmEnroll = confirm("You want to enroll on this course?");
-        if(confirmEnroll) location.href = "/Learning-Academy/courses.php?insert=1&dniStudent="+dniStudent+"&courseId="+courseId;
+        let confirmJoin = confirm("You want to join on this course?");
+        if(confirmJoin) location.href = "/Learning-Academy/courses.php?insert=1&dniStudent="+dniStudent+"&courseId="+courseId;
     }
 }
 
@@ -284,7 +284,7 @@ function eventosAdmin(condition) {
                 ventana.appendChild(toolBar)
 
                 let toDraw = document.getElementById(show + "Table");
-                toDraw.style.display = "block";
+                toDraw.style.display = "table";
                 let rows = toDraw.getElementsByTagName("tr");
                 let numCols = rows[0].childElementCount;
 

@@ -131,6 +131,14 @@ td {
 
 table {
     border-collapse: collapse;
+
+    tbody{
+        width: 100%;
+    }
+    th, td{
+        min-width: 12.5%;
+        width: 12.5%;
+    }
 }
 
 // Estilos para la página "Our Courses"
@@ -405,19 +413,19 @@ table {
                         width: 100%;
                         height: 100%;
                         
-                        table{
+                    }
+                    table{
+                        width: 100%;
+                        tbody{
                             width: 100%;
-                            tbody{
+                            tr{
                                 width: 100%;
-                                tr{
-                                    width: 100%;
-                                    td{
-                                        img{
-                                            width: 50%;
-                                            height: 50%;
-                                            aspect-ratio: 1/1;
-                                            object-fit: contain;
-                                        }
+                                td{
+                                    img{
+                                        width: 50%;
+                                        height: 50%;
+                                        aspect-ratio: 1/1;
+                                        object-fit: contain;
                                     }
                                 }
                             }

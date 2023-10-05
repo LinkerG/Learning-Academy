@@ -76,7 +76,7 @@
         if(empty($result)) {
             echo "<div>";
             echo "<h1 style='color:white;'>You aren't in any course</h1>";
-            echo "<a style='color:white;' href=".'../index.php'.">enter on any of our courses!</a>";
+            echo "<a style='color:white;' href=".'../courses.php'.">enter on any of our courses!</a>";
             echo "</div>";
         } else {
             foreach ($result as $course){

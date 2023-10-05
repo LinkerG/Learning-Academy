@@ -285,7 +285,7 @@ function uploadPhoto($aux, &$route, $signin = false, $courseId = null) {
 function unavailableCourses() {
     $sql = "SELECT c.courseId
     FROM course c 
-    WHERE c.endDate < CURRENT_DATE();";
+    WHERE c.endDate < CURRENT_DATE() OR c.active = 0;";
 
     if(connectBD("id21353268_learningacademy", $connection)){
         if(selectSQL($connection, $sql, $result)) {

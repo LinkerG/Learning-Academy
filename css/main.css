@@ -121,6 +121,13 @@ td {
 table {
   border-collapse: collapse;
 }
+table tbody {
+  width: 100%;
+}
+table th, table td {
+  min-width: 12.5%;
+  width: 12.5%;
+}
 
 .top {
   margin: 3rem;
@@ -389,16 +396,16 @@ table {
   width: 100%;
   height: 100%;
 }
-.container .tabbedWindow .divWindow .tab-container .tabWindow .selected table {
+.container .tabbedWindow .divWindow .tab-container .tabWindow table {
   width: 100%;
 }
-.container .tabbedWindow .divWindow .tab-container .tabWindow .selected table tbody {
+.container .tabbedWindow .divWindow .tab-container .tabWindow table tbody {
   width: 100%;
 }
-.container .tabbedWindow .divWindow .tab-container .tabWindow .selected table tbody tr {
+.container .tabbedWindow .divWindow .tab-container .tabWindow table tbody tr {
   width: 100%;
 }
-.container .tabbedWindow .divWindow .tab-container .tabWindow .selected table tbody tr td img {
+.container .tabbedWindow .divWindow .tab-container .tabWindow table tbody tr td img {
   width: 50%;
   height: 50%;
   aspect-ratio: 1/1;
