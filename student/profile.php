@@ -26,6 +26,7 @@ session_start();
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (connectBD("id21353268_learningacademy", $connection)) {
+
                     if(isset($_POST['photoPath'])){
                         $_SESSION['name'] = $_POST['name'];
                         $_SESSION['surname'] = $_POST['surname'];
@@ -89,10 +90,18 @@ session_start();
                             </div>
                             <div class="formRow">
                                 <div>
-                                    <!--
-                                    <label for="photoPath-input">Photo: </label>
-                                    <input type="file" class="form-element" id="photoPath-input" name="photoPath" value="<?php echo $_SESSION['photoPath']?>"></input>
-                                    -->
+                                    <div style="display:flex; flex-direction:row;">
+                                        <label for="showPass">Change password</label>
+                                        <input type="checkbox" name="showPass" id="showPass" onchange="checkboxShow('password')">
+                                        <input type="password" name="password" id="password" required style="display: none;">
+                                    </div>
+                                    <div style="display:flex; flex-direction:row;">
+                                        <label for="showPhoto">Change photo</label>
+                                        <input type="checkbox" name="showPhoto" id="showPhoto" onchange="checkboxShow('photoPath-input')">
+                                        <input type="file" id="photoPath-input" name="photoPath" required style="display:none;"></input>
+
+                                    </div>
+                                    
                                 </div>
                                 <div>                                        
                                     <label for="birthDate-input">Birth date: </label>
