@@ -95,7 +95,7 @@ function openTab(tabNumber) {
         profileForm.style.display = isEditMode ? "block" : "none";
       
         editBtn.style.display = isEditMode ? "none" : "block";
-        saveBtn.style.display = isEditMode ? "block" : "none";
+        //saveBtn.style.display = isEditMode ? "block" : "none";
       }
   
       function updateProfile(data, profileElements) {
