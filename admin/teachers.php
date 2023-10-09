@@ -18,13 +18,13 @@
             printHeader();
             include("needAdmin.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-            exit;
+            
         } else {
             printHeader();
-        }
-    ?>
-    <h1>Teacher list</h1>
-    <div class="listContainer">
+
+        ?>
+        <h1>Teacher list</h1>
+        <div class="listContainer">
         <div class="tableToolbar">
             <a class="linkButton" href="addTeacher.php">Add new teacher</a>
         </div>
@@ -72,5 +72,11 @@
             </table>
         </form>
     </div>
+
+
+<?php
+        }
+    ?>
+    
 </body>
 </html>
