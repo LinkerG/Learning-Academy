@@ -65,7 +65,7 @@
         echo "<div class='top'>";
         echo "<div>";
         echo "<h1>Welcome " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</h1>";
-        echo "<a class='witheBtn' href='profile.php'>Edit profile</a>";
+        echo "<a class='whiteBtn' href='profile.php'>Edit profile</a>";
         echo "</div>";
         echo "<h2>This are your courses right now</h2>";
         echo "</div>";

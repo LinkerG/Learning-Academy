@@ -93,6 +93,16 @@ header {
   background-color: #248EFF;
   justify-content: center;
   align-items: center;
+  padding: 0.5rem;
+}
+header .headerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: transform 300ms;
+}
+header .headerLogo:hover {
+  transform: scale(0.9);
 }
 header .menu1 {
   grid-column: 2/3;
@@ -536,7 +546,7 @@ table th, table td {
   animation: none;
 }
 
-.witheBtn {
+.whiteBtn {
   text-align: center;
   text-decoration: none;
   font-size: 16px;
@@ -545,11 +555,12 @@ table th, table td {
   border-radius: 10px;
   border: none;
   padding: 1rem;
-  margin-top: 20px;
+  align-self: center;
   padding-left: 2rem;
   padding-right: 2rem;
   place-items: center;
   cursor: pointer;
+  transition: transform 300ms;
 }
 
 .blueBtn {
@@ -561,17 +572,18 @@ table th, table td {
   border-radius: 10px;
   border: none;
   padding: 1rem;
-  margin-top: 20px;
+  align-self: center;
   padding-left: 2rem;
   padding-right: 2rem;
   cursor: pointer;
+  transition: transform 300ms;
 }
 
 .blueBtn:hover {
   transform: scale(0.9);
 }
 
-.witheBtn:hover {
+.whiteBtn:hover {
   transform: scale(0.9);
 }
 

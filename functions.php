@@ -9,26 +9,25 @@ function printHeader() {
     if($role == "") $role = "N";
     switch($role) {
         case "N":
-            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
-            echo "<p class='menu1'>Learning Academy</p>";
+            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
             echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
             echo "<a href='/Learning-Academy/login.php' id='login' class='blueBtn'>Log in</a>";
-            echo "<a href='/Learning-Academy/signup.php' id='signup' class='witheBtn'>Sing up</a>";
+            echo "<a href='/Learning-Academy/signup.php' id='signup' class='whiteBtn'>Sing up</a>";
             break;
         case "A":
-            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
+            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
             echo "<a href='/Learning-Academy/admin/index.php' class='menu1 blueBtn'>Admin panel</a>";
             echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
             echo "<a href='/Learning-Academy/close.php' id='logout' class='blueBtn'>Log out</a>";
             break;
         case "S":
-            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
+            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
             echo "<a href='/Learning-Academy/student/index.php' class='menu1 blueBtn'>Student panel</a>";
             echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
             echo "<a href='/Learning-Academy/close.php' id='logout' class='blueBtn'>Log out</a>";
             break;
         case "T":
-            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'></a>";
+            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
             echo "<a href='/Learning-Academy/teacher/index.php' class='menu1 blueBtn'>Teacher panel</a>";
             echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
             echo "<a href='/Learning-Academy/close.php' class='blueBtn' id='logout'>Log out</a>";

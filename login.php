@@ -42,8 +42,8 @@
                 </div>
             </div>
             <div class="formActions">
-                <input class="witheBtn" type="submit" value="Log In">
-                <a href="index.php" class="witheBtn">Cancel</a>
+                <input class="whiteBtn" type="submit" value="Log In">
+                <a href="index.php" class="whiteBtn">Cancel</a>
             </div>
         </form>
     </div>

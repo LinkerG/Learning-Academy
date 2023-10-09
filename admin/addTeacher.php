@@ -104,8 +104,8 @@
                 </div>
                 <div>
                     <input type="hidden" name="active" id="active" value="1">
-                    <input class="witheBtn" type="submit" value="Add">
-                    <a class="witheBtn" href="index.php?manage=teachers">Cancel</a>
+                    <input class="whiteBtn" type="submit" value="Add">
+                    <a class="whiteBtn" href="index.php?manage=teachers">Cancel</a>
                 </div>
             </div>
         </form>

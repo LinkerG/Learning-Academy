@@ -74,7 +74,7 @@
                                 echo "</figure>";
     
                                 echo "<p>{$course['name']}</p>";
-                                echo "<button class='courseButton witheBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
+                                echo "<button class='courseButton whiteBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
     
                                 echo "</div>";
                             }

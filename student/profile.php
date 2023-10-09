@@ -115,8 +115,8 @@ session_start();
                                 </div>
                             </div>
                             <div class="formActions">
-                                <input class="witheBtn" type="submit" value="Update"></input>
-                                <a class='witheBtn' href="index.php">Cancel</a>
+                                <input class="whiteBtn" type="submit" value="Update"></input>
+                                <a class='whiteBtn' href="index.php">Cancel</a>
                             </div>
                         </form>
                     </div>

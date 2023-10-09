@@ -103,8 +103,8 @@
                     <input type="file" name="photoPath" id="photoPath">
                 </div>
                 <div>
-                    <input class="witheBtn" type="submit" value="Add">
-                    <a class="witheBtn" href="index.php?manage=courses">Cancel</a>
+                    <input class="whiteBtn" type="submit" value="Add">
+                    <a class="whiteBtn" href="index.php?manage=courses">Cancel</a>
                 </div>
             </div>
         </form>
