@@ -21,10 +21,6 @@
             printHeader();
             include("needAdmin.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-            exit;
-        }
-
-        
     ?>
     <div class="container">
     <h1>ADMIN PANEL</h1>
@@ -116,5 +112,8 @@ if(isset($_REQUEST['manage'])) {
     echo "<script>window.onload = loadAdmin(0);</script>";
 }
 ?>
+<?php
+        }
+    ?>
 </body>
 </html>

@@ -18,8 +18,7 @@ session_start();
     if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
         include("needStudent.html");
         echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-        exit;
-    }
+    } else {
     ?>
     <div class="rouletteContainer">
         <div id="roulette" class="roulette">
@@ -32,8 +31,8 @@ session_start();
             <button id="rouletteButton" onclick="return spinRoulette()">SPIN IT!!!</button>
         </div>
     </div>
-    
-    <script>
-    </script>
+    <?php
+        }
+    ?>
 </body>
 </html>

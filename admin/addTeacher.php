@@ -18,10 +18,9 @@
             printHeader();
             include("needAdmin.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-            exit;
         } else {
             printHeader();
-        }
+        
 
         if(!empty($_POST)){
             // Data validation
@@ -110,7 +109,9 @@
                 </div>
             </div>
         </form>
-        
     </div>
+    <?php
+        }
+    ?>
 </body>
 </html>

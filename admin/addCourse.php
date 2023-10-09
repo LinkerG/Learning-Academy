@@ -18,41 +18,41 @@
             printHeader();
             include("needAdmin.html");
             header("Refresh: 5; URL='/Learning-Academy/close.php'");
-            exit;
+            
         } else {
             printHeader();
-        }   
-        if(!empty($_POST)){
-            // Validacion de datos
-            $continue = true;
-            if($_POST['endDate']<date("Y-m-d")) {
-                echo "<script>alert('A course cannot end on a date that already passed')</script>";
-                $continue = false;
-            }
-            if(strtotime($_POST["endDate"])<strtotime($_POST["startDate"])) {
-                echo "<script>alert('The end date cannot be lower than the start date')</script>";
-                $continue = false;
-            }
+           
+            if(!empty($_POST)){
+                // Validacion de datos
+                $continue = true;
+                if($_POST['endDate']<date("Y-m-d")) {
+                    echo "<script>alert('A course cannot end on a date that already passed')</script>";
+                    $continue = false;
+                }
+                if(strtotime($_POST["endDate"])<strtotime($_POST["startDate"])) {
+                    echo "<script>alert('The end date cannot be lower than the start date')</script>";
+                    $continue = false;
+                }
 
-            // Insert
-            if(connectBD("id21353268_learningacademy",$connection) && $continue){
-                $uploadStatus = uploadPhoto(2, $route);
-                if($uploadStatus == 0){
-                    $sql = "INSERT INTO course (name, hours, startDate, endDate, description, dniTeacher, active, photoPath) 
-                    VALUES ('{$_POST['name']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','$route')";
-    
-                    $action = insertSQL($connection, $sql);
-                    if($action == 0) {
-                        echo "<script>alert('Course added correctly')</script>";
-                        header('Location: index.php?manage=courses');
+                // Insert
+                if(connectBD("id21353268_learningacademy",$connection) && $continue){
+                    $uploadStatus = uploadPhoto(2, $route);
+                    if($uploadStatus == 0){
+                        $sql = "INSERT INTO course (name, hours, startDate, endDate, description, dniTeacher, active, photoPath) 
+                        VALUES ('{$_POST['name']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','$route')";
+
+                        $action = insertSQL($connection, $sql);
+                        if($action == 0) {
+                            echo "<script>alert('Course added correctly')</script>";
+                            header('Location: index.php?manage=courses');
+                        }
+                    } elseif ($uploadStatus == 1) {
+                        echo "<script>alert('Error uploading photo')</script>";
+                    } elseif ($uploadStatus == 2) {
+                        echo "<script>alert('Please upload a photo')</script>";
                     }
-                } elseif ($uploadStatus == 1) {
-                    echo "<script>alert('Error uploading photo')</script>";
-                } elseif ($uploadStatus == 2) {
-                    echo "<script>alert('Please upload a photo')</script>";
                 }
             }
-        }
     ?>
     <div class="formDiv">
         <form enctype ="multipart/form-data" action="#" method="POST">
@@ -109,5 +109,8 @@
             </div>
         </form>
     </div>
+    <?php
+        }
+    ?>
 </body>
 </html>

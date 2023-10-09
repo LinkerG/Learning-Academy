@@ -22,8 +22,7 @@
 
         if(isset($_SESSION['role'])) {
             echo "<p>Ya has iniciado sesión</p>";
-            exit;
-        }
+        } else {
     ?>
     <div class="formDiv">
         <form class="loginForm" action="login.php" method="POST">
@@ -48,5 +47,8 @@
             </div>
         </form>
     </div>
+    <?php
+        }
+    ?>
 </body>
 </html>

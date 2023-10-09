@@ -18,10 +18,9 @@
         printHeader();
         include("needStudent.html");
         echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-        exit;
     } else {
         printHeader();
-    } 
+    
     $hasPrize = false;
     if (connectBD("id21353268_learningacademy", $connection)) {
         $prizeSQL = "SELECT prize FROM student WHERE dniStudent = '" . $_SESSION['dniStudent'] . "';";
@@ -175,6 +174,7 @@
     </script>
     <?php
     }
+}
     ?>
 </body>
 </html>

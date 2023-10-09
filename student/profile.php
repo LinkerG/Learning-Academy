@@ -19,10 +19,8 @@ session_start();
                 printHeader();
                 include("needStudent.html");
                 echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-                exit;
             } else {
                 printHeader();
-            } 
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (connectBD("id21353268_learningacademy", $connection)) {
@@ -125,6 +123,7 @@ session_start();
                 </div>
             <?php
             }
+        }
             ?>
 </body>
 </html>

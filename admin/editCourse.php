@@ -18,10 +18,8 @@
             printHeader();
             include("needAdmin.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-            exit;
         } else {
             printHeader();
-        }
 
         if(isset($_REQUEST['active'])){
             $active = $_REQUEST['active'] == 0 ? 1 : 0;
@@ -101,10 +99,10 @@
                 <input class="witheBtn" type="submit" value="Update">
                 <a class="witheBtn" href="index.php?manage=courses">Back</a>
             </div>
-    
-    
-            
         </form>
     </div>
+    <?php
+        }
+    ?>
 </body>
 </html>

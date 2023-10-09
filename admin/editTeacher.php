@@ -19,10 +19,9 @@
             printHeader();
             include("needAdmin.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-            exit;
         } else {
             printHeader();
-        }
+        
         if(isset($_REQUEST['active'])){
             $active = $_REQUEST['active'] == 0 ? 1 : 0;
             $sql = "UPDATE teacher SET active={$active} WHERE dniTeacher='{$_REQUEST['dniTeacher']}'";
@@ -99,5 +98,8 @@
             </div>
         </form>
     </div>
+    <?php
+        }
+    ?>
 </body>
 </html>
