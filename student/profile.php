@@ -26,76 +26,31 @@ session_start();
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (connectBD("id21353268_learningacademy", $connection)) {
-
-                    if(isset($_POST['showPhoto']) && isset($_POST['showPass'])){
-                        $_SESSION['name'] = $_POST['name'];
-                        $_SESSION['surname'] = $_POST['surname'];
-                        $_SESSION['email'] = $_POST['email'];
-                        $_SESSION['birthDate'] = $_POST['birthDate'];
-                        $_SESSION['photoPath'] = $_POST['photoPath'];
-                        $_SESSION['password'] = $_POST['password'];
+                    if(isset($_POST['password']) && $_POST['photoPath']){
                         $password = md5($_POST['password']);
-                        $uploadStatus = uploadPhoto(0, $route);
-                        if($uploadStatus == 0){
-                            $sql = "UPDATE student SET email = '{$_POST['email']}', name = '{$_POST['name']}', password = $password, surname = '{$_POST['surname']}', birthDate = '{$_POST['birthDate']}', photoPath = '$route' WHERE dniStudent = '{$_SESSION['dniStudent']}';";
-                            updateSQL($connection, $sql);
-                            echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=profile.php'>";
-                        } else if ($uploadStatus == 1) {
-                            echo "<script>alert('Error uploading photo')</script>";
-                        } else if ($uploadStatus == 2) {
-                            echo "<script>alert('Please upload a photo')</script>";
-                        }
-                    } else if(isset($_POST['showPhoto'])){
-                        $_SESSION['name'] = $_POST['name'];
-                        $_SESSION['surname'] = $_POST['surname'];
-                        $_SESSION['email'] = $_POST['email'];
-                        $_SESSION['birthDate'] = $_POST['birthDate'];
-                        $_SESSION['photoPath'] = $_POST['photoPath'];
-                        $uploadStatus = uploadPhoto(0, $route);
-                        if($uploadStatus == 0){
-                            $sql = "UPDATE student SET email = '{$_POST['email']}', name = '{$_POST['name']}', surname = '{$_POST['surname']}', birthDate = '{$_POST['birthDate']}', photoPath = '$route' WHERE dniStudent = '{$_SESSION['dniStudent']}';";
-                            updateSQL($connection, $sql);
-                            echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=profile.php'>";
-                        } else if ($uploadStatus == 1) {
-                            echo "<script>alert('Error uploading photo')</script>";
-                        } else if ($uploadStatus == 2) {
-                            echo "<script>alert('Please upload a photo')</script>";
-                        }
-                    } else if(isset($_POST['showPass'])){
-                        $_SESSION['name'] = $_POST['name'];
-                        $_SESSION['surname'] = $_POST['surname'];
-                        $_SESSION['email'] = $_POST['email'];
-                        $_SESSION['birthDate'] = $_POST['birthDate'];
-                        $_SESSION['password'] = $_POST['password'];
+                        $uploadStatus = uploadPhoto(0,$route);
+                        $sql = "UPDATE student SET email = {$_POST['email']}, password = $password, name = {$_POST['name']}, surname = {$_POST['surname']}, birthDate = {$_POST['birthDate']}, photoPath = $route;";
+                        updateSQL($connection, $sql);
+                        header("Refresh: 0; URL='index.php'");
+                    }elseif(isset($_POST['password'])){
                         $password = md5($_POST['password']);
-                        $sql = "UPDATE student SET email = '{$_POST['email']}', name = '{$_POST['name']}', password = $password, surname = '{$_POST['surname']}', birthDate = '{$_POST['birthDate']}' WHERE dniStudent = '{$_SESSION['dniStudent']}';";
+                        $sql = "UPDATE student SET email = {$_POST['email']}, password = $password, name = {$_POST['name']}, surname = {$_POST['surname']}, birthDate = {$_POST['birthDate']};";
                         updateSQL($connection, $sql);
-                        echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=profile.php'>";
-                    } else {
-                        $_SESSION['name'] = $_POST['name'];
-                        $_SESSION['surname'] = $_POST['surname'];
-                        $_SESSION['email'] = $_POST['email'];
-                        $_SESSION['birthDate'] = $_POST['birthDate'];
-                        $sql = "UPDATE student SET email = '{$_POST['email']}', name = '{$_POST['name']}', surname = '{$_POST['surname']}', birthDate = '{$_POST['birthDate']}' WHERE dniStudent = '{$_SESSION['dniStudent']}';";
+                    }elseif(isset($_POST['photoPath'])){
+                        $uploadStatus = uploadPhoto(0,$route);
+                        $sql = "UPDATE student SET email = {$_POST['email']}, name = {$_POST['name']}, surname = {$_POST['surname']}, birthDate = {$_POST['birthDate']}, photoPath = $route;";
                         updateSQL($connection, $sql);
-                        echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=profile.php'>";
+                    }else{
+                        $sql = "UPDATE student SET email = {$_POST['email']},name = {$_POST['name']}, surname = {$_POST['surname']}, birthDate = {$_POST['birthDate']};";
+                        updateSQL($connection, $sql);
                     }
                 }
             }
             else{
                 ?>
                 <div class="studentContainer">
-                    <div class="studentProfile" style="color:white;">
-                        <div class="profile-element" id="profileName">Name: <?php echo "{$_SESSION['name']}";?></div>
-                        <div class="profile-element" id="profileSurname">Surname: <?php echo "{$_SESSION['surname']}";?></div>
-                        <div class="profile-element" id="profileEmail">Email: <?php echo "{$_SESSION['email']}"; ?></div>
-                        <div class="profile-element" id="profilePhoto"><img class="provisionalFoto" src="<?php echo "{$_SESSION['photoPath']}";?>"></div>
-                        <div class="profile-element" id="profileBirthDate">Birth date: <?php echo "{$_SESSION['birthDate']}";?></div>
-                        <div class="profile-element" id="profileStudentDni">DNI: <?php echo "{$_SESSION['dniStudent']}";?></div>
-                        <div class="btn"><button type="button" id="edit-btn" onclick="editProfile()">Edit profile</button></div>
-                    </div>
                     <div class="formDiv">
-                        <form enctype="multipart/form-data" id="profile-form" style="display:none" action="profile.php" method="POST">
+                        <form enctype="multipart/form-data" id="profile-form" action="profile.php" method="POST">
                             <div class="formRow">
                                 <div>
                                     <label for="name-input">Name: </label>
@@ -135,22 +90,14 @@ session_start();
                                 </div>
                             </div>
                             <div class="formActions">
-                                <input type="submit" value="Update"></input>
-                                <a class='witheBtn' href="profile.php">Cancel</a>
+                                <input class="witheBtn" type="submit" value="Update"></input>
+                                <a class='witheBtn' href="index.php">Cancel</a>
                             </div>
                         </form>
                     </div>
                 </div>
-            
             <?php
             }
             ?>
-      
-           <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    // Llama a la función editProfile cuando el DOM esté listo
-                    editProfile();
-                });
-           </script>
 </body>
 </html>

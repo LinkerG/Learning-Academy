@@ -64,7 +64,7 @@ function selectSQL($connection, $sql, &$result) {
             $result = mysqli_fetch_all($consulta, MYSQLI_ASSOC);
         }
         else throw new Exception(mysqli_sql_exception());
-    } catch (Exception $e) {
+    } catch (Exception $e) {    
         echo "<p>Error en la consulta SQL</p>";
         errorMsg($e);
     }
