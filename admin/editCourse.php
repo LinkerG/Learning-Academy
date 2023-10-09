@@ -17,7 +17,7 @@
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "A") {
             printHeader();
             include("needAdmin.html");
-            header("Refresh: 5; URL='/Learning-Academy/close.php'");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
             exit;
         } else {
             printHeader();
@@ -29,7 +29,7 @@
 
             if(connectBD("id21353268_learningacademy", $connection)) {
                 updateSQL($connection, $sql);
-                header("Refresh: 0; URL='index.php?manage=courses'");
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
             }
         } else if(isset($_REQUEST['courseId'])){
             if(connectBD("id21353268_learningacademy", $connection)){
@@ -45,8 +45,7 @@
                     $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='index.php?manage=courses'");
-                    exit;
+                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
                 }
             }else{
                 $uploadStatus = uploadPhoto(3, $route, false, $_POST['courseId']);
@@ -54,15 +53,13 @@
                     $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='$route' WHERE courseId='{$_POST['courseId']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='index.php?manage=courses'");
-                    exit;
+                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
                 }
             } 
         }
         
         ?>
     <div class="formDiv">
-        
         <form enctype="multipart/form-data" action="#" method="post">
             <div class="formRow">
                 <div>

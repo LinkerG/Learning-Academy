@@ -46,7 +46,7 @@
                         $action = insertSQL($connection, $sql);
                         if($action == 0) {
                             echo "<script>alert('You signed in correctly, now log in')</script>";
-                            header("Refresh: 1; URL='login.php'");
+                            echo "<META HTTP-EQUIV='REFRESH' CONTENT='1;URL=login.php'>";
                         } else if($action == 1062) {
                             echo "<script>alert('DNI or email already in use')</script>";
                         }
@@ -61,7 +61,7 @@
                     $action = insertSQL($connection, $sql);
                     if($action == 0) {
                         echo "<script>alert('You signed in correctly, now log in')</script>";
-                        header("Refresh: 1; URL='login.php'");
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1;URL=login.php'>";
                     } else if($action == 1062) {
                         echo "<script>alert('DNI or email already in use')</script>";
                     }

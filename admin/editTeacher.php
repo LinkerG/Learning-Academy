@@ -18,7 +18,7 @@
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "A") {
             printHeader();
             include("needAdmin.html");
-            header("Refresh: 5; URL='/Learning-Academy/close.php'");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
             exit;
         } else {
             printHeader();
@@ -29,8 +29,7 @@
 
             if(connectBD("id21353268_learningacademy", $connection)) {
                 updateSQL($connection, $sql);
-                header("Refresh: 0; URL='index.php?manage=teachers'");
-                die;
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
             }
         } else if(isset($_REQUEST['dniTeacher'])){
             if(connectBD("id21353268_learningacademy", $connection)){
@@ -46,14 +45,14 @@
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='index.php?manage=teachers'");
+                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
                 }
             } else{
                 if(connectBD("id21353268_learningacademy",$connection)){
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
                     
                     updateSQL($connection, $sql);
-                    header("Refresh: 0; URL='index.php?manage=teachers'");
+                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
                 }
             }
         }
