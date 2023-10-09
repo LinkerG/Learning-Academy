@@ -167,6 +167,7 @@ function validateUser() {
                                 $_SESSION['email'] = $row['email'];
                                 $_SESSION['password'] = $row['password'];
                                 $_SESSION['role'] = "T";
+                                $_SESSION['dniTeacher'] = $row['dniTeacher'];
                                 header('Location: teacher/index.php');
                             } else $found=false;
                         }
