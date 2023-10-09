@@ -15,12 +15,12 @@
     <?php
         include("../functions.php");
 
-        if(isset($_SESSION['role']) && $_SESSION['role'] == "A") {
-            printHeader();
-        } else{
+        if(!isset($_SESSION['role']) && $_SESSION['role'] != "A") {
             printHeader();
             include("needAdmin.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+        } else{
+            printHeader();
     ?>
     <div class="container">
     <h1>ADMIN PANEL</h1>

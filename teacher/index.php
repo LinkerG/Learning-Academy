@@ -22,16 +22,30 @@
         } else {
             printHeader();
             if(connectBD("id21353268_learningacademy", $connection)) {
-                $sql = "SELECT * FROM course WHERE dniTeacher = '" . $_SESSION['dniTeacher'] . "';";
+                $sql = "SELECT c.*, COUNT(m.dniStudent) AS numberOfStudents, COUNT(CASE WHEN m.score IS NOT NULL THEN 1 ELSE NULL END) AS gradedStudents 
+                FROM course c 
+                LEFT JOIN matriculates m ON c.courseId = m.courseId 
+                WHERE c.dniTeacher ='" . $_SESSION['dniTeacher'] . "' 
+                GROUP BY c.courseId, c.name, c.hours, c.startDate, c.endDate, c.description, c.dniTeacher, c.active, c.photoPath;";
                 if(selectSQL($connection, $sql, $result));
             }
     ?>
 
     <div class='container'>
-        <div class='tabbedWindow'>
-            <div class='divWindow hoverable'>
-                
-            </div>
+        <h1>Teacher panel</h1>
+        <div class="teacherContainer">
+            <?php
+                foreach ($result as $course) {
+                    
+                    $isFinished = strtotime($course['endDate'])<date("Y-m-d") ? "Finished" : "Not finished";
+                    echo "<div>";
+                    echo "<p>Course: {$course['name']}</p>";
+                    echo "<p>Status: " . $isFinished . "</p>";
+                    echo "<p>Students: {$course['numberOfStudents']}</p>";
+                    echo "<p>Graded students: {$course['gradedStudents']}/{$course['numberOfStudents']}";
+                    echo "</div>";
+                }
+            ?>
         </div>
     </div>
     <?php

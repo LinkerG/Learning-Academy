@@ -350,6 +350,7 @@ table th, table td {
   padding: 2rem;
   border: 1px solid black;
   transition: padding 500ms;
+  transition: background-color 300ms;
   background-color: #248EFF;
   color: white;
   overflow: hidden;
@@ -421,7 +422,28 @@ table th, table td {
   z-index: 2;
 }
 .container .tabbedWindow .hoverable:hover {
-  padding: 3rem;
+  background-color: #4c9ff8;
+}
+.container .teacherContainer {
+  grid-column: 1/4;
+  display: grid;
+  max-height: 80vh;
+  overflow: auto;
+}
+.container .teacherContainer div {
+  display: flex;
+  justify-content: space-around;
+  background-color: #248EFF;
+  color: white;
+  font-size: 18px;
+  border: 1px solid black;
+  width: 60vw;
+  margin: 1rem;
+  padding: 1rem;
+  transition: background-color 300ms;
+}
+.container .teacherContainer div:hover {
+  background-color: #4c9ff8;
 }
 
 .toolBar {
