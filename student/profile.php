@@ -18,7 +18,7 @@ session_start();
             if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
                 printHeader();
                 include("needStudent.html");
-                header("Refresh: 5; URL='/Learning-Academy/close.php'");
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
                 exit;
             } else {
                 printHeader();

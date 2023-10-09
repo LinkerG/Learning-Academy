@@ -20,7 +20,7 @@
         } else{
             printHeader();
             include("needAdmin.html");
-            header("Refresh: 5; URL='/Learning-Academy/close.php'");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
             exit;
         }
 
