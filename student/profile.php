@@ -26,27 +26,54 @@ session_start();
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (connectBD("id21353268_learningacademy", $connection)) {
-                    if(isset($_POST['password']) && $_POST['photoPath']){
-                        $password = md5($_POST['password']);
+                    if(isset($_POST['showPass']) && isset($_POST['showPhoto']) && $_POST['password'] != "" && isset($_POST['photoPath'])){
                         $uploadStatus = uploadPhoto(0,$route);
-                        $sql = "UPDATE student SET email = {$_POST['email']}, password = $password, name = {$_POST['name']}, surname = {$_POST['surname']}, birthDate = {$_POST['birthDate']}, photoPath = $route;";
-                        updateSQL($connection, $sql);
-                        header("Refresh: 0; URL='index.php'");
-                    }elseif(isset($_POST['password'])){
+                        if($uploadStatus == 0){
+                            $password = md5($_POST['password']);
+                            $sql = "UPDATE student SET email = '{$_POST['email']}', password = '$password', name = '{$_POST['name']}', surname = '{$_POST['surname']}', birthDate = '{$_POST['birthDate']}', photoPath = '$route' WHERE dniStudent = '{$_POST['dni']}';";
+                            $action = updateSQL($connection, $sql);
+                            echo "<script>alert('$action')</script>";
+                        }elseif($uploadStatus == 1){
+                            echo "<script>alert('Error uploading photo')</script>";
+                        }elseif($uploadStatus == 2){
+                            echo "<script>alert('Please upload a photo')</script>";
+                        }
+                    }elseif(isset($_POST['showPass']) && $_POST['password'] != ""){
                         $password = md5($_POST['password']);
-                        $sql = "UPDATE student SET email = {$_POST['email']}, password = $password, name = {$_POST['name']}, surname = {$_POST['surname']}, birthDate = {$_POST['birthDate']};";
-                        updateSQL($connection, $sql);
-                    }elseif(isset($_POST['photoPath'])){
+                        $sql = "UPDATE student SET email = '{$_POST['email']}', password = '$password', name = '{$_POST['name']}', surname = '{$_POST['surname']}', birthDate = '{$_POST['birthDate']}' WHERE dniStudent = '{$_POST['dni']}';";
+                        $action = updateSQL($connection, $sql);
+                        echo "<script>alert('$action')</script>";
+                    }elseif(isset($_POST['showPhoto']) && isset($_POST['photoPath'])){
                         $uploadStatus = uploadPhoto(0,$route);
-                        $sql = "UPDATE student SET email = {$_POST['email']}, name = {$_POST['name']}, surname = {$_POST['surname']}, birthDate = {$_POST['birthDate']}, photoPath = $route;";
-                        updateSQL($connection, $sql);
+                        if($uploadStatus == 0){
+                            $sql = "UPDATE student SET email = '{$_POST['email']}', name = '{$_POST['name']}', surname = '{$_POST['surname']}', birthDate = '{$_POST['birthDate']}', photoPath = '$route' WHERE dniStudent = '{$_POST['dni']}';";
+                            $action = updateSQL($connection, $sql);
+                            echo "<script>alert('$action')</script>";
+                        }elseif($uploadStatus == 1){
+                            echo "<script>alert('Error uploading photo')</script>";
+                        }elseif($uploadStatus == 2){
+                            echo "<script>alert('Please upload a photo')</script>";
+                        }
                     }else{
-                        $sql = "UPDATE student SET email = {$_POST['email']},name = {$_POST['name']}, surname = {$_POST['surname']}, birthDate = {$_POST['birthDate']};";
-                        updateSQL($connection, $sql);
+                        $sql = "UPDATE student SET email = '{$_POST['email']}',name = '{$_POST['name']}', surname = '{$_POST['surname']}', birthDate = '{$_POST['birthDate']}' WHERE dniStudent = '{$_POST['dni']}';";
+                        $action = updateSQL($connection, $sql);
+                        echo "<script>alert('$action')</script>";
                     }
+                    echo "<meta http-equiv='REFRESH' content='0;URL=/Learning-Academy/student/index.php'>";
+                    $_SESSION['name'] = $_POST['name'];
+                    $_SESSION['surname'] = $_POST['surname'];
+                    $_SESSION['email'] = $_POST['email'];
+                    $_SESSION['password'] = $_POST['password'];
+                    $_SESSION['photoPath'] = $_POST['photoPath'];
+                    $_SESSION['birthDate'] = $_POST['birthDate'];
                 }
             }
             else{
+                if (connectBD("id21353268_learningacademy", $connection)){
+                    $sql = "SELECT * FROM student WHERE dniStudent = '{$_SESSION['dniStudent']}'";
+                    selectSQL($connection,$sql,$result);
+                    $result= $result[0];
+                }
                 ?>
                 <div class="studentContainer">
                     <div class="formDiv">
@@ -54,21 +81,21 @@ session_start();
                             <div class="formRow">
                                 <div>
                                     <label for="name-input">Name: </label>
-                                    <input type="text" class="form-element" id="name-input" name="name" required value="<?php echo $_SESSION['name'] ?>"></input>
+                                    <input type="text" class="form-element" id="name-input" name="name" required value="<?php echo $result['name'] ?>"></input>
                                 </div>
                                 <div>
                                     <label for="dni-input">DNI: </label>
-                                    <input type="text" readonly  class="form-element" id="dni-input" name="dni" required value="<?php echo $_SESSION['dniStudent'] ?>"></input>
+                                    <input type="text" readonly  class="form-element" id="dni-input" name="dni" required value="<?php echo $result['dniStudent'] ?>"></input>
                                 </div>
                             </div>
                             <div class="formRow">
                                 <div>
                                     <label for="surname-input">Surname: </label>
-                                    <input type="text" class="form-element" id="surname-input" name="surname" required value="<?php echo $_SESSION['surname']?>"></input>
+                                    <input type="text" class="form-element" id="surname-input" name="surname" required value="<?php echo $result['surname']?>"></input>
                                 </div>
                                 <div>
                                     <label for="email-input">Email: </label>
-                                    <input type="text" class="form-element" id="email-input" name="email" required value="<?php echo $_SESSION['email']?>"></input>
+                                    <input type="text" class="form-element" id="email-input" name="email" required value="<?php echo $result['email']?>"></input>
                                 </div>
                             </div>
                             <div class="formRow">
@@ -76,17 +103,17 @@ session_start();
                                     <div style="display:flex; flex-direction:row;">
                                         <label for="showPass">Change password</label>
                                         <input type="checkbox" name="showPass" id="showPass" onchange="checkboxShow('password')">
-                                        <input type="password" name="password" id="password" required style="display: none;">
+                                        <input type="password" name="password" id="password" style="display: none;">
                                     </div>
                                     <div style="display:flex; flex-direction:row;">
                                         <label for="showPhoto">Change photo</label>
                                         <input type="checkbox" name="showPhoto" id="showPhoto" onchange="checkboxShow('photoPath-input')">
-                                        <input type="file" id="photoPath-input" name="photoPath" required style="display:none;"></input>
+                                        <input type="file" id="photoPath-input" name="photoPath" style="display:none;"></input>
                                     </div>
                                 </div>
                                 <div>                                        
                                     <label for="birthDate-input">Birth date: </label>
-                                    <input type="date" required class="form-element" id="birthDate-input" name="birthDate" value="<?php echo $_SESSION['birthDate']?>"></input>
+                                    <input type="date" required class="form-element" id="birthDate-input" name="birthDate" value="<?php echo $result['birthDate']?>"></input>
                                 </div>
                             </div>
                             <div class="formActions">

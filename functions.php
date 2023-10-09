@@ -111,15 +111,16 @@ function insertSQL($connection, $sql) {
 function updateSQL($connection, $sql) {
     $executeQuery = $connection->prepare($sql);
     if ($executeQuery === false) {
-        die("Error en la preparación de la consulta: " . $connection->error);
+        return "Error en la preparación de la consulta: " . $connection->error;
     }
     // Ejecuta la consulta y en caso de error te lo dice
     if ($executeQuery->execute() === false) {
-        echo "Error al insertar el registro: " . $executeQuery->error;
+        return "Error al insertar el registro: " . $executeQuery->error;
     }
     // Cerrar la conexión a la base de datos y la query
     $executeQuery->close();
     $connection->close();
+    return "Update succes!";
 }
 
 function validateUser() {
