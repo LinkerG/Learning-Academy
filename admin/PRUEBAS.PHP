@@ -36,40 +36,51 @@ include "../functions.php";
             }
         }
     ?>
-    <form id="uploadForm" enctype="multipart/form-data" action="pruebas2.php">
+    <form id="uploadForm" enctype="multipart/form-data" action="#">
         <input type="file" id="fileInput" accept=".txt">
         <button id="importButton">Import</button>
     </form> 
     <script>
-    document.getElementById('uploadForm').addEventListener('submit', function(e) {
-
-        const fileInput = document.getElementById('fileInput');
-        const file = fileInput.files[0];
-
-        if (file) {
+        var button = document.getElementById('importButton');
+        button.addEventListener('click', function() {
+        let input = document.getElementById("fileInput");
+        if (input.files.length > 0) {
+            let file = input.files[0];
             const reader = new FileReader();
+            
+            reader.addEventListener("load", function(e) {
+            const content = e.target.result;
+            
 
-            reader.onload = function(e) {
-                const content = e.target.result;
-                // Procesa el contenido del archivo 
-                const lines = content.split('\n');
-                const students = [];
+            // Procesa el contenido del archivo
+            const lines = content.split('\n');
+            const students = [];
 
-                lines.forEach(line => {
-                    const KeyValuePairs = line.split(',');
-                    const studentData = {};
+            lines.forEach(line => {
+                const keyValuePairs = line.split(',');
+                const studentData = {};
 
-                    KeyValuePairs.forEach(pair => {
-                        const [key,value] = pair.split(':');
-                        if(key && value) {
-                            studentData[key.trim()] = value.trim();
-                        }
-                    });
-                    students.push(studentData);
+                keyValuePairs.forEach(pair => {
+                const [key, value] = pair.split(':');
+                if (key && value) {
+                    studentData[key.trim()] = value.trim();
+                }
                 });
-                console.log(students); 
-                // Enviar el array a PHP
-                const studentsJSON = JSON.stringify(students);
+
+                students.push(studentData);
+            });
+
+            console.log(students);
+            });
+
+            reader.readAsText(file);
+        }
+        });
+
+
+        /*if (file) {
+            // Enviar el array a PHP
+            const studentsJSON = JSON.stringify(students);
                 const xhr = new XMLHttpRequest();
                 xhr.open("POST","pruebas2.php", true);
                 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -80,12 +91,11 @@ include "../functions.php";
                     }
                 };
                 xhr.send(studentsJSON);
-            };
-            reader.readAsText(file);
+            
+            //reader.readAsText(file);
         }else{
             alert('Select a file please');
-        }
-    });
+        }*/
 
     </script>
 </body>
