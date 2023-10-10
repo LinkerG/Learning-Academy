@@ -27,7 +27,7 @@
         </div>
         <div class="buttons">
             <a class="blueBtn" href="courses.php">Our courses</a>
-            <a class="whitewBtn" href="signup.php">Create account</a>
+            <a class="whiteBtn" href="signup.php">Create account</a>
         </div>
         <div class="imgs">
             <div class="img1">
