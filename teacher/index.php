@@ -46,16 +46,73 @@
                     echo "<p>Graded students: {$course['gradedStudents']}/{$course['numberOfStudents']}";
                     echo "</div>";
 
-                    echo "<div class='' id='course{$course['courseId']}'>";
+                    echo "<div class='courseHidden' id='course{$course['courseId']}'>";
 
-                    $studentsForCourse = "SELECT * FROM matriculates WHERE courseID = '" . $course['courseId'] ."';";
+                    $studentsForCourse = "
+                    SELECT m.*, s.name, s.surname
+                    FROM matriculates AS m
+                    JOIN student AS s ON m.dniStudent = s.dniStudent
+                    WHERE m.courseId = '" . $course['courseId'] . "';
+                    ";
+                    
                     if(selectSQL($connection, $studentsForCourse, $courseStudents)){
                         if(empty($courseStudents)){
                             echo "There are no students matriculated in this course";
                         } else {
+                            echo "<form action='updateScores.php'>";
+                            echo "<table>";
+                            echo "<tr><td colspan='7'><input type='submit' value='Update scores'></td></tr>";
+                            echo "<tr>";
+                            echo "<th>DNI</th>";
+                            echo "<th>Name</th>";
+                            echo "<th>Task 1</th>";
+                            echo "<th>Task 2</th>";
+                            echo "<th>Task 3</th>";
+                            echo "<th>Task 4</th>";
+                            echo "<th>Score</th>";
+                            echo "</tr>";
                             foreach ($courseStudents as $student) {
-                                print_r($student);
+                                echo "<tr>";
+                                echo "<td>{$student['dniStudent']}</td>";
+                                echo "<td>{$student['name']} {$student['surname']}</td>";
+                                $numberOfTasks=0;
+                                for ($i=1; $i < 5; $i++) { 
+                                    $task = "task" . $i;
+                                    if($student[$task] == null){
+                                        echo "<td> Not submitted </td>";
+                                    } else {
+                                        $numberOfTasks+=1;
+                                        echo "<td><a target='_blank' href='{$student[$task]}'> Download </a></td>";
+                                    }
+                                }
+                                $errMsg = "";
+                                if(strtotime($course['endDate']) < date("Y-m-d")) $errMsg = $errMsg . "";
+                                if($errMsg == ""){
+                                    if($student['score'] == null) {
+                                        echo "<td>";
+                                        echo "<select list='marks' name='score' id='score'>";
+                                        echo "<option value='null'>Nothing</option>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                        <option value='5'>5</option>
+                                        <option value='6'>6</option>
+                                        <option value='7'>7</option>
+                                        <option value='8'>8</option>
+                                        <option value='9'>9</option>
+                                        <option value='10'>10</option>";
+                                        echo "</select>";
+                                        echo "</td>";
+                                    }
+                                } else {
+                                    echo "<td>$errMsg</td>";
+                                }
+                                echo "</tr>";
                             }
+                            
+                            echo "</table>";
+                            echo "</form>";
                         }
                     }
 
@@ -65,6 +122,10 @@
             ?>
         </div>
     </div>
+    
+    <datalist id="marks">
+        
+    </datalist>
     <?php
         }
     ?>
