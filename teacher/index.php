@@ -35,15 +35,32 @@
         <h1>Teacher panel</h1>
         <div class="tabbedWindow">
             <?php
+                if(connectBD("id21353268_learningacademy", $connection)) {
                 foreach ($result as $course) {
                     
                     $isFinished = strtotime($course['endDate'])<date("Y-m-d") ? "Finished" : "Not finished";
-                    echo "<div class='divWindow hoverable teacherWindow'>";
+                    echo "<div class='divWindow hoverable teacherWindow' id='{$course['courseId']}'>";
                     echo "<p>Course: {$course['name']}</p>";
                     echo "<p>Status: " . $isFinished . "</p>";
                     echo "<p>Students: {$course['numberOfStudents']}</p>";
                     echo "<p>Graded students: {$course['gradedStudents']}/{$course['numberOfStudents']}";
                     echo "</div>";
+
+                    echo "<div class='' id='course{$course['courseId']}'>";
+
+                    $studentsForCourse = "SELECT * FROM matriculates WHERE courseID = '" . $course['courseId'] ."';";
+                    if(selectSQL($connection, $studentsForCourse, $courseStudents)){
+                        if(empty($courseStudents)){
+                            echo "There are no students matriculated in this course";
+                        } else {
+                            foreach ($courseStudents as $student) {
+                                print_r($student);
+                            }
+                        }
+                    }
+
+                    echo "</div>";
+                }
                 }
             ?>
         </div>

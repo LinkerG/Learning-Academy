@@ -437,6 +437,9 @@ table th, table td {
   transition: height 1000ms;
   z-index: 2;
 }
+.container .tabbedWindow .courseHidden {
+  display: none;
+}
 .container .tabbedWindow .hoverable:hover {
   background-color: #4c9ff8;
 }
@@ -592,20 +595,34 @@ table th, table td {
 }
 
 .tabBackBtn {
-  width: 10%;
-  display: grid;
-  place-items: center;
+  display: flex;
   background-color: #f0f0f0;
 }
 .tabBackBtn a {
-  display: grid;
-  place-items: center;
+  display: flex;
+  color: black;
+  text-decoration: none;
+  align-items: center;
+  margin-left: 1rem;
+}
+.tabBackBtn a:link {
+  color: black;
+  text-decoration: none;
+}
+.tabBackBtn a:active {
+  color: black;
+  text-decoration: none;
+}
+.tabBackBtn a:hover {
+  color: black;
+  text-decoration: none;
 }
 .tabBackBtn a img {
-  width: 30%;
+  width: 5%;
   aspect-ratio: 1/1;
   -o-object-fit: contain;
      object-fit: contain;
+  padding: 1rem;
 }
 .tabBackBtn:hover {
   background-color: #e0e0e0;
