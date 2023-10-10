@@ -355,6 +355,7 @@ table {
     .tabsLine {
         display: flex;
         flex-direction: row;
+        
     }
 
     .tabWindow {
@@ -410,6 +411,8 @@ table {
 
                 .tabsLine{
                     display: flex;
+                    align-items: center;
+                    background-color: #f0f0f0;
                     .tab{
                         @include tabStyle;
                         color: black;
@@ -582,7 +585,7 @@ table {
         }
     }
 }
-//boton blanco y azul
+//boton blanco y azul y boton atras
 .whiteBtn{
     text-align:center ;
     text-decoration: none;
@@ -598,7 +601,12 @@ table {
     place-items: center;
     cursor: pointer;
     transition: transform 300ms;
+
+    &:hover{
+        transform: scale(0.9);
+    }
 }
+
 .blueBtn{
     text-decoration: none;
     text-align: center;
@@ -613,12 +621,38 @@ table {
     padding-right: 2rem;
     cursor: pointer;
     transition: transform 300ms;
+
+    &:hover{
+        transform: scale(0.9);
+    }
 }
-.blueBtn:hover{
-    transform: scale(0.9);
+
+.tabBackBtn{
+    width: 10%;
+    display: grid;
+    place-items: center;
+    background-color: #f0f0f0;
+    a{
+        display: grid;
+        place-items: center;
+        img{
+            width: 30%;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+        }
+    }
+    &:hover {
+        background-color: #e0e0e0;
+    }
+
+    &.selected {
+        background-color: #e0e0e0;
+    }
 }
-.whiteBtn:hover{
-    transform: scale(0.9);  
+img.backBtn{
+    width: 30%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
 }
 //Index
 .indexContainer {

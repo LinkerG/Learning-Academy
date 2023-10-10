@@ -378,6 +378,8 @@ table th, table td {
 }
 .container .tabbedWindow .divWindow .tab-container .tabsLine {
   display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
 }
 .container .tabbedWindow .divWindow .tab-container .tabsLine .tab {
   display: inline-block;
@@ -566,6 +568,9 @@ table th, table td {
   cursor: pointer;
   transition: transform 300ms;
 }
+.whiteBtn:hover {
+  transform: scale(0.9);
+}
 
 .blueBtn {
   text-decoration: none;
@@ -582,13 +587,38 @@ table th, table td {
   cursor: pointer;
   transition: transform 300ms;
 }
-
 .blueBtn:hover {
   transform: scale(0.9);
 }
 
-.whiteBtn:hover {
-  transform: scale(0.9);
+.tabBackBtn {
+  width: 10%;
+  display: grid;
+  place-items: center;
+  background-color: #f0f0f0;
+}
+.tabBackBtn a {
+  display: grid;
+  place-items: center;
+}
+.tabBackBtn a img {
+  width: 30%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.tabBackBtn:hover {
+  background-color: #e0e0e0;
+}
+.tabBackBtn.selected {
+  background-color: #e0e0e0;
+}
+
+img.backBtn {
+  width: 30%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .indexContainer {

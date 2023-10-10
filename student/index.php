@@ -26,12 +26,12 @@
         $prizeSQL = "SELECT prize FROM student WHERE dniStudent = '" . $_SESSION['dniStudent'] . "';";
 
                 if(selectSQL($connection, $prizeSQL, $prizeQuery)){
-                    if ($prizeQuery[0]['prize'] == "" && isset($_REQUEST['prize'])){
+                    if ($prizeQuery[0]['prize'] == "no prize" && isset($_REQUEST['prize'])){
                         $update = "UPDATE student SET prize = '" . $_REQUEST['prize'] . "' WHERE dniStudent = '" . $_SESSION['dniStudent'] . "'";
                         updateSQL($connection, $update);
                         $hasPrize = true;
                     }
-                    else if ($prizeQuery[0]['prize'] != "") $hasPrize = true;
+                    else if ($prizeQuery[0]['prize'] != "no prize") $hasPrize = true;
                 }
     }
     if(connectBD("id21353268_learningacademy", $connection)) {

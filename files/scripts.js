@@ -211,15 +211,17 @@ function eventButtons(condition, admin) {
 
             if(!admin){
                 // Si viene de teacher crea tambien un boton de atras
-                let backbtn = document.createElement("a");
+                let backbtnContainer = document.createElement("div")
+                let backbtn = document.createElement("a");  
                 backbtn.href = "index.php";
                 let backbtnImg = document.createElement("img");
                 backbtnImg.src = "../img/icons/back.png";
                 backbtnImg.alt = "bk";
+                backbtnImg.classList.add("backBtn");
                 backbtn.appendChild(backbtnImg);
-                backbtn.classList.add("tabBackBtn");
-
-                tabLine.appendChild(backbtn);
+                backbtnContainer.classList.add("tabBackBtn");
+                backbtnContainer.appendChild(backbtn);
+                tabLine.appendChild(backbtnContainer);
             }
 
             for (let tabButton = 0; tabButton < buttons.length; tabButton++) {
@@ -230,7 +232,7 @@ function eventButtons(condition, admin) {
                 selected = buttons[tabButton].textContent == "" ? true : false;
                 if(selected) {
                     tab.textContent = text;
-                    tab.classList.add("selected")
+                    if(admin) tab.classList.add("selected")
                 } else{
                     tab.textContent = buttons[tabButton].textContent;
                 }
@@ -249,7 +251,7 @@ function eventButtons(condition, admin) {
                 ventana.classList.add("tab-content");
                 ventana.id = "tab" + tabButton;
 
-                if(selected) ventana.classList.add("selected");
+                if(selected && admin) ventana.classList.add("selected");
 
                 if(admin){
                     let show;

@@ -43,8 +43,8 @@
                     if(isset($_POST['photoPath'])){
                         $uploadStatus = uploadPhoto(0,$route, true);
                         if($uploadStatus == 0) {
-                            $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath) 
-                            VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','$route')";
+                            $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath, prize) 
+                            VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','$route', 'no prize')";
         
                             $action = insertSQL($connection, $sql);
                             if($action == 0) {
@@ -59,8 +59,8 @@
                             echo "<script>alert('Please upload a photo')</script>";
                         }
                     } else {
-                        $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath) 
-                        VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','/Learning-Academy/img/profilePhotos/default.png')";
+                        $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath, prize) 
+                        VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','/Learning-Academy/img/profilePhotos/default.png', 'no prize')";
                         $action = insertSQL($connection, $sql);
                         if($action == 0) {
                             echo "<script>alert('You signed in correctly, now log in')</script>";
