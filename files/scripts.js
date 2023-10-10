@@ -151,7 +151,7 @@ function hideForms() {
     }
 }
 
-function eventosAdmin(condition) {
+function eventButtons(condition, admin) {
     skipLoader = condition == 1 ? true : false;
 
     // Busco los botones y el div padre
@@ -159,10 +159,12 @@ function eventosAdmin(condition) {
     let buttonsParent = document.getElementsByClassName("tabbedWindow");
     for (let i = 0; i < buttons.length; i++) {
         // Le añado una funcion a cada boton
+        
         buttons[i].addEventListener("click", function open() {
             
             // Elimina todos los botones que no son el que se pulsa
             let boton = buttons[i];
+            if(!admin) boton.classList.remove("teacherWindow");
             for (let j = 0; j < buttons.length; j++) {
                 if (boton!=buttons[j]) {
                     buttons[j].style.display = "none";
@@ -171,8 +173,7 @@ function eventosAdmin(condition) {
             }
             
             // Hace crecer ese boton transformandose en la ventana
-            boton.style.transition = "width 500ms";
-            boton.style.transition = "height 500ms";
+            
             boton.style.width = "65vw";
             boton.style.height = "60vh";
             boton.style.padding = "0px";
@@ -207,6 +208,20 @@ function eventosAdmin(condition) {
             tabLine.classList.add("tabsLine");
             let tabWindow = document.createElement("div");
             tabWindow.classList.add("tabWindow");
+
+            if(!admin){
+                // Si viene de teacher crea tambien un boton de atras
+                let backbtn = document.createElement("a");
+                backbtn.href = "index.php";
+                let backbtnImg = document.createElement("img");
+                backbtnImg.src = "../img/icons/back.png";
+                backbtnImg.alt = "bk";
+                backbtn.appendChild(backbtnImg);
+                backbtn.classList.add("tabBackBtn");
+
+                tabLine.appendChild(backbtn);
+            }
+
             for (let tabButton = 0; tabButton < buttons.length; tabButton++) {
                 // Botones de las pestañas
                 let tab = document.createElement("div");
@@ -236,65 +251,92 @@ function eventosAdmin(condition) {
 
                 if(selected) ventana.classList.add("selected");
 
-                let show = tab.innerHTML == "Manage courses" ? "courses" : "teachers";
+                if(admin){
+                    let show;
+                    if(tab.innerHTML == "Manage courses") show = "courses";
+                    else if (tab.innerHTML == "Manage teachers") show = "teachers";
+                    else if (tab.innerHTML == "Manage students") show = "students";
+    
+                    let toolBar = document.createElement("div");
+                    toolBar.classList.add("toolBar")
+    
+                    let searchBar = document.createElement("form");
+                    let input = document.createElement("input");
+                    input.type = "text";
+                    input.id = "search";
+                    input.name = "search";
+                    searchBar.appendChild(input)
+                    let searchButton = document.createElement("button");
+                    searchButton.type = "submit";
+                    let searchImg = document.createElement("img");
+                    searchImg.src = "/Learning-Academy/img/icons/search.png";
+                    searchImg.alt = "lupa";
+                    searchImg.classList.add("tbImage");
+                    searchButton.appendChild(searchImg);
+    
+                    searchBar.appendChild(searchButton);
+    
+                    toolBar.appendChild(searchBar);
+    
+                    let link = document.createElement("a");
+                    if(show == "courses"){
+                        link.href = "addCourse.php";
+                        link.textContent = "ADD";
+                        let image = document.createElement("img");
+                        image.src = "/Learning-Academy/img/icons/add.png";
+                        image.alt = "add icon";
+                        image.classList.add("tbImage");
+                        link.appendChild(image);
+                        toolBar.appendChild(link);
+                    } 
+                    else if(show == "teachers") {
+                        link.href = "addTeacher.php";
+                        link.textContent = "ADD";
+                        let image = document.createElement("img");
+                        image.src = "/Learning-Academy/img/icons/add.png";
+                        image.alt = "add icon";
+                        image.classList.add("tbImage");
+                        link.appendChild(image);
+                        toolBar.appendChild(link);
+                    } else if("show" == "students"){
+                        let export_import = document.createElement("div");
+                        let exportBtn = document.createElement("a");
+                        exportBtn.innerText = "Export students";
+                        let importbtn = document.createElement("a");
+                        importBtn.innerText = "Import students";
+                        export_import.appendChild(exportBtn);
+                        export_import.appendChild(importbtn);
+                        toolBar.appendChild(export_import);
+                    }
+                    
+    
+                    ventana.appendChild(toolBar)
+                                 
+    
+                    let toDraw = document.getElementById(show + "Table");
+                    toDraw.style.display = "table";
+                    let rows = toDraw.getElementsByTagName("tr");
+                    let numCols = rows[0].childElementCount;
+    
+                    let cols = toDraw.getElementsByTagName("td", "th");
+                    for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+                        cols[colIndex].style.width = 100 / numCols + "%";
+                    }
 
-                let toolBar = document.createElement("div");
-                toolBar.classList.add("toolBar")
+                    ventana.appendChild(toDraw);
+                } else {
+                    // Viene de teacher
 
-                let searchBar = document.createElement("form");
-                let input = document.createElement("input");
-                input.type = "text";
-                input.id = "search";
-                input.name = "search";
-                searchBar.appendChild(input)
-                let searchButton = document.createElement("button");
-                searchButton.type = "submit";
-                let searchImg = document.createElement("img");
-                searchImg.src = "/Learning-Academy/img/icons/search.png";
-                searchImg.alt = "lupa";
-                searchImg.classList.add("tbImage");
-                searchButton.appendChild(searchImg);
-
-                searchBar.appendChild(searchButton);
-
-                toolBar.appendChild(searchBar);
-
-                let link = document.createElement("a");
-                if(show == "courses"){
-                    link.href = "addCourse.php";
-                    link.textContent = "ADD";
-                    let image = document.createElement("img");
-                    image.src = "/Learning-Academy/img/icons/add.png";
-                    image.alt = "add icon";
-                    image.classList.add("tbImage");
-                    link.appendChild(image);
-                } 
-                else {
-                    link.href = "addTeacher.php";
-                    link.textContent = "ADD";
-                    let image = document.createElement("img");
-                    image.src = "/Learning-Academy/img/icons/add.png";
-                    image.alt = "add icon";
-                    image.classList.add("tbImage");
-                    link.appendChild(image);
                 }
-                             
-                toolBar.appendChild(link);
-
-                ventana.appendChild(toolBar)
-
-                let toDraw = document.getElementById(show + "Table");
-                toDraw.style.display = "table";
-                let rows = toDraw.getElementsByTagName("tr");
-                let numCols = rows[0].childElementCount;
-
-                let cols = toDraw.getElementsByTagName("td", "th");
-                for (let colIndex = 0; colIndex < cols.length; colIndex++) {
-                    cols[colIndex].style.width = 100 / numCols + "%";
-                }
-                ventana.appendChild(toDraw);
 
                 tabWindow.appendChild(ventana);
+            }
+            
+            tabChildren = tabLine.getElementsByClassName("tab")
+            for (let index = 0; index < tabChildren.length; index++) {
+                console.log(tabChildren[index]);
+                tabWidth = 100/tabChildren.length;
+                tabChildren[index].style.width = tabWidth+"%";
             }
 
             tabContainer.appendChild(tabLine);
@@ -309,7 +351,7 @@ function eventosAdmin(condition) {
             }
 
             // Estiliza el div padre para que no se vea mal
-            buttonsParent[0].style.marginTop = "3rem";
+            
             buttonsParent[0].style.display = "flex";
 
             boton.removeEventListener("click", open);
@@ -324,7 +366,14 @@ function clickById(elementId) {
 }
 
 function loadAdmin(skipLoader, elementId) {
-    eventosAdmin(skipLoader);
+    eventButtons(skipLoader, true);
+    if(elementId != null) {
+        clickById(elementId);
+    }
+}
+
+function loadTeacher(skipLoader, elementId) {
+    eventButtons(skipLoader, false);
     if(elementId != null) {
         clickById(elementId);
     }

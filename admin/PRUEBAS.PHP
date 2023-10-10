@@ -46,7 +46,6 @@ include "../functions.php";
                 };
             }
         ?>
-
     </table>
 </body>
 </html>

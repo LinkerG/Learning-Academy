@@ -33,12 +33,12 @@
 
     <div class='container'>
         <h1>Teacher panel</h1>
-        <div class="teacherContainer">
+        <div class="tabbedWindow">
             <?php
                 foreach ($result as $course) {
                     
                     $isFinished = strtotime($course['endDate'])<date("Y-m-d") ? "Finished" : "Not finished";
-                    echo "<div>";
+                    echo "<div class='divWindow hoverable teacherWindow'>";
                     echo "<p>Course: {$course['name']}</p>";
                     echo "<p>Status: " . $isFinished . "</p>";
                     echo "<p>Students: {$course['numberOfStudents']}</p>";
@@ -51,6 +51,12 @@
     <?php
         }
     ?>
-    
+    <?php
+    if(isset($_REQUEST['manage'])) {
+        echo "<script>window.onload = loadTeacher(1,'{$_REQUEST['manage']}')</script>";
+    } else {
+        echo "<script>window.onload = loadTeacher(0);</script>";
+    }
+?>
 </body>
 </html>

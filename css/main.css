@@ -345,25 +345,30 @@ table th, table td {
   color: white;
 }
 .container .tabbedWindow {
-  margin-top: 10rem;
-  transition: margin-top 500ms;
+  display: flex;
+  justify-content: space-around;
   grid-column: 1/4;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
-  place-items: center;
+  max-height: 80vh;
+  overflow: auto;
 }
 .container .tabbedWindow .divWindow {
+  overflow: hidden;
   text-align: center;
-  width: 7vw;
-  height: 1vw;
-  padding: 2rem;
-  border: 1px solid black;
-  transition: padding 500ms;
-  transition: background-color 300ms;
   background-color: #248EFF;
   color: white;
-  overflow: hidden;
+  font-size: 18px;
+  border: 1px solid black;
+  width: 65vw;
+  height: auto;
+  margin: 1rem;
+  padding: 1rem;
+  transition: background-color 300ms;
+}
+.container .tabbedWindow .divWindow.teacherWindow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .container .tabbedWindow .divWindow .tab-container {
   z-index: 1;
@@ -382,7 +387,6 @@ table th, table td {
   background-color: #f0f0f0;
   border-right: 1px solid #ccc;
   color: black;
-  width: 49%;
 }
 .container .tabbedWindow .divWindow .tab-container .tabsLine .tab:hover {
   background-color: #e0e0e0;

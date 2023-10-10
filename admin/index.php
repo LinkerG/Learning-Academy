@@ -27,6 +27,7 @@
     <div class="tabbedWindow">
         <div id="courses" class="divWindow hoverable">Manage courses</div>
         <div id="teachers" class="divWindow hoverable">Manage teachers</div>
+        <div id="students" class="divWindow hoverable">Manage students</div>
     </div>
         <table id="teachersTable" style="display:none;">
             <tr>
@@ -104,6 +105,42 @@
                 }
             ?>
         </table>
+        <table id="studentsTable" style="display:none;">
+        <tr>
+            <td>Name</td>
+            <td>Surname</td>
+            <td>Email</td>
+            <td>DNI</td>
+            <td>Number of courses matriculated</td>
+        </tr>
+        <?php
+            $sql = "SELECT * FROM student;";
+            if (connectBD("id21353268_learningacademy", $connection)){
+                if(selectSQL($connection,$sql,$result)){
+                    if(empty($result)){
+                        echo "<tr>";
+                            echo "<td colspan='5'>";
+                                echo "<p>There are no students</p>";
+                            echo "</td>";
+                        echo "</tr>";
+                    }else{
+                        foreach($result as $student => $data){
+                            $sqlCourses = "SELECT COALESCE(COUNT(*), 0) AS numCourses FROM matriculates WHERE dniStudent = '{$data['dniStudent']}';";
+                            selectSQL($connection,$sqlCourses,$numCourses);
+                            echo "<tr>";
+                                echo "<td>{$data['name']}</td>";
+                                echo "<td>{$data['surname']}</td>";
+                                echo "<td>{$data['email']}</td>";
+                                echo "<td>{$data['dniStudent']}</td>";
+                                echo "<td>{$numCourses[0]['numCourses']}</td>";
+                            echo "</tr>";
+                            
+                        }
+                    }
+                };
+            }
+        ?>
+    </table>
 </div>
 <?php
 if(isset($_REQUEST['manage'])) {
