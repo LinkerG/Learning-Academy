@@ -29,6 +29,7 @@
                 GROUP BY c.courseId, c.name, c.hours, c.startDate, c.endDate, c.description, c.dniTeacher, c.active, c.photoPath;";
                 if(selectSQL($connection, $sql, $result));
             }
+            
     ?>
 
     <div class='container'>
@@ -57,9 +58,9 @@
                         if(empty($courseStudents)){
                             echo "There are no students matriculated in this course";
                         } else {
-                            echo "<form action='updateScores.php'>";
                             echo "<table>";
-                            echo "<tr><td colspan='7'><input type='submit' value='Update scores'></td></tr>";
+                            echo "<tr><td colspan='7'><button>Update scores</button</td></tr>";
+                            echo "<input type='hidden' value='{$course['courseId']}'>";
                             echo "<tr>";
                             echo "<th>DNI</th>";
                             echo "<th>Name</th>";
@@ -108,6 +109,18 @@
                                         <option value='10'>10</option>";
                                         echo "</select>";
                                         echo "</td>";
+                                    } else {
+                                        echo "<td>";
+                                        echo "<select list='marks' name='score' id='score'>";
+                                        for ($i=1; $i <11 ; $i++) { 
+                                            if($student['score'] == $i) {
+                                                echo "<option value='$i' selected='true'>$i</option>";
+                                            } else {
+                                                echo "<option value='$i'>$i</option>";
+                                            }
+                                        }
+                                        echo "</select>";
+                                        echo "</td>";
                                     }
                                 } else {
                                     //Si no, le dice porque
@@ -121,7 +134,6 @@
                                 echo "</tr>";
                             }
                             echo "</table>";
-                            echo "</form>";
                         }
                     }
                     echo "</div>";
