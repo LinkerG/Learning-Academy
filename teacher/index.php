@@ -9,6 +9,7 @@
     <title>Teacher panel</title>
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
+    <script src="../files/changeScore.js"></script>
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body>
@@ -19,8 +20,15 @@
             printHeader();
             include("needTeacher.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+
         } else {
             printHeader();
+            if(isset($_REQUEST['manage'])) {
+                if(connectBD("id21353268_learningacademy", $connection)){
+                    $updateScore = "UPDATE matriculates SET score=" . $_REQUEST['newScore'] . " WHERE dniStudent ='" . $_REQUEST['dniStudent'] . "' AND courseId = '" . $_REQUEST['manage'] . "';";
+                    updateSQL($connection, $updateScore);
+                }
+            }
             if(connectBD("id21353268_learningacademy", $connection)) {
                 $sql = "SELECT c.*, COUNT(m.dniStudent) AS numberOfStudents, COUNT(CASE WHEN m.score IS NOT NULL THEN 1 ELSE NULL END) AS gradedStudents 
                 FROM course c 
@@ -59,7 +67,6 @@
                             echo "There are no students matriculated in this course";
                         } else {
                             echo "<table>";
-                            echo "<tr><td colspan='7'><button>Update scores</button</td></tr>";
                             echo "<input type='hidden' value='{$course['courseId']}'>";
                             echo "<tr>";
                             echo "<th>DNI</th>";
@@ -72,7 +79,7 @@
                             echo "</tr>";
                             foreach ($courseStudents as $student) {
                                 echo "<tr>";
-                                echo "<td>{$student['dniStudent']}</td>";
+                                echo "<td class='dniStudent'>{$student['dniStudent']}</td>";
                                 echo "<td>{$student['name']} {$student['surname']}</td>";
                                 $numberOfTasks=0;
                                 for ($i=1; $i < 5; $i++) { 
@@ -95,7 +102,7 @@
                                 if(empty($errMsg)){
                                     if($student['score'] == null) {
                                         echo "<td>";
-                                        echo "<select list='marks' name='score' id='score'>";
+                                        echo "<select list='marks' name='score' class='selectedScore'>";
                                         echo "<option value='null'>Nothing</option>
                                         <option value='1'>1</option>
                                         <option value='2'>2</option>
@@ -111,7 +118,7 @@
                                         echo "</td>";
                                     } else {
                                         echo "<td>";
-                                        echo "<select list='marks' name='score' id='score'>";
+                                        echo "<select list='marks' name='score' class='selectedScore'>";
                                         for ($i=1; $i <11 ; $i++) { 
                                             if($student['score'] == $i) {
                                                 echo "<option value='$i' selected='true'>$i</option>";
@@ -149,13 +156,15 @@
     if(isset($_REQUEST['manage'])) {
         echo "<script>
         window.addEventListener('load', function() {
-            window.onload = loadTeacher(1,'{$_REQUEST['manage']}')
+            window.onload = loadTeacher(1,'{$_REQUEST['manage']}');
+            addChangeListeners();
         });
         </script>";
     } else {
         echo "<script>
         window.addEventListener('load', function() {
             window.onload = loadTeacher(0);
+            addChangeListeners();
         });
         </script>";
     }
