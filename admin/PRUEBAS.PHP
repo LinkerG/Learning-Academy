@@ -6,13 +6,14 @@ include "../functions.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../files/prueba.js"></script>   
+    <script src="../files/importStudents.js"></script>   
     <title>PRUEBAS</title>
 </head>
 <body>
     <?php
         if(isset($_POST['students'])){
             $json = json_decode($_POST['students'], true);
+            print_r($json);
             foreach($json as $student){
                 if(isset($student['courses'])){
                     print_r($student['courses'][0]);

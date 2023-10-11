@@ -300,18 +300,25 @@ function eventButtons(condition, admin) {
                         image.classList.add("tbImage");
                         link.appendChild(image);
                         toolBar.appendChild(link);
-                    } else if("show" == "students"){
+                    } else if(show == "students"){
                         let export_import = document.createElement("div");
-                        let exportBtn = document.createElement("a");
+                        let exportBtn = document.createElement("button");
                         exportBtn.innerText = "Export students";
-                        let importbtn = document.createElement("a");
+                        let fileInput = document.createElement("input");
+                        fileInput.type = "file";
+                        fileInput.id = "fileInput";
+                        fileInput.accept = ".txt";
+                        let importBtn = document.createElement("button");
                         importBtn.innerText = "Import students";
+                        importBtn.id = "importButton";
+                        console.log(importBtn);
                         export_import.appendChild(exportBtn);
-                        export_import.appendChild(importbtn);
+                        export_import.appendChild(fileInput);
+                        export_import.appendChild(importBtn);
                         toolBar.appendChild(export_import);
                     }
                     
-    
+                    
                     ventana.appendChild(toolBar)
                                  
     
