@@ -96,7 +96,7 @@ include "../functions.php";
         }else{
             alert('Select a file please');
         }*/
-
+        
     </script>
 </body>
 </html>

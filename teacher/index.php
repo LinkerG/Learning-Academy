@@ -37,7 +37,6 @@
             <?php
                 if(connectBD("id21353268_learningacademy", $connection)) {
                 foreach ($result as $course) {
-                    
                     $isFinished = strtotime($course['endDate'])<date("Y-m-d") ? "Finished" : "Not finished";
                     echo "<div class='divWindow hoverable teacherWindow' id='{$course['courseId']}'>";
                     echo "<p>Course: {$course['name']}</p>";
@@ -45,7 +44,6 @@
                     echo "<p>Students: {$course['numberOfStudents']}</p>";
                     echo "<p>Graded students: {$course['gradedStudents']}/{$course['numberOfStudents']}";
                     echo "</div>";
-
                     echo "<div class='courseHidden' id='course{$course['courseId']}'>";
 
                     $studentsForCourse = "
@@ -85,9 +83,15 @@
                                         echo "<td><a target='_blank' href='{$student[$task]}'> Download </a></td>";
                                     }
                                 }
-                                $errMsg = "";
-                                if(strtotime($course['endDate']) < date("Y-m-d")) $errMsg = $errMsg . "";
-                                if($errMsg == ""){
+
+                                //Mira si puede el estudiante tener nota o no
+                                $errMsg = [];
+                                
+                                if(strtotime($course['endDate']) > strtotime(date("Y-m-d"))) array_push($errMsg,"Course must be finished");
+                                if($numberOfTasks<4) array_push($errMsg, "Student must send all four tasks");
+
+                                //Si puede tener se le da la opcion
+                                if(empty($errMsg)){
                                     if($student['score'] == null) {
                                         echo "<td>";
                                         echo "<select list='marks' name='score' id='score'>";
@@ -106,34 +110,42 @@
                                         echo "</td>";
                                     }
                                 } else {
-                                    echo "<td>$errMsg</td>";
+                                    //Si no, le dice porque
+                                    echo "<td>";
+                                    foreach ($errMsg as $error) {
+                                        echo "$error";
+                                        echo "<br>";
+                                    }
+                                    echo "</td>";
                                 }
                                 echo "</tr>";
                             }
-                            
                             echo "</table>";
                             echo "</form>";
                         }
                     }
-
                     echo "</div>";
                 }
                 }
             ?>
         </div>
     </div>
-    
-    <datalist id="marks">
-        
-    </datalist>
     <?php
         }
     ?>
     <?php
     if(isset($_REQUEST['manage'])) {
-        echo "<script>window.onload = loadTeacher(1,'{$_REQUEST['manage']}')</script>";
+        echo "<script>
+        window.addEventListener('load', function() {
+            window.onload = loadTeacher(1,'{$_REQUEST['manage']}')
+        });
+        </script>";
     } else {
-        echo "<script>window.onload = loadTeacher(0);</script>";
+        echo "<script>
+        window.addEventListener('load', function() {
+            window.onload = loadTeacher(0);
+        });
+        </script>";
     }
 ?>
 </body>

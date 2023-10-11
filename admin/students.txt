@@ -1,1 +1,1 @@
-dniStudent:48215363A,email:iker@gmail.com,password:e637d52df1ebdfc8eef062c325ee3cb2,name:Iker,surname:Gonzalez,birthDate:2023-10-02,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:discount
+dniStudent:48215363A,email:iker@gmail.com,password:e637d52df1ebdfc8eef062c325ee3cb2,name:Iker,surname:Gonzalez,birthDate:2002-08-26,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:free
