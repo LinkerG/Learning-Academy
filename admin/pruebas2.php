@@ -1,8 +1,4 @@
 <?php
-if(isset($_POST)){
-    echo "SIUUU";
-    $dataJSON = file_get_contents('php://input');
-    $arrayData = json_decode($dataJSON, true);
-    print_r($arrayData);
-}
+    $json = json_decode($_POST['students']);
+    var_dump($json);
 ?>
