@@ -81,7 +81,7 @@ function openTab(tabNumber) {
         const formElements = document.querySelectorAll(".form-element");
         const profileForm = document.getElementById("profile-form"); // seleccionar el formulario
       
-        console.log("toggleElements llamada. Modo edición: " + isEditMode);
+        //console.log("toggleElements llamada. Modo edición: " + isEditMode);
       
         profileElements.forEach(element => {
           element.style.display = isEditMode ? "none" : "block";
@@ -164,6 +164,11 @@ function eventButtons(condition, admin) {
             
             // Elimina todos los botones que no son el que se pulsa
             let boton = buttons[i];
+            let toDraw;
+            if(!admin){
+                toDraw = document.getElementById("course"+boton.id);
+
+            }
             if(!admin) boton.classList.remove("teacherWindow");
             for (let j = 0; j < buttons.length; j++) {
                 if (boton!=buttons[j]) {
@@ -211,24 +216,27 @@ function eventButtons(condition, admin) {
             tabWindow.classList.add("tabWindow");
 
             
-
+            if(admin){
             for (let tabButton = 0; tabButton < buttons.length; tabButton++) {
                 // Botones de las pestañas
                 let tab = document.createElement("div");
                 tab.classList.add("tab");
                 
-                selected = buttons[tabButton].textContent == "" ? true : false;
-                if(selected) {
-                    if(admin){
+                
+
+                    selected = buttons[tabButton].textContent == "" ? true : false;
+
+                
+                    if(selected) {
                         tab.textContent = text;
                         tab.classList.add("selected");
+                    } else{
+                        tab.textContent = buttons[tabButton].textContent;
                     }
-                } else{
-
-                    if(admin) tab.textContent = buttons[tabButton].textContent;
-                }
+                
 
                 tab.id = "t" + tabButton;
+                
 
                 // Evento de las pestañas
                 tab.addEventListener("click", function() {
@@ -242,8 +250,9 @@ function eventButtons(condition, admin) {
                 ventana.classList.add("tab-content");
                 ventana.id = "tab" + tabButton;
 
-                if(selected) ventana.classList.add("selected");
+                
 
+                if(selected) ventana.classList.add("selected");
                 if(admin){
                     let show;
                     if(tab.innerHTML == "Manage courses") show = "courses";
@@ -317,30 +326,33 @@ function eventButtons(condition, admin) {
                     }
                     ventana.appendChild(toDraw);
                 } else {
-                    if(!admin){
-                        // Si viene de teacher crea tambien un boton de atras
-                        let backbtnContainer = document.createElement("div")
-                        let backbtn = document.createElement("a");  
-                        let backbtnImg = document.createElement("img");
-                        backbtn.href = "index.php";
-                        let backText = document.createElement("p");
-                        backText.innerHTML="Go back";
-                        backbtnImg.src = "../img/icons/back.png";
-                        backbtnImg.alt = "bk";
-                        backbtnImg.classList.add("backBtn");
-                        backbtn.appendChild(backbtnImg);
-                        backbtn.appendChild(backText)
-                        backbtnContainer.classList.add("tabBackBtn");
-                        backbtnContainer.appendChild(backbtn);
-                        ventana.appendChild(backbtnContainer)
-                        console.log(boton.id);
-                        let toDraw = document.getElementById("course"+boton.id);
-                        toDraw.style.display = "block"
-                        console.log(toDraw);
-                        ventana.appendChild(toDraw);
-                    }
+                    
                 }
 
+                tabWindow.appendChild(ventana);
+            }
+            } else {
+                let ventana = document.createElement("div");
+                ventana.classList.add("tab-content");
+                ventana.classList.add("selected");
+                // Si viene de teacher crea tambien un boton de atras
+                let backbtnContainer = document.createElement("div")
+                let backbtn = document.createElement("a");  
+                let backbtnImg = document.createElement("img");
+                backbtn.href = "index.php";
+                let backText = document.createElement("p");
+                backText.innerHTML="Go back";
+                backbtnImg.src = "../img/icons/back.png";
+                backbtnImg.alt = "bk";
+                backbtnImg.classList.add("backBtn");
+                backbtn.appendChild(backbtnImg);
+                backbtn.appendChild(backText)
+                backbtnContainer.classList.add("tabBackBtn");
+                backbtnContainer.appendChild(backbtn);
+                ventana.appendChild(backbtnContainer)
+                toDraw.style.display = "block";
+                ventana.appendChild(toDraw);
+                
                 tabWindow.appendChild(ventana);
             }
             
@@ -354,6 +366,7 @@ function eventButtons(condition, admin) {
             tabContainer.appendChild(tabWindow);
             boton.appendChild(tabContainer);
             boton.style.backgroundColor = "white";
+
             if (!skipLoader) {
                 setTimeout(function() {
                     
@@ -364,7 +377,7 @@ function eventButtons(condition, admin) {
             // Estiliza el div padre para que no se vea mal
             
             buttonsParent[0].style.display = "flex";
-
+            
             boton.removeEventListener("click", open);
         });
         

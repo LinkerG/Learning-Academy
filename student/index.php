@@ -53,7 +53,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         for($i = 1; $i < 5;$i++){
             if(isset($_FILES['task'.$i])){
-                $msg = uploadPdf($result[0]['courseId'],$connection,$i); 
+                $msg = uploadPdf($_POST['courseId'],$connection,$i); 
             }
         }
         echo "<meta HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php'>";
@@ -134,6 +134,7 @@
                                             echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
                                             echo "<form enctype ='multipart/form-data' action='index.php' method='POST' id='$formId' name='form$i'>";
                                             echo "<input type='file' name='$task' id='$task'>";
+                                            echo "<input type='hidden' name='courseId' value='{$course['courseId']}'>";
                                             echo "<input type='submit' value='Save changes'>";
                                             echo "</form>";
                                         } else {
@@ -143,6 +144,7 @@
                                             echo "<p>Upload your task:</p>";
                                             echo "<form enctype ='multipart/form-data' action='index.php' method='POST' id='$formId' name='form$i' class='noHide'>";
                                             echo "<input type='file' name='$task' id='$task'>";
+                                            echo "<input type='hidden' name='courseId' value='{$course['courseId']}'>";
                                             echo "<input type='submit' value='Save changes'>";
                                             echo "</form>";
                                         }

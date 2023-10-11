@@ -366,9 +366,9 @@ table th, table td {
   transition: background-color 300ms;
 }
 .container .tabbedWindow .divWindow.teacherWindow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
 }
 .container .tabbedWindow .divWindow .tab-container {
   z-index: 1;
