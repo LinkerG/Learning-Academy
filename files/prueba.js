@@ -20,13 +20,27 @@ function crearArray(){
                 const studentData = {};
                 KeyValuePairs.forEach(pair => {
                     const [key,value] = pair.split(':');
-                    if(key && value) {
-                        studentData[key.trim()] = value.trim();
+                    if (key && value) {
+                        const trimmedKey = key.trim();
+                        const trimmedValue = value.trim();
+                        
+                        if (trimmedKey === 'courses') {
+                            // Extraer los números entre corchetes y divididos por punto y coma
+                            const coursesMatch = trimmedValue.match(/\[(.*?)\]/);
+                            if (coursesMatch) {
+                                const coursesArray = coursesMatch[1].split(';').map(Number);
+                                studentData[trimmedKey] = coursesArray;
+                            } else {
+                                studentData[trimmedKey] = [];
+                            }
+                        } else {
+                            studentData[trimmedKey] = trimmedValue;
+                        }
                     }
                 });
                 students.push(studentData);
             });
-            // Enviar el array a PHP
+            // Enviar el array a PHP    
             const xhr = new XMLHttpRequest();
             xhr.open("POST","PRUEBAS.PHP", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

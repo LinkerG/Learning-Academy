@@ -12,14 +12,12 @@ include "../functions.php";
 <body>
     <?php
         if(isset($_POST['students'])){
-            $json = json_decode($_POST['students']);
-            print_r($json);
-            /*foreach($json as $student){
-                foreach($student as $data){
-                    print_r($data);
-                    echo "<br>";
+            $json = json_decode($_POST['students'], true);
+            foreach($json as $student){
+                if(isset($student['courses'])){
+                    print_r($student['courses'][0]);
                 }
-            }*/
+            }
         }else{
             $sql = "SELECT s.*, GROUP_CONCAT(m.courseId) AS enrolledCourses FROM student s LEFT JOIN matriculates m ON s.dniStudent = m.dniStudent GROUP BY s.dniStudent, s.email, s.password, s.name, s.surname, s.birthDate, s.photoPath, s.prize;";
             $campos = ['dniStudent', 'email', 'password', 'name', 'surname', 'birthDate', 'photoPath', 'prize', 'courses'];
@@ -44,7 +42,7 @@ include "../functions.php";
                             // Construir la línea clave:valor
                             $KeyValue = "";
                             foreach ($campos as $campo) {
-                                $KeyValue .= "$campo:" . (is_array($data[$campo]) ? '[' . implode(',', $data[$campo]) . ']' : $data[$campo]) . ",";
+                                $KeyValue .= "$campo:" . (is_array($data[$campo]) ? '[' . implode(';', $data[$campo]) . ']' : $data[$campo]) . ",";
                             }
                             $KeyValue = rtrim($KeyValue, ',');
                             $newFileData .= $KeyValue . PHP_EOL;
