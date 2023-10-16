@@ -26,7 +26,7 @@ function crearArray(){
                         
                         if (trimmedKey === 'courses') {
                             // Extraer los números entre corchetes y divididos por punto y coma
-                            const coursesMatch = trimmedValue.match(/\[(.*?)\]/);
+                            const coursesMatch = trimmedValue.match(/\((.*?)\)/);
                             if (coursesMatch) {
                                 const coursesArray = coursesMatch[1].split(';').map(Number);
                                 studentData[trimmedKey] = coursesArray;

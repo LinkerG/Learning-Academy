@@ -19,6 +19,7 @@ include "../functions.php";
                     print_r($student['courses'][0]);
                 }
             }
+
         }else{
             $sql = "SELECT s.*, GROUP_CONCAT(m.courseId) AS enrolledCourses FROM student s LEFT JOIN matriculates m ON s.dniStudent = m.dniStudent GROUP BY s.dniStudent, s.email, s.password, s.name, s.surname, s.birthDate, s.photoPath, s.prize;";
             $campos = ['dniStudent', 'email', 'password', 'name', 'surname', 'birthDate', 'photoPath', 'prize', 'courses'];
@@ -43,7 +44,7 @@ include "../functions.php";
                             // Construir la línea clave:valor
                             $KeyValue = "";
                             foreach ($campos as $campo) {
-                                $KeyValue .= "$campo:" . (is_array($data[$campo]) ? '[' . implode(';', $data[$campo]) . ']' : $data[$campo]) . ",";
+                                $KeyValue .= "$campo:" . (is_array($data[$campo]) ? '(' . implode(';', $data[$campo]) . ')' : $data[$campo]) . ",";
                             }
                             $KeyValue = rtrim($KeyValue, ',');
                             $newFileData .= $KeyValue . PHP_EOL;
@@ -56,14 +57,12 @@ include "../functions.php";
                     }
                 }
             }
-            
-
     ?>
     <input type="file" id="fileInput" accept=".txt">
     <button id="importButton">Import</button>
     <div id="datos"></div>
     <?php
-        }
+    }
     ?>
 </body>
 </html>
