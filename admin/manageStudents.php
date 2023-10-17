@@ -12,8 +12,8 @@ include "../functions.php";
 </head>
 <body>
     <?php
-    
-        if(isset($_POST['students'])){
+        
+        if(isset($_POST['import'])){
             $json = json_decode($_POST['students'], true);
             echo "<h1>Hola JSON</h1>";
             if(connectBD("id21353268_learningacademy", $connection)) {
@@ -38,7 +38,6 @@ include "../functions.php";
                 }
             }
             $failedStudents = [];
-            
             $failedMatriculations = [];
             if(connectBD("id21353268_learningacademy", $connection)){
             foreach($json as $student){
