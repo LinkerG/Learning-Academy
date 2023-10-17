@@ -382,6 +382,8 @@ function generarFicheroStudents(){
 }
 
 function insertStudents(){
+    echo "Holaaaa";
+    $json = json_decode($_POST['students'], true);
     if(connectBD("id21353268_learningacademy", $connection)) {
         $sql = "SELECT email, dniTeacher AS dni
         FROM teacher
@@ -432,8 +434,6 @@ function insertStudents(){
                             }
                         }
                     }
-                } else {
-                    echo "no <br>";
                 }
             }
         }
