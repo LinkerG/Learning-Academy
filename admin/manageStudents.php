@@ -8,11 +8,18 @@ include "../functions.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../files/importStudents.js"></script>   
+    <link rel="stylesheet" href="../css/main.css">
     <title>PRUEBAS</title>
 </head>
 <body>
     <?php
-        
+        if(!isset($_SESSION['role']) && $_SESSION['role'] != "A") {
+            printHeader();
+            include("needAdmin.html");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+        }else{
+            printHeader();
+
         if(isset($_POST['import'])){
             $json = json_decode($_POST['students'], true);
             echo "<h1>Hola JSON</h1>";
@@ -119,6 +126,7 @@ include "../functions.php";
     <button id="importButton">Import</button>
     <div id="datos"></div>
     <?php
+    }
     }
     ?>
 </body>

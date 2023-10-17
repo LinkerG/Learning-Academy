@@ -20,14 +20,6 @@
             printHeader();
             include("needAdmin.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-        }elseif(isset($_POST['students'])){
-            $json = json_decode($_POST['students'], true);
-            print_r($json);
-            foreach($json as $student){
-                if(isset($student['courses'])){
-                    print_r($student['courses'][0]);
-                }
-            }
         }else{
             printHeader();
     ?>
