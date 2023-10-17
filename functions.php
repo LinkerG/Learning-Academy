@@ -382,8 +382,6 @@ function generarFicheroStudents(){
 }
 
 function insertStudents(){
-    $json = json_decode($_POST['students'], true);
-    echo "<h1>Hola JSON</h1>";
     if(connectBD("id21353268_learningacademy", $connection)) {
         $sql = "SELECT email, dniTeacher AS dni
         FROM teacher
@@ -440,9 +438,12 @@ function insertStudents(){
             }
         }
     }
-    echo "Han fallado estos alumnos";
-    print_r($failedStudents);
-    echo "Han fallado estas matriculaciones";
-    print_r($failedMatriculations);
+    $failedStudentsString = implode(", ", $failedStudents);
+    $failedMatriculationsString = implode(", ", $failedMatriculations);
+
+    // Imprimir el mensaje combinado en el script JavaScript
+    echo "<script> 
+        alert('Han fallado estos alumnos: " . $failedStudentsString . "\\n\\nHan fallado estas matriculaciones: " . $failedMatriculationsString . "');
+    </script>";
 }
 ?>

@@ -40,72 +40,66 @@ function crearArray(){
                 });
                 students.push(studentData);
             });
+            displayTable(students);
         };
         reader.readAsText(file);
-        var table = document.createElement('table');
-        var tr = document.createElement('tr');
-        var dni = document.createElement('th');
-        dni.innerText = 'DNI';
-        tr.appendChild(dni);
-        var email = document.createElement('th');
-        email.innerText = 'Email';
-        tr.appendChild(email);
-        var password = document.createElement('th');
-        password.innerText = 'Password';
-        tr.appendChild(password);
-        var name = document.createElement('th');
-        name.innerText = 'Name';
-        tr.appendChild(name);
-        var surname = document.createElement('th');
-        surname.innerText = 'Surname';
-        tr.appendChild(surname);
-        var birthDate = document.createElement('th');
-        birthDate.innerText = 'Birth date';
-        tr.appendChild(birthDate);
-        var photoPath = document.createElement('th');
-        photoPath.innerText = 'Photo Path';
-        tr.appendChild(photoPath);
-        var prize = document.createElement('th');
-        prize.innerText = 'Prize';
-        tr.appendChild(prize);
-        var courses = document.createElement('th');
-        courses.innerText = 'Courses';
-        tr.appendChild(courses);
-        table.appendChild(tr);
-        students.forEach(student => {
-            var tr = document.createElement('tr');
-            var dniStudent = document.createElement('td');
-            dniStudent.innerText = student.dniStudent;
-            tr.appendChild(dniStudent);
-            var emailStudent = document.createElement('td');
-            emailStudent.innerText = student.email;
-            tr.appendChild(emailStudent);
-            var passwordStudent = document.createElement('td');
-            passwordStudent.innerText = student.password;
-            tr.appendChild(passwordStudent);
-            var nameStudent = document.createElement('td');
-            nameStudent.innerText = student.name;
-            tr.appendChild(nameStudent);
-            var surnameStudent = document.createElement('td');
-            surnameStudent.innerText = student.surname;
-            tr.appendChild(surnameStudent);
-            var birthDateStudent = document.createElement('td');
-            birthDateStudent.innerText = student.birthDate;
-            tr.appendChild(birthDateStudent);
-            var photoPathStudent = document.createElement('td');
-            photoPathStudent.innerText = student.photoPath;
-            tr.appendChild(photoPathStudent);
-            var prizeStudent = document.createElement('td');
-            prizeStudent.innerText = student.prize;
-            tr.appendChild(prizeStudent);
-            var coursesStudent = document.createElement('td');
-            coursesStudent.innerText = student.courses.length;
-            tr.appendChild(coursesStudent);
+    }else{
+        alert('Select a file please');
+    }
+}
 
-            table.appendChild(tr);
+function displayTable(students) {
+    const table = document.createElement('table');
+
+    const headers = ['DNI', 'Email', 'Password', 'Name', 'Surname', 'Birth date', 'Photo Path', 'Prize', 'Courses'];
+
+    const headerRow = document.createElement('tr');
+    headers.forEach((headerText) => {
+        const th = document.createElement('th');
+        th.innerText = headerText;
+        headerRow.appendChild(th);
+    });
+
+    table.appendChild(headerRow);
+
+    students.forEach((student) => {
+        const tr = document.createElement('tr');
+    
+        headers.forEach((header) => {
+            const td = document.createElement('td');
+            if (header.toLowerCase() === 'photo path') {
+                td.innerText = student.photoPath || '';
+            } else if (header.toLowerCase() === 'dni') {
+                td.innerText = student.dniStudent || '';
+            } else if (header.toLowerCase() === 'birth date') {
+                td.innerText = student.birthDate || '';
+            } else if(header.toLowerCase() === 'courses'){
+                td.innerText = student.courses.length || '';
+            } else {
+                td.innerText = student[header.split(' ').join('').toLowerCase()] || '';
+            }
+            tr.appendChild(td);
         });
-        const tableContainer = document.getElementById('tableContainer');
-        tableContainer.appendChild(table);
+        table.appendChild(tr);
+    });
+    
+
+    const tableContainer = document.getElementById('tableContainer');
+    tableContainer.innerHTML = '';
+    tableContainer.appendChild(table);
+
+    // Agregar botón de irse de la página
+    const leaveButton = document.createElement('button');
+    leaveButton.innerText = 'Cancel';
+    leaveButton.onclick = () => {
+        location.reload();
+    };
+
+    const importButton = document.createElement('button');
+    importButton.innerText = 'Import';
+    importButton.onclick = () => {
+    const confirmation = confirm('Are you sure do you want to import this students?');
+    if (confirmation) {
         // Enviar el array a PHP    
         const xhr = new XMLHttpRequest();
         xhr.open("POST","manageStudents.php", true);
@@ -118,8 +112,15 @@ function crearArray(){
         };
         const studentsJSON ="students=" + JSON.stringify(students);
         xhr.send(studentsJSON);
-
-    }else{
-        alert('Select a file please');
+    } else {
+        location.reload(); // Recargar la página si no se confirma la importación
     }
-};
+    };
+
+    tableContainer.appendChild(importButton);
+    tableContainer.appendChild(leaveButton);
+}
+
+
+
+
