@@ -302,18 +302,10 @@ function eventButtons(condition, admin) {
                         toolBar.appendChild(link);
                     } else if(show == "students"){
                         let export_import = document.createElement("div");
-                        let exportBtn = document.createElement("button");
-                        exportBtn.innerText = "Export students";
-                        let fileInput = document.createElement("input");
-                        fileInput.type = "file";
-                        fileInput.id = "fileInput";
-                        fileInput.accept = ".txt";
-                        let importBtn = document.createElement("button");
-                        importBtn.innerText = "Import students";
-                        importBtn.id = "importButton";
-                        console.log(importBtn);
-                        export_import.appendChild(exportBtn);
-                        export_import.appendChild(fileInput);
+                        
+                        let importBtn = document.createElement("a");
+                        importBtn.innerText = "Manage students";
+                        importBtn.href = "manageStudents.php";
                         export_import.appendChild(importBtn);
                         toolBar.appendChild(export_import);
                     }

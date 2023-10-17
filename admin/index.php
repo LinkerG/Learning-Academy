@@ -20,14 +20,6 @@
             printHeader();
             include("needAdmin.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
-        }elseif(isset($_POST['students'])){
-            $json = json_decode($_POST['students'], true);
-            print_r($json);
-            foreach($json as $student){
-                if(isset($student['courses'])){
-                    print_r($student['courses'][0]);
-                }
-            }
         }else{
             printHeader();
     ?>
@@ -116,11 +108,11 @@
         </table>
         <table id="studentsTable" style="display:none;">
         <tr>
-            <td>Name</td>
-            <td>Surname</td>
-            <td>Email</td>
-            <td>DNI</td>
-            <td>Number of courses matriculated</td>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>DNI</th>
+            <th>Number of courses matriculated</th>
         </tr>
         <?php
             $sql = "SELECT * FROM student;";

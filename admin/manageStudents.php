@@ -8,17 +8,22 @@ include "../functions.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../files/importStudents.js"></script>   
+    <link rel="stylesheet" href="../css/main.css">
     <title>PRUEBAS</title>
 </head>
 <body>
     <?php
-        if(isset($_POST['students'])){
-            ?>
-            
-            <?php
-            /*$json = json_decode($_POST['students'], true);
+        if(!isset($_SESSION['role']) && $_SESSION['role'] != "A") {
+            printHeader();
+            include("needAdmin.html");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+        }else{
+            printHeader();
+
+        if(isset($_POST['import'])){
+            $json = json_decode($_POST['students'], true);
             echo "<h1>Hola JSON</h1>";
-            if(connectBD("id21353268_learningacademy", $connection)) {
+            /*if(connectBD("id21353268_learningacademy", $connection)) {
                 $sql = "SELECT email, dniTeacher AS dni
                 FROM teacher
                 UNION ALL
@@ -85,6 +90,7 @@ include "../functions.php";
             <div id="datos"></div>
             <div id="tableContainer"></div>
     <?php
+    }
     }
     ?>
 </body>
