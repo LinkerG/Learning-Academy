@@ -27,11 +27,8 @@
                 if(isset($student['courses'])){
                     print_r($student['courses'][0]);
                 }
-
             }
         }else{
-            echo "hola";
-            print_r($_POST);
             printHeader();
     ?>
     <div class="container">

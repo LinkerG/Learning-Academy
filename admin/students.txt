@@ -1,3 +1,3 @@
-dniStudent:12345678Z,email:olga@gmail.com,password:0cc175b9c0f1b6a831c399e269772661,name:Alex,surname:dada,birthDate:2002-11-11,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:no prize,courses:(0)
-dniStudent:48215363A,email:a@gmail.com,password:0cc175b9c0f1b6a831c399e269772661,name:Iker,surname:Gonzalez,birthDate:2002-11-11,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:nothing,courses:(1)
-dniStudent:48222532L,email:alex@gmail.com,password:0cc175b9c0f1b6a831c399e269772661,name:Alex,surname:Cedeño,birthDate:2002-11-11,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:nothing,courses:(1;4)
+dniStudent:12345678Z,email:student2@gmail.com,password:c81e728d9d4c2f636f067f89cc14862c,name:stu,surname:dent,birthDate:2011-11-11,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:free,courses:(1;2)
+dniStudent:41361523W,email:usu@gmail.com,password:0cc175b9c0f1b6a831c399e269772661,name:NoCourses,surname:NoCourses,birthDate:2023-08-26,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:no prize,courses:(1)
+dniStudent:48215363A,email:iker@gmail.com,password:e637d52df1ebdfc8eef062c325ee3cb2,name:Iker,surname:Gonzalez,birthDate:2002-08-26,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:free,courses:(1;2)
