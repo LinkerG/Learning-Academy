@@ -108,11 +108,11 @@
         </table>
         <table id="studentsTable" style="display:none;">
         <tr>
-            <td>Name</td>
-            <td>Surname</td>
-            <td>Email</td>
-            <td>DNI</td>
-            <td>Number of courses matriculated</td>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>DNI</th>
+            <th>Number of courses matriculated</th>
         </tr>
         <?php
             $sql = "SELECT * FROM student;";
