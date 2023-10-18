@@ -9,6 +9,7 @@ include "../functions.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../files/importStudents.js"></script>   
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
     <title>Import Students</title>
 </head>
 <body>
@@ -23,13 +24,14 @@ include "../functions.php";
             }else{
                 ?>
                 <?php printHeader(); ?>
-                <div id="buttons">
-                    <input type="file" id="fileInput" accept=".txt">
-                    <button id="importButton">Import</button>
-                    <button id="export" onclick= "<?php generarFicheroStudents() ?>">Export</button>
+                <div>
+                    <input type="file" id="fileInput" accept=".txt" >
+                    <button class="whiteBtn" id="importButton">Import</button>
+                    <!--<button id="export" onclick= "<?php //generarFicheroStudents() ?>">Export</button>-->
                 </div>
                 <div id="datos"></div>
                 <div id="tableContainer"></div>
+                <div id="btns"></div>
                 <?php
             }
         }

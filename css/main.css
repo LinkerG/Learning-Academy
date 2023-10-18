@@ -714,36 +714,6 @@ img.backBtn {
   grid-area: img3;
 }
 
-/*.index{
-    display:grid;
-    grid-template-columns: 70% 30%;
-    background-color: $lightBlue;
-    text-align: left;
-    padding:1vh 0 5vh 3vw;
-    margin-top:15vh;
-    margin-right: 30vw;
-    overflow: hidden;
-    place-items: center;    
-    .content{
-        display: grid;
-        grid-template-rows: 1fr;
-        margin-top:5vh;
-        grid-template-columns: repeat(2,1fr);
-        h1{
-            margin-bottom: 5vh;
-        }
-        p{
-            margin-bottom: 2vh;
-        }
-        div{
-            display:flex;
-            justify-content: left;
-            a{
-                margin-right: 20px;
-            }
-        }
-    }
-}*/
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -765,4 +735,21 @@ img.backBtn {
   -o-object-fit: cover;
      object-fit: cover;
   width: 10rem;
+}
+
+#tableContainer {
+  overflow-y: auto;
+  max-height: 60vh;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+#tableContainer table {
+  background-color: #A0DCFF;
+}
+#tableContainer table tr td {
+  text-align: center;
+}
+
+.error {
+  margin-bottom: 5vh;
 }/*# sourceMappingURL=main.css.map */

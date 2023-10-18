@@ -43,6 +43,10 @@ function crearArray(){
             displayTable(students);
         };
         reader.readAsText(file);
+        const importBtn = document.getElementById('importButton');
+        const input = document.getElementById('fileInput');
+        importBtn.style.display = 'none';
+        input.style.display = 'none';
     }else{
         alert('Select a file please');
     }
@@ -68,7 +72,11 @@ function displayTable(students) {
         headers.forEach((header) => {
             const td = document.createElement('td');
             if (header.toLowerCase() === 'photo path') {
-                td.innerText = student.photoPath || '';
+                var img = document.createElement('img');
+                img.src = student.photoPath;
+                img.alt = "default";
+                img.classList.add('provisionalFoto');
+                td.appendChild(img);
             } else if (header.toLowerCase() === 'dni') {
                 td.innerText = student.dniStudent || '';
             } else if (header.toLowerCase() === 'birth date') {
@@ -95,11 +103,14 @@ function displayTable(students) {
         location.reload();
     };
 
+    const btns = document.getElementById('btns');
     const importButton = document.createElement('button');
     importButton.innerText = 'Import';
     importButton.onclick = () => {
     const confirmation = confirm('Are you sure do you want to import this students?');
     if (confirmation) {
+        table.style.display = "none";
+        btns.style.display = "none";
         // Enviar el array a PHP    
         const xhr = new XMLHttpRequest();
         xhr.open("POST","manageStudents.php", true);
@@ -117,8 +128,10 @@ function displayTable(students) {
     }
     };
 
-    tableContainer.appendChild(importButton);
-    tableContainer.appendChild(leaveButton);
+    importButton.classList.add('whiteBtn');
+    leaveButton.classList.add('whiteBtn');
+    btns.appendChild(importButton);
+    btns.appendChild(leaveButton);
 }
 
 

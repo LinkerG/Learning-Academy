@@ -382,7 +382,6 @@ function generarFicheroStudents(){
 }
 
 function insertStudents(){
-    echo "Holaaaa";
     $json = json_decode($_POST['students'], true);
     if(connectBD("id21353268_learningacademy", $connection)) {
         $sql = "SELECT email, dniTeacher AS dni
@@ -438,12 +437,24 @@ function insertStudents(){
             }
         }
     }
-    $failedStudentsString = implode(", ", $failedStudents);
-    $failedMatriculationsString = implode(", ", $failedMatriculations);
-
-    // Imprimir el mensaje combinado en el script JavaScript
-    echo "<script> 
-        alert('Han fallado estos alumnos: " . $failedStudentsString . "\\n\\nHan fallado estas matriculaciones: " . $failedMatriculationsString . "');
-    </script>";
+    
+    if(empty($failedStudents) && empty($failedMatriculations)){
+        echo "<h3>The students were inserted correctly!</h3>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=index.php'>";
+    }elseif(empty($failedMatriculations)){
+        $failedStudentsString = implode(", ", $failedStudents);
+        echo "<div>";
+        echo "<h3 class='error'>This are the students that we cant insert:" . $failedStudentsString . "</h3>";
+        echo "<a href='index.php' class='whiteBtn'>Go back</a>";
+        echo "</div>";
+    }else{
+        $failedMatriculationsString = implode(", ", $failedMatriculations);
+        $failedStudentsString = implode(", ", $failedStudents);
+        echo "<div>";
+        echo "<h3 class='error'>This are the matriculations that we cant insert". $failedMatriculationsString . "</h3>";
+        echo "<h3 class='error'>This are the students that we cant insert:" . $failedStudentsString . "</h3>";
+        echo "<a href='index.php' class='whiteBtn'>Go back</a>";
+        echo "</div>";
+    }
 }
 ?>
