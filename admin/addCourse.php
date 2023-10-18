@@ -72,11 +72,11 @@
             <div class="formRow">
                 <div>
                     <label for="name">Name:</label>
-                    <input type="text" name="name" id="name">
+                    <input type="text" maxlength="25" name="name" id="name">
                 </div>
                 <div>
                     <label for="hours">Hours:</label>
-                    <input type="number" name="hours" id="hours">
+                    <input type="number" max="9999" min="1" name="hours" id="hours">
                 </div>
             </div>
             <div class="formRow">
@@ -92,7 +92,7 @@
             <div class="formRow">
                 <div>   
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description">
+                    <input type="text" maxlength="200" name="description" id="description">
                 </div>
                 <div>
                     <label for="dniTeacher">Teacher DNI:</label>

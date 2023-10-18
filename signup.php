@@ -78,28 +78,28 @@
                 <div class="formRow">
                     <div>
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email">
+                        <input type="email" maxlength="20" name="email" id="email">
                     </div>
                     <div>
                         <label for="password">Password</label>    
-                        <input type="password" name="password" id="password">
+                        <input type="password" maxlength="40" name="password" id="password">
                     </div>
                 </div>
                 <div class="formRow">
                     <div>
                         <label for="name">Name</label>    
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" maxlength="15" id="name">
                         
                     </div>
                     <div>
                         <label for="dniStudent">DNI</label>    
-                        <input type="text" name="dniStudent" id="dniStudent">    
+                        <input type="text" maxlength="9" name="dniStudent" id="dniStudent">    
                     </div>
                 </div>
                 <div class="formRow">
                     <div>
                         <label for="surname">Surname</label>    
-                        <input type="text" name="surname" id="surname">
+                        <input type="text" name="surname" maxlength="25" id="surname">
                     </div>
                     <div class="formDivided">
                         <div>

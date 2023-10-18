@@ -85,21 +85,21 @@
             <div class="formRow">
                 <div>
                     <label for="dniTeacher">DNI:</label>
-                    <input type="text" name="dniTeacher" id="dniTeacher">
+                    <input type="text" maxlength="9" name="dniTeacher" id="dniTeacher">
                 </div>
                 <div>
                     <label for="name">Name:</label>
-                    <input type="text" name="name" id="name">
+                    <input type="text" maxlength="15" name="name" id="name">
                 </div>
             </div>
             <div class="formRow">
                 <div>
                     <label for="surname">Surname:</label>
-                    <input type="text" name="surname" id="surname">
+                    <input type="text" maxlength="25" name="surname" id="surname">
                 </div>
                 <div>
                     <label for="email">Email:</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" maxlength="20" name="email" id="email">
                 </div>
             </div>
             <div class="formRow">
@@ -109,7 +109,7 @@
                 </div>
                 <div>
                     <label for="titulation">Titulation:</label>
-                    <input type="text" name="titulation" id="titulation">
+                    <input type="text" maxlength="50" name="titulation" id="titulation">
                 </div>
             </div>
             <div class="formRow">

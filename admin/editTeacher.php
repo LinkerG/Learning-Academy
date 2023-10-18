@@ -93,23 +93,23 @@
                 </div>
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" value=<?php echo "'{$result['name']}'";?>>
+                    <input type="text" name="name" id="name" maxlenght="15" value=<?php echo "'{$result['name']}'";?>>
                 </div>
             </div>
             <div class="formRow">
                 <div>
                     <label for="surname">Surname</label>
-                    <input type="text" name="surname" id="surname" value=<?php echo "'{$result['surname']}'";?>>
+                    <input type="text" name="surname" id="surname" maxlenght="25" value=<?php echo "'{$result['surname']}'";?>>
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value=<?php echo "'{$result['email']}'";?>>
+                    <input type="text" name="email" id="email" maxlenght="20" value=<?php echo "'{$result['email']}'";?>>
                 </div>
             </div>
             <div class="formRow">
                 <div>
                     <label for="titulation">Titulation</label>
-                    <input type="text" name="titulation" id="titulation" value=<?php echo "'{$result['titulation']}'";?>>
+                    <input type="text" name="titulation" id="titulation" maxlenght="50" value=<?php echo "'{$result['titulation']}'";?>>
                 </div>
                 <div>
                     <div style="display:flex; flex-direction:row;">

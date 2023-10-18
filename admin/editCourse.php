@@ -9,6 +9,7 @@
     <title>Add new course</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <script src="../files/scripts.js"></script>
 </head>
 <body>
     <?php
@@ -37,22 +38,27 @@
             }
         
             if(!empty($_POST)){
-                if(!isset($_POST['photoPath'])){
-                    if(connectBD("id21353268_learningacademy",$connection)){
-                        $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
-                        
-                        updateSQL($connection, $sql);
-                        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
+                if(connectBD("id21353268_learningacademy", $connection)) {
+                    $photoChanged = false;
+                    if (isset($_POST['showPhoto'])) {
+                        if (!empty($_FILES['photoPath']['name'])) {
+                            $photoChanged = true;
+                        }
                     }
-                }else{
-                    $uploadStatus = uploadPhoto(3, $route, false, $_POST['courseId']);
-                    if(connectBD("id21353268_learningacademy",$connection)){
-                        $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='$route' WHERE courseId='{$_POST['courseId']}';";
-                        
-                        updateSQL($connection, $sql);
-                        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
+
+                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}'";
+
+                    if ($photoChanged) {
+                        $uploadPhoto = uploadPhoto(2, $route, false, $_POST['courseId']);
+                        $sql .= ", photoPath = '$route'";
                     }
-                } 
+
+                    $sql .= " WHERE courseId='{$_POST['courseId']}';";
+
+                    updateSQL($connection, $sql);
+            
+                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
+                }
             }
         
         ?>
@@ -65,13 +71,13 @@
                 </div>
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" value="<?php echo "{$result['name']}";?>">
+                    <input type="text" name="name" id="name" maxlength="25" value="<?php echo "{$result['name']}";?>">
                 </div>
             </div>
             <div class="formRow">
                 <div>
                     <label for="hours">Hours</label>
-                    <input type="number" name="hours" id="hours" value="<?php echo "{$result['hours']}";?>">
+                    <input type="number" name="hours" id="hours" max="9999" min="1" value="<?php echo "{$result['hours']}";?>">
                 </div>
                 <div>
                     <label for="dniTeacher">Teacher:</label>
@@ -102,14 +108,14 @@
             <div class="formRow">
                 <div class="singleRow">
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description" value="<?php echo "{$result['description']}"; ?>">
+                    <input type="text" name="description" id="description" maxlength="200" value="<?php echo "{$result['description']}"; ?>">
                 </div>
             </div>
             <div class="formRow">
                 <div style="display:flex; flex-direction:row;">
                     <label for="showPhoto">Change photo</label>
                     <input type="checkbox" name="showPhoto" id="showPhoto" onchange="checkboxShow('photoPath-input')">
-                    <input type="file" id="photoPath-input" name="photoPath" style="display:none;"></input>
+                    <input type="file" id="photoPath-input" name="photoPath" style="display:none;">
                 </div>
             </div>
             <div class="formActions">
