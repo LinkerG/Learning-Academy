@@ -442,18 +442,29 @@ function insertStudents(){
         echo "<h3>The students were inserted correctly!</h3>";
         echo "<META HTTP-EQUIV='REFRESH' CONTENT='0.5;URL=index.php?manage=students'>";
     }elseif(empty($failedMatriculations)){
-        $failedStudentsString = implode(", ", $failedStudents);
         echo "<div>";
-        echo "<h3 class='error'>This are the students that we cant insert:" . $failedStudentsString . "</h3>";
-        echo "<a href='index.php' class='whiteBtn'>Go back</a>";
+        echo "<h3 class='error'>These are the students that we cant insert:</h3>";
+        echo "<div>";
+        foreach ($failedStudents as $fail) {
+            echo "<p>$fail<p>";
+        }
+        echo "</div>";
+        echo "<a href='index.php?manage=students' class='whiteBtn'>Go back</a>";
         echo "</div>";
     }else{
-        $failedMatriculationsString = implode(", ", $failedMatriculations);
-        $failedStudentsString = implode(", ", $failedStudents);
         echo "<div>";
-        echo "<h3 class='error'>This are the matriculations that we cant insert". $failedMatriculationsString . "</h3>";
-        echo "<h3 class='error'>This are the students that we cant insert:" . $failedStudentsString . "</h3>";
-        echo "<a href='index.php' class='whiteBtn'>Go back</a>";
+        echo "<h3 class='error'>These are the students that we cant insert:</h3>";
+        echo "<div>";
+        foreach ($failedStudents as $fail) {
+            echo "<p>$fail<p>";
+        }
+        echo "</div>";
+        echo "<h3 class='error'>These are the matriculations that we cant insert</h3>";
+        foreach ($failedMatriculations as $fail) {
+            echo "<p>{$fail[0]} on course {$fail[1]}<p>";
+        }
+        echo "</div>";
+        echo "<a href='index.php?manage=students' class='whiteBtn'>Go back</a>";
         echo "</div>";
     }
 }
