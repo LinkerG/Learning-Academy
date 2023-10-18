@@ -21,8 +21,6 @@ include "../functions.php";
         }else{
             if(isset($_POST['students'])){
                 insertStudents();
-                $json = json_decode($_POST['students'], true);
-                print_r($json);
             }else{
                 ?>
                 <?php printHeader(); ?>
