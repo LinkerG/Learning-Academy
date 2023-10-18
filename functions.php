@@ -440,7 +440,7 @@ function insertStudents(){
     
     if(empty($failedStudents) && empty($failedMatriculations)){
         echo "<h3>The students were inserted correctly!</h3>";
-        echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=index.php'>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0.5;URL=index.php?manage=students'>";
     }elseif(empty($failedMatriculations)){
         $failedStudentsString = implode(", ", $failedStudents);
         echo "<div>";

@@ -21,40 +21,40 @@
         } else {
             printHeader();
 
-        if(isset($_REQUEST['active'])){
-            $active = $_REQUEST['active'] == 0 ? 1 : 0;
-            $sql = "UPDATE course SET active={$active} WHERE courseId ='{$_REQUEST['courseId']}'";
+            if(isset($_REQUEST['active'])){
+                $active = $_REQUEST['active'] == 0 ? 1 : 0;
+                $sql = "UPDATE course SET active={$active} WHERE courseId ='{$_REQUEST['courseId']}'";
 
-            if(connectBD("id21353268_learningacademy", $connection)) {
-                updateSQL($connection, $sql);
-                echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
+                if(connectBD("id21353268_learningacademy", $connection)) {
+                    updateSQL($connection, $sql);
+                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
+                }
+            } else if(isset($_REQUEST['courseId'])){
+                if(connectBD("id21353268_learningacademy", $connection)){
+                    $sql = "SELECT * FROM course WHERE courseId='{$_REQUEST['courseId']}'";
+                    if(selectSQL($connection, $sql, $result)) $result = $result[0];
+                }
             }
-        } else if(isset($_REQUEST['courseId'])){
-            if(connectBD("id21353268_learningacademy", $connection)){
-                $sql = "SELECT * FROM course WHERE courseId='{$_REQUEST['courseId']}'";
-                if(selectSQL($connection, $sql, $result)) $result = $result[0];
-            }
-        }
         
 
-        if(!empty($_POST)){
-            if(!isset($_POST['photoPath'])){
-                if(connectBD("id21353268_learningacademy",$connection)){
-                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
-                    
-                    updateSQL($connection, $sql);
-                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
-                }
-            }else{
-                $uploadStatus = uploadPhoto(3, $route, false, $_POST['courseId']);
-                if(connectBD("id21353268_learningacademy",$connection)){
-                    $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='$route' WHERE courseId='{$_POST['courseId']}';";
-                    
-                    updateSQL($connection, $sql);
-                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
-                }
-            } 
-        }
+            if(!empty($_POST)){
+                if(!isset($_POST['photoPath'])){
+                    if(connectBD("id21353268_learningacademy",$connection)){
+                        $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}' WHERE courseId='{$_POST['courseId']}';";
+                        
+                        updateSQL($connection, $sql);
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
+                    }
+                }else{
+                    $uploadStatus = uploadPhoto(3, $route, false, $_POST['courseId']);
+                    if(connectBD("id21353268_learningacademy",$connection)){
+                        $sql = "UPDATE course SET name='{$_POST['name']}', hours='{$_POST['hours']}', startDate='{$_POST['startDate']}', endDate='{$_POST['endDate']}', description='{$_POST['description']}', dniTeacher='{$_POST['dniTeacher']}', photoPath='$route' WHERE courseId='{$_POST['courseId']}';";
+                        
+                        updateSQL($connection, $sql);
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
+                    }
+                } 
+            }
         
         ?>
     <div class="formDiv">
@@ -75,8 +75,19 @@
                     <input type="number" name="hours" id="hours" value="<?php echo "{$result['hours']}";?>">
                 </div>
                 <div>
-                    <label for="dniTeacher">DNI teacher</label>
-                    <input type="text" name="dniTeacher" id="dniTeacher" value="<?php echo "{$result['dniTeacher']}";?>">
+                    <label for="dniTeacher">Teacher:</label>
+                    <select name="dniTeacher" required>
+                        <?php
+                        $sql= "SELECT dniTeacher,name,surname FROM teacher";
+                        if(connectBD("id21353268_learningacademy", $connection)) {
+                            if(selectSQL($connection, $sql,$teacher)){
+                                foreach($teacher as $teachersInfo){
+                                    echo "<option value={$teachersInfo['dniTeacher']}>".$teachersInfo['name']." {$teachersInfo['surname']}</option>";
+                                }
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="formRow">
@@ -93,6 +104,13 @@
                 <div class="singleRow">
                     <label for="description">Description</label>
                     <input type="text" name="description" id="description" value="<?php echo "{$result['description']}"; ?>">
+                </div>
+            </div>
+            <div class="formRow">
+                <div style="display:flex; flex-direction:row;">
+                    <label for="showPhoto">Change photo</label>
+                    <input type="checkbox" name="showPhoto" id="showPhoto" onchange="checkboxShow('photoPath-input')">
+                    <input type="file" id="photoPath-input" name="photoPath" style="display:none;"></input>
                 </div>
             </div>
             <div class="formActions">
