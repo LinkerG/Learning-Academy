@@ -36,68 +36,56 @@
                     if(selectSQL($connection, $sql, $result))$result = $result[0];
                 }
             }
-
-            if(!empty($_POST)){
-                $isPassword = true;
-                $isFile = true;
-                if(isset($_POST['showPass']) || isset($_POST['showPhoto'])){
-                    if(!empty($_POST['password']) && !empty($_POST['photoPath'])){
-                        if(connectBD("id21353268_learningacademy",$connection)){
-                            $password = md5($_POST['password']);
-                            $photoPath = uploadPhoto(1,$route,false,$_POST['dniTeacher']);
-                            $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}', photoPath = '$route' WHERE dniTeacher='{$_POST['dniTeacher']}';";
-                            
-                            updateSQL($connection, $sql);
-                        }
-                    }elseif(!empty($_POST['password'])){
-                        if(connectBD("id21353268_learningacademy",$connection)){
-                            $password = md5($_POST['password']);
-                            $sql = "UPDATE teacher SET email='{$_POST['email']}', password='$password', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
-                            
-                            updateSQL($connection, $sql);
-                        }
-                    }else{
-                        $isPassword = false;
-                    }
-                    if (isset($_FILES['photoPath'])){
-                        if(connectBD("id21353268_learningacademy",$connection)){
-                            $photoPath = uploadPhoto(1,$route,false,$_POST['dniTeacher']);
-                            $sql = "UPDATE teacher SET email='{$_POST['email']}', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}', photoPath = '$route' WHERE dniTeacher='{$_POST['dniTeacher']}';";
-                            
-                            updateSQL($connection, $sql);
-                        }
-                    }else{
-                        $isFile = false;
-                    }
-                }elseif(!isset($_POST['showPass']) && !isset($_POST['showPhoto'])){
-                    if(connectBD("id21353268_learningacademy",$connection)){
-                        $sql = "UPDATE teacher SET email='{$_POST['email']}', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}' WHERE dniTeacher='{$_POST['dniTeacher']}';";
-                        
-                        updateSQL($connection, $sql);
-                        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
+            if (!empty($_POST)) {   
+                // Verificar si se ha cambiado la contraseña
+                $valid = true;
+                $passwordChanged = false;
+                if (isset($_POST['showPass'])) {
+                    if (empty($_POST['password'])) {
+                        $valid = false;
+                        echo "<script> alert('Please enter a valid password')</script>";
+                    } else {
+                        $passwordChanged = true;
                     }
                 }
-                if($isPassword == false && $isPhotoPath == false){
-                    echo "<script> alert('Select a file and put a valid password')</script>";
-                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
-                }elseif($isPassword == false){
-                    echo "<script> alert('Put a valid password')</script>";
-                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
-                }elseif($isFile == false){
-                    echo "<script> alert('Select a file')</script>";
-                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
-                }elseif($isPassword == true && $isPhotoPath == false){
-                    echo "<script> alert('Select a file')</script>";
-                    echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
-                }elseif($isPassword == false && $isPhotoPath == true){
-                    echo "<script> alert('Put a valid password')</script>";
+        
+                // Verificar si se ha cambiado la foto
+                $photoChanged = false;
+                if (isset($_POST['showPhoto'])) {
+                    if (!empty($_FILES['photoPath']['name'])) {
+                        // Aquí deberías manejar la lógica de subida de la nueva foto
+                        $photoChanged = true;
+                    }
+                }
+        
+                // Actualizar según los cambios realizados
+                if ($valid) {
+                    // Resto del código de conexión a la base de datos y validación
+        
+                    $sql = "UPDATE teacher SET email='{$_POST['email']}', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}'";
+        
+                    if ($passwordChanged) {
+                        $password = md5($_POST['password']);
+                        $sql .= ", password='$password'";
+                    }
+        
+                    if ($photoChanged) {
+                        // Aquí deberías manejar la lógica de subida de la nueva foto y actualizar la ruta de la foto en la consulta SQL
+                        $uploadPhoto = uploadPhoto(1, $route, false, $_POST['dniTeacher']);
+                        $sql .= ", photoPath = '$route'";
+                    }
+        
+                    $sql .= " WHERE dniTeacher='{$_POST['dniTeacher']}';";
+        
+                    updateSQL($connection, $sql);
+        
                     echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
                 }
             }
     ?>
     <!--Acabar el formulario y aplicar los cambios-->
     <div class="formDiv">
-        <form action="#" method="post" enctype="multipart/form-data">
+        <form action="#" method="post" enctype="multipart/form-data" onsubmit="return validateFormTeacher()">
             <div class="formRow">
                 <div>
                     <label for="dniTeacher">DNI</label>

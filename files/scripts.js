@@ -470,3 +470,44 @@ function baja(dni, id){
         location.href = "index.php?delete=true&dni="+dni+"&id="+id;
     }
 }
+
+function validateFormTeacher(){
+    var name = document.getElementById('name').value;
+    var surname = document.getElementById('surname').value;
+    var titulation = document.getElementById('titulation').value;
+    var email = document.getElementById('email').value;
+    var showPassChecked = document.getElementById('showPass').checked;
+    var password = document.getElementById('password').value;
+    var showPhotoChecked = document.getElementById('showPhoto').checked;
+    var photoInput = document.getElementById('photoPath-input');
+    var photoPath = photoInput.value;
+
+    if (!/^[a-zA-Z ]*$/.test(name)) {
+        alert('Please enter a valid name');
+        return false;
+    }
+
+    if (!/^[a-zA-Z ]*$/.test(surname)) {
+        alert('Please enter a valid surname');
+        return false;
+    }
+
+    if (!/^[a-zA-Z ]*$/.test(titulation)) {
+        alert('Please enter a valid titulation');
+        return false;
+    }
+
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        alert('Please enter a valid email');
+        return false;
+    }
+    if (showPassChecked && password.trim() === '') {
+        alert('Please enter a password');
+        return false;
+    }
+    if (showPhotoChecked && photoPath === '' && photoInput.files.length === 0) {    
+        photoInput.value = '<?php echo $result["photoPath"]; ?>';
+    }
+
+    return true;
+}

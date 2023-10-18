@@ -36,7 +36,6 @@
                 }
             }
         
-
             if(!empty($_POST)){
                 if(!isset($_POST['photoPath'])){
                     if(connectBD("id21353268_learningacademy",$connection)){
