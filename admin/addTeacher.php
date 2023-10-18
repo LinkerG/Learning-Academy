@@ -43,24 +43,39 @@
 
             // Insert
             if(connectBD("id21353268_learningacademy",$connection) && $continue){
-                $uploadStatus = uploadPhoto(1, $route);
-                if($uploadStatus == 0){
-                    $sql = "INSERT INTO teacher (dniTeacher, email, password, name, surname, titulation, photoPath, active) 
-                    VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','$route', '1')";
-
-                $action = insertSQL($connection, $sql);
-                if($action == 0) {
-                    echo "<script>alert('Teacher added correctly')</script>";
-                    header('Location: index.php?manage=teachers');
-                } else if($action == 1062) {
-                    echo "<script>alert('DNI or email already in use')</script>";
+                if(isset($_POST['photoPath'])){
+                    $uploadStatus = uploadPhoto(1, $route);
+                    if($uploadStatus == 0){
+                        $sql = "INSERT INTO teacher (dniTeacher, email, password, name, surname, titulation, photoPath, active) 
+                        VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','$route', '1')";
+    
+                    $action = insertSQL($connection, $sql);
+                    if($action == 0) {
+                        echo "<script>alert('Teacher added correctly')</script>";
+                        header('Location: index.php?manage=teachers');
+                    } else if($action == 1062) {
+                        echo "<script>alert('DNI or email already in use')</script>";
+                    } else {
+                        echo "<script>alert('$action')</script>";
+                    }
+                    } elseif ($uploadStatus == 1) {
+                        echo "<script>alert('Error uploading photo')</script>";
+                    } elseif ($uploadStatus == 2) {
+                        echo "<script>alert('Please upload a photo')</script>";
+                    }
                 } else {
-                    echo "<script>alert('$action')</script>";
-                }
-                } elseif ($uploadStatus == 1) {
-                    echo "<script>alert('Error uploading photo')</script>";
-                } elseif ($uploadStatus == 2) {
-                    echo "<script>alert('Please upload a photo')</script>";
+                    $sql = "INSERT INTO teacher (dniTeacher, email, password, name, surname, titulation, photoPath, active) 
+                        VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','/Learning-Academy/img/profilePhotos/default.png', '1')";
+    
+                    $action = insertSQL($connection, $sql);
+                    if($action == 0) {
+                        echo "<script>alert('Teacher added correctly')</script>";
+                        header('Location: index.php?manage=teachers');
+                    } else if($action == 1062) {
+                        echo "<script>alert('DNI or email already in use')</script>";
+                    } else {
+                        echo "<script>alert('$action')</script>";
+                    }
                 }
             }
         }
