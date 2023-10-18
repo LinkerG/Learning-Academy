@@ -82,22 +82,22 @@ session_start();
                         <form enctype="multipart/form-data" id="profile-form" action="profile.php" method="POST" onsubmit="return validateFormStudent()">
                             <div class="formRow">
                                 <div>
-                                    <label for="name-input">Name: </label>
-                                    <input type="text" class="form-element" id="name-input" name="name" required value="<?php echo $result['name'] ?>"></input>
+                                    <label for="name">Name: </label>
+                                    <input type="text" class="form-element" id="name" name="name" required value="<?php echo $result['name'] ?>"></input>
                                 </div>
                                 <div>
-                                    <label for="dni-input">DNI: </label>
-                                    <input type="text" readonly  class="form-element" id="dni-input" name="dni" required value="<?php echo $result['dniStudent'] ?>"></input>
+                                    <label for="dni">DNI: </label>
+                                    <input type="text" readonly  class="form-element" id="dni" name="dni" required value="<?php echo $result['dniStudent'] ?>"></input>
                                 </div>
                             </div>
                             <div class="formRow">
                                 <div>
-                                    <label for="surname-input">Surname: </label>
-                                    <input type="text" class="form-element" id="surname-input" name="surname" required value="<?php echo $result['surname']?>"></input>
+                                    <label for="surname">Surname: </label>
+                                    <input type="text" class="form-element" id="surname" name="surname" required value="<?php echo $result['surname']?>"></input>
                                 </div>
                                 <div>
-                                    <label for="email-input">Email: </label>
-                                    <input type="text" class="form-element" id="email-input" name="email" required value="<?php echo $result['email']?>"></input>
+                                    <label for="email">Email: </label>
+                                    <input type="text" class="form-element" id="email" name="email" required value="<?php echo $result['email']?>"></input>
                                 </div>
                             </div>
                             <div class="formRow">
@@ -109,13 +109,13 @@ session_start();
                                     </div>
                                     <div style="display:flex; flex-direction:row;">
                                         <label for="showPhoto">Change photo</label>
-                                        <input type="checkbox" name="showPhoto" id="showPhoto" onchange="checkboxShow('photoPath-input')">
-                                        <input type="file" id="photoPath-input" name="photoPath" style="display:none;"></input>
+                                        <input type="checkbox" name="showPhoto" id="showPhoto" onchange="checkboxShow('photoPath')">
+                                        <input type="file" id="photoPath" name="photoPath" style="display:none;"></input>
                                     </div>
                                 </div>
                                 <div>                                        
-                                    <label for="birthDate-input">Birth date: </label>
-                                    <input type="date" required class="form-element" id="birthDate-input" name="birthDate" value="<?php echo $result['birthDate']?>"></input>
+                                    <label for="birthDate">Birth date: </label>
+                                    <input type="date" required class="form-element" id="birthDate" name="birthDate" value="<?php echo $result['birthDate']?>"></input>
                                 </div>
                             </div>
                             <div class="formActions">

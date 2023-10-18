@@ -246,3 +246,60 @@ function validateFormStudentSignup() {
     return true;
 }
 
+function validar() {
+    console.log("hola");
+    let values = ['name', 'surname', 'email', 'password', 'showPass'];
+    let errors = []
+
+    for (let i = 0; i < values.length; i++) {
+        let fieldName = values[i];
+        let field = document.getElementById(fieldName);
+
+        if (!field) {
+            continue;
+        }
+
+        if (fieldName === 'password' && !document.getElementById('showPass').checked) {
+            // Skip password validation when the checkbox is not checked
+            continue;
+        }
+
+        if (field.type === "checkbox") {
+            let isCheck = field.checked;
+
+            if (isCheck) {
+                let password = document.getElementById("password").value;
+
+                if (password === "") {
+                    errors.push("Please enter a password");
+                }
+                if (password.includes(" ")) {
+                    errors.push("Password must not contain spaces");
+                }
+            }
+        } else {
+            if (field.value.trim().length === 0) {
+                errors.push("Field " + fieldName + " can't be empty");
+            }
+
+            if ((fieldName === "name" || fieldName === "surname") && !/^[a-zA-Z ]*$/.test(field.value)) {
+                errors.push("Field " + fieldName + " must only contain letters");
+            }
+
+            if (fieldName === "email" && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(field.value)) {
+                errors.push("Please enter a valid email");
+            }
+
+            if (fieldName === "email" && field.value.includes(" ")) {
+                errors.push("Email must not contain spaces");
+            }
+        }
+    }
+
+    if (errors.length === 0) {
+        return true;
+    } else {
+        alert(errors.join('\n'));
+        return false;
+    }
+}

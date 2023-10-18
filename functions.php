@@ -300,6 +300,21 @@ function unavailableCourses() {
     }
 }
 
+function coursesJoined($dniStudent) {
+    $sql = "SELECT courseId FROM matriculates WHERE dniStudent = " . $dniStudent;
+
+    if(connectBD("id21353268_learningacademy", $connection)){
+        if(selectSQL($connection, $sql, $result)) {
+            $idArray = array();
+            foreach ($result as $courseId) {
+                $idArray[] = $courseId['courseId'];
+            }
+            return $idArray;
+        }
+        
+    }
+}
+
 function dniVerification($dni) {
     $dni = strtoupper(trim($dni));
 
