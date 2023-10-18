@@ -9,6 +9,7 @@
     <title>Edit teacher</title>
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
+    <script src="../files/validateForms.js"></script>
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body>
@@ -40,6 +41,18 @@
                 // Verificar si se ha cambiado la contraseña
                 $valid = true;
                 $passwordChanged = false;
+                $continueExecution = true;
+                if (connectBD("id21353268_learningacademy", $connection)) {
+                    $existingEmailQuery = "SELECT email FROM teacher WHERE email = '{$_POST['email']}' AND dniTeacher != '{$_POST['dniTeacher']}' UNION SELECT email FROM student WHERE email = '{$_POST['email']}'";
+                
+                    $existingEmailResult = selectSQL($connection, $existingEmailQuery, $existingResult);
+                
+                    if (!empty($existingResult)) {  
+                        echo "<script>alert('This email is already in use. Please use a different email.')</script>";
+                        echo "<script>history.back();</script>";
+                        $continueExecution = false;
+                    }
+                }
                 if (isset($_POST['showPass'])) {
                     if (empty($_POST['password'])) {
                         $valid = false;
@@ -59,7 +72,7 @@
                 }
         
                 // Actualizar según los cambios realizados
-                if ($valid) {
+                if ($valid && $continueExecution) {
                     // Resto del código de conexión a la base de datos y validación
         
                     $sql = "UPDATE teacher SET email='{$_POST['email']}', name='{$_POST['name']}', surname='{$_POST['surname']}', titulation='{$_POST['titulation']}'";
@@ -76,9 +89,9 @@
                     }
         
                     $sql .= " WHERE dniTeacher='{$_POST['dniTeacher']}';";
-        
-                    updateSQL($connection, $sql);
-        
+                    if (connectBD("id21353268_learningacademy", $connection)) {
+                        updateSQL($connection, $sql);
+                    }
                     echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=teachers'>";
                 }
             }
@@ -115,7 +128,7 @@
                     <div style="display:flex; flex-direction:row;">
                         <label for="showPass">Change password</label>
                         <input type="checkbox" name="showPass" id="showPass" onchange="checkboxShow('password')">
-                        <input type="password" name="password" id="password" style="display: none;">
+                        <input type="password" name="password" id="password" maxlength="50" style="display: none;">
                     </div>
                     
                 </div>
