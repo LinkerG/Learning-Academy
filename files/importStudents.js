@@ -133,7 +133,3 @@ function displayTable(students) {
     btns.appendChild(importButton);
     btns.appendChild(leaveButton);
 }
-
-
-
-

@@ -9,6 +9,7 @@
     <title>Add new teacher</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <script src="../files/validateForms.js"></script>
 </head>
 <body>
     <?php
@@ -81,7 +82,7 @@
         }
     ?>
     <div class="formDiv">
-        <form enctype ="multipart/form-data" action="#" method="POST">
+        <form enctype ="multipart/form-data" action="#" method="POST" onsubmit="return prueba()">
             <div class="formRow">
                 <div>
                     <label for="dniTeacher">DNI:</label>

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="files/validateForms.js"></script>
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body>
@@ -74,7 +75,7 @@
             }
         ?>
         <div class="formDiv">
-            <form enctype ="multipart/form-data" action="#" method="POST">
+            <form enctype ="multipart/form-data" action="#" method="POST" onsubmit="return validateFormStudentSignup()">
                 <div class="formRow">
                     <div>
                         <label for="email">Email</label>
