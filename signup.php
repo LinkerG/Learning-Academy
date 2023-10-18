@@ -78,7 +78,7 @@
                 <div class="formRow">
                     <div>
                         <label for="email">Email</label>
-                        <input type="email" maxlength="20" name="email" id="email">
+                        <input type="email" maxlength="40" name="email" id="email">
                     </div>
                     <div>
                         <label for="password">Password</label>    

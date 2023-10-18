@@ -103,7 +103,7 @@
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" maxlenght="20" value=<?php echo "'{$result['email']}'";?>>
+                    <input type="text" name="email" id="email" maxlenght="40" value=<?php echo "'{$result['email']}'";?>>
                 </div>
             </div>
             <div class="formRow">
