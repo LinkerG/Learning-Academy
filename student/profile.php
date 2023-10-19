@@ -77,14 +77,14 @@ session_start();
                 
                         if (connectBD("id21353268_learningacademy", $connection)) {
                             updateSQL($connection, $sql);
+                            $_SESSION['name'] = $_POST['name'];
+                            $_SESSION['surname'] = $_POST['surname'];
+                            $_SESSION['email'] = $_POST['email'];
+                            $_SESSION['password'] = $_POST['password'];
+                            $_SESSION['birthDate'] = $_POST['birthDate'];
+                            echo "<meta http-equiv='REFRESH' content='0;URL=/Learning-Academy/student/index.php'>";
                         }
                     }
-                    $_SESSION['name'] = $_POST['name'];
-                    $_SESSION['surname'] = $_POST['surname'];
-                    $_SESSION['email'] = $_POST['email'];
-                    $_SESSION['password'] = $_POST['password'];
-                    $_SESSION['birthDate'] = $_POST['birthDate'];
-                    echo "<meta http-equiv='REFRESH' content='20;URL=/Learning-Academy/student/index.php'>";
                 }else{
                 ?>
                 <div class="studentContainer">

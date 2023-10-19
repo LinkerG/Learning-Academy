@@ -132,7 +132,7 @@
                                         echo "<div>";
                                         echo "<p>Task $i</p>";
                                         if($taskStatus) {
-                                            echo "<p>Entregado ^^</p>";
+                                            echo "<p>Already uploaded</p>";
                                             echo "</div>";
                                             echo "<div>";
                                             echo "<p>Your task:</p>";
@@ -146,16 +146,18 @@
                                                 echo "</form>";
                                             }
                                         } else {
-                                            echo "<p>No entregado</p>";
+                                            echo "<p>Not uploaded</p>";
                                             echo "</div>";
                                             echo "<div>";
-                                            echo "<p>Upload your task:</p>";
                                             if(!$finished) {
+                                                echo "<p>Upload your task:</p>";
                                                 echo "<form enctype ='multipart/form-data' action='index.php' method='POST' id='$formId' name='form$i' class='noHide'>";
                                                 echo "<input type='file' name='$task' id='$task'>";
                                                 echo "<input type='hidden' name='courseId' value='{$course['courseId']}'>";
                                                 echo "<input type='submit' value='Save changes'>";
                                                 echo "</form>";
+                                            } else {
+                                                echo "<p>Course finished, you cant upload your task</p>";
                                             }
                                         }
                                         echo "</div>";
