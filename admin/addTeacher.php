@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/validateForms.js"></script>
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <script src="../files/validateForms.js"></script>
 </head>
 <body>
     <?php

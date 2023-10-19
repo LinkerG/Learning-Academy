@@ -50,6 +50,9 @@
                         $canJoin = isset($_SESSION['role']) && $_SESSION['role']=="S" ? 1 : 0;
                         
                         $unaviableCourses = unavailableCourses();
+                        if(isset($_SESSION['dniStudent'])) {
+                            array_push($unaviableCourses, coursesJoined($_SESSION['dniStudent']));
+                        }
                         $dni = isset($_SESSION['dniStudent']) ? $_SESSION['dniStudent'] : "0";
                         foreach ($result as $course) {
                             $isAvailable = in_array($course['courseId'], $unaviableCourses) ? false : true;
