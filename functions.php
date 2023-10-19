@@ -301,7 +301,7 @@ function unavailableCourses() {
 }
 
 function coursesJoined($dniStudent) {
-    $sql = "SELECT courseId FROM matriculates WHERE dniStudent = " . $dniStudent;
+    $sql = "SELECT courseId FROM matriculates WHERE dniStudent = '" . $dniStudent ."';";
 
     if(connectBD("id21353268_learningacademy", $connection)){
         if(selectSQL($connection, $sql, $result)) {

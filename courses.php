@@ -45,41 +45,52 @@
                         echo "<div>";
                         echo "<h1>There are no courses avaliable right now</h1>";
                         echo "</div>";
-                        echo "<a>";
                     } else {
                         $canJoin = isset($_SESSION['role']) && $_SESSION['role']=="S" ? 1 : 0;
                         
-                        $unaviableCourses = unavailableCourses();
+                        $unaviableCourses = array();
+                        $unaviableCourses = array_merge($unaviableCourses, unavailableCourses());
                         if(isset($_SESSION['dniStudent'])) {
-                            array_push($unaviableCourses, coursesJoined($_SESSION['dniStudent']));
+                            $unaviableCourses = array_merge($unaviableCourses, coursesJoined($_SESSION['dniStudent']));
                         }
                         $dni = isset($_SESSION['dniStudent']) ? $_SESSION['dniStudent'] : "0";
-                        foreach ($result as $course) {
-                            $isAvailable = in_array($course['courseId'], $unaviableCourses) ? false : true;
-                            if($isAvailable){
-                                echo "<div class='course'>";
-    
-                                echo "<figure class='hidden' onclick='openPopup(this)'>";
-                                echo "<img src='{$course['photoPath']}'>";
-                                echo "<figcaption>Click here to see more info!</figcaption>";
-                                echo "<div class='hiddenContent'>";
-                                echo "<p class='pCourseName'>{$course['name']}</p>";
-                                echo "<p class='pDateLabel'>Start - End</p>";
-                                echo "<p class='pDate'>{$course['startDate']} / {$course['endDate']}</p>";
-    
-                                echo "<button class='courseButton pButton blueBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
-    
-                                echo "<p class='pMain'>{$course['description']}</p>";
-                                echo "</div>";
-                                
-                                
-                                
-                                echo "</figure>";
-    
-                                echo "<p>{$course['name']}</p>";
-                                echo "<button class='courseButton whiteBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
-    
-                                echo "</div>";
+                        foreach ($result as $key => $curso) {
+                            if (in_array($curso['courseId'], $unaviableCourses)) {
+                                unset($result[$key]);
+                            }
+                        }
+                        if(empty($result)){
+                            echo "<div>";
+                            echo "<h1>There are no courses avaliable right now</h1>";
+                            echo "</div>";
+                        } else {
+                            foreach ($result as $course) {
+                                $isAvailable = in_array($course['courseId'], $unaviableCourses) ? false : true;
+                                if($isAvailable){
+                                    echo "<div class='course'>";
+        
+                                    echo "<figure class='hidden' onclick='openPopup(this)'>";
+                                    echo "<img src='{$course['photoPath']}'>";
+                                    echo "<figcaption>Click here to see more info!</figcaption>";
+                                    echo "<div class='hiddenContent'>";
+                                    echo "<p class='pCourseName'>{$course['name']}</p>";
+                                    echo "<p class='pDateLabel'>Start - End</p>";
+                                    echo "<p class='pDate'>{$course['startDate']} / {$course['endDate']}</p>";
+        
+                                    echo "<button class='courseButton pButton blueBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
+        
+                                    echo "<p class='pMain'>{$course['description']}</p>";
+                                    echo "</div>";
+                                    
+                                    
+                                    
+                                    echo "</figure>";
+        
+                                    echo "<p>{$course['name']}</p>";
+                                    echo "<button class='courseButton whiteBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
+        
+                                    echo "</div>";
+                                }
                             }
                         }
                         echo "<div class='popup'>";
