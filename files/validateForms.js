@@ -21,8 +21,9 @@ function validateForm(fields) {
             errorMessage += 'The ' + fieldLabel + ' field should not start with spaces.\n';
         }
 
+        // Te has dejado la ñ cabron, no puedes ni poner tu nombre
         if (fieldType === 'text' && (fieldName === 'name' || fieldName === 'surname')) {
-            if (!/^[a-zA-Z ]*$/.test(field)) {
+            if (!/^[a-zA-ZñÑ ]*$/.test(field)) {
                 errorMessage += 'Please enter a valid ' + fieldName +'\n';
             }
         }
@@ -33,11 +34,12 @@ function validateForm(fields) {
             }
         }
 
-        if (fieldName === 'titulation') {
+        // Esto no sirve de nada porque si esta en blanco te avisa arriba, a parte de que SI deberias permitir espacios en titulation
+        /*if (fieldName === 'titulation') {
             if (field.includes(' ')) {
                 errorMessage += 'You need titulation\n';
             }
-        }
+        }*/
 
         if (fields[i].type === 'checkbox' && document.getElementById(fields[i].id).checked) {
             if (fields[i].name === 'showPass') {
@@ -78,12 +80,13 @@ function validateForm(fields) {
             }
         }
 
-        if (fields[i].name === 'startDate') {
+        // Esto tampoco hace falta porque lo controla el HTML
+        /*if (fields[i].name === 'startDate') {
             var startDate = new Date(field);
             if (startDate < currentDate) {
                 errorMessage += 'Start date cannot be in the past.\n';
             }
-        }
+        }*/
 
         if (fields[i].name === 'endDate') {
             var endDate = new Date(field);

@@ -114,7 +114,7 @@
             <div class="formRow">
                 <div>
                     <label for="photoPath">Photo:</label>
-                    <input type="file" name="photoPath" id="photoPath" required>
+                    <input type="file" name="photoPath" id="photoPath">
                 </div>
                 <div>
                     <input class="whiteBtn" type="submit" value="Add">

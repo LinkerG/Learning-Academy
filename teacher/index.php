@@ -46,7 +46,7 @@
             <?php
                 if(connectBD("id21353268_learningacademy", $connection)) {
                 foreach ($result as $course) {
-                    $isFinished = strtotime($course['endDate'])<date("Y-m-d") ? "Finished" : "Not finished";
+                    $isFinished = strtotime($course['endDate'])<strtotime(date("Y-m-d")) ? "Finished" : "Not finished";
                     echo "<div class='divWindow hoverable teacherWindow' id='{$course['courseId']}'>";
                     echo "<p>Course: {$course['name']}</p>";
                     echo "<p>Status: " . $isFinished . "</p>";

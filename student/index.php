@@ -92,7 +92,9 @@
                     echo "<p class='bajaButton'>Darse de baja</p>";
                     $dniStudent = $_SESSION['dniStudent'];
                     $currentCourseId = $course['courseId'];
-                    echo "<button onclick='baja(`$dniStudent`,`$currentCourseId`)'>Darse de baja</button>";
+                    $finished = strtotime($course['endDate'])<strtotime(date("Y-m-d")) ? true : false;
+                    if(!$finished) echo "<button onclick='baja(`$dniStudent`,`$currentCourseId`)'>Darse de baja</button>";
+                    else echo "<p>This course already finished</p>"
                     
                 ?>
                         <div class="tabs-container tabsPopup">
@@ -115,6 +117,8 @@
                                             echo "<li>Task 3: $task3</li>";
                                             $task4 = $course['task4'] == null ? "X" : "O";
                                             echo "<li>Task 4: $task4</li>";
+                                            $score = $course['score'] == null ? "No score" : $course['score'];
+                                            echo "<li>Score: $score</li>";
                                         ?>
                                     </ul>
                                 </div>
@@ -131,22 +135,28 @@
                                             echo "<p>Entregado ^^</p>";
                                             echo "</div>";
                                             echo "<div>";
-                                            echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
-                                            echo "<form enctype ='multipart/form-data' action='index.php' method='POST' id='$formId' name='form$i'>";
-                                            echo "<input type='file' name='$task' id='$task'>";
-                                            echo "<input type='hidden' name='courseId' value='{$course['courseId']}'>";
-                                            echo "<input type='submit' value='Save changes'>";
-                                            echo "</form>";
+                                            echo "<p>Your task:</p>";
+                                            echo "<a href='{$course[$task]}'>See your taks</a>";
+                                            if(!$finished){
+                                                echo "<input type='checkbox' class='showCheck' onchange='checkboxShow(`$formId`)'> Change task";
+                                                echo "<form enctype ='multipart/form-data' action='index.php' method='POST' id='$formId' name='form$i'>";
+                                                echo "<input type='file' name='$task' id='$task'>";
+                                                echo "<input type='hidden' name='courseId' value='{$course['courseId']}'>";
+                                                echo "<input type='submit' value='Save changes'>";
+                                                echo "</form>";
+                                            }
                                         } else {
                                             echo "<p>No entregado</p>";
                                             echo "</div>";
                                             echo "<div>";
                                             echo "<p>Upload your task:</p>";
-                                            echo "<form enctype ='multipart/form-data' action='index.php' method='POST' id='$formId' name='form$i' class='noHide'>";
-                                            echo "<input type='file' name='$task' id='$task'>";
-                                            echo "<input type='hidden' name='courseId' value='{$course['courseId']}'>";
-                                            echo "<input type='submit' value='Save changes'>";
-                                            echo "</form>";
+                                            if(!$finished) {
+                                                echo "<form enctype ='multipart/form-data' action='index.php' method='POST' id='$formId' name='form$i' class='noHide'>";
+                                                echo "<input type='file' name='$task' id='$task'>";
+                                                echo "<input type='hidden' name='courseId' value='{$course['courseId']}'>";
+                                                echo "<input type='submit' value='Save changes'>";
+                                                echo "</form>";
+                                            }
                                         }
                                         echo "</div>";
                                         echo "</div>";
