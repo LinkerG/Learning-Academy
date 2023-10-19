@@ -21,6 +21,7 @@
             include("needAdmin.html");
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
         } else {
+
             printHeader();
         
             if(isset($_REQUEST['active'])){
@@ -98,7 +99,7 @@
     ?>
     <!--Acabar el formulario y aplicar los cambios-->
     <div class="formDiv">
-        <form action="#" method="post" enctype="multipart/form-data" onsubmit="return validateFormTeacher()">
+        <form action="#" method="post" enctype="multipart/form-data" onsubmit="return validateForm(fields)">
             <div class="formRow">
                 <div>
                     <label for="dniTeacher">DNI</label>
@@ -116,7 +117,7 @@
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" maxlenght="40" value=<?php echo "'{$result['email']}'";?>>
+                    <input type="email" name="email" id="email" maxlenght="40" value=<?php echo "'{$result['email']}'";?>>
                 </div>
             </div>
             <div class="formRow">
@@ -128,6 +129,7 @@
                     <div style="display:flex; flex-direction:row;">
                         <label for="showPass">Change password</label>
                         <input type="checkbox" name="showPass" id="showPass" onchange="checkboxShow('password')">
+
                         <input type="password" name="password" id="password" maxlength="50" style="display: none;">
                     </div>
                     
@@ -146,6 +148,17 @@
             </div>
         </form>
     </div>
+        <?php
+        $fields = array(
+            array('id' => 'name', 'name' => 'name', 'type' => 'text', 'label' => 'name'),
+            array('id' => 'surname', 'name' => 'surname', 'type' => 'text', 'label' => 'surname'),
+            array('id' => 'email', 'name' => 'email', 'type' => 'email', 'label' => 'email'),
+            array('id' => 'titulation', 'name' => 'titulation', 'type' => 'text', 'label' => 'titulation'),
+            array('id' => 'showPass', 'name' => 'showPass', 'type' => 'checkbox', 'label' => 'showPass'),
+            array('id' => 'password', 'name' => 'password', 'type' => 'password')
+        );
+        ?>
+        <script> var fields = <?php echo json_encode($fields); ?>; </script>
         <?php
         }
         ?>

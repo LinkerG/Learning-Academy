@@ -9,6 +9,7 @@
     <title>Sign up</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <script src="files/validateForms.js"></script>
 </head>
 <body>
     <?php
@@ -74,7 +75,7 @@
             }
         ?>
         <div class="formDiv">
-            <form enctype ="multipart/form-data" action="#" method="POST">
+            <form enctype ="multipart/form-data" action="#" method="POST" onsubmit="return validateForm(fields)">
                 <div class="formRow">
                     <div>
                         <label for="email">Email</label>
@@ -118,7 +119,17 @@
                 </div>  
             </form>
         </div>
-    <?php
+        <?php
+            $fields = array(
+                array('id' => 'name', 'name' => 'name', 'type' => 'text', 'label' => 'name'),
+                array('id' => 'surname', 'name' => 'surname', 'type' => 'text', 'label' => 'surname'),
+                array('id' => 'email', 'name' => 'email', 'type' => 'email', 'label' => 'email'),
+                array('id' => 'birthDate', 'name' => 'birthDate', 'type' => 'date', 'label' => 'birthDate'),
+                array('id' => 'password', 'name' => 'password', 'type' => 'password')
+            );
+            ?>
+            <script> var fields = <?php echo json_encode($fields); ?>; </script>
+            <?php
     }
     ?>
 </body>

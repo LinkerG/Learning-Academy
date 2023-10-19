@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add new teacher</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../files/validateForms.js"></script>
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body>
@@ -81,11 +82,11 @@
         }
     ?>
     <div class="formDiv">
-        <form enctype ="multipart/form-data" action="#" method="POST">
+        <form enctype ="multipart/form-data" action="#" method="POST" onsubmit="return validateForm(fields)">
             <div class="formRow">
                 <div>
                     <label for="dniTeacher">DNI:</label>
-                    <input type="text" maxlength="9" name="dniTeacher" id="dniTeacher">
+                    <input type="text" maxlength="9" name="dniTeacher" id="dniTeacher" required>
                 </div>
                 <div>
                     <label for="name">Name:</label>
@@ -126,6 +127,16 @@
         </form>
     </div>
     <?php
+        $fields = array(
+            array('id' => 'name', 'name' => 'name', 'type' => 'text', 'label' => 'name'),
+            array('id' => 'surname', 'name' => 'surname', 'type' => 'text', 'label' => 'surname'),
+            array('id' => 'email', 'name' => 'email', 'type' => 'email', 'label' => 'email'),
+            array('id' => 'titulation', 'name' => 'titulation', 'type' => 'text', 'label' => 'titulation'),
+            array('id' => 'password', 'name' => 'password', 'type' => 'password')
+        );
+        ?>
+        <script> var fields = <?php echo json_encode($fields); ?>; </script>
+        <?php
         }
     ?>
 </body>

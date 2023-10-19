@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add new course</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../files/validateForms.js"></script>
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body>
@@ -56,7 +57,7 @@
                 } else {
                     if(connectBD("id21353268_learningacademy",$connection) && $continue){
                         $sql = "INSERT INTO course (name, hours, startDate, endDate, description, dniTeacher, active, photoPath) 
-                        VALUES ('{$_POST['name']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','/Learning-Academy/img/coursePhotos/default.png')";
+                        VALUES ('{$_POST['nameAddCourse']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','/Learning-Academy/img/coursePhotos/default.png')";
         
                         $action = insertSQL($connection, $sql);
                         if($action == 0) {
@@ -68,15 +69,15 @@
             }
     ?>
     <div class="formDiv">
-        <form enctype ="multipart/form-data" action="#" method="POST">
+        <form enctype ="multipart/form-data" action="#" method="POST" onsubmit="return validateForm(fields)">
             <div class="formRow">
                 <div>
                     <label for="name">Name:</label>
-                    <input type="text" maxlength="25" name="name" id="name">
+                    <input type="text" maxlength="25" name="nameAddCourse" id="name">
                 </div>
                 <div>
                     <label for="hours">Hours:</label>
-                    <input type="number" max="9999" min="1" name="hours" id="hours">
+                    <input required type="number" max="200" min="1" name="hours" id="hours">
                 </div>
             </div>
             <div class="formRow">
@@ -113,7 +114,7 @@
             <div class="formRow">
                 <div>
                     <label for="photoPath">Photo:</label>
-                    <input type="file" name="photoPath" id="photoPath">
+                    <input type="file" name="photoPath" id="photoPath" required>
                 </div>
                 <div>
                     <input class="whiteBtn" type="submit" value="Add">
@@ -122,6 +123,15 @@
             </div>
         </form>
     </div>
+    <?php
+    $fields = array(
+        array('id' => 'name', 'name' => 'nameAddCourse', 'type' => 'text', 'label' => 'name'),
+        array('id' => 'description', 'name' => 'description', 'type' => 'text', 'label' => 'description'),
+        array('id' => 'startDate', 'name' => 'startDate', 'type' => 'date', 'label' => 'startDate'),
+        array('id' => 'endDate', 'name' => 'endDate', 'type' => 'date', 'label' => 'endDate')
+    );
+    ?>
+    <script> var fields = <?php echo json_encode($fields); ?>; </script>
     <?php
         }
     ?>

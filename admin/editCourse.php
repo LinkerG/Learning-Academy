@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
     <script src="../files/scripts.js"></script>
+    <script src="../files/validateForms.js"></script>
 </head>
 <body>
     <?php
@@ -63,7 +64,7 @@
         
         ?>
     <div class="formDiv">
-        <form enctype="multipart/form-data" action="#" method="post">
+        <form enctype="multipart/form-data" action="#" method="post" onsubmit="return validateForm(fields)">
             <div class="formRow">
                 <div>
                     <label for="courseId">Course ID</label>
@@ -77,7 +78,7 @@
             <div class="formRow">
                 <div>
                     <label for="hours">Hours</label>
-                    <input type="number" name="hours" id="hours" max="9999" min="1" value="<?php echo "{$result['hours']}";?>">
+                    <input type="number" name="hours" id="hours" max="200" min="1" value="<?php echo "{$result['hours']}";?>">
                 </div>
                 <div>
                     <label for="dniTeacher">Teacher:</label>
@@ -98,17 +99,17 @@
             <div class="formRow">
                 <div>
                     <label for="startDate">Start date</label>
-                    <input type="date" name="startDate" id="startDate" value="<?php echo "{$result['startDate']}";?>">
+                    <input type="date" name="startDate" id="startDate" min="<?php echo date("Y-m-d") ?> value="<?php echo "{$result['startDate']}";?> ">
                 </div>
                 <div>
                     <label for="endDate">End date</label>
-                    <input type="date" name="endDate" id="endDate" value="<?php echo "{$result['endDate']}";?>">
+                    <input type="date" name="endDate" id="endDate" min="<?php echo date("Y-m-d") ?> value="<?php echo "{$result['endDate']}";?>">
                 </div>
             </div>
             <div class="formRow">
                 <div class="singleRow">
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description" maxlength="200" value="<?php echo "{$result['description']}"; ?>">
+                    <input type="text" name="description" id="description" maxlength="1000" value="<?php echo "{$result['description']}"; ?>">
                 </div>
             </div>
             <div class="formRow">
@@ -125,7 +126,17 @@
         </form>
     </div>
     <?php
-        }
+    $fields = array(
+        array('id' => 'name', 'name' => 'name', 'type' => 'text', 'label' => 'name'),
+        array('id' => 'description', 'name' => 'description', 'type' => 'text', 'label' => 'description'),
+        array('id' => 'startDate', 'name' => 'startDate', 'type' => 'date', 'label' => 'startDate'),
+        array('id' => 'endDate', 'name' => 'endDate', 'type' => 'date', 'label' => 'endDate')
+    );
     ?>
+    <script> var fields = <?php echo json_encode($fields); ?>; </script>
+    <?php
+    }
+    ?>
+    
 </body>
 </html>

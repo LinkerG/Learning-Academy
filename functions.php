@@ -258,7 +258,7 @@ function uploadPhoto($aux, &$route, $signin = false, $courseId = null) {
                     case 2:
                         if($courseId == null) {
                             if(connectBD("id21353268_learningacademy", $connection)){
-                                $sql = $query = "SELECT COUNT(*) AS total FROM course";
+                                $sql = "SELECT COUNT(*) AS total FROM course";
                                 if(selectSQL($connection, $sql, $result)) {
                                     $count = intval($result[0]['total']);
                                     $count+=1;
