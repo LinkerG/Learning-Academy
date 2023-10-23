@@ -44,7 +44,7 @@
                 $passwordChanged = false;
                 $continueExecution = true;
                 if (connectBD("id21353268_learningacademy", $connection)) {
-                    $existingEmailQuery = "SELECT email FROM teacher WHERE email = '{$_POST['email']}' AND dniTeacher != '{$_POST['dniTeacher']}' UNION SELECT email FROM student WHERE email = '{$_POST['email']}'";
+                    $existingEmailQuery = "SELECT email FROM teacher WHERE email = '{$_POST['email']}' AND dniTeacher != '{$_POST['dniTeacher']}' UNION SELECT email FROM student WHERE email = '{$_POST['email']}' UNION SELECT email FROM admin WHERE email = '{$_POST['email']}';";
                 
                     $existingEmailResult = selectSQL($connection, $existingEmailQuery, $existingResult);
                 
@@ -55,11 +55,10 @@
                     }
                 }
                 if (isset($_POST['showPass'])) {
-                    if (empty($_POST['password'])) {
-                        $valid = false;
-                        echo "<script> alert('Please enter a valid password')</script>";
-                    } else {
+                    if (!empty($_POST['password'])) {
                         $passwordChanged = true;
+                    }else{
+                        $valid = false;
                     }
                 }
         

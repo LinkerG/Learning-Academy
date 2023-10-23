@@ -1,5 +1,6 @@
 function validateForm(fields) {
     var errorMessage = '';
+    passwordRequired = false;
     var currentDate = new Date();
     var minBirthDate = new Date(currentDate.getFullYear() - 16, currentDate.getMonth(), currentDate.getDate());
 
@@ -21,7 +22,6 @@ function validateForm(fields) {
             errorMessage += 'The ' + fieldLabel + ' field should not start with spaces.\n';
         }
 
-        // Te has dejado la ñ cabron, no puedes ni poner tu nombre
         if (fieldType === 'text' && (fieldName === 'name' || fieldName === 'surname')) {
             if (!/^[a-zA-ZñÑ ]*$/.test(field)) {
                 errorMessage += 'Please enter a valid ' + fieldName +'\n';
@@ -34,31 +34,23 @@ function validateForm(fields) {
             }
         }
 
-        // Esto no sirve de nada porque si esta en blanco te avisa arriba, a parte de que SI deberias permitir espacios en titulation
-        /*if (fieldName === 'titulation') {
-            if (field.includes(' ')) {
-                errorMessage += 'You need titulation\n';
-            }
-        }*/
-
-        if (fields[i].type === 'checkbox' && document.getElementById(fields[i].id).checked) {
-            if (fields[i].name === 'showPass') {
-                var passwordFieldCheckBox = document.getElementById('password').value.trim();
-                if (passwordFieldCheckBox.length === 0) {
-                    errorMessage += 'Please enter a password.\n';
-                } else {
-                    if (passwordFieldCheckBox.length < 6) {
-                        errorMessage += 'Please enter a password with at least 6 characters.\n';
-                    }
-                    if (passwordFieldCheckBox.includes(' ')) {
-                        errorMessage += 'Password should not contain spaces.\n';
-                    }
+        if (fields[i].type === 'checkbox' && fields[i].name === 'showPass' && document.getElementById(fields[i].id).checked) {
+            // Si se está realizando una operación de agregar y se requiere una contraseña pero no se ha proporcionado, agrega el mensaje de error correspondiente
+            let passwordField = document.getElementById('password').value.trim();
+            if (passwordField.length === 0) {
+                errorMessage += 'Please enter a password.\n';
+            } else {
+                if (passwordField.length < 6) {
+                    errorMessage += 'Please enter a password with at least 6 characters.\n';
+                }
+                if (passwordField.includes(' ')) {
+                    errorMessage += 'Password should not contain spaces.\n';
                 }
             }
-        }
+        }   
 
-        if (fields[i].type === 'password' && fields[i].name === 'password') {
-            var passwordField = document.getElementById(fields[i].id).value.trim();
+        if(fieldName === 'passwordAdd'){
+            let passwordField = document.getElementById('password').value.trim();
             if (passwordField.length === 0) {
                 errorMessage += 'Please enter a password.\n';
             } else {
@@ -79,14 +71,6 @@ function validateForm(fields) {
                 errorMessage += 'You must be at least 16 years old.\n';
             }
         }
-
-        // Esto tampoco hace falta porque lo controla el HTML
-        /*if (fields[i].name === 'startDate') {
-            var startDate = new Date(field);
-            if (startDate < currentDate) {
-                errorMessage += 'Start date cannot be in the past.\n';
-            }
-        }*/
 
         if (fields[i].name === 'endDate') {
             var endDate = new Date(field);

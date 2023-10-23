@@ -1,8 +1,8 @@
 window.onload = function() {
-    document.getElementById('importButton').addEventListener('click', crearArray);
+    document.getElementById('fileInput').addEventListener('change', crearArray);
 };
- 
-function crearArray(){
+
+function crearArray() {
     const fileInput = document.getElementById('fileInput');
     const file = fileInput.files[0];
 
@@ -13,32 +13,26 @@ function crearArray(){
             const content = e.target.result;
             // Procesa el contenido del archivo 
             const lines = content.split('\n');
-            
 
             lines.forEach(line => {
-                const KeyValuePairs = line.split(',');
-                const studentData = {};
-                KeyValuePairs.forEach(pair => {
-                    const [key,value] = pair.split(':');
-                    if (key && value) {
-                        const trimmedKey = key.trim();
-                        const trimmedValue = value.trim();
-                        
-                        if (trimmedKey === 'courses') {
-                            // Extraer los números entre parentesis y divididos por punto y coma
-                            const coursesMatch = trimmedValue.match(/\((.*?)\)/);
-                            if (coursesMatch) {
-                                const coursesArray = coursesMatch[1].split(';').map(Number);
-                                studentData[trimmedKey] = coursesArray;
-                            } else {
-                                studentData[trimmedKey] = [];
-                            }
-                        } else {
-                            studentData[trimmedKey] = trimmedValue;
-                        }
-                    }
-                });
-                students.push(studentData);
+                const values = line.split(',');
+                if (values.length >= 8) {  
+                    const coursesString = values[8].substring(1, values[8].length - 1); // Eliminar paréntesis
+                    const coursesArray = coursesString.split(';').map(item => parseFloat(item.trim()));
+                    const studentData = {
+                        dniStudent: values[0],
+                        email: values[1],
+                        password: values[2],    
+                        name: values[3],
+                        surname: values[4],
+                        birthDate: values[5],
+                        photoPath: values[6],
+                        prize: values[7],
+                        courses: coursesArray
+                    };
+                    console.log(studentData);
+                    students.push(studentData);
+                }
             });
             displayTable(students);
         };
@@ -47,12 +41,14 @@ function crearArray(){
         const input = document.getElementById('fileInput');
         importBtn.style.display = 'none';
         input.style.display = 'none';
-    }else{
+    } else {
         alert('Select a file please');
     }
 }
 
 function displayTable(students) {
+    var fileInput = document.getElementById('fileInput');
+    fileInput.style.display = 'none';
     const table = document.createElement('table');
 
     const headers = ['DNI', 'Email', 'Password', 'Name', 'Surname', 'Birth date', 'Photo Path', 'Prize', 'Courses'];
@@ -82,7 +78,10 @@ function displayTable(students) {
             } else if (header.toLowerCase() === 'birth date') {
                 td.innerText = student.birthDate || '';
             } else if(header.toLowerCase() === 'courses'){
-                td.innerText = student.courses.length || '';
+                console.log("Courses Type:", typeof student.courses); // Verificar el tipo de datos
+                console.log("Courses Value:", student.courses);
+                const coursesArray = Array.isArray(student.courses) ? student.courses : [];
+                td.innerText = coursesArray.join(', ');
             } else {
                 td.innerText = student[header.split(' ').join('').toLowerCase()] || '';
             }
