@@ -358,8 +358,7 @@ function uploadPdf($courseId,$connection,$numTask) {
     }
 }
 function generarFicheroStudents(){
-    $sql = "SELECT s.*, GROUP_CONCAT(m.courseId) AS enrolledCourses FROM student s LEFT JOIN matriculates m ON s.dniStudent = m.dniStudent GROUP BY s.dniStudent, s.email, s.password, s.name, s.surname, s.birthDate, s.photoPath, s.prize;";
-    $campos = ['dniStudent', 'email', 'password', 'name', 'surname', 'birthDate', 'photoPath', 'prize', 'courses'];
+    $sql = "SELECT s.*, IFNULL(GROUP_CONCAT(m.courseId), 0) AS enrolledCourses FROM student s LEFT JOIN matriculates m ON s.dniStudent = m.dniStudent GROUP BY s.dniStudent, s.email, s.password, s.name, s.surname, s.birthDate, s.photoPath, s.prize;";
     
     if (connectBD("id21353268_learningacademy", $connection)) {
         if (selectSQL($connection, $sql, $result)) {
@@ -368,26 +367,16 @@ function generarFicheroStudents(){
             } else {
                 $fileName = "students.txt";
                 $newFileData = '';
-                foreach ($result as $student => $data) {   
+                foreach ($result as $data) {   
                     // Construir un array de cursos
-                    $courses = explode(",", $data['enrolledCourses']);
-                    $coursesArray = [];
-    
-                    foreach ($courses as $course) {
-                        $coursesArray[] = intval($course);
-                    }
-    
-                    $data['courses'] = $coursesArray;
-                    // Construir la línea clave:valor
-                    $KeyValue = "";
-                    foreach ($campos as $campo) {
-                        $KeyValue .= "$campo:" . (is_array($data[$campo]) ? '(' . implode(';', $data[$campo]) . ')' : $data[$campo]) . ",";
-                    }
-                    $KeyValue = rtrim($KeyValue, ',');
-                    $newFileData .= $KeyValue . PHP_EOL;
+                    $courses = '(' . str_replace(",", ";", $data['enrolledCourses']) . ')';
+
+                    // Construir la línea con los valores separados por comas
+                    $line = $data['dniStudent'] . "," . $data['email'] . "," . $data['password'] . "," . $data['name'] . "," . $data['surname'] . "," . $data['birthDate'] . "," . $data['photoPath'] . "," . $data['prize'] . "," . $courses;
+                    $newFileData .= $line . PHP_EOL;
                 }
                 $newFileData = rtrim($newFileData, PHP_EOL);
-    
+
                 $file = fopen($fileName, 'w');
                 fwrite($file, $newFileData);
                 fclose($file);
@@ -395,6 +384,7 @@ function generarFicheroStudents(){
         }
     }
 }
+
 
 function insertStudents(){
     $json = json_decode($_POST['students'], true);

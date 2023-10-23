@@ -47,8 +47,6 @@ function crearArray() {
 }
 
 function displayTable(students) {
-    var fileInput = document.getElementById('fileInput');
-    fileInput.style.display = 'none';
     const table = document.createElement('table');
 
     const headers = ['DNI', 'Email', 'Password', 'Name', 'Surname', 'Birth date', 'Photo Path', 'Prize', 'Courses'];

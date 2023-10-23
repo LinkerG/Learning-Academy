@@ -1,4 +1,4 @@
 12345678Z,olga@gmail.com,0cc175b9c0f1b6a831c399e269772661,Alex,dada,2002-11-11,/Learning-Academy/img/profilePhotos/default.png,no prize,(0)
 35081090H,aaa@gmail.com,0cc175b9c0f1b6a831c399e269772661,a,a,2002-11-11,/Learning-Academy/img/profilePhotos/default.png,no prize,(1;2)
 48215363A,a@gmail.com,0cc175b9c0f1b6a831c399e269772661,Iker,Gonzalez,2002-11-11,/Learning-Academy/img/profilePhotos/default.png,nothing,(1)
-48222532L,alex@gmail.com,0cc175b9c0f1b6a831c399e269772661,Alex,Cedeño,2002-11-11,/Learning-Academy/img/profilePhotos/default.png,nothing,(1;23)
+48222532L,alex@gmail.com,0cc175b9c0f1b6a831c399e269772661,Alex,Cedeño,2002-11-11,/Learning-Academy/img/profilePhotos/default.png,nothing,(1)
