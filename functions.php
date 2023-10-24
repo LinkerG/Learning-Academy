@@ -35,7 +35,38 @@ function printHeader() {
     }
     echo "</header>";
 }
-
+function printFooter(){
+    echo "<div class='footer-container'>";
+        echo "<footer class='footer'>";
+            echo '  <div class="text">';
+            echo '    <div class="logo"><img src="img/logoOscuro.png"></div>';
+            echo '    <div class="info">This is our school.</div>';
+            echo '  </div>';
+            echo '  <div class="quickLinks">';
+            echo '    <div class="Title">Quick links</div>';
+            echo '    <div class="aboutUs"><a href="aboutUs.php">About us</a></div>';
+            echo '    <div class="contactUs"><a href="contactUs.php">Contact us</a></div>';
+            echo '    <div class="courses"><a href="courses.php">Courses</a></div>';
+            echo '  </div>';
+            echo '  <div class="Services">';
+            echo '    <div class="title">Services</div>';
+            echo '    <div class="appDev">App development</div>';
+            echo '    <div class="webDev">Web development</div>';
+            echo '    <div class="machineLearn">Machine learning</div>';
+            echo '  </div>';
+            echo '  <div class="ReachUs">';
+            echo '    <div class="reachUs">Reach us</div>';
+            echo '    <div class="icon1"><img src="img/icons/Message.png"></div>';
+            echo '    <div class="icon2"><img src="img/icons/Mobile.png"></div>';
+            echo '    <div class="icon3"><img src="img/icons/Location.png"></div>';
+            echo '    <div class="mail">learningacademy@gmail.com</div>';
+            echo '    <div class="tel">655 43 43 43</div>';
+            echo '    <div class="direc">INS La Pineda</div>';
+            echo '  </div>';
+            echo '  <div class="icon"><img src="img/logoMedium.png"></div>';
+        echo "</footer>";
+    echo "</div>";
+}
 function connectBD($bd, &$connection) {
     $connectionOk = false;
 
@@ -473,4 +504,5 @@ function insertStudents(){
         echo "</div>";
     }
 }
+
 ?>

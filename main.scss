@@ -1,19 +1,23 @@
 @import "scss/variables.scss";
 @import "scss/mixins.scss";
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 // Reset de márgenes para todos los elementos
 * {
     margin: 0;
     font-family: 'Inter', sans-serif;
 }
 //background
+::-webkit-scrollbar{
+    width:0;
+}
 body {
     background-image: url('/Learning-Academy/img/stockBackground.jpg');
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     backdrop-filter: blur(6px) brightness(0.5);
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 body.roulette{
@@ -801,4 +805,144 @@ img.backBtn{
 }
 .error{
     margin-bottom: 5vh;
+}
+
+.footer-container{
+    margin-top:15vh;
+    width: auto;
+    background-color: #0B0D17;
+    color: white;
+    padding: 30px;
+    .footer {
+        display: grid;
+        grid-template-columns: 1.3fr 1.1fr 0.8fr 0.9fr 1.2fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas: "text quickLinks Services ReachUs icon";
+    
+        .text {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas: "logo" "info";
+        grid-area: text;
+        }
+    
+        .logo {
+        grid-area: logo;
+            img{
+                width: 30%;
+                aspect-ratio: 1/1;
+                object-fit: contain;
+            }
+        }
+    
+        .info {
+        grid-area: info;
+        }
+    
+        .quickLinks {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas: "Title" "aboutUs" "contactUs" "courses";
+        grid-area: quickLinks;
+        }
+    
+        .Title {
+        grid-area: Title;
+        }
+    
+        .aboutUs {
+        grid-area: aboutUs;
+        }
+    
+        .contactUs {
+        grid-area: contactUs;
+        }
+    
+        .courses {
+        grid-area: courses;
+        }
+    
+        .Services {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas: "title" "appDev" "webDev" "machineLearn";
+        grid-area: Services;
+        }
+    
+        .title {
+        grid-area: title;
+        }
+    
+        .appDev {
+        grid-area: appDev;
+        }
+    
+        .webDev {
+        grid-area: webDev;
+        }
+    
+        .machineLearn {
+        grid-area: machineLearn;
+        }
+    
+        .ReachUs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas: "reachUs reachUs" "icon1 mail" "icon2 tel" "icon3 direc";
+        grid-area: ReachUs;
+        }
+    
+        .reachUs {
+        grid-area: reachUs;
+        }
+    
+        .icon1 {
+        grid-area: icon1;
+        }
+    
+        .icon2 {
+        grid-area: icon2;
+        }
+    
+        .icon3 {
+        grid-area: icon3;
+        }
+    
+        .mail {
+        grid-area: mail;
+        }
+    
+        .tel {
+        grid-area: tel;
+        }
+    
+        .direc {
+        grid-area: direc;
+        }
+    
+        .icon {
+        grid-area: icon;     
+            img{
+                width: 70%;
+                aspect-ratio: 1/1;
+                object-fit: contain;
+                margin-left:150px;
+                filter: brightness(0.2);
+            }
+        }
+    }
 }
