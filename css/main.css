@@ -345,6 +345,37 @@ table th, table td {
   place-items: center;
   grid-template-columns: repeat(3, 1fr);
 }
+.container table tr td .switch-button {
+  display: inline-block;
+}
+.container table tr td .switch-button .toggle-checkbox {
+  display: none;
+}
+.container table tr td .switch-button .switch-button__label {
+  background-color: #fe5e41;
+  width: 5rem;
+  height: 3rem;
+  border-radius: 3rem;
+  display: inline-block;
+  position: relative;
+}
+.container table tr td .switch-button .switch-button__label:before {
+  transition: 0.2s;
+  display: block;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  background-color: #fdffff;
+  content: "";
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 0px 1px #000;
+}
+.container table tr td .switch-button .toggle-checkbox:checked + .switch-button__label {
+  background-color: #00a878;
+}
+.container table tr td .switch-button .toggle-checkbox:checked + .switch-button__label:before {
+  transform: translateX(2rem);
+}
 .container h1 {
   text-align: center;
   grid-column: 1/4;

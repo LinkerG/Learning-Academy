@@ -372,6 +372,43 @@ table {
     display: grid;
     place-items: center;
     grid-template-columns: repeat(3, 1fr);
+    table{
+        tr{
+            td{
+                .switch-button {
+                    display: inline-block;
+                    .toggle-checkbox {
+                        display: none;
+                    }
+                    .switch-button__label {
+                        background-color: $color-red;
+                        width: 5rem;
+                        height: 3rem;
+                        border-radius: 3rem;
+                        display: inline-block;
+                        position: relative;
+                        &:before {
+                            transition: .2s;
+                            display: block;
+                            position: absolute;
+                            width: 3rem;
+                            height: 3rem;
+                            background-color: $color-button;
+                            content: '';
+                            border-radius: 50%;
+                            box-shadow: inset 0px 0px 0px 1px $color-black;
+                        }
+                    }
+                    .toggle-checkbox:checked + .switch-button__label {
+                        background-color: $color-green;
+                        &:before {
+                            transform: translateX(2rem);
+                        }
+                    }
+                }
+            }
+        }
+    }
     h1 {
         text-align: center;
         grid-column: 1/4;

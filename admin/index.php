@@ -63,8 +63,10 @@
                                     echo "<td>{$row['email']}</td>";
                                     echo "<td><a href='editTeacher.php?dniTeacher={$row['dniTeacher']}'>Edit</a></td>";
                                     echo "<td>";
-         
-                                    echo "  <input type='checkbox' class='toggle-checkbox' data-id='{$row['dniTeacher']}' data-status='{$row['active']}' data-type='teacher'" . ($row['active'] == '1' ? 'checked' : '') . ">";
+                                    echo "  <div class='switch-button'>";
+                                    echo "      <input type='checkbox' name='switch-button' id='switch-label-{$row['dniTeacher']}' class='toggle-checkbox' data-id='{$row['dniTeacher']}' data-status='{$row['active']}' data-type='teacher'" . ($row['active'] == '1' ? 'checked' : '') . ">";
+                                    echo "      <label for='switch-label-{$row['dniTeacher']}' class='switch-button__label'></label>";
+                                    echo "  </div>";
                                     echo "</td>";
                                 echo "</tr>";
                             }
@@ -103,7 +105,13 @@
                                 echo "  <td>{$row['description']}</td>";
                                 echo "  <td>{$row['name']} {$row['surname']}</td>";
                                 echo "  <td><a href='editCourse.php?courseId={$row['courseId']}'>Edit</a></td>";
-                                echo "  <td><input type='checkbox' class='toggle-checkbox' data-id='{$row['courseId']}' data-status='{$row['active']}' data-type='course' " . ($row['active'] == '1' ? 'checked' : '') . "></td>";
+                                echo "<td>";
+                                echo "  <div class='switch-button'>";
+                                echo "      <input type='checkbox' name='switch-button' id='switch-label-{$row['courseId']}' class='toggle-checkbox' data-id='{$row['courseId']}' data-status='{$row['active']}' data-type='course' " . ($row['active'] == '1' ? 'checked' : '') . ">";
+                                echo "      <label for='switch-label-{$row['courseId']}' class='switch-button__label'></label>";
+                                echo "  </div>";
+                                echo "</td>";
+                                echo "  <td></td>";
                                 echo "</tr>";
                             }
                         }
