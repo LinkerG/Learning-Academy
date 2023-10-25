@@ -15,13 +15,11 @@ include "../functions.php";
             if(connectBD("id21353268_learningacademy", $connection)) {
                 updateSQL($connection, $sql);
             }
-            echo "<META HTTP-EQUIV='REFRESH' CONTENT='10;URL=index.php?manage=courses'>";
         }else{
             $sql = "UPDATE teacher SET active = '$newStatus' WHERE dniTeacher = '$entityId';";
             if(connectBD("id21353268_learningacademy", $connection)) {
                 updateSQL($connection, $sql);
-            }
-            
+            } 
         }
         if($sql == ""){
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=../index.php'>";
