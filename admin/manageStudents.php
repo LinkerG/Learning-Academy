@@ -24,7 +24,6 @@ include "../functions.php";
             }else{
                 ?>
                 <?php printHeader("../"); 
-                generarFicheroStudents();
                 ?>
                 <div>
                     <input type="file" id="fileInput" accept=".txt" >

@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
     <script src="../files/importStudents.js"></script>
-    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
+    <script src="../files/change-status.js"></script>
+    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body>
     <?php
@@ -19,9 +20,10 @@
         if(!isset($_SESSION['role']) && $_SESSION['role'] != "A") {
             printHeader("../");
             include("needAdmin.html");
-            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=../close.php'>";
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=./../close.php'>";
         }else{
             printHeader("../");
+            echo "<div id='datos'></div>";
     ?>
     <div class="container">
     <h1>ADMIN PANEL</h1>
@@ -53,14 +55,18 @@
                         } else {
                             foreach($result as $row) {
                                 echo "<tr>";
-                                echo "<td>{$row['dniTeacher']}</td>";
-                                echo "<td><img alt='teacher photo' src='../{$row['photoPath']}'></td>";
-                                echo "<td>{$row['name']}</td>";
-                                echo "<td>{$row['surname']}</td>";
-                                echo "<td>{$row['titulation']}</td>";
-                                echo "<td>{$row['email']}</td>";
-                                echo "<td><a href='editTeacher.php?dniTeacher={$row['dniTeacher']}'>Edit</a></td>";
-                                echo "<td><button onclick=\"location.href='editTeacher.php?active={$row['active']}&dniTeacher={$row['dniTeacher']}'\" >{$row['active']}</button></td>";                                echo "</tr>";
+                                    echo "<td>{$row['dniTeacher']}</td>";
+                                    echo "<td><img src='{$row['photoPath']}'></td>";
+                                    echo "<td>{$row['name']}</td>";
+                                    echo "<td>{$row['surname']}</td>";
+                                    echo "<td>{$row['titulation']}</td>";
+                                    echo "<td>{$row['email']}</td>";
+                                    echo "<td><a href='editTeacher.php?dniTeacher={$row['dniTeacher']}'>Edit</a></td>";
+                                    echo "<td>";
+         
+                                    echo "  <input type='checkbox' class='toggle-checkbox' data-id='{$row['dniTeacher']}' data-status='{$row['active']}' data-type='teacher'" . ($row['active'] == '1' ? 'checked' : '') . ">";
+                                    echo "</td>";
+                                echo "</tr>";
                             }
                         }
                     }
@@ -85,44 +91,21 @@
                     if(selectSQL($connection, $sql, $result)){
                         if(empty($result)) {
                             echo "<tr>";
-                            echo "<td colspan='8'>There are no courses right now</td>";
+                            echo "  <td colspan='8'>There are no courses right now</td>";
                             echo "</tr>";
                         } else {
                             foreach($result as $row) {
                                 echo "<tr>";
-                                echo "<td><img alt='course photo' src='../{$row['photoPath']}'></td>";
-                                echo "<td>{$row['courseName']}</td>";
-                                echo "<td>{$row['hours']}</td>";
-                                echo "<td>{$row['startDate']} <br>-<br> {$row['endDate']}</td>";
-                                echo "<td>{$row['description']}</td>";
-                                echo "<td>{$row['name']} {$row['surname']}</td>";
-                                echo "<td><a href='editCourse.php?courseId={$row['courseId']}'>Edit</a></td>";
-                                echo "<td><a href='editCourse.php?active={$row['active']}&courseId={$row['courseId']}'>{$row['active']}</a></td>";
-                                echo "</tr>";
-                            }if(connectBD("id21353268_learningacademy", $connection)) {
-                    $sql = "SELECT c.*,t.name,t.surname,c.name as courseName FROM course c INNER JOIN teacher t ON c.dniTeacher = t.dniTeacher";
-                    // SELECT * FROM course;
-                    if(selectSQL($connection, $sql, $result)){
-                        if(empty($result)) {
-                            echo "<tr>";
-                            echo "<td colspan='8'>There are no courses right now</td>";
-                            echo "</tr>";
-                        } else {
-                            foreach($result as $row) {
-                                echo "<tr>";
-                                echo "<td><img src='{$row['photoPath']}'></td>";
-                                echo "<td>{$row['courseName']}</td>";
-                                echo "<td>{$row['hours']}</td>";
-                                echo "<td>{$row['startDate']} <br>-<br> {$row['endDate']}</td>";
-                                echo "<td>{$row['description']}</td>";
-                                echo "<td>{$row['name']} {$row['surname']}</td>";
-                                echo "<td><a href='editCourse.php?courseId={$row['courseId']}'>Edit</a></td>";
-                                echo "<td><a href='editCourse.php?active={$row['active']}&courseId={$row['courseId']}'>{$row['active']}</a></td>";
+                                echo "  <td><img src='{$row['photoPath']}'></td>";
+                                echo "  <td>{$row['courseName']}</td>";
+                                echo "  <td>{$row['hours']}</td>";
+                                echo "  <td>{$row['startDate']} <br>-<br> {$row['endDate']}</td>";
+                                echo "  <td>{$row['description']}</td>";
+                                echo "  <td>{$row['name']} {$row['surname']}</td>";
+                                echo "  <td><a href='editCourse.php?courseId={$row['courseId']}'>Edit</a></td>";
+                                echo "  <td><input type='checkbox' class='toggle-checkbox' data-id='{$row['courseId']}' data-status='{$row['active']}' data-type='course' " . ($row['active'] == '1' ? 'checked' : '') . "></td>";
                                 echo "</tr>";
                             }
-                        }
-                    }
-                }
                         }
                     }
                 }
@@ -168,8 +151,10 @@
 <?php
 if(isset($_REQUEST['manage'])) {
     echo "<script>window.onload = loadAdmin(1,'{$_REQUEST['manage']}')</script>";
+    //echo "<script>window.onload = function(){setupToggleFunction();};</script>";
 } else {
     echo "<script>window.onload = loadAdmin(0);</script>";
+    //echo "<script>window.onload = function(){setupToggleFunction();};</script>";
 }
 ?>
 <?php
