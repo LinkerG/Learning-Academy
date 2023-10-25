@@ -9,7 +9,7 @@ session_start();
     <title>!!!! WINNER !!!!</title>
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
 </head>
 <body class="roulette">
     <?php
@@ -17,7 +17,7 @@ session_start();
 
     if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
         include("needStudent.html");
-        echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=../close.php'>";
     } else {
     ?>
     <div class="rouletteContainer">
@@ -27,7 +27,7 @@ session_start();
                 <p>Since it's your first time here,<br> you can have one of this prizes!</p>
             </div>
             <div class="arrow"></div>
-            <img src="/Learning-Academy/img/icons/roulette.png" alt="prize roulette" id="rouletteImg">
+            <img src="../img/icons/roulette.png" alt="prize roulette" id="rouletteImg">
             <button id="rouletteButton" onclick="return spinRoulette()">SPIN IT!!!</button>
         </div>
     </div>

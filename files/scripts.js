@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function joinFunction(action, courseId, dniStudent) {
     if (action == 0) {
         let wantLogin = confirm("You must be a student to join on this course, want to log in as a student?");
-        if(wantLogin) location.href = "/Learning-Academy/close.php";
+        if(wantLogin) location.href = "close.php";
     } else if (action == 1) {
         let confirmJoin = confirm("You want to join on this course?");
-        if(confirmJoin) location.href = "/Learning-Academy/courses.php?insert=1&dniStudent="+dniStudent+"&courseId="+courseId;
+        if(confirmJoin) location.href = "courses.php?insert=1&dniStudent="+dniStudent+"&courseId="+courseId;
     }
 }
 
@@ -271,7 +271,7 @@ function eventButtons(condition, admin) {
                     let searchButton = document.createElement("button");
                     searchButton.type = "submit";
                     let searchImg = document.createElement("img");
-                    searchImg.src = "/Learning-Academy/img/icons/search.png";
+                    searchImg.src = "../img/icons/search.png";
                     searchImg.alt = "lupa";
                     searchImg.classList.add("tbImage");
                     searchButton.appendChild(searchImg);
@@ -285,7 +285,7 @@ function eventButtons(condition, admin) {
                         link.href = "addCourse.php";
                         link.textContent = "ADD";
                         let image = document.createElement("img");
-                        image.src = "/Learning-Academy/img/icons/add.png";
+                        image.src = "../img/icons/add.png";
                         image.alt = "add icon";
                         image.classList.add("tbImage");
                         link.appendChild(image);
@@ -295,7 +295,7 @@ function eventButtons(condition, admin) {
                         link.href = "addTeacher.php";
                         link.textContent = "ADD";
                         let image = document.createElement("img");
-                        image.src = "/Learning-Academy/img/icons/add.png";
+                        image.src = "../img/icons/add.png";
                         image.alt = "add icon";
                         image.classList.add("tbImage");
                         link.appendChild(image);
@@ -403,7 +403,7 @@ function loadTeacher(skipLoader, elementId) {
 }
 
 function audioRoulette() {
-    let audio = new Audio("/Learning-Academy/files/audio/roulette.wav");
+    let audio = new Audio("../files/audio/roulette.wav");
     audio.play();
 }
 
@@ -421,7 +421,7 @@ function spinRoulette() {
     let boton = document.getElementById("rouletteButton");
     boton.style.animation = "none";
     boton.style.boxShadow = "none";
-    let spinAudio = new Audio("/Learning-Academy/files/audio/spin.wav");
+    let spinAudio = new Audio("../files/audio/spin.wav");
     spinAudio.play();
     let giraDos = 0;
     let prize = "";
@@ -434,17 +434,17 @@ function spinRoulette() {
 
         if(degrees > 0 && degrees < 120) {
             prize = "discount";
-            let audio = new Audio("/Learning-Academy/files/audio/discount.wav");
+            let audio = new Audio("../files/audio/discount.wav");
             audio.play();
         }
         else if (degrees > 120 && degrees < 240) {
             prize = "nothing";
-            let audio = new Audio("/Learning-Academy/files/audio/nothing.mp3");
+            let audio = new Audio("../files/audio/nothing.mp3");
             audio.play();
         }
         else if (degrees > 240 && degrees < 360) {
             prize = "free";
-            let audio = new Audio("/Learning-Academy/files/audio/free.wav");
+            let audio = new Audio("../files/audio/free.wav");
             audio.play();
         }
 

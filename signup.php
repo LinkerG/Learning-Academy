@@ -9,7 +9,7 @@
     <title>Sign up</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="files/validateForms.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
     <script src="files/validateForms.js"></script>
 </head>
 <body>
@@ -62,7 +62,7 @@
                         }
                     } else {
                         $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath, prize) 
-                        VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','/Learning-Academy/img/profilePhotos/default.png', 'no prize')";
+                        VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','img/profilePhotos/default.png', 'no prize')";
                         $action = insertSQL($connection, $sql);
                         if($action == 0) {
                             echo "<script>alert('You signed in correctly, now log in')</script>";

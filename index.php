@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Academy</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
 </head>
 <body>
     <?php

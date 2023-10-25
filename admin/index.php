@@ -10,18 +10,18 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
     <script src="../files/importStudents.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
 </head>
 <body>
     <?php
         include("../functions.php");
 
         if(!isset($_SESSION['role']) && $_SESSION['role'] != "A") {
-            printHeader();
+            printHeader("../");
             include("needAdmin.html");
-            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=../close.php'>";
         }else{
-            printHeader();
+            printHeader("../");
     ?>
     <div class="container">
     <h1>ADMIN PANEL</h1>
@@ -54,7 +54,7 @@
                             foreach($result as $row) {
                                 echo "<tr>";
                                 echo "<td>{$row['dniTeacher']}</td>";
-                                echo "<td><img src='{$row['photoPath']}'></td>";
+                                echo "<td><img src='../{$row['photoPath']}'></td>";
                                 echo "<td>{$row['name']}</td>";
                                 echo "<td>{$row['surname']}</td>";
                                 echo "<td>{$row['titulation']}</td>";
@@ -91,7 +91,7 @@
                         } else {
                             foreach($result as $row) {
                                 echo "<tr>";
-                                echo "<td><img src='{$row['photoPath']}'></td>";
+                                echo "<td><img src='../{$row['photoPath']}'></td>";
                                 echo "<td>{$row['courseName']}</td>";
                                 echo "<td>{$row['hours']}</td>";
                                 echo "<td>{$row['startDate']} <br>-<br> {$row['endDate']}</td>";

@@ -9,19 +9,19 @@
     <title>Add new course</title>
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/validateForms.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
 </head>
 <body>
     <?php
         include("../functions.php");
 
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "A") {
-            printHeader();
+            printHeader("../");
             include("needAdmin.html");
-            header("Refresh: 5; URL='/Learning-Academy/close.php'");
+            header("Refresh: 5; URL='../close.php'");
             
         } else {
-            printHeader();
+            printHeader("../");
            
             if(!empty($_POST)){
                 // Validacion de datos
@@ -57,7 +57,7 @@
                 } else {
                     if(connectBD("id21353268_learningacademy",$connection) && $continue){
                         $sql = "INSERT INTO course (name, hours, startDate, endDate, description, dniTeacher, active, photoPath) 
-                        VALUES ('{$_POST['nameAddCourse']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','/Learning-Academy/img/coursePhotos/default.png')";
+                        VALUES ('{$_POST['nameAddCourse']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','img/coursePhotos/default.png')";
         
                         $action = insertSQL($connection, $sql);
                         if($action == 0) {

@@ -10,14 +10,14 @@ session_start();
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
     <script src="../files/validateForms.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
 </head>
 <body>
         <?php
             include ("../functions.php");
 
             if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
-                printHeader();
+                printHeader("../");
                 include("needStudent.html");
                 echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
             } else {
@@ -25,7 +25,7 @@ session_start();
                     $sqlStudent = "SELECT * FROM student WHERE dniStudent = '{$_SESSION['dniStudent']}';";
                     if(selectSQL($connection,$sqlStudent,$result)); $result = $result[0];
                 }
-                printHeader();
+                printHeader("../");
                 if (!empty($_POST)) {   
                     // Verificar si se ha cambiado la contraseña
                     $valid = true;
@@ -82,7 +82,7 @@ session_start();
                             $_SESSION['email'] = $_POST['email'];
                             $_SESSION['password'] = $_POST['password'];
                             $_SESSION['birthDate'] = $_POST['birthDate'];
-                            echo "<meta http-equiv='REFRESH' content='0;URL=/Learning-Academy/student/index.php'>";
+                            echo "<meta http-equiv='REFRESH' content='0;URL=../student/index.php'>";
                         }
                     }
                 }else{

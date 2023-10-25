@@ -10,16 +10,16 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
     <title>Student courses</title>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
 </head>
 <body>
     <?php
     if(!isset($_SESSION['role']) || $_SESSION['role'] != "S") {
-        printHeader();
+        printHeader("../");
         include("needStudent.html");
-        echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=../close.php'>";
     } else {
-        printHeader();
+        printHeader("../");
     
     $hasPrize = false;
     if (connectBD("id21353268_learningacademy", $connection)) {

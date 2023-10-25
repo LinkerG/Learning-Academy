@@ -1,5 +1,5 @@
 <?php
-function printHeader() {
+function printHeader($dir = "") {
     echo "<header class='header'>";
     if(!isset($_SESSION['role'])) {
         $role = 'N';
@@ -9,28 +9,28 @@ function printHeader() {
     if($role == "") $role = "N";
     switch($role) {
         case "N":
-            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
-            echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
-            echo "<a href='/Learning-Academy/login.php' id='login' class='blueBtn'>Log in</a>";
-            echo "<a href='/Learning-Academy/signup.php' id='signup' class='whiteBtn'>Sing up</a>";
+            echo "<a href='" . $dir . "index.php' class='headerLogo'><img src='" . $dir . "img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
+            echo "<a href='" . $dir . "courses.php' class='Course blueBtn'>Our courses</a>";
+            echo "<a href='" . $dir . "login.php' id='login' class='blueBtn'>Log in</a>";
+            echo "<a href='" . $dir . "signup.php' id='signup' class='whiteBtn'>Sing up</a>";
             break;
         case "A":
-            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
-            echo "<a href='/Learning-Academy/admin/index.php' class='menu1 blueBtn'>Admin panel</a>";
-            echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
-            echo "<a href='/Learning-Academy/close.php' id='logout' class='blueBtn'>Log out</a>";
+            echo "<a href='" . $dir . "index.php' class='headerLogo'><img src='" . $dir . "img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
+            echo "<a href='" . $dir . "admin/index.php' class='menu1 blueBtn'>Admin panel</a>";
+            echo "<a href='" . $dir . "courses.php' class='Course blueBtn'>Our courses</a>";
+            echo "<a href='" . $dir . "close.php' id='logout' class='blueBtn'>Log out</a>";
             break;
         case "S":
-            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
-            echo "<a href='/Learning-Academy/student/index.php' class='menu1 blueBtn'>Student panel</a>";
-            echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
-            echo "<a href='/Learning-Academy/close.php' id='logout' class='blueBtn'>Log out</a>";
+            echo "<a href='" . $dir . "index.php' class='headerLogo'><img src='" . $dir . "img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
+            echo "<a href='" . $dir . "student/index.php' class='menu1 blueBtn'>Student panel</a>";
+            echo "<a href='" . $dir . "courses.php' class='Course blueBtn'>Our courses</a>";
+            echo "<a href='" . $dir . "close.php' id='logout' class='blueBtn'>Log out</a>";
             break;
         case "T":
-            echo "<a href='/Learning-Academy/index.php' class='headerLogo'><img src='/Learning-Academy/img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
-            echo "<a href='/Learning-Academy/teacher/index.php' class='menu1 blueBtn'>Teacher panel</a>";
-            echo "<a href='/Learning-Academy/courses.php' class='Course blueBtn'>Our courses</a>";
-            echo "<a href='/Learning-Academy/close.php' class='blueBtn' id='logout'>Log out</a>";
+            echo "<a href='" . $dir . "index.php' class='headerLogo'><img src='" . $dir . "img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
+            echo "<a href='" . $dir . "teacher/index.php' class='menu1 blueBtn'>Teacher panel</a>";
+            echo "<a href='" . $dir . "courses.php' class='Course blueBtn'>Our courses</a>";
+            echo "<a href='" . $dir . "close.php' class='blueBtn' id='logout'>Log out</a>";
             break;
     }
     echo "</header>";
@@ -250,10 +250,10 @@ function uploadPhoto($aux, &$route, $signin = false, $courseId = null) {
             if (move_uploaded_file($_FILES["photoPath"]["tmp_name"], $relativeRoute)) {
                 switch ($aux) {
                     case 0:
-                        $route = "/Learning-Academy/img/" . "profilePhotos/" . $_POST['dniStudent'] . ".png";
+                        $route = "img/" . "profilePhotos/" . $_POST['dniStudent'] . ".png";
                         break;
                     case 1:
-                        $route = "/Learning-Academy/img/" . "profilePhotos/" . $_POST['dniTeacher'] . ".png";
+                        $route = "img/" . "profilePhotos/" . $_POST['dniTeacher'] . ".png";
                         break;
                     case 2:
                         if($courseId == null) {
@@ -262,11 +262,11 @@ function uploadPhoto($aux, &$route, $signin = false, $courseId = null) {
                                 if(selectSQL($connection, $sql, $result)) {
                                     $count = intval($result[0]['total']);
                                     $count+=1;
-                                    $route = "/Learning-Academy/img/" . "coursePhotos/" . $count . ".png";
+                                    $route = "img/" . "coursePhotos/" . $count . ".png";
                                 }
                             }
                         } else {
-                            $route = "/Learning-Academy/img/" . "coursePhotos/" . $courseId . ".png";
+                            $route = "img/" . "coursePhotos/" . $courseId . ".png";
                         }
                         break;
                     }

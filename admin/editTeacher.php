@@ -10,19 +10,19 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
     <script src="../files/validateForms.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
 </head>
 <body>
     <?php
         include("../functions.php");
 
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "A") {
-            printHeader();
+            printHeader("../");
             include("needAdmin.html");
-            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=../close.php'>";
         } else {
 
-            printHeader();
+            printHeader("../");
         
             if(isset($_REQUEST['active'])){
                 $active = $_REQUEST['active'] == 0 ? 1 : 0;

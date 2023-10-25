@@ -9,7 +9,7 @@
     <title>Add new teacher</title>
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/validateForms.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
     <script src="../files/validateForms.js"></script>
 </head>
 <body>
@@ -17,11 +17,11 @@
         include("../functions.php");
 
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "A") {
-            printHeader();
+            printHeader("../");
             include("needAdmin.html");
-            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=../close.php'>";
         } else {
-            printHeader();
+            printHeader("../");
         
 
         if(!empty($_POST)){
@@ -67,7 +67,7 @@
                     }
                 } else {
                     $sql = "INSERT INTO teacher (dniTeacher, email, password, name, surname, titulation, photoPath, active) 
-                        VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','/Learning-Academy/img/profilePhotos/default.png', '1')";
+                        VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','img/profilePhotos/default.png', '1')";
     
                     $action = insertSQL($connection, $sql);
                     if($action == 0) {
