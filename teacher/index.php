@@ -10,19 +10,19 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
     <script src="../files/changeScore.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
 </head>
 <body>
     <?php
         include("../functions.php");
 
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "T") {
-            printHeader();
+            printHeader("../");
             include("needTeacher.html");
-            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=../close.php'>";
 
         } else {
-            printHeader();
+            printHeader("../");
             if(isset($_REQUEST['manage'])) {
                 if(connectBD("id21353268_learningacademy", $connection)){
                     $updateScore = "UPDATE matriculates SET score=" . $_REQUEST['newScore'] . " WHERE dniStudent ='" . $_REQUEST['dniStudent'] . "' AND courseId = '" . $_REQUEST['manage'] . "';";

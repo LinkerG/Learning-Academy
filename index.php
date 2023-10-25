@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Academy</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
 </head>
 <body>
     <?php
@@ -31,13 +31,13 @@
         </div>
         <div class="imgs">
             <div class="img1">
-                <img src="img/fotoIndex1.png">
+                <img alt="image of a laptop" src="img/fotoIndex1.png">
             </div>
             <div class="img2">
-                <img src="img/fotoIndex2.png">
+                <img alt="image of a computer" src="img/fotoIndex2.png">
             </div>
             <div class="img3">
-                <img src="img/fotoIndex3.png">
+                <img alt="image of a computer" src="img/fotoIndex3.png">
             </div>
         </div>
     </div>

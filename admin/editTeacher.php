@@ -10,19 +10,19 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../files/scripts.js"></script>
     <script src="../files/validateForms.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
 </head>
 <body>
     <?php
         include("../functions.php");
 
         if(!isset($_SESSION['role']) || $_SESSION['role'] != "A") {
-            printHeader();
+            printHeader("../");
             include("needAdmin.html");
-            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=/Learning-Academy/close.php'>";
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='5;URL=../close.php'>";
         } else {
 
-            printHeader();
+            printHeader("../");
         
             if(isset($_REQUEST['active'])){
                 $active = $_REQUEST['active'] == 0 ? 1 : 0;
@@ -106,23 +106,23 @@
                 </div>
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" maxlenght="15" value=<?php echo "'{$result['name']}'";?>>
+                    <input type="text" name="name" id="name" maxlength="15" value=<?php echo "'{$result['name']}'";?>>
                 </div>
             </div>
             <div class="formRow">
                 <div>
                     <label for="surname">Surname</label>
-                    <input type="text" name="surname" id="surname" maxlenght="25" value=<?php echo "'{$result['surname']}'";?>>
+                    <input type="text" name="surname" id="surname" maxlength="25" value=<?php echo "'{$result['surname']}'";?>>
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" maxlenght="40" value=<?php echo "'{$result['email']}'";?>>
+                    <input type="email" name="email" id="email" maxlength="40" value=<?php echo "'{$result['email']}'";?>>
                 </div>
             </div>
             <div class="formRow">
                 <div>
                     <label for="titulation">Titulation</label>
-                    <input type="text" name="titulation" id="titulation" maxlenght="50" value=<?php echo "'{$result['titulation']}'";?>>
+                    <input type="text" name="titulation" id="titulation" maxlength="50" value=<?php echo "'{$result['titulation']}'";?>>
                 </div>
                 <div>
                     <div style="display:flex; flex-direction:row;">
@@ -138,7 +138,7 @@
                 <div style="display:flex; flex-direction:row;">
                     <label for="showPhoto">Change photo</label>
                     <input type="checkbox" name="showPhoto" id="showPhoto" onchange="checkboxShow('photoPath-input')">
-                    <input type="file" id="photoPath-input" name="photoPath" style="display:none;"></input>
+                    <input type="file" id="photoPath-input" name="photoPath" style="display:none;">
                 </div>
             </div>
             <div class=formActions>
