@@ -54,7 +54,7 @@
                             foreach($result as $row) {
                                 echo "<tr>";
                                 echo "<td>{$row['dniTeacher']}</td>";
-                                echo "<td><img src='../{$row['photoPath']}'></td>";
+                                echo "<td><img alt='teacher photo' src='../{$row['photoPath']}'></td>";
                                 echo "<td>{$row['name']}</td>";
                                 echo "<td>{$row['surname']}</td>";
                                 echo "<td>{$row['titulation']}</td>";
@@ -90,7 +90,7 @@
                         } else {
                             foreach($result as $row) {
                                 echo "<tr>";
-                                echo "<td><img src='../{$row['photoPath']}'></td>";
+                                echo "<td><img alt='course photo' src='../{$row['photoPath']}'></td>";
                                 echo "<td>{$row['courseName']}</td>";
                                 echo "<td>{$row['hours']}</td>";
                                 echo "<td>{$row['startDate']} <br>-<br> {$row['endDate']}</td>";

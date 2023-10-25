@@ -31,13 +31,13 @@
         </div>
         <div class="imgs">
             <div class="img1">
-                <img src="img/fotoIndex1.png">
+                <img alt="image of a laptop" src="img/fotoIndex1.png">
             </div>
             <div class="img2">
-                <img src="img/fotoIndex2.png">
+                <img alt="image of a computer" src="img/fotoIndex2.png">
             </div>
             <div class="img3">
-                <img src="img/fotoIndex3.png">
+                <img alt="image of a computer" src="img/fotoIndex3.png">
             </div>
         </div>
     </div>

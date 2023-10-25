@@ -39,7 +39,7 @@ function printFooter(){
     echo "<div class='footer-container'>";
         echo "<footer class='footer'>";
             echo '  <div class="text">';
-            echo '    <div class="logo"><img src="img/logoOscuro.png"></div>';
+            echo '    <div class="logo"><img alt="the academy logo but dark" src="img/logoOscuro.png"></div>';
             echo '    <div class="info">This is our school.</div>';
             echo '  </div>';
             echo '  <div class="quickLinks">';
@@ -56,14 +56,14 @@ function printFooter(){
             echo '  </div>';
             echo '  <div class="ReachUs">';
             echo '    <div class="reachUs">Reach us</div>';
-            echo '    <div class="icon1"><img src="img/icons/Message.png"></div>';
-            echo '    <div class="icon2"><img src="img/icons/Mobile.png"></div>';
-            echo '    <div class="icon3"><img src="img/icons/Location.png"></div>';
+            echo '    <div class="icon1"><img alt="icon with our mail address to send us an email" src="img/icons/Message.png"></div>';
+            echo '    <div class="icon2"><img alt="icon of a phone with our phone number" src="img/icons/Mobile.png"></div>';
+            echo '    <div class="icon3"><img alt="icon of a map pointer with our asdress" src="img/icons/Location.png"></div>';
             echo '    <div class="mail">learningacademy@gmail.com</div>';
             echo '    <div class="tel">655 43 43 43</div>';
             echo '    <div class="direc">INS La Pineda</div>';
             echo '  </div>';
-            echo '  <div class="icon"><img src="img/logoMedium.png"></div>';
+            echo '  <div class="icon"><img alt="the academy logo but dark" src="img/logoMedium.png"></div>';
         echo "</footer>";
     echo "</div>";
 }
