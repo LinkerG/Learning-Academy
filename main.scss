@@ -106,7 +106,6 @@ header {
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
-
     .headerLogo{
         display: flex;
         align-items: center;
@@ -812,7 +811,7 @@ img.backBtn{
     width: auto;
     background-color: #0B0D17;
     color: white;
-    padding: 30px;
+    padding: 30px 30px 20px 30px;
     .footer {
         display: grid;
         grid-template-columns: 1.3fr 1.1fr 0.8fr 0.9fr 1.2fr;
@@ -852,6 +851,16 @@ img.backBtn{
         grid-auto-flow: row;
         grid-template-areas: "Title" "aboutUs" "contactUs" "courses";
         grid-area: quickLinks;
+            div{
+                a{
+                    text-decoration: none;
+                    color:white;
+                    
+                }
+                a:hover{
+                    color:lightblue;
+                }
+            }
         }
     
         .Title {
@@ -937,12 +946,23 @@ img.backBtn{
         .icon {
         grid-area: icon;     
             img{
-                width: 70%;
+                width: 50%;
                 aspect-ratio: 1/1;
                 object-fit: contain;
-                margin-left:150px;
+                margin-left:220px;
                 filter: brightness(0.2);
             }
         }
+    }
+}
+.aboutUs-container{
+    background-color: $lightBlue;
+    padding: 30px;
+    width: 60vw;
+    border-radius: 10px;
+    margin-left:16rem;
+    margin-top: 1.5rem;
+    p{
+        margin-bottom:30px;
     }
 }

@@ -13,6 +13,10 @@ include "functions.php";
 </head>
 <body>
     <?php
+        printHeader();
+    ?>
+    
+    <?php
         printFooter();
     ?>
 </body>

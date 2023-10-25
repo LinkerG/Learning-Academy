@@ -40,7 +40,7 @@ function printFooter(){
         echo "<footer class='footer'>";
             echo '  <div class="text">';
             echo '    <div class="logo"><img src="img/logoOscuro.png"></div>';
-            echo '    <div class="info">This is our school.</div>';
+            echo '    <div class="info">At learning academy you have a variety of courses to train you in the world of computing and acquire a lot of knowledge.</div>';
             echo '  </div>';
             echo '  <div class="quickLinks">';
             echo '    <div class="Title">Quick links</div>';
