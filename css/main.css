@@ -1,17 +1,23 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
 * {
   margin: 0;
   font-family: "Inter", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
 
 body {
   background-image: url("/Learning-Academy/img/stockBackground.jpg");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   -webkit-backdrop-filter: blur(6px) brightness(0.5);
           backdrop-filter: blur(6px) brightness(0.5);
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 body.roulette {
@@ -752,4 +758,124 @@ img.backBtn {
 
 .error {
   margin-bottom: 5vh;
+}
+
+.footer-container {
+  margin-top: 15vh;
+  width: auto;
+  background-color: #0B0D17;
+  color: white;
+  padding: 30px;
+}
+.footer-container .footer {
+  display: grid;
+  grid-template-columns: 1.3fr 1.1fr 0.8fr 0.9fr 1.2fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "text quickLinks Services ReachUs icon";
+}
+.footer-container .footer .text {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "logo" "info";
+  grid-area: text;
+}
+.footer-container .footer .logo {
+  grid-area: logo;
+}
+.footer-container .footer .logo img {
+  width: 30%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer-container .footer .info {
+  grid-area: info;
+}
+.footer-container .footer .quickLinks {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "Title" "aboutUs" "contactUs" "courses";
+  grid-area: quickLinks;
+}
+.footer-container .footer .Title {
+  grid-area: Title;
+}
+.footer-container .footer .aboutUs {
+  grid-area: aboutUs;
+}
+.footer-container .footer .contactUs {
+  grid-area: contactUs;
+}
+.footer-container .footer .courses {
+  grid-area: courses;
+}
+.footer-container .footer .Services {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "title" "appDev" "webDev" "machineLearn";
+  grid-area: Services;
+}
+.footer-container .footer .title {
+  grid-area: title;
+}
+.footer-container .footer .appDev {
+  grid-area: appDev;
+}
+.footer-container .footer .webDev {
+  grid-area: webDev;
+}
+.footer-container .footer .machineLearn {
+  grid-area: machineLearn;
+}
+.footer-container .footer .ReachUs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "reachUs reachUs" "icon1 mail" "icon2 tel" "icon3 direc";
+  grid-area: ReachUs;
+}
+.footer-container .footer .reachUs {
+  grid-area: reachUs;
+}
+.footer-container .footer .icon1 {
+  grid-area: icon1;
+}
+.footer-container .footer .icon2 {
+  grid-area: icon2;
+}
+.footer-container .footer .icon3 {
+  grid-area: icon3;
+}
+.footer-container .footer .mail {
+  grid-area: mail;
+}
+.footer-container .footer .tel {
+  grid-area: tel;
+}
+.footer-container .footer .direc {
+  grid-area: direc;
+}
+.footer-container .footer .icon {
+  grid-area: icon;
+}
+.footer-container .footer .icon img {
+  width: 70%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-left: 150px;
+  filter: brightness(0.2);
 }/*# sourceMappingURL=main.css.map */

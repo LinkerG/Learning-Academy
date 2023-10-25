@@ -49,7 +49,7 @@
                     $uploadStatus = uploadPhoto(1, $route);
                     if($uploadStatus == 0){
                         $sql = "INSERT INTO teacher (dniTeacher, email, password, name, surname, titulation, photoPath, active) 
-                        VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','$route', '1')";
+                        VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['passwordAdd']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','$route', '1')";
     
                     $action = insertSQL($connection, $sql);
                     if($action == 0) {
@@ -67,7 +67,7 @@
                     }
                 } else {
                     $sql = "INSERT INTO teacher (dniTeacher, email, password, name, surname, titulation, photoPath, active) 
-                        VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','img/profilePhotos/default.png', '1')";
+                        VALUES ('{$_POST['dniTeacher']}','{$_POST['email']}',md5('{$_POST['passwordAdd']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['titulation']}','img/profilePhotos/default.png', '1')";
     
                     $action = insertSQL($connection, $sql);
                     if($action == 0) {
@@ -107,7 +107,7 @@
             <div class="formRow">
                 <div>
                     <label for="password">Password:</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="passwordAdd" id="password">
                 </div>
                 <div>
                     <label for="titulation">Titulation:</label>
@@ -133,7 +133,7 @@
             array('id' => 'surname', 'name' => 'surname', 'type' => 'text', 'label' => 'surname'),
             array('id' => 'email', 'name' => 'email', 'type' => 'email', 'label' => 'email'),
             array('id' => 'titulation', 'name' => 'titulation', 'type' => 'text', 'label' => 'titulation'),
-            array('id' => 'password', 'name' => 'password', 'type' => 'password')
+            array('id' => 'password', 'name' => 'passwordAdd', 'type' => 'password')
         );
         ?>
         <script> var fields = <?php echo json_encode($fields); ?>; </script>

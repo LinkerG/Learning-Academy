@@ -23,10 +23,11 @@ include "../functions.php";
                 insertStudents();
             }else{
                 ?>
-                <?php printHeader("../"); ?>
+                <?php printHeader("../"); 
+                generarFicheroStudents();
+                ?>
                 <div>
                     <input type="file" id="fileInput" accept=".txt" >
-                    <button class="whiteBtn" id="importButton">Import</button>
                     <!--<button id="export" onclick= "<?php //generarFicheroStudents() ?>">Export</button>-->
                 </div>
                 <div id="datos"></div>

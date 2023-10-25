@@ -29,8 +29,9 @@ session_start();
                 if (!empty($_POST)) {   
                     // Verificar si se ha cambiado la contraseña
                     $valid = true;
-                    $passwordChanged = false;
                     $continueExecution = true;
+                    $passwordChanged = false;
+                    $photoChanged = false;
                     if (connectBD("id21353268_learningacademy", $connection)) {
                         $existingEmailQuery = "SELECT email FROM student WHERE email = '{$_POST['email']}' AND dniStudent != '{$result['dniStudent']}' UNION SELECT email FROM teacher WHERE email = '{$_POST['email']}'";
                     
@@ -50,17 +51,15 @@ session_start();
                             $passwordChanged = true;
                         }
                     }
-            
                     // Verificar si se ha cambiado la foto
-                    $photoChanged = false;
+                    
                     if (isset($_POST['showPhoto'])) {
                         if (!empty($_FILES['photoPath']['name'])) {
-                            // Aquí deberías manejar la lógica de subida de la nueva foto
                             $photoChanged = true;
                         }
                     }
                 
-                    if ($continueExecution && $valid) {
+                    if ($valid && $continueExecution) {
                         $sql = "UPDATE student SET email='{$_POST['email']}', name='{$_POST['name']}', surname='{$_POST['surname']}', birthDate='{$_POST['birthDate']}'";
                 
                         if ($passwordChanged) {
@@ -69,7 +68,7 @@ session_start();
                         }
                 
                         if ($photoChanged) {
-                            $uploadStatus = uploadPhoto(0, $route, $_POST['dniStudent']);
+                            $uploadStatus = uploadPhoto(0, $route, false, $_POST['dniStudent']);
                             $sql .= ", photoPath = '$route'";
                         }
                 

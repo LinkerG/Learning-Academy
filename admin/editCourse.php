@@ -99,11 +99,11 @@
             <div class="formRow">
                 <div>
                     <label for="startDate">Start date</label>
-                    <input type="date" name="startDate" id="startDate" min="<?php echo date("Y-m-d") ?> value="<?php echo "{$result['startDate']}";?> ">
+                    <input type="date" name="startDate" id="startDate" min="<?php echo date("Y-m-d") ?>" value="<?php echo "{$result['startDate']}";?>">
                 </div>
                 <div>
                     <label for="endDate">End date</label>
-                    <input type="date" name="endDate" id="endDate" min="<?php echo date("Y-m-d") ?> value="<?php echo "{$result['endDate']}";?>">
+                    <input type="date" name="endDate" id="endDate" min="<?php echo date("Y-m-d") ?>" value="<?php echo "{$result['endDate']}";?>">
                 </div>
             </div>
             <div class="formRow">

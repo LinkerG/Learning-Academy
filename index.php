@@ -41,5 +41,8 @@
             </div>
         </div>
     </div>
+    <?php
+        printFooter();
+    ?>
 </body>
 </html>

@@ -35,7 +35,38 @@ function printHeader($dir = "") {
     }
     echo "</header>";
 }
-
+function printFooter(){
+    echo "<div class='footer-container'>";
+        echo "<footer class='footer'>";
+            echo '  <div class="text">';
+            echo '    <div class="logo"><img src="img/logoOscuro.png"></div>';
+            echo '    <div class="info">This is our school.</div>';
+            echo '  </div>';
+            echo '  <div class="quickLinks">';
+            echo '    <div class="Title">Quick links</div>';
+            echo '    <div class="aboutUs"><a href="aboutUs.php">About us</a></div>';
+            echo '    <div class="contactUs"><a href="contactUs.php">Contact us</a></div>';
+            echo '    <div class="courses"><a href="courses.php">Courses</a></div>';
+            echo '  </div>';
+            echo '  <div class="Services">';
+            echo '    <div class="title">Services</div>';
+            echo '    <div class="appDev">App development</div>';
+            echo '    <div class="webDev">Web development</div>';
+            echo '    <div class="machineLearn">Machine learning</div>';
+            echo '  </div>';
+            echo '  <div class="ReachUs">';
+            echo '    <div class="reachUs">Reach us</div>';
+            echo '    <div class="icon1"><img src="img/icons/Message.png"></div>';
+            echo '    <div class="icon2"><img src="img/icons/Mobile.png"></div>';
+            echo '    <div class="icon3"><img src="img/icons/Location.png"></div>';
+            echo '    <div class="mail">learningacademy@gmail.com</div>';
+            echo '    <div class="tel">655 43 43 43</div>';
+            echo '    <div class="direc">INS La Pineda</div>';
+            echo '  </div>';
+            echo '  <div class="icon"><img src="img/logoMedium.png"></div>';
+        echo "</footer>";
+    echo "</div>";
+}
 function connectBD($bd, &$connection) {
     $connectionOk = false;
 
@@ -358,8 +389,7 @@ function uploadPdf($courseId,$connection,$numTask) {
     }
 }
 function generarFicheroStudents(){
-    $sql = "SELECT s.*, GROUP_CONCAT(m.courseId) AS enrolledCourses FROM student s LEFT JOIN matriculates m ON s.dniStudent = m.dniStudent GROUP BY s.dniStudent, s.email, s.password, s.name, s.surname, s.birthDate, s.photoPath, s.prize;";
-    $campos = ['dniStudent', 'email', 'password', 'name', 'surname', 'birthDate', 'photoPath', 'prize', 'courses'];
+    $sql = "SELECT s.*, IFNULL(GROUP_CONCAT(m.courseId), 0) AS enrolledCourses FROM student s LEFT JOIN matriculates m ON s.dniStudent = m.dniStudent GROUP BY s.dniStudent, s.email, s.password, s.name, s.surname, s.birthDate, s.photoPath, s.prize;";
     
     if (connectBD("id21353268_learningacademy", $connection)) {
         if (selectSQL($connection, $sql, $result)) {
@@ -368,26 +398,16 @@ function generarFicheroStudents(){
             } else {
                 $fileName = "students.txt";
                 $newFileData = '';
-                foreach ($result as $student => $data) {   
+                foreach ($result as $data) {   
                     // Construir un array de cursos
-                    $courses = explode(",", $data['enrolledCourses']);
-                    $coursesArray = [];
-    
-                    foreach ($courses as $course) {
-                        $coursesArray[] = intval($course);
-                    }
-    
-                    $data['courses'] = $coursesArray;
-                    // Construir la línea clave:valor
-                    $KeyValue = "";
-                    foreach ($campos as $campo) {
-                        $KeyValue .= "$campo:" . (is_array($data[$campo]) ? '(' . implode(';', $data[$campo]) . ')' : $data[$campo]) . ",";
-                    }
-                    $KeyValue = rtrim($KeyValue, ',');
-                    $newFileData .= $KeyValue . PHP_EOL;
+                    $courses = '(' . str_replace(",", ";", $data['enrolledCourses']) . ')';
+
+                    // Construir la línea con los valores separados por comas
+                    $line = $data['dniStudent'] . "," . $data['email'] . "," . $data['password'] . "," . $data['name'] . "," . $data['surname'] . "," . $data['birthDate'] . "," . $data['photoPath'] . "," . $data['prize'] . "," . $courses;
+                    $newFileData .= $line . PHP_EOL;
                 }
                 $newFileData = rtrim($newFileData, PHP_EOL);
-    
+
                 $file = fopen($fileName, 'w');
                 fwrite($file, $newFileData);
                 fclose($file);
@@ -395,6 +415,7 @@ function generarFicheroStudents(){
         }
     }
 }
+
 
 function insertStudents(){
     $json = json_decode($_POST['students'], true);
@@ -483,4 +504,5 @@ function insertStudents(){
         echo "</div>";
     }
 }
+
 ?>

@@ -1,4 +1,4 @@
-dniStudent:12345678Z,email:olga@gmail.com,password:0cc175b9c0f1b6a831c399e269772661,name:Alex,surname:dada,birthDate:2002-11-11,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:no prize,courses:(0)
-dniStudent:35081090H,email:aaa@gmail.com,password:0cc175b9c0f1b6a831c399e269772661,name:a,surname:a,birthDate:2002-11-11,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:no prize,courses:(0)
-dniStudent:48215363A,email:a@gmail.com,password:0cc175b9c0f1b6a831c399e269772661,name:Iker,surname:Gonzalez,birthDate:2002-11-11,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:nothing,courses:(1)
-dniStudent:48222532L,email:alex@gmail.com,password:0cc175b9c0f1b6a831c399e269772661,name:Alex,surname:Cedeño,birthDate:2002-11-11,photoPath:/Learning-Academy/img/profilePhotos/default.png,prize:nothing,courses:(1;4)
+12345678Z,olga@gmail.com,0cc175b9c0f1b6a831c399e269772661,Alex,dada,2002-11-11,/Learning-Academy/img/profilePhotos/default.png,no prize,(0)
+35081090H,aaa@gmail.com,0cc175b9c0f1b6a831c399e269772661,a,a,2002-11-11,/Learning-Academy/img/profilePhotos/default.png,no prize,(1;2)
+48215363A,a@gmail.com,0cc175b9c0f1b6a831c399e269772661,Iker,Gonzalez,2002-11-11,/Learning-Academy/img/profilePhotos/default.png,nothing,(1)
+48222532L,alex@gmail.com,0cc175b9c0f1b6a831c399e269772661,Alex,Cedeño,2002-11-11,/Learning-Academy/img/profilePhotos/default.png,nothing,(1)

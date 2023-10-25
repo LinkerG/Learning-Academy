@@ -46,7 +46,7 @@
                         $uploadStatus = uploadPhoto(0,$route, true);
                         if($uploadStatus == 0) {
                             $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath, prize) 
-                            VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','$route', 'no prize')";
+                            VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['passwordAdd']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','$route', 'no prize')";
         
                             $action = insertSQL($connection, $sql);
                             if($action == 0) {
@@ -62,7 +62,7 @@
                         }
                     } else {
                         $sql = "INSERT INTO student (dniStudent, email, password, name, surname, birthDate, photoPath, prize) 
-                        VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['password']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','img/profilePhotos/default.png', 'no prize')";
+                        VALUES ('{$_POST['dniStudent']}','{$_POST['email']}',md5('{$_POST['passwordAdd']}'), '{$_POST['name']}','{$_POST['surname']}','{$_POST['birthDate']}','img/profilePhotos/default.png', 'no prize')";
                         $action = insertSQL($connection, $sql);
                         if($action == 0) {
                             echo "<script>alert('You signed in correctly, now log in')</script>";
@@ -84,7 +84,7 @@
                     </div>
                     <div>
                         <label for="password">Password</label>    
-                        <input type="password" maxlength="40" name="password" id="password">
+                        <input type="password" maxlength="40" name="passwordAdd" id="password">
                     </div>
                 </div>
                 <div class="formRow">
@@ -126,7 +126,7 @@
                 array('id' => 'surname', 'name' => 'surname', 'type' => 'text', 'label' => 'surname'),
                 array('id' => 'email', 'name' => 'email', 'type' => 'email', 'label' => 'email'),
                 array('id' => 'birthDate', 'name' => 'birthDate', 'type' => 'date', 'label' => 'birthDate'),
-                array('id' => 'password', 'name' => 'password', 'type' => 'password')
+                array('id' => 'password', 'name' => 'passwordAdd', 'type' => 'password')
             );
             ?>
             <script> var fields = <?php echo json_encode($fields); ?>; </script>

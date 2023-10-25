@@ -60,8 +60,7 @@
                                 echo "<td>{$row['titulation']}</td>";
                                 echo "<td>{$row['email']}</td>";
                                 echo "<td><a href='editTeacher.php?dniTeacher={$row['dniTeacher']}'>Edit</a></td>";
-                                echo "<td><a href='editTeacher.php?active={$row['active']}&dniTeacher={$row['dniTeacher']}'>{$row['active']}</a></td>";
-                                echo "</tr>";
+                                echo "<td><button onclick=\"location.href='editTeacher.php?active={$row['active']}&dniTeacher={$row['dniTeacher']}'\" >{$row['active']}</button></td>";                                echo "</tr>";
                             }
                         }
                     }
