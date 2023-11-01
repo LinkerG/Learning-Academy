@@ -10,7 +10,7 @@
 }
 
 body {
-  background-image: url("/Learning-Academy/img/stockBackground.jpg");
+  background-image: url("../img/stockBackground.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -166,8 +166,8 @@ table th, table td {
 
 .courseContainer {
   margin: 2rem;
-  margin-left: 18rem;
-  margin-right: 18rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
