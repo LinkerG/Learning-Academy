@@ -10,7 +10,7 @@ function validateForm(fields) {
         var fieldType = fields[i].type;
         var fieldLabel = fields[i].label;
 
-        if (field !== document.getElementById(fields[i].id).value) {
+        if (field !== document.getElementById(fields[i].id).value && field.name !== "description") {
             errorMessage += 'Fields should not contain spaces\n';
         }
 

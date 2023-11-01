@@ -45,7 +45,7 @@
 
             // Insert
             if(connectBD("id21353268_learningacademy",$connection) && $continue){
-                if(isset($_POST['photoPath'])){
+                if(isset($_FILES['photoPath'])){
                     $uploadStatus = uploadPhoto(1, $route);
                     if($uploadStatus == 0){
                         $sql = "INSERT INTO teacher (dniTeacher, email, password, name, surname, titulation, photoPath, active) 

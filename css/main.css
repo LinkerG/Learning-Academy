@@ -26,12 +26,6 @@ body.roulette {
           backdrop-filter: none;
 }
 
-input[type=file] {
-  color: transparent; /* Hace que el texto sea transparente */
-  overflow: hidden; /* Oculta cualquier desbordamiento */
-  align-self: baseline;
-}
-
 .formDiv {
   display: grid;
   place-items: center;
@@ -957,19 +951,20 @@ img.backBtn {
   backface-visibility: hidden;
   border-radius: 1rem;
 }
-.flip-card-front img, .flip-card-back img {
-  aspect-ratio: 1/1;
-  -o-object-fit: contain;
-     object-fit: contain;
-  width: 80%;
-  height: 80%;
-}
 
 .flip-card-front {
   background-color: #ebebeb;
   color: black;
   display: grid;
   place-items: center;
+}
+.flip-card-front img {
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 80%;
+  height: 80%;
+  mix-blend-mode: multiply;
 }
 
 .flip-card-back {

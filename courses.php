@@ -79,11 +79,7 @@
                                     echo "          <button class='whiteBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
                                     echo "      </div";
                                     echo "  </div>";
-                                    echo "  <div class='hiddenContent'>";
-                                    echo "      <p class='pCourseName'>{$course['name']}</p>";
-                                    echo "      <p class='pDateLabel'>Start - End</p>";
-                                    echo "      <p class='pDate'>{$course['startDate']} / {$course['endDate']}</p>";
-                                    echo "  </div>";
+                                    echo "</div>";
                                     echo "</div>";
                                 }
                             }

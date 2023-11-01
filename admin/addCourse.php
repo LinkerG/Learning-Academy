@@ -36,17 +36,17 @@
                 }
 
                 // Insert
-                if(isset($_POST['photoPath'])){
+                if(isset($_FILES['photoPath'])){
                     if(connectBD("id21353268_learningacademy",$connection) && $continue){
-                        $uploadStatus = uploadPhoto(2, $route);
+                        $uploadPhoto = uploadPhoto(2, $route, false, getNextCourseId($connection));
                         if($uploadStatus == 0){
                             $sql = "INSERT INTO course (name, hours, startDate, endDate, description, dniTeacher, active, photoPath) 
-                            VALUES ('{$_POST['name']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','$route')";
+                            VALUES ('{$_POST['nameAddCourse']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','$route')";
     
                             $action = insertSQL($connection, $sql);
                             if($action == 0) {
                                 echo "<script>alert('Course added correctly')</script>";
-                                header('Location: index.php?manage=courses');
+                                echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
                             }
                         } elseif ($uploadStatus == 1) {
                             echo "<script>alert('Error uploading photo')</script>";
@@ -55,6 +55,7 @@
                         }
                     }
                 } else {
+                    print_r($_POST);
                     if(connectBD("id21353268_learningacademy",$connection) && $continue){
                         $sql = "INSERT INTO course (name, hours, startDate, endDate, description, dniTeacher, active, photoPath) 
                         VALUES ('{$_POST['nameAddCourse']}','{$_POST['hours']}','{$_POST['startDate']}', '{$_POST['endDate']}','{$_POST['description']}','{$_POST['dniTeacher']}', '1','img/coursePhotos/default.png')";
@@ -62,7 +63,7 @@
                         $action = insertSQL($connection, $sql);
                         if($action == 0) {
                             echo "<script>alert('Course added correctly')</script>";
-                            header('Location: index.php?manage=courses');
+                            echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?manage=courses'>";
                         }
                     }
                 }
@@ -93,7 +94,7 @@
             <div class="formRow">
                 <div>   
                     <label for="description">Description</label>
-                    <input type="text" maxlength="200" name="description" id="description">
+                    <input type="text" maxlength="60" name="description" id="description">
                 </div>
                 <div>
                     <label for="dniTeacher">Teacher DNI:</label>

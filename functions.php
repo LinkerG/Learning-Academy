@@ -331,6 +331,13 @@ function unavailableCourses() {
     }
 }
 
+function getNextCourseId($connection) {
+    $sql = "SELECT MAX(courseId) FROM course;";
+    if(selectSQL($connection, $sql, $max)){
+        return $max[0]['MAX(courseId)']+1;
+    }
+}
+
 function coursesJoined($dniStudent) {
     $sql = "SELECT courseId FROM matriculates WHERE dniStudent = '" . $dniStudent ."';";
 
