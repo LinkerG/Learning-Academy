@@ -67,35 +67,27 @@
                             foreach ($result as $course) {
                                 $isAvailable = in_array($course['courseId'], $unaviableCourses) ? false : true;
                                 if($isAvailable){
-                                    echo "<div class='course'>";
         
-                                    echo "<figure class='hidden' onclick='openPopup(this)'>";
-                                    echo "<img src='{$course['photoPath']}'>";
-                                    echo "<figcaption>Click here to see more info!</figcaption>";
-                                    echo "<div class='hiddenContent'>";
-                                    echo "<p class='pCourseName'>{$course['name']}</p>";
-                                    echo "<p class='pDateLabel'>Start - End</p>";
-                                    echo "<p class='pDate'>{$course['startDate']} / {$course['endDate']}</p>";
-        
-                                    echo "<button class='courseButton pButton blueBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
-        
-                                    echo "<p class='pMain'>{$course['description']}</p>";
-                                    echo "</div>";
-                                    
-                                    
-                                    
-                                    echo "</figure>";
-        
-                                    echo "<p>{$course['name']}</p>";
-                                    echo "<button class='courseButton whiteBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
-        
+                                    echo "<div class='flip-card'>";
+                                    echo "  <div class='flip-card-inner'>";
+                                    echo "      <div class='flip-card-front'>";
+                                    echo "          <img src='{$course['photoPath']}'>";
+                                    echo "      </div>";
+                                    echo "      <div class='flip-card-back'>";
+                                    echo "          <h1>{$course['name']}</h1>";
+                                    echo "          <p>{$course['description']}</p>";
+                                    echo "          <button class='whiteBtn' onclick='joinFunction($canJoin, {$course['courseId']}, `$dni`)'>Join !</button>";
+                                    echo "      </div";
+                                    echo "  </div>";
+                                    echo "  <div class='hiddenContent'>";
+                                    echo "      <p class='pCourseName'>{$course['name']}</p>";
+                                    echo "      <p class='pDateLabel'>Start - End</p>";
+                                    echo "      <p class='pDate'>{$course['startDate']} / {$course['endDate']}</p>";
+                                    echo "  </div>";
                                     echo "</div>";
                                 }
                             }
                         }
-                        echo "<div class='popup'>";
-                            echo "<div class='popup-content'></div>";   
-                            echo "</div>";
                     }
                 }
             }
