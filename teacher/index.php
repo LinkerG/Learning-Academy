@@ -67,7 +67,7 @@
                             echo "There are no students matriculated in this course";
                         } else {
                             echo "<table>";
-                            echo "<input type='hidden' value='{$course['courseId']}'>";
+                            echo "<tr class='courseIdRow'><td class='courseIdCol' colspan='7'><p class='courseIdValue'>{$course['courseId']}</p></td></tr>";
                             echo "<tr>";
                             echo "<th>DNI</th>";
                             echo "<th>Name</th>";
@@ -102,7 +102,7 @@
                                 if(empty($errMsg)){
                                     if($student['score'] == null) {
                                         echo "<td>";
-                                        echo "<select list='marks' name='score' class='selectedScore'>";
+                                        echo "<select name='score' class='selectedScore'>";
                                         echo "<option value='null'>Nothing</option>
                                         <option value='1'>1</option>
                                         <option value='2'>2</option>
@@ -118,10 +118,10 @@
                                         echo "</td>";
                                     } else {
                                         echo "<td>";
-                                        echo "<select list='marks' name='score' class='selectedScore'>";
+                                        echo "<select name='score' class='selectedScore'>";
                                         for ($i=1; $i <11 ; $i++) { 
                                             if($student['score'] == $i) {
-                                                echo "<option value='$i' selected='true'>$i</option>";
+                                                echo "<option value='$i' selected>$i</option>";
                                             } else {
                                                 echo "<option value='$i'>$i</option>";
                                             }

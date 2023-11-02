@@ -1059,9 +1059,11 @@ img.backBtn{
     background-color: $darkBlue;
     color: white;
     transform: rotateY(180deg);
-
     p{
         text-wrap: wrap;
         width: 80%;
     }
+}
+.courseIdRow{
+    display: none;
 }

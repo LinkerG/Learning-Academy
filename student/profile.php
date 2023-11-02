@@ -92,21 +92,21 @@ session_start();
                             <div class="formRow">
                                 <div>
                                     <label for="name">Name: </label>
-                                    <input type="text" class="form-element" id="name" name="name" required value="<?php echo $result['name'] ?>"></input>
+                                    <input type="text" class="form-element" id="name" name="name" required value="<?php echo $result['name'] ?>">
                                 </div>
                                 <div>
                                     <label for="dni">DNI: </label>
-                                    <input type="text" readonly  class="form-element" id="dni" name="dniStudent" value="<?php echo $result['dniStudent'] ?>"></input>
+                                    <input type="text" readonly  class="form-element" id="dni" name="dniStudent" value="<?php echo $result['dniStudent'] ?>">
                                 </div>
                             </div>
                             <div class="formRow">
                                 <div>
                                     <label for="surname">Surname: </label>
-                                    <input type="text" class="form-element" id="surname" name="surname" required value="<?php echo $result['surname']?>"></input>
+                                    <input type="text" class="form-element" id="surname" name="surname" required value="<?php echo $result['surname']?>">
                                 </div>
                                 <div>
                                     <label for="email">Email: </label>
-                                    <input type="text" class="form-element" id="email" name="email" required value="<?php echo $result['email']?>"></input>
+                                    <input type="text" class="form-element" id="email" name="email" required value="<?php echo $result['email']?>">
                                 </div>
                             </div>
                             <div class="formRow">
@@ -119,16 +119,16 @@ session_start();
                                     <div style="display:flex; flex-direction:row;">
                                         <label for="showPhoto">Change photo</label>
                                         <input type="checkbox" name="showPhoto" id="showPhoto" onchange="checkboxShow('photoPath')">
-                                        <input type="file" id="photoPath" name="photoPath" style="display:none;"></input>
+                                        <input type="file" id="photoPath" name="photoPath" style="display:none;">
                                     </div>
                                 </div>
                                 <div>                                        
                                     <label for="birthDate">Birth date: </label>
-                                    <input type="date" required class="form-element" id="birthDate" name="birthDate" value="<?php echo $result['birthDate']?>"></input>
+                                    <input type="date" required class="form-element" id="birthDate" name="birthDate" value="<?php echo $result['birthDate']?>">
                                 </div>
                             </div>
                             <div class="formActions">
-                                <input class="whiteBtn" type="submit" value="Update"></input>
+                                <input class="whiteBtn" type="submit" value="Update">
                                 <a class='whiteBtn' href="index.php">Cancel</a>
                             </div>
                         </form>

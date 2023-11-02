@@ -1,0 +1,985 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+* {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+body {
+  background-image: url("../img/stockBackground.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-backdrop-filter: blur(6px) brightness(0.5);
+          backdrop-filter: blur(6px) brightness(0.5);
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+body.roulette {
+  background-image: url("../img/rouletteBackground.jpg");
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+}
+
+.formDiv {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 80vh;
+}
+.formDiv form {
+  padding: 40px;
+  background-color: #A0DCFF;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  max-width: 40vw;
+}
+.formDiv form h3 {
+  color: white;
+}
+.formDiv form .form-button {
+  font-size: 16px;
+  color: #248EFF;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 1rem;
+  margin-top: 20px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.formDiv form .formRow {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+.formDiv form .formRow div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+.formDiv form .formRow .singleRow {
+  grid-column: 1/3;
+}
+.formDiv form .formRow .formDivided {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+.formDiv form .formRow .formDivided div {
+  display: grid;
+  grid-template-rows: auto;
+}
+.formDiv form .formRow .formDivided div input[type=file] {
+  grid-row: 2/3;
+}
+.formDiv form label {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+header {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #248EFF;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+header .headerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: transform 300ms;
+}
+header .headerLogo:hover {
+  transform: scale(0.9);
+}
+header .menu1 {
+  grid-column: 2/3;
+  color: white;
+}
+header a {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+header .course {
+  grid-column: 3/4;
+}
+header #login {
+  grid-column: 6/7;
+}
+header #logout, header #signup {
+  grid-column: 7/8;
+}
+
+th,
+td {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+}
+table tbody {
+  width: 100%;
+}
+table th, table td {
+  min-width: 12.5%;
+  width: 12.5%;
+}
+
+.top {
+  margin: 3rem;
+  margin-left: 10rem;
+}
+.top h1 {
+  text-transform: uppercase;
+  font-size: 46px;
+  color: white;
+}
+.top h2 {
+  margin: 1rem;
+  color: white;
+}
+.top p {
+  color: white;
+}
+.top div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtitle {
+  margin-bottom: 4rem;
+}
+
+.courseContainer {
+  margin: 2rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  place-items: center;
+  grid-row-gap: 3rem;
+  grid-column-gap: 1rem;
+  height: 65vh;
+  overflow-y: auto;
+}
+.courseContainer .course {
+  z-index: 0;
+  background-color: #ececec;
+  display: grid;
+  justify-items: center;
+  border-radius: 8%;
+}
+.courseContainer .course .hidden {
+  display: grid;
+  grid-template-rows: 1fr 0;
+  transition: grid-template-rows 1000ms;
+  overflow: hidden;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+.courseContainer .course .hidden img {
+  width: 80%;
+  height: 100%;
+  transition: width 1000ms;
+  -o-object-fit: cover;
+     object-fit: cover;
+  justify-self: center;
+  border-radius: 7%;
+}
+.courseContainer .course .hidden figcaption {
+  display: flex;
+  align-items: center;
+  color: black;
+  padding: 5px;
+  margin-top: 2px;
+  justify-content: center;
+}
+.courseContainer .course .hidden figcaption span {
+  margin-left: 1rem;
+  font-size: 20px;
+  text-align: center;
+}
+.courseContainer .course:hover {
+  z-index: 1;
+}
+.courseContainer .course:hover .hidden {
+  grid-template-rows: 1fr 2rem;
+}
+.courseContainer .course:hover .hidden img {
+  width: 100%;
+}
+.courseContainer .courseButton {
+  margin-bottom: 1rem;
+}
+
+.hiddenContent {
+  display: none;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  overflow: auto;
+}
+.popup .popup-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 50vw;
+  min-height: 50vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  z-index: 3;
+}
+.popup .popup-content .pCourseName {
+  grid-column: 1/4;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 32px;
+  font-weight: bold;
+}
+.popup .popup-content .pDateLabel {
+  grid-row: 2/3;
+}
+.popup .popup-content .pDate {
+  grid-row: 3/4;
+}
+.popup .popup-content .pMain {
+  grid-column: 2/4;
+  grid-row: 2/5;
+  margin: 1rem;
+  font-size: 24px;
+}
+.popup .popup-content .tabs-container {
+  grid-column: 2/4;
+  grid-row: 2/5;
+}
+
+.tabs-container {
+  width: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.tabs-container .tab {
+  display: inline-block;
+  width: 20%;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border-right: 1px solid #ccc;
+}
+.tabs-container .tab:hover {
+  background-color: #e0e0e0;
+}
+.tabs-container .tab.selected {
+  background-color: #e0e0e0;
+}
+.tabs-container .tab-content {
+  padding: 20px;
+  background-color: #FFFFFF;
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.tabs-container .tab-content.selected {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.tabs-container .tabsPopup {
+  grid-column: 2/4;
+  grid-row: 2/5;
+  display: flex;
+  flex-direction: column;
+}
+.tabs-container .tabsLine {
+  display: flex;
+  flex-direction: row;
+}
+.tabs-container .tabWindow {
+  display: flex;
+}
+
+.container {
+  margin: 3rem;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+.container table tr td .switch-button {
+  display: inline-block;
+}
+.container table tr td .switch-button .toggle-checkbox {
+  display: none;
+}
+.container table tr td .switch-button .switch-button__label {
+  background-color: #fe5e41;
+  width: 5rem;
+  height: 3rem;
+  border-radius: 3rem;
+  display: inline-block;
+  position: relative;
+}
+.container table tr td .switch-button .switch-button__label:before {
+  transition: 0.2s;
+  display: block;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  background-color: #fdffff;
+  content: "";
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 0px 1px #000;
+}
+.container table tr td .switch-button .toggle-checkbox:checked + .switch-button__label {
+  background-color: #00a878;
+}
+.container table tr td .switch-button .toggle-checkbox:checked + .switch-button__label:before {
+  transform: translateX(2rem);
+}
+.container h1 {
+  text-align: center;
+  grid-column: 1/4;
+  color: white;
+}
+.container .tabbedWindow {
+  display: flex;
+  justify-content: space-around;
+  grid-column: 1/4;
+  display: grid;
+  max-height: 80vh;
+  overflow: auto;
+}
+.container .tabbedWindow .divWindow {
+  overflow: hidden;
+  text-align: center;
+  background-color: #248EFF;
+  color: white;
+  font-size: 18px;
+  border: 1px solid black;
+  width: 65vw;
+  height: auto;
+  margin: 1rem;
+  padding: 1rem;
+  transition: background-color 300ms;
+}
+.container .tabbedWindow .divWindow.teacherWindow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+}
+.container .tabbedWindow .divWindow .tab-container {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+.container .tabbedWindow .divWindow .tab-container .tabsLine {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+.container .tabbedWindow .divWindow .tab-container .tabsLine .tab {
+  display: inline-block;
+  width: 20%;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border-right: 1px solid #ccc;
+  color: black;
+}
+.container .tabbedWindow .divWindow .tab-container .tabsLine .tab:hover {
+  background-color: #e0e0e0;
+}
+.container .tabbedWindow .divWindow .tab-container .tabsLine .tab.selected {
+  background-color: #e0e0e0;
+}
+.container .tabbedWindow .divWindow .tab-container .tabWindow {
+  height: 100%;
+  width: 100%;
+}
+.container .tabbedWindow .divWindow .tab-container .tabWindow .tab-content {
+  position: absolute;
+  color: black;
+  display: none;
+  z-index: 0;
+}
+.container .tabbedWindow .divWindow .tab-container .tabWindow .selected {
+  position: relative;
+  display: block;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+.container .tabbedWindow .divWindow .tab-container .tabWindow table {
+  width: 100%;
+}
+.container .tabbedWindow .divWindow .tab-container .tabWindow table tbody {
+  width: 100%;
+}
+.container .tabbedWindow .divWindow .tab-container .tabWindow table tbody tr {
+  width: 100%;
+}
+.container .tabbedWindow .divWindow .tab-container .tabWindow table tbody tr td img {
+  width: 50%;
+  height: 50%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.container .tabbedWindow .divWindow .loader {
+  width: 100%;
+  height: 100%;
+  background-color: #248EFF;
+  margin: 0px;
+  transition: height 1000ms;
+  z-index: 2;
+}
+.container .tabbedWindow .courseHidden {
+  display: none;
+}
+.container .tabbedWindow .hoverable:hover {
+  background-color: #4c9ff8;
+}
+.container .teacherContainer {
+  grid-column: 1/4;
+  display: grid;
+  max-height: 80vh;
+  overflow: auto;
+}
+.container .teacherContainer div {
+  display: flex;
+  justify-content: space-around;
+  background-color: #248EFF;
+  color: white;
+  font-size: 18px;
+  border: 1px solid black;
+  width: 60vw;
+  margin: 1rem;
+  padding: 1rem;
+  transition: background-color 300ms;
+}
+.container .teacherContainer div:hover {
+  background-color: #4c9ff8;
+}
+
+.toolBar {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+.toolBar form {
+  display: flex;
+  grid-column: 1/2;
+}
+.toolBar a {
+  grid-column: 3/4;
+}
+.toolBar .tbImage {
+  aspect-ratio: 1/1;
+  width: 3%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.rouletteContainer {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  min-width: 500px;
+  min-height: 500px;
+  font-weight: bold;
+}
+.rouletteContainer .rouletteText {
+  max-width: 45vw;
+  text-align: center;
+  border: 1px solid white;
+  padding: 2rem;
+  background-color: #A0DCFF;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 14px rgba(160, 220, 255, 0.7725490196);
+  animation: scaleAndGlow 2s linear infinite;
+}
+@keyframes scaleAndGlow {
+  0%, 100% {
+    transform: scale(1); /* Escala normal */
+    box-shadow: 0px 0px 20px 14px rgba(160, 220, 255, 0.7725490196); /* Sombra normal */
+  }
+  50% {
+    transform: scale(1.1); /* Aumenta el tamaño */
+    box-shadow: 0px 0px 40px 20px rgba(160, 220, 255, 0.7725490196); /* Aumenta la dispersión */
+  }
+}
+.rouletteContainer .roulette {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.rouletteContainer .roulette .arrow {
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: rotate(180deg);
+  position: absolute;
+  margin-bottom: 14rem;
+  border: 1px solid #353535;
+  z-index: 4;
+}
+.rouletteContainer .roulette img {
+  margin: 2rem;
+  height: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  aspect-ratio: 1/1;
+}
+.rouletteContainer .roulette button {
+  width: 20vw;
+  text-align: center;
+  border: 1px solid white;
+  padding: 2rem;
+  background-color: #A0DCFF;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 14px rgba(160, 220, 255, 0.7725490196);
+  animation: scaleAndGlow 2s linear infinite;
+  padding: 1rem;
+  transition: scale 1s;
+}
+.rouletteContainer .roulette button:active {
+  animation: none;
+}
+
+.whiteBtn {
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  color: #248EFF;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  padding: 1rem;
+  align-self: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 300ms;
+}
+.whiteBtn:hover {
+  transform: scale(0.9);
+}
+
+.blueBtn {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  background-color: #248EFF;
+  border-radius: 10px;
+  border: none;
+  padding: 1rem;
+  align-self: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  cursor: pointer;
+  transition: transform 300ms;
+}
+.blueBtn:hover {
+  transform: scale(0.9);
+}
+
+.tabBackBtn {
+  display: flex;
+  background-color: #f0f0f0;
+}
+.tabBackBtn a {
+  display: flex;
+  color: black;
+  text-decoration: none;
+  align-items: center;
+  margin-left: 1rem;
+}
+.tabBackBtn a:link {
+  color: black;
+  text-decoration: none;
+}
+.tabBackBtn a:active {
+  color: black;
+  text-decoration: none;
+}
+.tabBackBtn a:hover {
+  color: black;
+  text-decoration: none;
+}
+.tabBackBtn a img {
+  width: 5%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 1rem;
+}
+.tabBackBtn:hover {
+  background-color: #e0e0e0;
+}
+.tabBackBtn.selected {
+  background-color: #e0e0e0;
+}
+
+img.backBtn {
+  width: 30%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.indexContainer {
+  border-radius: 0 10px 10px 0;
+  background-color: #A0DCFF;
+  margin-top: 10vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  justify-content: stretch;
+  align-content: stretch;
+  justify-items: stretch;
+  align-items: center;
+  grid-template-areas: "title imgs" "description imgs" "buttons imgs";
+  width: 1000px;
+  height: 400px;
+}
+.indexContainer .title {
+  margin-left: 2vw;
+  grid-area: title;
+}
+.indexContainer .description {
+  margin-left: 2vw;
+  grid-area: description;
+}
+.indexContainer .buttons {
+  margin-left: 2vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.4fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 30px;
+  grid-auto-flow: row;
+  grid-template-areas: ". .";
+  grid-area: buttons;
+}
+.indexContainer .imgs {
+  margin-left: 3vw;
+  display: grid;
+  grid-template-columns: 0.1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  justify-content: stretch;
+  align-content: stretch;
+  grid-template-areas: "img1 img1 img3" "img2 img2 img3";
+  grid-area: imgs;
+}
+.indexContainer .imgs .img1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  justify-content: stretch;
+  align-content: center;
+  justify-items: stretch;
+  align-items: start;
+  grid-template-areas: ".";
+  grid-area: img1;
+}
+.indexContainer .imgs .img2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  align-content: center;
+  grid-template-areas: ".";
+  grid-area: img2;
+}
+.indexContainer .imgs .img3 {
+  grid-area: img3;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes stop {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(45deg);
+  }
+}
+.provisionalFoto {
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 10rem;
+}
+
+#tableContainer {
+  overflow-y: auto;
+  max-height: 60vh;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+#tableContainer table {
+  background-color: #A0DCFF;
+}
+#tableContainer table tr td {
+  text-align: center;
+}
+
+.error {
+  margin-bottom: 5vh;
+}
+
+.footer-container {
+  margin-top: 15vh;
+  width: auto;
+  background-color: #0B0D17;
+  color: white;
+  padding: 30px 30px 20px 30px;
+}
+.footer-container .footer {
+  display: grid;
+  grid-template-columns: 1.3fr 1.1fr 0.8fr 0.9fr 1.2fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "text quickLinks Services ReachUs icon";
+}
+.footer-container .footer .text {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "logo" "info";
+  grid-area: text;
+}
+.footer-container .footer .logo {
+  grid-area: logo;
+}
+.footer-container .footer .logo img {
+  width: 30%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer-container .footer .info {
+  grid-area: info;
+}
+.footer-container .footer .quickLinks {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "Title" "aboutUs" "contactUs" "courses";
+  grid-area: quickLinks;
+}
+.footer-container .footer .quickLinks div a {
+  text-decoration: none;
+  color: white;
+}
+.footer-container .footer .quickLinks div a:hover {
+  color: lightblue;
+}
+.footer-container .footer .Title {
+  grid-area: Title;
+}
+.footer-container .footer .aboutUs {
+  grid-area: aboutUs;
+}
+.footer-container .footer .contactUs {
+  grid-area: contactUs;
+}
+.footer-container .footer .courses {
+  grid-area: courses;
+}
+.footer-container .footer .Services {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "title" "appDev" "webDev" "machineLearn";
+  grid-area: Services;
+}
+.footer-container .footer .title {
+  grid-area: title;
+}
+.footer-container .footer .appDev {
+  grid-area: appDev;
+}
+.footer-container .footer .webDev {
+  grid-area: webDev;
+}
+.footer-container .footer .machineLearn {
+  grid-area: machineLearn;
+}
+.footer-container .footer .ReachUs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "reachUs reachUs" "icon1 mail" "icon2 tel" "icon3 direc";
+  grid-area: ReachUs;
+}
+.footer-container .footer .reachUs {
+  grid-area: reachUs;
+}
+.footer-container .footer .icon1 {
+  grid-area: icon1;
+}
+.footer-container .footer .icon2 {
+  grid-area: icon2;
+}
+.footer-container .footer .icon3 {
+  grid-area: icon3;
+}
+.footer-container .footer .mail {
+  grid-area: mail;
+}
+.footer-container .footer .tel {
+  grid-area: tel;
+}
+.footer-container .footer .direc {
+  grid-area: direc;
+}
+.footer-container .footer .icon {
+  grid-area: icon;
+}
+.footer-container .footer .icon img {
+  width: 50%;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-left: 220px;
+  filter: brightness(0.2);
+}
+
+.aboutUs-container {
+  background-color: #A0DCFF;
+  padding: 30px;
+  width: 60vw;
+  border-radius: 10px;
+  margin-left: 16rem;
+  margin-top: 1.5rem;
+}
+.aboutUs-container p {
+  margin-bottom: 30px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+}
+
+.flip-card-front {
+  background-color: #ebebeb;
+  color: black;
+  display: grid;
+  place-items: center;
+}
+.flip-card-front img {
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 80%;
+  height: 80%;
+  mix-blend-mode: multiply;
+}
+
+.flip-card-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #248EFF;
+  color: white;
+  transform: rotateY(180deg);
+}
+.flip-card-back p {
+  text-wrap: wrap;
+  width: 80%;
+}
+
+.courseIdRow {
+  display: none;
+}/*# sourceMappingURL=main.css.map */

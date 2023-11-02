@@ -82,7 +82,7 @@
                     echo "<div class='course' onclick='openPopup(this)'>";
 
                     echo "<figure class='hidden'>";
-                    echo "<img src='../{$course['photoPath']}'>";
+                    echo "<img alt='photo of the course' src='../{$course['photoPath']}'>";
                     echo "<figcaption>Hola</figcaption>";
                     echo "</figure>";
                     echo "<p>{$course['name']}</p>";
