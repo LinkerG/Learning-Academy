@@ -978,4 +978,8 @@ img.backBtn {
 .flip-card-back p {
   text-wrap: wrap;
   width: 80%;
+}
+
+.courseIdRow {
+  display: none;
 }/*# sourceMappingURL=main.css.map */
