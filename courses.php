@@ -60,7 +60,7 @@
                             }
                         }
                         if(empty($result)){
-                            echo "<div>";
+                            echo "<div class='noCourses'>";
                             echo "<h1>There are no courses avaliable right now</h1>";
                             echo "</div>";
                         } else {

@@ -159,7 +159,7 @@ table {
 // Estilos para la página "Our Courses"
 .top {
     margin: 3rem;
-    margin-left: 10rem;
+    margin-left: 12rem;
 
     h1 {
         text-transform: uppercase;
@@ -1032,8 +1032,7 @@ img.backBtn{
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 1rem;
-
-  
+  word-wrap: break-word;
 }
 
 .flip-card-front {
@@ -1066,4 +1065,11 @@ img.backBtn{
 }
 .courseIdRow{
     display: none;
+}
+
+.noCourses{
+    grid-column: 1/4;
+    color: white;
+    align-self: self-start;
+    justify-self: left;
 }
