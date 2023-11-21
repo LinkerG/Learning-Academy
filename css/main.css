@@ -449,6 +449,7 @@ table td {
 .container .tabbedWindow .divWindow .tab-container .tabWindow .tab-content {
   position: absolute;
   color: black;
+  background-color: #A0DCFF;
   display: none;
   z-index: 0;
 }

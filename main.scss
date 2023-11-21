@@ -485,8 +485,13 @@ table {
                     .tab-content{
                         position: absolute;
                         color: black;
+                        background-color: $lightBlue;
                         display: none;
                         z-index: 0;
+
+                        .toolBar{
+                            
+                        }
                     }
                     .selected{
                         position: relative;
