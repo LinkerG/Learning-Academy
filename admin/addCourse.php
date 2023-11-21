@@ -94,7 +94,7 @@
             <div class="formRow">
                 <div>   
                     <label for="description">Description</label>
-                    <input type="text" maxlength="60" name="description" id="description">
+                    <input type="text" maxlength="20" name="description" id="description">
                 </div>
                 <div>
                     <label for="dniTeacher">Teacher DNI:</label>

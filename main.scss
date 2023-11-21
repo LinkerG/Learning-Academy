@@ -153,6 +153,13 @@ table {
     th, td{
         min-width: 12.5%;
         width: 12.5%;
+        max-width: 12.5%;
+    }
+    th{
+        background-color: $darkBlue;
+    }
+    td{
+        background-color: $lightBlue;
     }
 }
 
@@ -333,7 +340,7 @@ table {
 
     .tab-content {
         padding: 20px;
-        background-color: #FFFFFF;
+        background-color: $lightBlue;
         position: absolute;
         display: none;
         width: 100%;
@@ -375,7 +382,14 @@ table {
     grid-template-columns: repeat(3, 1fr);
     table{
         tr{
+            th{
+                padding: 1rem;
+                min-width: 12.5%;
+                width: 12.5%;
+                max-width: 12.5%;
+            }
             td{
+                text-overflow: ellipsis;
                 .switch-button {
                     display: inline-block;
                     .toggle-checkbox {
@@ -408,6 +422,8 @@ table {
                     }
                 }
             }
+
+            
         }
     }
     h1 {

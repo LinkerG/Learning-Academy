@@ -109,7 +109,7 @@
             <div class="formRow">
                 <div class="singleRow">
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description" maxlength="60" value="<?php echo "{$result['description']}"; ?>">
+                    <input type="text" name="description" id="description" maxlength="20" value="<?php echo "{$result['description']}"; ?>">
                 </div>
             </div>
             <div class="formRow">

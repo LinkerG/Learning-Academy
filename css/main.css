@@ -137,6 +137,13 @@ table tbody {
 table th, table td {
   min-width: 12.5%;
   width: 12.5%;
+  max-width: 12.5%;
+}
+table th {
+  background-color: #248EFF;
+}
+table td {
+  background-color: #A0DCFF;
 }
 
 .top {
@@ -304,7 +311,7 @@ table th, table td {
 }
 .tabs-container .tab-content {
   padding: 20px;
-  background-color: #FFFFFF;
+  background-color: #A0DCFF;
   position: absolute;
   display: none;
   width: 100%;
@@ -337,6 +344,15 @@ table th, table td {
   display: grid;
   place-items: center;
   grid-template-columns: repeat(3, 1fr);
+}
+.container table tr th {
+  padding: 1rem;
+  min-width: 12.5%;
+  width: 12.5%;
+  max-width: 12.5%;
+}
+.container table tr td {
+  text-overflow: ellipsis;
 }
 .container table tr td .switch-button {
   display: inline-block;
