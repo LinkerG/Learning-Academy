@@ -89,11 +89,10 @@
 
                     echo "<div class='hiddenContent'>";
                     echo "<p class='pCourseName'>{$course['name']}</p>";
-                    echo "<p class='bajaButton'>Darse de baja</p>";
                     $dniStudent = $_SESSION['dniStudent'];
                     $currentCourseId = $course['courseId'];
                     $finished = strtotime($course['endDate'])<strtotime(date("Y-m-d")) ? true : false;
-                    if(!$finished) echo "<button onclick='baja(`$dniStudent`,`$currentCourseId`)'>Darse de baja</button>";
+                    if(!$finished) echo "<button class='blueBtn' onclick='baja(`$dniStudent`,`$currentCourseId`)'>Darse de baja</button>";
                     else echo "<p>This course already finished</p>"
                     
                 ?>

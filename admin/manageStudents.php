@@ -7,7 +7,8 @@ include "../functions.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../files/importStudents.js"></script>   
+    <script src="../files/importStudents.js"></script>
+    <script src="../files/scripts.js"></script>  
     <link rel="stylesheet" href="../css/main.css">
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
     <title>Import Students</title>

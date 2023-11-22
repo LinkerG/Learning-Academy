@@ -61,10 +61,10 @@ function openTab(tabNumber) {
     let tabs = document.getElementsByClassName("tab");
     let actualTab = document.getElementById("t" + tabNumber);
     for (let i = 0; i < tabs.length; i++) {
-      if(tabs[i].id == actualTab.id){
-            tabs[i].style.backgroundColor = "#e0e0e0";
+        if(tabs[i].id == actualTab.id){
+            tabs[i].style.backgroundColor = "#4c9ff8";
         } else {
-            tabs[i].style.backgroundColor = "#f0f0f0";
+            tabs[i].style.backgroundColor = "#248EFF";
         }
     }
   }
@@ -470,3 +470,20 @@ function baja(dni, id){
         location.href = "index.php?delete=true&dni="+dni+"&id="+id;
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var dropdownButton = document.querySelector('.dropdown button');
+    var dropdownMenu = document.querySelector('.dropdown-menu');
+  
+    // Mostrar/ocultar el menú al hacer clic en el botón
+    dropdownButton.addEventListener('click', function() {
+      dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    });
+  
+    // Ocultar el menú si se hace clic fuera de él
+    document.addEventListener('click', function(event) {
+      if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.style.display = 'none';
+      }
+    });
+});

@@ -111,7 +111,6 @@
                                 echo "      <label for='switch-label-{$row['courseId']}' class='switch-button__label'></label>";
                                 echo "  </div>";
                                 echo "</td>";
-                                echo "  <td></td>";
                                 echo "</tr>";
                             }
                         }

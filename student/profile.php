@@ -81,6 +81,7 @@ session_start();
                             $_SESSION['email'] = $_POST['email'];
                             $_SESSION['password'] = $_POST['password'];
                             $_SESSION['birthDate'] = $_POST['birthDate'];
+                            $_SESSION['birthDate'] = $route;
                             echo "<meta http-equiv='REFRESH' content='0;URL=../student/index.php'>";
                         }
                     }

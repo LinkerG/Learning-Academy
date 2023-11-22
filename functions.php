@@ -12,25 +12,63 @@ function printHeader($dir = "") {
             echo "<a href='" . $dir . "index.php' class='headerLogo'><img src='" . $dir . "img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
             echo "<a href='" . $dir . "courses.php' class='Course blueBtn'>Our courses</a>";
             echo "<a href='" . $dir . "login.php' id='login' class='blueBtn'>Log in</a>";
-            echo "<a href='" . $dir . "signup.php' id='signup' class='whiteBtn'>Sing up</a>";
+            echo "<a href='" . $dir . "signup.php' id='signup' class='whiteBtn'>Sign up</a>";
             break;
         case "A":
             echo "<a href='" . $dir . "index.php' class='headerLogo'><img src='" . $dir . "img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
             echo "<a href='" . $dir . "admin/index.php' class='menu1 blueBtn'>Admin panel</a>";
             echo "<a href='" . $dir . "courses.php' class='Course blueBtn'>Our courses</a>";
-            echo "<a href='" . $dir . "close.php' id='logout' class='blueBtn'>Log out</a>";
+            echo "<div class='dropdown'>";
+            echo "  <button>";
+                        $src = $dir . $_SESSION['photoPath'];
+            echo "      <img src='" . $src . "' alt='profile photo'>";
+            echo "      <p> Admin </p>";
+            echo "  </button>";
+            echo "  <div class='dropdown-menu'>";
+            echo "      <a href='" . $dir . "index.php' class='dropdown-item'>Home</a>";
+            echo "      <div class='dropdown-divider'></div>";
+            echo "      <a href='" . $dir . "close.php' id='logout' class='dropdown-item'>Log out</a>";
+            echo "  </div>";
+            echo "</div>";
             break;
         case "S":
             echo "<a href='" . $dir . "index.php' class='headerLogo'><img src='" . $dir . "img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
             echo "<a href='" . $dir . "student/index.php' class='menu1 blueBtn'>Student panel</a>";
             echo "<a href='" . $dir . "courses.php' class='Course blueBtn'>Our courses</a>";
-            echo "<a href='" . $dir . "close.php' id='logout' class='blueBtn'>Log out</a>";
+            echo "<div class='dropdown'>";
+            echo "  <button>";
+                        $src = $dir . $_SESSION['photoPath'];
+            echo "      <img src='" . $src . "' alt='profile photo'>";
+            echo "      <p> " . $_SESSION['name'] . " </p>";
+            echo "  </button>";
+            echo "  <div class='dropdown-menu'>";
+            echo "      <a href='" . $dir . "index.php' class='dropdown-item'>Home</a>";
+            if($dir != "") {
+                echo "  <a href='profile.php' class='dropdown-item'>My profile</a>";
+            } else {
+                echo "  <a href='student/profile.php' class='dropdown-item'>My profile</a>";
+            }
+            echo "      <div class='dropdown-divider'></div>";
+            echo "      <a href='" . $dir . "close.php' id='logout' class='dropdown-item'>Log out</a>";
+            echo "  </div>";
+            echo "</div>";
             break;
         case "T":
             echo "<a href='" . $dir . "index.php' class='headerLogo'><img src='" . $dir . "img/logo.png' alt='the academy logo, the earth with a book under it'><p class='menu1'>Learning Academy</p></a>";
             echo "<a href='" . $dir . "teacher/index.php' class='menu1 blueBtn'>Teacher panel</a>";
             echo "<a href='" . $dir . "courses.php' class='Course blueBtn'>Our courses</a>";
-            echo "<a href='" . $dir . "close.php' class='blueBtn' id='logout'>Log out</a>";
+            echo "<div class='dropdown'>";
+            echo "  <button>";
+                        $src = $dir . $_SESSION['photoPath'];
+            echo "      <img src='" . $src . "' alt='profile photo'>";
+            echo "      <p> " . $_SESSION['name'] . " </p>";
+            echo "  </button>";
+            echo "  <div class='dropdown-menu'>";
+            echo "      <a href='" . $dir . "index.php' class='dropdown-item'>Home</a>";
+            echo "      <div class='dropdown-divider'></div>";
+            echo "      <a href='" . $dir . "close.php' id='logout' class='dropdown-item'>Log out</a>";
+            echo "  </div>";
+            echo "</div>";
             break;
     }
     echo "</header>";
@@ -175,6 +213,7 @@ function validateUser() {
                             $_SESSION['email'] = $row['email'];
                             $_SESSION['password'] = $row['password'];
                             $_SESSION['role'] = "A";
+                            $_SESSION['photoPath'] = "img/profilePhotos/default.png";
                             header('Location: admin/index.php');
                         } else $found = false;
                     }
@@ -197,7 +236,9 @@ function validateUser() {
                                 $_SESSION['email'] = $row['email'];
                                 $_SESSION['password'] = $row['password'];
                                 $_SESSION['role'] = "T";
+                                $_SESSION['name'] = $row['name'];
                                 $_SESSION['dniTeacher'] = $row['dniTeacher'];
+                                $_SESSION['photoPath'] = $row['photoPath'];
                                 header('Location: teacher/index.php');
                             } else $found=false;
                         }

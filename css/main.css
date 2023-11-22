@@ -264,29 +264,31 @@ table td {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(5, 1fr);
   z-index: 3;
+  border-radius: 1rem;
 }
 .popup .popup-content .pCourseName {
-  grid-column: 1/4;
-  text-align: center;
+  grid-column: 1/2;
   margin-top: 1rem;
   font-size: 32px;
   font-weight: bold;
 }
-.popup .popup-content .pDateLabel {
-  grid-row: 2/3;
-}
-.popup .popup-content .pDate {
-  grid-row: 3/4;
+.popup .popup-content button {
+  grid-column: 3/4;
+  height: 60%;
+  width: 70%;
+  align-self: center;
+  justify-self: right;
 }
 .popup .popup-content .pMain {
-  grid-column: 2/4;
+  grid-column: 1/4;
   grid-row: 2/5;
   margin: 1rem;
   font-size: 24px;
 }
 .popup .popup-content .tabs-container {
-  grid-column: 2/4;
-  grid-row: 2/5;
+  grid-column: 1/4;
+  grid-row: 2/6;
+  background-color: #A0DCFF;
 }
 
 .tabs-container {
@@ -300,14 +302,13 @@ table td {
   width: 20%;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #f0f0f0;
-  border-right: 1px solid #ccc;
+  background-color: #248EFF;
 }
 .tabs-container .tab:hover {
-  background-color: #e0e0e0;
+  background-color: #4c9ff8;
 }
 .tabs-container .tab.selected {
-  background-color: #e0e0e0;
+  background-color: #4c9ff8;
 }
 .tabs-container .tab-content {
   padding: 20px;
@@ -432,15 +433,14 @@ table td {
   width: 20%;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #f0f0f0;
-  border-right: 1px solid #ccc;
+  background-color: #248EFF;
   color: black;
 }
 .container .tabbedWindow .divWindow .tab-container .tabsLine .tab:hover {
-  background-color: #e0e0e0;
+  background-color: #4c9ff8;
 }
 .container .tabbedWindow .divWindow .tab-container .tabsLine .tab.selected {
-  background-color: #e0e0e0;
+  background-color: #4c9ff8;
 }
 .container .tabbedWindow .divWindow .tab-container .tabWindow {
   height: 100%;
@@ -452,6 +452,9 @@ table td {
   background-color: #A0DCFF;
   display: none;
   z-index: 0;
+}
+.container .tabbedWindow .divWindow .tab-container .tabWindow .tab-content .toolBar {
+  background-color: #248EFF;
 }
 .container .tabbedWindow .divWindow .tab-container .tabWindow .selected {
   position: relative;
@@ -643,7 +646,7 @@ table td {
 
 .tabBackBtn {
   display: flex;
-  background-color: #f0f0f0;
+  background-color: #248EFF;
 }
 .tabBackBtn a {
   display: flex;
@@ -672,10 +675,10 @@ table td {
   padding: 1rem;
 }
 .tabBackBtn:hover {
-  background-color: #e0e0e0;
+  background-color: #4c9ff8;
 }
 .tabBackBtn.selected {
-  background-color: #e0e0e0;
+  background-color: #4c9ff8;
 }
 
 img.backBtn {
@@ -1007,4 +1010,61 @@ img.backBtn {
   color: white;
   align-self: self-start;
   justify-self: left;
+}
+
+.dropdown {
+  grid-column: 7/8;
+}
+.dropdown button {
+  background-color: white; /* Color de fondo del botón */
+  border-radius: 1rem;
+  color: #248EFF;
+  text-transform: capitalize;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.dropdown button img {
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 3rem;
+  border-radius: 100%;
+}
+.dropdown button p {
+  margin-left: 1rem;
+}
+
+.dropdown-menu {
+  display: none; /* Ocultar el menú por defecto */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Estilo de los elementos del menú */
+.dropdown-menu a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Cambiar el color del enlace al pasar el ratón */
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-divider {
+  background-color: #6e6e6e;
+  height: 1px;
 }/*# sourceMappingURL=main.css.map */
