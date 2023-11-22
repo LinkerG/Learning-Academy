@@ -28,7 +28,7 @@
     <div class="formDiv">
         <form class="loginForm" action="login.php" method="POST">
             <div class="formRow">
-                <h3>Inicio de sesión</h3>
+                <h3>Log In</h3>
             </div>
             <div class="formRow">
                 <div class="singleRow">
