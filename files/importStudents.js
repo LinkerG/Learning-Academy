@@ -37,9 +37,7 @@ function crearArray() {
             displayTable(students);
         };
         reader.readAsText(file);
-        const importBtn = document.getElementById('importButton');
         const input = document.getElementById('fileInput');
-        importBtn.style.display = 'none';
         input.style.display = 'none';
     } else {
         alert('Select a file please');

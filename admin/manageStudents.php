@@ -28,6 +28,7 @@ include "../functions.php";
                 <div>
                     <input type="file" id="fileInput" accept=".txt" >
                     <!--<button id="export" onclick= "<?php //generarFicheroStudents() ?>">Export</button>-->
+                    
                 </div>
                 <div id="datos"></div>
                 <div id="tableContainer"></div>
