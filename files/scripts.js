@@ -254,6 +254,52 @@ function eventButtons(condition, admin) {
 
                 if(selected) ventana.classList.add("selected");
                 if(admin){
+                    // codigo barra busqueda
+                    $(document).ready(function(){
+                        $('#searchCourses').keyup(function(){
+                            var query = $(this).val();
+                      
+                            $.ajax({
+                                url: 'searchCourses.php',
+                                method: 'POST',
+                                data: { query: query },
+                                success: function(data){
+                                    $('#coursesTable').html(data);
+                                }
+                            });
+                        });
+                      });
+                      $(document).ready(function(){
+                        $('#searchTeachers').keyup(function(){
+                            var query = $(this).val();
+                      
+                            $.ajax({
+                                url: 'searchTeachers.php',
+                                method: 'POST',
+                                data: { query: query },
+                                success: function(data){
+                                    $('#teachersTable').html(data);
+                                }
+                            });
+                        });
+                      });
+                      $(document).ready(function(){
+                        $('#searchStudents').keyup(function(){
+                            var query = $(this).val();
+                      
+                            $.ajax({
+                                url: 'searchStudents.php',
+                                method: 'POST',
+                                data: { query: query },
+                                success: function(data){
+                                    $('#studentsTable').html(data);
+                                }
+                            });
+                        });
+                      });
+                                          
+
+
                     let show;
                     if(tab.innerHTML == "Manage courses") show = "courses";
                     else if (tab.innerHTML == "Manage teachers") show = "teachers";

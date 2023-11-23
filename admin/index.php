@@ -12,9 +12,6 @@
     <script src="../files/scripts.js"></script>
     <script src="../files/importStudents.js"></script>
     <script src="../files/change-status.js"></script>
-    <script src="../files/teacherSearch.js"></script>
-    <script src="../files/studentSearch.js"></script>
-    <script src="../files/courseSearch.js"></script>
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body>
