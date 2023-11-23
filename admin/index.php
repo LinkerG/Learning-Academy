@@ -11,6 +11,10 @@
     <script src="../files/scripts.js"></script>
     <script src="../files/importStudents.js"></script>
     <script src="../files/change-status.js"></script>
+    <script src="../files/teacherSearch.js"></script>
+    <script src="../files/studentSearch.js"></script>
+    <script src="../files/courseSearch.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body>
@@ -155,6 +159,7 @@
         ?>
     </table>
 </div>
+<div id="resultados"></div>
 <?php
 if(isset($_REQUEST['manage'])) {
     echo "<script>window.onload = loadAdmin(1,'{$_REQUEST['manage']}')</script>";

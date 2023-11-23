@@ -261,22 +261,29 @@ function eventButtons(condition, admin) {
     
                     let toolBar = document.createElement("div");
                     toolBar.classList.add("toolBar")
-    
-                    let searchBar = document.createElement("form");
-                    let input = document.createElement("input");
-                    input.type = "text";
-                    input.id = "search";
-                    input.name = "search";
-                    searchBar.appendChild(input)
-                    let searchButton = document.createElement("button");
-                    searchButton.type = "submit";
-                    let searchImg = document.createElement("img");
-                    searchImg.src = "../img/icons/search.png";
-                    searchImg.alt = "lupa";
-                    searchImg.classList.add("tbImage");
-                    searchButton.appendChild(searchImg);
-    
-                    searchBar.appendChild(searchButton);
+                    let searchBar;
+                    switch (show) {
+                        case "courses":
+                            searchBar = document.createElement("input");
+                            searchBar.type = "text";
+                            searchBar.id = "searchCourses";
+                            searchBar.placeholder="Search by course or teacher name...";
+                            break;
+                        case "teachers":
+                            searchBar = document.createElement("input");
+                            searchBar.type = "text";
+                            searchBar.id = "searchTeachers";
+                            searchBar.placeholder="Search by name, email or DNI...";
+                            break;
+                        case "students":
+                            searchBar = document.createElement("input");
+                            searchBar.type = "text";
+                            searchBar.id = "searchStudents";
+                            searchBar.placeholder="Search by name, email or DNI...";
+                            break;
+                        default:
+                            break;
+                    }
     
                     toolBar.appendChild(searchBar);
     
