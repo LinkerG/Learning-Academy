@@ -1,5 +1,6 @@
 <?php
-    include './../functions.php';
+
+include './../functions.php';
 
     if (connectBD("id21353268_learningacademy", $connection)) {
         $output = '';
@@ -12,8 +13,18 @@
 
         if (selectSQL($connection, $sql, $result)) {
             if (empty($result)) {
-                $output .= "<tr><td colspan='8'>No hay profesores que coincidan con la búsqueda.</td></tr>";
+                $output .= "<tr><td colspan='8'>There are no teachers in your search.</td></tr>";
             } else {
+                $output .= "<tr>";
+                $output .= "    <th>DNI</th>";
+                $output .= "    <th>Photo</th>";
+                $output .= "    <th>Name</th>";
+                $output .= "    <th>Surname</th>";
+                $output .= "    <th>Titulation</th>";
+                $output .= "    <th>Email</th>";
+                $output .= "    <th>Edit</th>";
+                $output .= "    <th>Active</th>";
+                $output .= "</tr>";
                 foreach ($result as $row) {
                     $output .= "<tr>";
                     $output .= "<td>{$row['dniTeacher']}</td>";

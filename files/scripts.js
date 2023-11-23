@@ -265,6 +265,7 @@ function eventButtons(condition, admin) {
                                 data: { query: query },
                                 success: function(data){
                                     $('#coursesTable').html(data);
+                                    setupToggleFunction();
                                 }
                             });
                         });
@@ -279,6 +280,7 @@ function eventButtons(condition, admin) {
                                 data: { query: query },
                                 success: function(data){
                                     $('#teachersTable').html(data);
+                                    setupToggleFunction();
                                 }
                             });
                         });
