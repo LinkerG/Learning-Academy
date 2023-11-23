@@ -323,6 +323,7 @@ function eventButtons(condition, admin) {
     
                     let toDraw = document.getElementById(show + "Table");
                     toDraw.style.display = "table";
+                    
                     let rows = toDraw.getElementsByTagName("tr");
                     let numCols = rows[0].childElementCount;
     

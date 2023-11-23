@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin panel</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../files/scripts.js"></script>
     <script src="../files/importStudents.js"></script>
     <script src="../files/change-status.js"></script>
     <script src="../files/teacherSearch.js"></script>
     <script src="../files/studentSearch.js"></script>
     <script src="../files/courseSearch.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/Learning-Academy/img/favicon.png">
 </head>
 <body>

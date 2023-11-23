@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('#search').keyup(function(){
+    $('#searchStudents').keyup(function(){
         var query = $(this).val();
   
         $.ajax({
