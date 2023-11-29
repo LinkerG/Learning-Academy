@@ -83,7 +83,7 @@
 
                     echo "<figure class='hidden'>";
                     echo "<img alt='photo of the course' src='../{$course['photoPath']}'>";
-                    echo "<figcaption>Hola</figcaption>";
+                    echo "<figcaption></figcaption>";
                     echo "</figure>";
                     echo "<p>{$course['name']}</p>";
 
