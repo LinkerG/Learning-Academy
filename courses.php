@@ -11,7 +11,7 @@
     <script src="./files/scripts.js"></script>
     <link rel="icon" type="image/x-icon" href="img/favicon.png">
 </head>
-<body>
+<body style="heignt: 100vh; overflow: hidden;">
     <?php
         include ("functions.php");
         printHeader();
