@@ -92,7 +92,7 @@
                     $dniStudent = $_SESSION['dniStudent'];
                     $currentCourseId = $course['courseId'];
                     $finished = strtotime($course['endDate'])<strtotime(date("Y-m-d")) ? true : false;
-                    if(!$finished) echo "<button class='blueBtn' onclick='baja(`$dniStudent`,`$currentCourseId`)'>Darse de baja</button>";
+                    if(!$finished) echo "<button class='blueBtn' onclick='baja(`$dniStudent`,`$currentCourseId`)'>Leave course</button>";
                     else echo "<p>This course already finished</p>"
                     
                 ?>
