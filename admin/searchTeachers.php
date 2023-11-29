@@ -8,7 +8,7 @@ include './../functions.php';
         $sql = "SELECT * FROM teacher";
         if (isset($_POST['query'])) {
             $search = mysqli_real_escape_string($connection, $_POST['query']);
-            $sql .= " WHERE name LIKE '%$search%' OR dniTeacher LIKE '%$search%'";
+            $sql .= " WHERE name LIKE '%$search%' OR dniTeacher LIKE '%$search%' OR email LIKE '%$search%'";
         }
 
         if (selectSQL($connection, $sql, $result)) {
