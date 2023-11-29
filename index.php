@@ -12,8 +12,9 @@
     <script src="./files/scripts.js"></script>
 </head>
 <body>
-    <?php
+    <?php   
         include('functions.php');
+        generarFicheroStudents();
         printHeader();  
     ?>
     <div class="indexContainer">
